@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
-    //
+    public function AddProduct()
+    {
+        $categories = Category::latest()->get();
+        return view('admin.product.product_add', compact('categories'));
+    }
 }

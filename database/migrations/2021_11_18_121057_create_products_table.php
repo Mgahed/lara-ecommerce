@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name_ar');
             $table->string('code');
             $table->double('quantity');
-//            $table->double('size');
+//            $table->string('size');
             $table->string('color_en');
             $table->string('color_ar');
             $table->double('sell_price');
