@@ -32,7 +32,7 @@ class CreateProductsTable extends Migration
             $table->integer('special_offer')->default(0);
             $table->string('brand');
             $table->integer('category_id');
-            $table->integer('subcategory_id')->nullable();
+            $table->integer('subcategory_id');
             $table->timestamps();
         });
     }

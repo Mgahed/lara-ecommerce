@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\IndexController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +41,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'verified', 
 
         /*----- Admin Sub Category All Routes -----*/
         Route::prefix('sub')->group(function () {
+            Route::get('/ajax/{category_id}', [SubCategoryController::class, 'GetSubCategory']);
+
             Route::get('/view', [SubCategoryController::class, 'SubCategoryView'])->name('all.subcategory');
 
             Route::post('/store', [SubCategoryController::class, 'SubCategoryStore'])->name('subcategory.store');

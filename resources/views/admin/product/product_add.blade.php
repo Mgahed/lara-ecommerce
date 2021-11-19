@@ -30,14 +30,14 @@
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <h5>Category Select <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Select Category')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <select name="category_id" class="form-control" required="">
                                                             <option value="" selected="" disabled="">Select Category
                                                             </option>
                                                             @foreach($categories as $category)
                                                                 <option
-                                                                    value="{{ $category->id }}">{{ $category->category_name_en }}</option>
+                                                                    value="{{ $category->id }}">{{ $category->name_en }} - {{$category->name_ar}}</option>
                                                             @endforeach
                                                         </select>
                                                         @error('category_id')
@@ -50,7 +50,7 @@
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <h5>SubCategory Select</h5>
+                                                    <h5>{{__('Select SubCategory')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <select name="subcategory_id" class="form-control" required="">
                                                             <option value="" selected="" disabled="">Select
@@ -67,11 +67,11 @@
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <h5>Product Selling Price <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Selling Price')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="selling_price" class="form-control"
-                                                               required="">
-                                                        @error('selling_price')
+                                                        <input type="number" autocomplete="off" name="sell_price" class="form-control"
+                                                               required="" value="{{old('sell_price')}}">
+                                                        @error('sell_price')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -88,9 +88,9 @@
                                                     <h5>{{__('Name in English')}} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
-                                                        <input type="text" name="product_name_en" class="form-control"
-                                                               required="">
-                                                        @error('product_name_en')
+                                                        <input style="direction: ltr;" type="text" autocomplete="off" name="name_en" class="form-control"
+                                                               required="" value="{{old('sell_price')}}">
+                                                        @error('name_en')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -102,9 +102,9 @@
                                                 <div class="form-group">
                                                     <h5>{{__('Name in Arabic')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="product_name_hin" class="form-control"
-                                                               required="">
-                                                        @error('product_name_hin')
+                                                        <input style="direction: rtl;" type="text" autocomplete="off" name="name_ar" class="form-control"
+                                                               required="" value="{{old('name_ar')}}">
+                                                        @error('name_ar')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -114,10 +114,10 @@
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <h5>Product Discount Price <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Discount Price')}}</h5>
                                                     <div class="controls">
-                                                        <input type="text" name="discount_price" class="form-control"
-                                                               required="">
+                                                        <input type="number" autocomplete="off" name="discount_price" class="form-control"
+                                                               required="" value="{{old('discount_price')}}">
                                                         @error('discount_price')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -132,11 +132,11 @@
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <h5>Product Code <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Product Code')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="product_code" class="form-control"
-                                                               required="">
-                                                        @error('product_code')
+                                                        <input type="text" autocomplete="off" name="code" class="form-control"
+                                                               required="" value="{{old('code')}}">
+                                                        @error('code')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -145,25 +145,26 @@
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <h5>Product Quantity <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Product Quantity')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="product_qty" class="form-control"
-                                                               required="">
-                                                        @error('product_qty')
+                                                        <input type="number" autocomplete="off" name="quantity" class="form-control"
+                                                               required="" value="{{old('quantity')}}">
+                                                        @error('quantity')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
                                                 </div>
                                             </div> <!-- end col md 4 -->
 
+
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <h5>{{__('Color in English')}} <span class="text-danger">*</span>
+                                                    <h5>{{__('Brand')}} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
-                                                        <input type="text" name="product_color_en" class="form-control"
-                                                               value="red,Black,Amet" data-role="tagsinput" required="">
-                                                        @error('product_color_en')
+                                                        <input style="direction: ltr;" type="text" name="brand" class="form-control"
+                                                               placeholder="" required="" value="{{old('brand')}}">
+                                                        @error('brand')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -174,42 +175,56 @@
                                         </div> <!-- end 3RD row  -->
 
 
-                                        <div class="row"> <!-- start 5th row  -->
+                                        <div class="row"> <!-- start 4th row  -->
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <h5>{{__('Color in Arabic')}} <span class="text-danger">*</span>
+                                                    <h5>{{__('Color in English')}} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
-                                                        <input type="text" name="product_color_hin" class="form-control"
-                                                               value="red,Black,Large" data-role="tagsinput"
-                                                               required="">
-                                                        @error('product_color_hin')
+                                                        <input style="direction: ltr;" type="text" name="color_en" class="form-control"
+                                                               placeholder="red,Black,Green" data-role="tagsinput" required="" value="{{old('color_en')}}">
+                                                        @error('color_en')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
                                                 </div>
-                                            </div> <!-- end col md 4 -->
+                                            </div> <!-- end col md 3 -->
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <h5>{{__('Color in Arabic')}} <span class="text-danger">*</span>
+                                                    </h5>
+                                                    <div class="controls">
+                                                        <input style="direction: rtl;" type="text" name="color_ar" class="form-control"
+                                                               placeholder="احمر,اسود,اخضر" data-role="tagsinput"
+                                                               required="" value="{{old('color_ar')}}">
+                                                        @error('color_ar')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col md 3 -->
+
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <h5>Main Thambnail <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="file" name="product_thambnail" class="form-control"
+                                                        <input type="file" accept="image/png, image/jpg, image/jpeg" name="thumbnail" class="form-control"
                                                                onChange="mainThamUrl(this)" required="">
-                                                        @error('product_thambnail')
+                                                        @error('thumbnail')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                         <img src="" id="mainThmb">
                                                     </div>
                                                 </div>
-                                            </div> <!-- end col md 4 -->
+                                            </div> <!-- end col md 3 -->
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <h5>Multiple Image <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="file" name="multi_img[]" class="form-control"
+                                                        <input type="file" accept="image/png, image/jpg, image/jpeg" name="multi_img[]" class="form-control"
                                                                multiple="" id="multiImg" required="">
                                                         @error('multi_img')
                                                         <span class="text-danger">{{ $message }}</span>
@@ -217,7 +232,7 @@
                                                         <div class="row" id="preview_img"></div>
                                                     </div>
                                                 </div>
-                                            </div> <!-- end col md 4 -->
+                                            </div> <!-- end col md 3 -->
 
                                         </div> <!-- end 4th row  -->
 
@@ -226,23 +241,23 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Short Description in English <span class="text-danger">*</span>
+                                                    <h5>{{__('Short Description in English')}} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
-                                                        <textarea name="short_descp_en" id="textarea"
+                                                        <textarea style="direction: ltr;" name="short_descp_en" id="textarea"
                                                                   class="form-control" required
-                                                                  placeholder="Textarea text"></textarea>
+                                                                  placeholder="short discription">{{old('short_descp_en')}}</textarea>
                                                     </div>
                                                 </div>
                                             </div> <!-- end col md 6 -->
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Short Description in Arabic <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Short Description in Arabic')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <textarea name="short_descp_hin" id="textarea2"
+                                                        <textarea style="direction: rtl;" name="short_descp_ar" id="textarea2"
                                                                   class="form-control" required
-                                                                  placeholder="Textarea text"></textarea>
+                                                                  placeholder="وصف قصير">{{old('short_descp_ar')}}</textarea>
                                                     </div>
                                                 </div>
                                             </div> <!-- end col md 6 -->
@@ -254,9 +269,9 @@
                                             <div class="col-md-6">
 
                                                 <div class="form-group">
-                                                    <h5>Long Description English <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Long Description in English')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                        <textarea id="editor1" name="long_descp_en" class="form-control" rows="10" cols="80" required=""></textarea>
+                                        <textarea id="editor1" style="direction: ltr;" name="long_descp_en" class="form-control" rows="10" cols="80" required="">{{old('long_descp_en')}}</textarea>
                                                     </div>
                                                 </div>
 
@@ -265,9 +280,9 @@
                                             <div class="col-md-6">
 
                                                 <div class="form-group">
-                                                    <h5>Long Description Arabic <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Long Description in Arabic')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                            <textarea id="editor2" name="long_descp_hin" class="form-control"rows="10" cols="80"></textarea>
+                                            <textarea id="editor2" style="direction: rtl;" name="long_descp_ar" class="form-control"rows="10" cols="80" required>{{old('long_descp_ar')}}</textarea>
                                                     </div>
                                                 </div>
 
@@ -282,46 +297,22 @@
 
                                         <div class="row">
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-
                                                     <div class="controls">
                                                         <fieldset>
-                                                            <input type="checkbox" id="checkbox_2" name="hot_deals"
+                                                            <input type="checkbox" id="checkbox_1" name="special_offer"
                                                                    value="1">
-                                                            <label for="checkbox_2">Hot Deals</label>
-                                                        </fieldset>
-                                                        <fieldset>
-                                                            <input type="checkbox" id="checkbox_3" name="featured"
-                                                                   value="1">
-                                                            <label for="checkbox_3">Featured</label>
+                                                            <label for="checkbox_1">Special Offer</label>
                                                         </fieldset>
                                                     </div>
                                                 </div>
                                             </div>
 
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-
-                                                    <div class="controls">
-                                                        <fieldset>
-                                                            <input type="checkbox" id="checkbox_4" name="special_offer"
-                                                                   value="1">
-                                                            <label for="checkbox_4">Special Offer</label>
-                                                        </fieldset>
-                                                        <fieldset>
-                                                            <input type="checkbox" id="checkbox_5" name="special_deals"
-                                                                   value="1">
-                                                            <label for="checkbox_5">Special Deals</label>
-                                                        </fieldset>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
 
 
-                                        <div class="col-md-6">
+                                        {{--<div class="col-md-6">
 
                                             <div class="form-group">
                                                 <h5>Digital Product <span class="text-danger">pdf,xlx,csv*</span></h5>
@@ -332,7 +323,7 @@
                                             </div>
 
 
-                                        </div> <!-- end col md 4 -->
+                                        </div>--}} <!-- end col md 4 -->
 
 
                                         <div class="text-xs-right">
@@ -362,22 +353,21 @@
                 var category_id = $(this).val();
                 if (category_id) {
                     $.ajax({
-                        url: "{{  url('/category/subcategory/ajax') }}/" + category_id,
+                        url: "{{  url('/admin/category/sub/ajax') }}/" + category_id,
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            $('select[name="subsubcategory_id"]').html('');
                             var d = $('select[name="subcategory_id"]').empty();
                             $.each(data, function (key, value) {
-                                $('select[name="subcategory_id"]').append('<option value="' + value.id + '">' + value.subcategory_name_en + '</option>');
+                                $('select[name="subcategory_id"]').append('<option value="' + value.id + '">' + value.name_en + ' - ' + value.name_ar + '</option>');
                             });
                         },
                     });
                 } else {
-                    alert('danger');
+                    alert('{{__('Error')}}');
                 }
             });
-            $('select[name="subcategory_id"]').on('change', function () {
+            /*$('select[name="subcategory_id"]').on('change', function () {
                 var subcategory_id = $(this).val();
                 if (subcategory_id) {
                     $.ajax({
@@ -394,7 +384,7 @@
                 } else {
                     alert('danger');
                 }
-            });
+            });*/
 
         });
     </script>

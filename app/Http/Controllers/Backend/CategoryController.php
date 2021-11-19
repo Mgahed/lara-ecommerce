@@ -77,7 +77,7 @@ class CategoryController extends Controller
         $id = $request->id;
 
         Category::findOrFail($id)->update([
-            'name_en' => $request->name_en,
+            'name_en' => strtolower($request->name_en),
             'name_ar' => $request->name_ar
         ]);
 

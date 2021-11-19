@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -84,7 +85,7 @@ class SubCategoryController extends Controller
 
         SubCategory::findOrFail($id)->update([
             'category_id' => $request->category_id,
-            'name_en' => $request->name_en,
+            'name_en' => strtolower($request->name_en),
             'name_ar' => $request->name_ar
         ]);
 
@@ -106,5 +107,11 @@ class SubCategoryController extends Controller
         ];
 
         return redirect()->back()->with($notification);
+    }
+
+    public function GetSubCategory($id)
+    {
+        $subcategories = SubCategory::where('category_id',$id)->orderBy('name_en','ASC')->get();
+        return json_encode($subcategories);
     }
 }
