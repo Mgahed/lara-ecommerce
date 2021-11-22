@@ -13,8 +13,8 @@ class SubCategoryController extends Controller
     protected function getRules()
     {
         return [
-            'name_en' => 'required|unique:sub_categories',
-            'name_ar' => 'required|unique:sub_categories',
+            'name_en' => 'required',
+            'name_ar' => 'required',
             'category_id' => 'required'
         ];
     }
@@ -24,8 +24,6 @@ class SubCategoryController extends Controller
         return [
             'name_en.required' => __('Must enter the name'),
             'name_ar.required' => __('Must enter the name'),
-            'name_en.unique' => __('Name should be unique'),
-            'name_ar.unique' => __('Name should be unique'),
             'category_id.required' => __('Must select a category')
         ];
     }
@@ -33,7 +31,7 @@ class SubCategoryController extends Controller
     public function SubCategoryView()
     {
         $subcategories = SubCategory::with('category')->orderBy('name_en', 'ASC')->get();
-        $categories = Category::latest()->get();
+        $categories = Category::orderBy('name_en')->get();
 
         return view('admin.category.subcategory_view', compact('subcategories', 'categories'));
     }

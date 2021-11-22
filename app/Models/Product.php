@@ -10,4 +10,19 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function multiimg()
+    {
+        return $this->hasMany(MultiImg::class, 'product_id', 'id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class, 'subcategory_id', 'id');
+    }
 }

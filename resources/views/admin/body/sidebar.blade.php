@@ -50,7 +50,7 @@
                 <ul class="treeview-menu">
                     <li class="{{Request::is('admin/product/add') ? 'active' : ''}}"><a
                             href="{{route('add-product')}}"><i class="ti-more"></i>{{__('Add products')}}</a></li>
-                    <li class="{{Request::is('admin/product/manage') ? 'active' : ''}}"><a
+                    <li class="{{Request::is('admin/product/edit/*') ? 'active' : ''}}{{Request::is('admin/product/manage') ? 'active' : ''}}"><a
                             href="{{route('manage-product')}}"><i class="ti-more"></i>{{__('Manage products')}}</a>
                     </li>
                 </ul>
