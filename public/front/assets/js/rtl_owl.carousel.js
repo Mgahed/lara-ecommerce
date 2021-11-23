@@ -291,12 +291,12 @@
             return {"-webkit-transition": "", "-moz-transition": "", "-o-transition": "", transition: ""}
         }, doTranslate: function (a) {
             return {
-                "-webkit-transform": "translate3d(" + a + "px, 0px, 0px)",
-                "-moz-transform": "translate3d(" + a + "px, 0px, 0px)",
-                "-o-transform": "translate3d(" + a + "px, 0px, 0px)",
+                "-webkit-transform": "translate3d(" + -a + "px, 0px, 0px)",
+                "-moz-transform": "translate3d(" + -a + "px, 0px, 0px)",
+                "-o-transform": "translate3d(" + -a + "px, 0px, 0px)",
                 "-ms-transform": "translate3d(" +
-                    a + "px, 0px, 0px)",
-                transform: "translate3d(" + a + "px, 0px,0px)"
+                    -a + "px, 0px, 0px)",
+                transform: "translate3d(" + -a + "px, 0px,0px)"
             }
         }, transition3d: function (a) {
             this.$owlWrapper.css(this.doTranslate(a))

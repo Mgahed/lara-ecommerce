@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{app()->getLocale() === 'en' ? 'ltr' : 'rtl'}}">
 <head>
     <!-- Meta -->
     <meta charset="utf-8">
@@ -9,21 +9,37 @@
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
     <meta name="robots" content="all">
     <title>{{ config('app.name', 'Mr Technawy Ecommerce') }}</title>
-
+@if (app()->getLocale() === 'en')
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{asset('front/assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/bootstrap.min.css')}}">
 
-    <!-- Customizable CSS -->
-    <link rel="stylesheet" href="{{asset('front/assets/css/main.css')}}">
-    <link rel="stylesheet" href="{{asset('front/assets/css/blue.css')}}">
-    <link rel="stylesheet" href="{{asset('front/assets/css/owl.carousel.css')}}">
-    <link rel="stylesheet" href="{{asset('front/assets/css/owl.transitions.css')}}">
-    <link rel="stylesheet" href="{{asset('front/assets/css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{asset('front/assets/css/rateit.css')}}">
-    <link rel="stylesheet" href="{{asset('front/assets/css/bootstrap-select.min.css')}}">
+        <!-- Customizable CSS -->
+        <link rel="stylesheet" href="{{asset('front/assets/css/main.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/blue.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/owl.carousel.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/owl.transitions.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/animate.min.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/rateit.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/bootstrap-select.min.css')}}">
 
-    <!-- Icons/Glyphs -->
-    <link rel="stylesheet" href="{{asset('front/assets/css/font-awesome.css')}}">
+        <!-- Icons/Glyphs -->
+        <link rel="stylesheet" href="{{asset('front/assets/css/font-awesome.css')}}">
+@else
+    <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_bootstrap.css')}}">
+
+        <!-- Customizable CSS -->
+        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_main.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/blue.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_owl.carousel.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_owl.transitions.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_animate.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_rateit.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_bootstrap-select.css')}}">
+
+        <!-- Icons/Glyphs -->
+        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_font-awesome.css')}}">
+@endif
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -61,7 +77,11 @@
 <script src="{{asset('front/assets/js/jquery-1.11.1.min.js')}}"></script>
 <script src="{{asset('front/assets/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('front/assets/js/bootstrap-hover-dropdown.min.js')}}"></script>
-<script src="{{asset('front/assets/js/owl.carousel.min.js')}}"></script>
+@if (app()->getLocale() === 'en')
+    <script src="{{asset('front/assets/js/owl.carousel.min.js')}}"></script>
+@else
+    <script src="{{asset('front/assets/js/rtl_owl.carousel.js')}}"></script>
+@endif
 <script src="{{asset('front/assets/js/echo.min.js')}}"></script>
 <script src="{{asset('front/assets/js/jquery.easing-1.3.min.js')}}"></script>
 <script src="{{asset('front/assets/js/bootstrap-slider.min.js')}}"></script>

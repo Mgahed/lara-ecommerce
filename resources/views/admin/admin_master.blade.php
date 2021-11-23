@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{app()->getLocale() === 'en' ? 'ltr' : 'rtl'}}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +10,23 @@
 
     <title>{{ config('app.name', 'Mr Technawy Ecommerce') }}</title>
 
+@if (app()->getLocale() === 'en')
+
+
+        <!-- Vendors Style-->
+        <link rel="stylesheet" href="{{asset('admin-dashboard/css/vendors_css.css')}}">
+
+        <!-- Style-->
+        <link rel="stylesheet" href="{{asset('admin-dashboard/css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('admin-dashboard/css/skin_color.css')}}">
+    @else
     <!-- Vendors Style-->
-    <link rel="stylesheet" href="{{asset('admin-dashboard/css/vendors_css.css')}}">
+        <link rel="stylesheet" href="{{asset('admin-dashboard/css/rtl_vendors_css.css')}}">
 
-    <!-- Style-->
-    <link rel="stylesheet" href="{{asset('admin-dashboard/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('admin-dashboard/css/skin_color.css')}}">
-
+        <!-- Style-->
+        <link rel="stylesheet" href="{{asset('admin-dashboard/css/rtl.css')}}">
+        <link rel="stylesheet" href="{{asset('admin-dashboard/css/rtl_skin_color.css')}}">
+    @endif
     {{-- toaster --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 

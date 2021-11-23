@@ -13,7 +13,7 @@ File: rtl scss
   direction: rtl; }
 
 /*******************
-Padding property 
+Padding property
 *******************/
 .rtl .pl-0 {
   padding-right: 0px !important;
@@ -1024,7 +1024,7 @@ Padding property
     padding-left: 100px !important;
     padding-right: inherit !important; } }
 /*******************
-Margin property 
+Margin property
 *******************/
 .rtl .ml-0 {
   margin-right: 0px !important;
