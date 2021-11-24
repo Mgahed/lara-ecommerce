@@ -10,7 +10,7 @@
          height="100%" width="100%"><br><br>
 
     <ul class="list-group list-group-flush">
-        <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm btn-block">Home</a>
+        <a href="{{ route('home') }}" class="btn btn-primary btn-sm btn-block">Home</a>
 
         <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm btn-block">Profile Update</a>
 

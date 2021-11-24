@@ -19,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
-    Route::get('/', function () {
+    /*Route::get('/', function () {
         return view('front.index');
-    })->name('home');
+    })->name('home');*/
+    Route::get('/', [IndexController::class, 'index'])->name('home');
 
     /*----- admin -----*/
     Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum', 'verified', 'UserRole']], function () {
@@ -102,11 +103,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     /*----- normal -----*/
+    /*----- user -----*/
     Route::group(['prefix' => 'user', 'middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('profile', [IndexController::class, 'UserProfile'])->name('user.profile');
         Route::post('profile/store', [IndexController::class, 'UserProfileStore'])->name('user.profile.store');
         Route::get('change-password', [IndexController::class, 'UserChangePassword'])->name('change.password');
         Route::post('password-update', [IndexController::class, 'UserPasswordUpdate'])->name('user.password.update');
+    });
+
+    /*----- products -----*/
+    Route::group(['prefix' => 'product'],function () {
+        Route::get('/details/{id}', [IndexController::class, 'ProductDetails'])->name('product.details');
     });
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

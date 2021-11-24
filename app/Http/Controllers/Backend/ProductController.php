@@ -80,7 +80,7 @@ class ProductController extends Controller
 //        return $request;
         $thumbnail_img = $request->file('thumbnail');
         $name_gen = md5($thumbnail_img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $thumbnail_img->getClientOriginalExtension();
-        Image::Make($thumbnail_img)->resize(500, 600)->save('upload/products/thumbnail/' . $name_gen);
+        Image::Make($thumbnail_img)->resize(400, 400)->save('upload/products/thumbnail/' . $name_gen);
         $save_thumbnail_img = 'upload/products/thumbnail/' . $name_gen;
 
         $product = Product::create([
@@ -108,7 +108,7 @@ class ProductController extends Controller
         $product_id = Product::orderBy('id', 'desc')->first();
         foreach ($multi_imgs as $multi_img) {
             $name_gen = md5($multi_img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $multi_img->getClientOriginalExtension();
-            Image::Make($multi_img)->resize(500, 600)->save('upload/products/multi-image/' . $name_gen);
+            Image::Make($multi_img)->resize(400, 400)->save('upload/products/multi-image/' . $name_gen);
             $save_multi_img = 'upload/products/multi-image/' . $name_gen;
 
             MultiImg::create([
@@ -185,7 +185,7 @@ class ProductController extends Controller
             unlink($imgDel->name);
 
             $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-            Image::Make($img)->resize(500, 600)->save('upload/products/multi-image/' . $name_gen);
+            Image::Make($img)->resize(400, 400)->save('upload/products/multi-image/' . $name_gen);
             $save_multi_img = 'upload/products/multi-image/' . $name_gen;
 
             $imgDel->update([
@@ -210,7 +210,7 @@ class ProductController extends Controller
         $img = $request->file('product_thumbnail');
 
         $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-        Image::Make($img)->resize(500, 600)->save('upload/products/thumbnail/' . $name_gen);
+        Image::Make($img)->resize(400, 400)->save('upload/products/thumbnail/' . $name_gen);
         $save_multi_img = 'upload/products/thumbnail/' . $name_gen;
 
         Product::findOrFail($product_id)->update([

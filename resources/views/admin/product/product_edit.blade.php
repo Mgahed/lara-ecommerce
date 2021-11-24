@@ -73,7 +73,7 @@
                                                 <div class="form-group">
                                                     <h5>{{__('Selling Price')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="number" autocomplete="off" name="sell_price"
+                                                        <input type="number" step="0.01" autocomplete="off" name="sell_price"
                                                                class="form-control"
                                                                required="" value="{{$product->sell_price}}">
                                                         @error('sell_price')
@@ -123,7 +123,7 @@
                                                 <div class="form-group">
                                                     <h5>{{__('Discount Price')}}</h5>
                                                     <div class="controls">
-                                                        <input type="number" autocomplete="off" name="discount_price"
+                                                        <input type="number" step="0.01" autocomplete="off" name="discount_price"
                                                                class="form-control"
                                                                value="{{$product->discount_price}}">
                                                         @error('discount_price')
@@ -157,7 +157,7 @@
                                                     <h5>{{__('Product Quantity')}} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
-                                                        <input type="number" autocomplete="off" name="quantity"
+                                                        <input type="number" step="0.01" autocomplete="off" name="quantity"
                                                                class="form-control"
                                                                required="" value="{{$product->quantity}}">
                                                         @error('quantity')

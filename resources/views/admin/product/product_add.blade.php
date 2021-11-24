@@ -69,7 +69,7 @@
                                                 <div class="form-group">
                                                     <h5>{{__('Selling Price')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="number" autocomplete="off" name="sell_price" class="form-control"
+                                                        <input type="number" step="0.01" autocomplete="off" name="sell_price" class="form-control"
                                                                required="" value="{{old('sell_price')}}">
                                                         @error('sell_price')
                                                         <span class="text-danger">{{ $message }}</span>
@@ -116,7 +116,7 @@
                                                 <div class="form-group">
                                                     <h5>{{__('Discount Price')}}</h5>
                                                     <div class="controls">
-                                                        <input type="number" autocomplete="off" name="discount_price" class="form-control"
+                                                        <input type="number" step="0.01" autocomplete="off" name="discount_price" class="form-control"
                                                                value="{{old('discount_price')}}">
                                                         @error('discount_price')
                                                         <span class="text-danger">{{ $message }}</span>
@@ -147,7 +147,7 @@
                                                 <div class="form-group">
                                                     <h5>{{__('Product Quantity')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="number" autocomplete="off" name="quantity" class="form-control"
+                                                        <input type="number" step="0.01" autocomplete="off" name="quantity" class="form-control"
                                                                required="" value="{{old('quantity')}}">
                                                         @error('quantity')
                                                         <span class="text-danger">{{ $message }}</span>
