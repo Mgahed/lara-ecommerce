@@ -114,6 +114,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     /*----- products -----*/
     Route::group(['prefix' => 'product'],function () {
         Route::get('/details/{id}', [IndexController::class, 'ProductDetails'])->name('product.details');
+        Route::get('/subcategory/{subcat_id}', [IndexController::class, 'SubCatWiseProduct'])->name('products.by.subcategory');
     });
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

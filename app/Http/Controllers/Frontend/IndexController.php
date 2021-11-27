@@ -54,8 +54,8 @@ class IndexController extends Controller
 
 //        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(3)->get();
 //
-//        $skip_category_0 = Category::skip(0)->first();
-//        $skip_product_0 = Product::where('status', 1)->where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->get();
+        $skip_category_0 = Category::skip(0)->first();
+        $skip_product_0 = Product::/*where('status', 1)->*/where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->get();
 
         $skip_category_1 = Category::skip(1)->first();
         $skip_product_1 = Product::/*where('status', 1)->*/where('category_id', $skip_category_1->id)->orderBy('id', 'DESC')->get();
@@ -67,7 +67,7 @@ class IndexController extends Controller
         // return $skip_category->id;
         // die();
 
-        return view('front.index', compact('categories', 'sliders', 'products', /*'featured', 'hot_deals',*/ 'special_offer', /*'special_deals', 'skip_category_0', 'skip_product_0',*/ 'skip_category_1', 'skip_product_1'/*, 'skip_brand_1', 'skip_brand_product_1', 'blogpost'*/));
+        return view('front.index', compact('categories', 'sliders', 'products', /*'featured', 'hot_deals',*/ 'special_offer', /*'special_deals',*/ 'skip_category_0', 'skip_product_0', 'skip_category_1', 'skip_product_1'/*, 'skip_brand_1', 'skip_brand_product_1', 'blogpost'*/));
 
     }
 
@@ -189,22 +189,22 @@ class IndexController extends Controller
 
 
     // Subcategory wise data
-    public function SubCatWiseProduct(Request $request, $subcat_id, $slug)
+    public function SubCatWiseProduct(Request $request, $subcat_id)
     {
-        $products = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(3);
-        $categories = Category::orderBy('category_name_en', 'ASC')->get();
+        $products = Product::/*where('status', 1)->*/where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(6);
+        $categories = Category::orderBy('name_en', 'ASC')->get();
 
         $breadsubcat = SubCategory::with(['category'])->where('id', $subcat_id)->get();
 
 
         ///  Load More Product with Ajax
-        if ($request->ajax()) {
+        /*if ($request->ajax()) {
             $grid_view = view('front.product.grid_view_product', compact('products'))->render();
 
             $list_view = view('front.product.list_view_product', compact('products'))->render();
             return response()->json(['grid_view' => $grid_view, 'list_view', $list_view]);
 
-        }
+        }*/
         ///  End Load More Product with Ajax
 
         return view('front.product.subcategory_view', compact('products', 'categories', 'breadsubcat'));
