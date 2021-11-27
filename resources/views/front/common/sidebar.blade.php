@@ -6,7 +6,7 @@
 @endphp
 <!-- ================================== TOP NAVIGATION ================================== -->
     <div class="side-menu animate-dropdown outer-bottom-xs">
-        <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+        <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> {{__('Categories')}}</div>
         <nav class="yamm megamenu-horizontal">
             <ul class="nav">
                 @foreach ($categories as $category)
@@ -106,7 +106,7 @@
     <!-- ============================================== SPECIAL OFFER ============================================== -->
     @if ($special_offer->count())
         <div class="sidebar-widget outer-bottom-small wow fadeInUp">
-            <h3 class="section-title">Special Offer</h3>
+            <h3 class="section-title">{{__('Special Offer')}}</h3>
             <div class="sidebar-widget-body outer-top-xs">
                 <div
                     class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">

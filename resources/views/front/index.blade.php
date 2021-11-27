@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
             @include('front.common.sidebar')
-                <!-- ============================================== CONTENT ============================================== -->
+            <!-- ============================================== CONTENT ============================================== -->
                 <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
                     <!-- ========================================== SECTION – HERO ========================================= -->
                     @if ($sliders->count())
@@ -89,7 +89,7 @@
                     <!-- ============================================== SCROLL TABS ============================================== -->
                     <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
                         <div class="more-info-tab clearfix ">
-                            <h3 class="new-product-title pull-left">New Products</h3>
+                            <h3 class="new-product-title pull-left">{{__('New Products')}}</h3>
                         {{--<ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
                             <li class="active"><a data-transition-type="backSlide" href="#all"
                                                   data-toggle="tab">All</a>
@@ -124,7 +124,8 @@
                                                                     $amount = $product->sell_price-$product->discount_price;
                                                                     $percentage = ($amount/$product->sell_price) * 100;
                                                                 @endphp
-                                                                <div class="tag new"><span>{{round($percentage)}}%</span></div>
+                                                                <div class="tag new">
+                                                                    <span>{{round($percentage)}}%</span></div>
                                                             @else
                                                                 <div class="tag new"><span>{{__('new')}}</span></div>
                                                             @endif
@@ -168,10 +169,12 @@
                                                             <div class="action">
                                                                 <ul class="list-unstyled">
                                                                     <li class="add-cart-button btn-group">
-                                                                        <button data-toggle="tooltip"
-                                                                                class="btn btn-primary icon"
+                                                                        <button class="btn btn-primary icon"
                                                                                 type="button"
-                                                                                title="Add Cart"><i
+                                                                                data-toggle="modal"
+                                                                                data-target="#add_to_cart"
+                                                                                onclick="productView({{$product->id}})"
+                                                                                title="{{__('Add Cart')}}"><i
                                                                                 class="fa fa-shopping-cart"></i>
                                                                         </button>
                                                                         <button class="btn btn-primary cart-btn"
@@ -245,7 +248,8 @@
                                                                     $amount = $product->sell_price-$product->discount_price;
                                                                     $percentage = ($amount/$product->sell_price) * 100;
                                                                 @endphp
-                                                                <div class="tag hot"><span>{{round($percentage)}}%</span></div>
+                                                                <div class="tag hot">
+                                                                    <span>{{round($percentage)}}%</span></div>
                                                             @else
                                                                 {{--<div class="tag hot"><span>{{__('new')}}</span></div>--}}
                                                             @endif
@@ -289,10 +293,12 @@
                                                             <div class="action">
                                                                 <ul class="list-unstyled">
                                                                     <li class="add-cart-button btn-group">
-                                                                        <button data-toggle="tooltip"
+                                                                        <button data-toggle="modal"
+                                                                                data-target="#add_to_cart"
+                                                                                onclick="productView({{$product->id}})"
                                                                                 class="btn btn-primary icon"
                                                                                 type="button"
-                                                                                title="Add Cart"><i
+                                                                                title="{{__('Add Cart')}}"><i
                                                                                 class="fa fa-shopping-cart"></i>
                                                                         </button>
                                                                         <button class="btn btn-primary cart-btn"
@@ -365,7 +371,8 @@
                                                                     $amount = $product->sell_price-$product->discount_price;
                                                                     $percentage = ($amount/$product->sell_price) * 100;
                                                                 @endphp
-                                                                <div class="tag hot"><span>{{round($percentage)}}%</span></div>
+                                                                <div class="tag hot">
+                                                                    <span>{{round($percentage)}}%</span></div>
                                                             @else
                                                                 {{--<div class="tag hot"><span>{{__('new')}}</span></div>--}}
                                                             @endif
@@ -409,10 +416,12 @@
                                                             <div class="action">
                                                                 <ul class="list-unstyled">
                                                                     <li class="add-cart-button btn-group">
-                                                                        <button data-toggle="tooltip"
+                                                                        <button data-toggle="modal"
+                                                                                data-target="#add_to_cart"
+                                                                                onclick="productView({{$product->id}})"
                                                                                 class="btn btn-primary icon"
                                                                                 type="button"
-                                                                                title="Add Cart"><i
+                                                                                title="{{__('Add Cart')}}"><i
                                                                                 class="fa fa-shopping-cart"></i>
                                                                         </button>
                                                                         <button class="btn btn-primary cart-btn"

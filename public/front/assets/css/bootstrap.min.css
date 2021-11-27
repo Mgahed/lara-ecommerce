@@ -3131,6 +3131,14 @@ textarea.input-lg, select[multiple].input-lg {
     background-color: #333
 }
 
+.badge-success {
+    color: #fff;
+    background-color: #28a745 !important; }
+
+.badge-danger {
+    color: #fff;
+    background-color: #dc3545 !important; }
+
 .btn-primary {
     color: #fff;
     background-color: #428bca;

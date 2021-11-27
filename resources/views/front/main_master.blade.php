@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="description" content="">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="author" content="">
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
     <meta name="robots" content="all">
@@ -30,7 +31,7 @@
 
         <!-- Customizable CSS -->
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_main.css')}}">
-        <link rel="stylesheet" href="{{asset('front/assets/css/blue.css')}}">
+        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_blue.css')}}">
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_owl.carousel.css')}}">
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_owl.transitions.css')}}">
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_animate.css')}}">
@@ -41,7 +42,7 @@
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_font-awesome.css')}}">
 @endif
 
-    <!-- Fonts -->
+<!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800'
           rel='stylesheet' type='text/css'>
@@ -145,5 +146,109 @@
     @endif
 </script>
 
+{{----- Add to cart modal -----}}
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="add_to_cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><span style="font-weight: bold;" id="pname"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="" id="pimage" class="card-img-top" alt="{{__('Product')}}" height="170px"
+                                 width="100%">
+                            <br><br>
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-group">
+                            <li class="list-group-item">{{__('Price')}}:
+                                <span style="font-weight: bold;" class="text-danger" id="pprice"></span>
+                                <del style="font-weight: bold;" id="poldprice"></del>
+                            </li>
+                            <li class="list-group-item">{{__('Brand')}}: <span style="font-weight: bold;"
+                                                                               id="pbrand"></span></li>
+                            <li class="list-group-item">{{__('Stock')}}: <span style="font-weight: bold;"
+                                                                               id="pstock"></span></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="select_color">{{__('Select color')}}</label>
+                            <select class="form-control" id="select_color" name="color">
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">{{__('Quantity')}}</label>
+                            <input type="number" class="form-control" id="quantity" value="1" min="1" name="quantity"
+                                   autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                <button type="submit" class="btn btn-primary">{{__('Add to cart')}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{----- End Add to cart modal -----}}
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+
+    function productView(id) {
+        $.ajax({
+            type: 'GET',
+            url: 'product/view/modal/' + id,
+            dataType: 'json',
+            success: function (data) {
+                /*console.log(data)*/
+                $('#pname').text(data.product.name_{{app()->getLocale()}})
+                if (data.product.discount_price !== null) {
+                    $('#pprice').text(data.product.discount_price)
+                    $('#poldprice').text(data.product.sell_price)
+                } else {
+                    $('#pprice').text(data.product.sell_price)
+                    $('#poldprice').text('')
+                }
+                $('#pbrand').text(data.product.brand)
+
+                let quan = data.product.quantity
+                if (quan > 0) {
+                    $('#pstock').text('{{__('In stock')}}')
+                    $('#pstock').removeClass('badge badge-danger')
+                    $('#pstock').addClass('badge badge-success')
+                } else {
+                    $('#pstock').text('{{__('Not available')}}')
+                    $('#pstock').removeClass('badge badge-success')
+                    $('#pstock').addClass('badge badge-danger')
+                }
+
+                $('#pimage').attr('src', '/' + data.product.thumbnail)
+
+                $('select[name="color"]').empty();
+                $.each(data.color, function (key, value) {
+                    $('select[name="color"]').append('<option value="' + value + '">' + value + '</option>')
+                })
+            }
+        })
+    }
+</script>
 </body>
 </html>

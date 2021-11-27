@@ -6,11 +6,11 @@
             <div class="header-top-inner">
                 <div class="cnt-account">
                     <ul class="list-unstyled">
-                        <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                        <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+                        <li><a href="#"><i class="icon fa fa-heart"></i>{{__('Wishlist')}}</a></li>
+                        <li><a href="#"><i class="icon fa fa-shopping-cart"></i>{{__('My Cart')}}</a></li>
                         {{--<li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>--}}
                         @auth
-                            <li><a href="{{ route('user.profile') }}"><i class="icon fa fa-user"></i>My Account</a></li>
+                            <li><a href="{{ route('user.profile') }}"><i class="icon fa fa-user"></i>{{__('My Account')}}</a></li>
                             <li>
                                 <form method="POST" class="mb-3" action="{{ route('logout') }}">
                                     @csrf
@@ -22,7 +22,7 @@
                                 </form>
                             </li>
                         @else
-                            <li><a href="{{route('login')}}"><i class="icon fa fa-lock"></i>Login|Register</a></li>
+                            <li><a href="{{route('login')}}"><i class="icon fa fa-lock"></i>{{__('Login|Register')}}</a></li>
                         @endauth
                     </ul>
                 </div>
@@ -76,7 +76,7 @@
                             <div class="control-group">
                                 <ul class="categories-filter animate-dropdown">
                                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                            href="category.html">Categories <b class="caret"></b></a>
+                                                            href="category.html">{{__('Categories')}} <b class="caret"></b></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="menu-header">Computer</li>
                                             <li role="presentation"><a role="menuitem" tabindex="-1"
@@ -90,7 +90,7 @@
                                         </ul>
                                     </li>
                                 </ul>
-                                <input class="search-field" placeholder="Search here..."/>
+                                <input class="search-field" placeholder="{{__('Search here...')}}"/>
                                 <a class="search-button" href="#"></a></div>
                         </form>
                     </div>
@@ -107,7 +107,7 @@
                             <div class="items-cart-inner">
                                 <div class="basket"><i class="glyphicon glyphicon-shopping-cart"></i></div>
                                 <div class="basket-item-count"><span class="count">2</span></div>
-                                <div class="total-price-basket"><span class="lbl">cart -</span> <span
+                                <div class="total-price-basket"><span class="lbl">{{__('cart')}} -</span> <span
                                         class="total-price"> <span class="sign">$</span><span
                                             class="value">600.00</span> </span></div>
                             </div>
@@ -175,7 +175,7 @@
                         <div class="nav-outer">
                             <ul class="nav navbar-nav">
                                 <li class="{{Route::is('home')?'active':''}} dropdown yamm-fw"><a
-                                        href="{{route('home')}}">Home</a>
+                                        href="{{route('home')}}">{{__('Home')}}</a>
                                 </li>
                                 @foreach ($categories as $category)
                                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-hover="dropdown"
@@ -199,7 +199,7 @@
                                         </ul>
                                     </li>
                                 @endforeach
-                                <li class="dropdown  navbar-right special-menu"><a href="#">Todays offer</a></li>
+                                {{--<li class="dropdown  navbar-right special-menu"><a href="#">Todays offer</a></li>--}}
                             </ul>
                             <!-- /.navbar-nav -->
                             <div class="clearfix"></div>
