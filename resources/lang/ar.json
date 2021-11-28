@@ -629,6 +629,7 @@
     "Total views of this year": "مجموع المشاهدات لهذا العام",
     "Get Links": "احصل على الروابط",
     "Buy us a coffee": "اعزمنا على قهوة",
+    "Total": "الاجمالي",
     "Expire this day courses": "انهاء دورات هذا اليوم",
     "Disable ad blocker to enroll to the course": "اغلق مانع الاعلانات لتحصل على الدورة",
     "How to pass undirected link": "كيفية تخطي الرابط الغير مباشر",
@@ -663,6 +664,9 @@
     "Brand": "الماركة",
     "Stock":"الكمية المتاحة",
     "Select color": "اختر اللون",
-    "Quantity":"الكمية"
+    "Quantity":"الكمية",
 
+    "cartt": "/*---------------------------------------- ----------------------------------------*/",
+    "Successfully Added on Your Cart": "تم الاضافه الى السلة",
+    "Product Removed from Cart": "تم ازالة المنتج من السلة"
 }

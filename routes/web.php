@@ -5,8 +5,10 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,6 +118,20 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('/details/{id}', [IndexController::class, 'ProductDetails'])->name('product.details');
         Route::get('/subcategory/{subcat_id}', [IndexController::class, 'SubCatWiseProduct'])->name('products.by.subcategory');
         Route::get('/view/modal/{id}', [IndexController::class, 'ProductViewAjax'])->name('get.product.ajax');
+    });
+
+    /*----- cart -----*/
+    Route::group(['prefix' => 'cart'],function () {
+        Route::post('/data/store/{id}', [CartController::class, 'AddToCart']);
+        // Get Data from mini cart
+        Route::get('/mini', [CartController::class, 'AddMiniCart']);
+        // Remove mini cart all
+        Route::get('/mini/remove/all', [CartController::class, 'RemoveAll']);
+        // Remove mini cart
+        Route::get('/mini/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
+
+        // Add to Wishlist
+        Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']);
     });
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -91,6 +91,7 @@
 <script src="{{asset('front/assets/js/bootstrap-select.min.js')}}"></script>
 <script src="{{asset('front/assets/js/wow.min.js')}}"></script>
 <script src="{{asset('front/assets/js/scripts.js')}}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     window.onscroll = function () {
         myFunction()
@@ -197,8 +198,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                <button type="submit" class="btn btn-primary">{{__('Add to cart')}}</button>
+                <input type="hidden" id="product_id">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="closeModel">{{__('Close')}}</button>
+                <button type="submit" class="btn btn-primary" onclick="addToCart()">{{__('Add to cart')}}</button>
             </div>
         </div>
     </div>
@@ -212,13 +215,16 @@
         }
     })
 
+    /*----- Product view -----*/
     function productView(id) {
         $.ajax({
             type: 'GET',
-            url: 'product/view/modal/' + id,
+            url: '/product/view/modal/' + id,
             dataType: 'json',
             success: function (data) {
                 /*console.log(data)*/
+                $('#product_id').val(data.product.id)
+                $('#quantity').val(1);
                 $('#pname').text(data.product.name_{{app()->getLocale()}})
                 if (data.product.discount_price !== null) {
                     $('#pprice').text(data.product.discount_price)
@@ -249,7 +255,75 @@
             }
         })
     }
-    
+
+    /*----- End Product view -----*/
+
+    /*----- Add to cart -----*/
+    function addToCart() {
+        let name = $('#pname').text();
+        let id = $('#product_id').val();
+        let price = $('#pprice').text();
+        let color = $('#select_color option:selected').text();
+        let quantity = $('#quantity').val();
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data: {
+                color: color,
+                name: name,
+                price: price,
+                quantity: quantity,
+                lang: $('html').attr('lang')
+            },
+            url: '/cart/data/store/' + id,
+            success: function (data) {
+                miniCart();
+                $('#closeModel').click()
+                /*console.log(data)*/
+                const toast = Swal.mixin({
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    icon: 'success'
+                })
+                if ($.isEmptyObject(data.error)) {
+                    toast.fire({
+                        type: 'success',
+                        title: data.success
+                    })
+                } else {
+                    toast.fire({
+                        type: 'error',
+                        title: data.error
+                    })
+                }
+            }
+        })
+    }
+
+    /*----- End Add to cart -----*/
+
+    function miniCart() {
+        $.ajax({
+            type: "GET",
+            url: '/cart/mini',
+            dataType: 'json',
+            success: function (response) {
+                let miniCart = ""
+                $('#cartQty').text(response.cartQty);
+                $('#cartSubTotal').text(response.cartTotal);
+                $('#cartSubTotal1').text(response.cartTotal);
+                $.each(response.carts, function (key, value) {
+                    miniCart += '<div class="cart-item product-summary"> <div class="row"> <div class="col-xs-4"> <div class="image"><a href="/product/details/'+value.options.product_id+'"><img src="/'+value.options.image+'"alt="'+value.name+'"></a></div> </div> <div class="col-xs-7"> <h3 class="name"><a href="/product/details/'+value.options.product_id+'">'+value.name+'</a></h3> <div class="price">'+value.price+'{{__('EGP')}} * '+value.qty+'</div> </div> <div class="col-xs-1 action"><a href="/cart/mini/product-remove/'+value.rowId+'"><i class="fa fa-trash"></i></a> </div> </div> </div><div class="clearfix"></div> <hr>';
+                });
+                $('#miniCart').html(miniCart)
+            }
+        })
+    }
+
+    miniCart();
+
 </script>
 </body>
 </html>
