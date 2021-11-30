@@ -28,8 +28,8 @@
                 <a href="#">
                     <i class="ti-layout-list-thumb-alt"></i> <span>{{__('Category')}}</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{Request::is(app()->getLocale().'/admin/category/view') ? 'active' : ''}}"><a
@@ -68,6 +68,21 @@
                     <li class="{{Request::is(app()->getLocale().'/admin/slider/*') ? 'active' : ''}}">
                         <a
                             href="{{route('manage-slider')}}"><i class="ti-more"></i>{{__('Manage slider')}}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview {{Request::is(app()->getLocale().'/admin/coupons/*') ? 'active' : ''}}">
+                <a href="#">
+                    <i class="fa fa-percent"></i> <span>{{__('Coupon')}}</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{Request::is(app()->getLocale().'/admin/coupons/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('manage-coupon')}}"><i class="ti-more"></i>{{__('Manage coupon')}}</a>
                     </li>
                 </ul>
             </li>

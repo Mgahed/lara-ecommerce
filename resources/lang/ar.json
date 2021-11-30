@@ -625,6 +625,8 @@
     "All Categories": "جميع التصنيفات",
     "general": "عام",
     "General": "عام",
+    "This field is required": "هذا الحقل مطلوب",
+    "Must be a number": "يجب ان يكون رقم",
     "Select day:": "اختر اليوم",
     "Total views of this year": "مجموع المشاهدات لهذا العام",
     "Get Links": "احصل على الروابط",
@@ -679,5 +681,19 @@
     "My Wishlist": "المفضلة",
     "No items in wishlist": "لا يوجد منتجات في المفضلة",
     "Product removed from cart": "تم ازالة المنتج من العربة",
-    "No items in cart": "لا يوجد منتجات في العربة"
+    "No items in cart": "لا يوجد منتجات في العربة",
+
+    "coupoonnnnn": "/*---------------------------------------- ----------------------------------------*/",
+    "Add New": "اضافة",
+    "Add Coupon": "اضافة كوبون",
+    "Coupon List": "قائمة الكوبونات",
+    "Discount": "الخصم",
+    "Validity": "صلاحية الكوبون",
+    "Status": "الحالة",
+    "Coupon Inserted Successfully": "تم اضافة الكوبون",
+    "Valid": "صالح",
+    "Invalid": "غير صالح",
+    "Coupon Updated Successfully": "تم تعديل الكوبون",
+    "Coupon Deleted Successfully": "تم مسح الكوبون",
+    "Edit Coupon": "تعديل الكوبون"
 }

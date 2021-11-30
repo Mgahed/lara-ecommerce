@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -34,29 +35,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
         /*----- Admin Category all Routes -----*/
         Route::prefix('category')->group(function () {
-
             Route::get('/view', [CategoryController::class, 'CategoryView'])->name('all.category');
-
             Route::post('/store', [CategoryController::class, 'CategoryStore'])->name('category.store');
-
             Route::get('/edit/{id}', [CategoryController::class, 'CategoryEdit'])->name('category.edit');
-
             Route::post('/update/{id}', [CategoryController::class, 'CategoryUpdate'])->name('category.update');
-
             Route::get('/delete/{id}', [CategoryController::class, 'CategoryDelete'])->name('category.delete');
 
             /*----- Admin Sub Category All Routes -----*/
             Route::prefix('sub')->group(function () {
                 Route::get('/ajax/{category_id}', [SubCategoryController::class, 'GetSubCategory']);
-
                 Route::get('/view', [SubCategoryController::class, 'SubCategoryView'])->name('all.subcategory');
-
                 Route::post('/store', [SubCategoryController::class, 'SubCategoryStore'])->name('subcategory.store');
-
                 Route::get('/edit/{id}', [SubCategoryController::class, 'SubCategoryEdit'])->name('subcategory.edit');
-
                 Route::post('/update/{id}', [SubCategoryController::class, 'SubCategoryUpdate'])->name('subcategory.update');
-
                 Route::get('/delete/{id}', [SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
             });
 
@@ -65,43 +56,35 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         /*----- Admin Products All Routes -----*/
 
         Route::prefix('product')->group(function () {
-
             Route::get('/add', [ProductController::class, 'AddProduct'])->name('add-product');
-
             Route::post('/store', [ProductController::class, 'StoreProduct'])->name('product-store');
             Route::get('/manage', [ProductController::class, 'ManageProduct'])->name('manage-product');
-
             Route::get('/edit/{id}', [ProductController::class, 'EditProduct'])->name('product.edit');
-
             Route::post('/data/update', [ProductController::class, 'ProductDataUpdate'])->name('product-update');
-
             Route::post('/image/update', [ProductController::class, 'MultiImageUpdate'])->name('update-product-image');
-
             Route::post('/thambnail/update', [ProductController::class, 'ThambnailImageUpdate'])->name('update-product-thambnail');
-
             Route::get('/multiimg/delete/{id}', [ProductController::class, 'MultiImageDelete'])->name('product.multiimg.delete');
-
             Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
-
         });
 
         /*----- Admin Slider All Routes -----*/
         Route::prefix('slider')->group(function () {
-
             Route::get('/view', [SliderController::class, 'SliderView'])->name('manage-slider');
-
             Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
-
             Route::get('/edit/{id}', [SliderController::class, 'SliderEdit'])->name('slider.edit');
-
             Route::post('/update', [SliderController::class, 'SliderUpdate'])->name('slider.update');
-
             Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
-
             Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
-
             Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+        });
 
+        /*----- Admin coupon -----*/
+        Route::prefix('coupons')->group(function(){
+            Route::get('/view', [CouponController::class, 'CouponView'])->name('manage-coupon');
+            Route::post('/store', [CouponController::class, 'CouponStore'])->name('coupon.store');
+            Route::get('/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon.edit');
+            Route::post('/update/{id}', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
+            Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
         });
 
     });
