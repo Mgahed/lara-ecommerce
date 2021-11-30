@@ -10,8 +10,8 @@
                             <li>
                                 <a href="{{route('wishlist')}}"><i class="icon fa fa-heart"></i>{{__('Wishlist')}}</a>
                             </li>
+                        <li><a href="{{route('mycart')}}"><i class="icon fa fa-shopping-cart"></i>{{__('My Cart')}}</a></li>
                         @endauth
-                        <li><a href="#"><i class="icon fa fa-shopping-cart"></i>{{__('My Cart')}}</a></li>
                         {{--<li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>--}}
                         @auth
                             <li><a href="{{ route('user.profile') }}"><i

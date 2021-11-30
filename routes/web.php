@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CartPageController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
@@ -126,26 +127,28 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct'])->name('wishlist.delete');
         });
 
+        Route::group(['prefix' => 'mycart'],function () {
+            // Cart page
+            Route::get('/', [CartPageController::class, 'MyCart'])->name('mycart');
+            /*Route::get('/user/get-cart-product', [CartPageController::class, 'GetCartProduct']);*/
+            Route::get('/remove/{rowId}', [CartPageController::class, 'RemoveCartProduct'])->name('remove.mycart');
+            /*Route::get('/increment/{rowId}', [CartPageController::class, 'CartIncrement']);
+            Route::get('/decrement/{rowId}', [CartPageController::class, 'CartDecrement']);*/
+        });
+
         /*Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');*/
-
         Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
-
         Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
-
         Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
-
         Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
-
         Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
-
         Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
-
         Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
-
 
         // Order Traking Route
         Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');
     });
+
     /*----- products -----*/
     Route::group(['prefix' => 'product'], function () {
         Route::get('/details/{id}', [IndexController::class, 'ProductDetails'])->name('product.details');
