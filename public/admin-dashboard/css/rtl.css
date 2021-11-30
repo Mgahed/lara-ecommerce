@@ -14698,9 +14698,9 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
     padding: 8px 25px 8px 5px; }
 
 .sidebar-menu .treeview-menu > li.active > a i.ti-more:before {
-    content: "\e628"; }
+    content: "\e629"; }
 .sidebar-menu .treeview-menu > li > a:hover i.ti-more:before {
-    content: "\e628"; }
+    content: "\e629"; }
 
 /*---Pages Layout---*/
 /*---Page Content Header & Breadcrumb ---*/

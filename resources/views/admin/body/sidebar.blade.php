@@ -8,7 +8,7 @@
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
                         <img src="{{asset('admin-dashboard/images/logo-dark.png')}}" alt="">
-                        <h3><b>Sunny</b> Admin</h3>
+                        <h3><b>Mobile</b> Care</h3>
                     </div>
                 </a>
             </div>
@@ -20,7 +20,7 @@
             <li class="{{Request::is(app()->getLocale().'/admin') ? 'active' : ''}}">
                 <a href="{{route('admin.dashboard')}}">
                     <i data-feather="pie-chart"></i>
-                    <span>Dashboard</span>
+                    <span>{{__('Dashboard')}}</span>
                 </a>
             </li>
 
