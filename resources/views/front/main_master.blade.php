@@ -283,7 +283,7 @@
                 const toast = Swal.mixin({
                     toast: true,
                     position: 'top',
-                    showConfirmButton: true,
+                    showConfirmButton: false,
                     timer: 3000,
                     icon: 'success'
                 })
@@ -315,7 +315,7 @@
                 $('#cartSubTotal').text(response.cartTotal);
                 $('#cartSubTotal1').text(response.cartTotal);
                 $.each(response.carts, function (key, value) {
-                    miniCart += '<div class="cart-item product-summary"> <div class="row"> <div class="col-xs-4"> <div class="image"><a href="/product/details/'+value.options.product_id+'"><img src="/'+value.options.image+'"alt="'+value.name+'"></a></div> </div> <div class="col-xs-7"> <h3 class="name"><a href="/product/details/'+value.options.product_id+'">'+value.name+'</a></h3> <div class="price">'+value.price+'{{__('EGP')}} * '+value.qty+'</div> </div> <div class="col-xs-1 action"><a href="/cart/mini/product-remove/'+value.rowId+'"><i class="fa fa-trash"></i></a> </div> </div> </div><div class="clearfix"></div> <hr>';
+                    miniCart += '<div class="cart-item product-summary"> <div class="row"> <div class="col-xs-4"> <div class="image"><a href="/product/details/' + value.options.product_id + '"><img src="/' + value.options.image + '"alt="' + value.name + '"></a></div> </div> <div class="col-xs-7"> <h3 class="name"><a href="/product/details/' + value.options.product_id + '">' + value.name + '</a></h3> <div class="price">' + value.price + '{{__('EGP')}} * ' + value.qty + '</div> </div> <div class="col-xs-1 action"><a href="/cart/mini/product-remove/' + value.rowId + '"><i class="fa fa-trash"></i></a> </div> </div> </div><div class="clearfix"></div> <hr>';
                 });
                 $('#miniCart').html(miniCart)
             }
@@ -323,6 +323,42 @@
     }
 
     miniCart();
+
+    /*----- Add to wishlist -----*/
+    function addToWishlist(product_id) {
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: '/wishlist/add/' + product_id,
+            data: {
+                lang: $('html').attr('lang')
+            },
+            success: function (data) {
+                const toast = Swal.mixin({
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    icon: 'success'
+                })
+                if ($.isEmptyObject(data.error)) {
+                    toast.fire({
+                        type: 'success',
+                        title: data.success,
+                        icon: 'success'
+                    })
+                } else {
+                    toast.fire({
+                        type: 'error',
+                        title: data.error,
+                        icon: 'error'
+                    })
+                }
+            }
+        })
+    }
+
+    /*----- End Add to wishlist -----*/
 
 </script>
 </body>

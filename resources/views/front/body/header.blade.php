@@ -6,7 +6,11 @@
             <div class="header-top-inner">
                 <div class="cnt-account">
                     <ul class="list-unstyled">
-                        <li><a href="#"><i class="icon fa fa-heart"></i>{{__('Wishlist')}}</a></li>
+                        @auth
+                            <li>
+                                <a href="{{route('wishlist')}}"><i class="icon fa fa-heart"></i>{{__('Wishlist')}}</a>
+                            </li>
+                        @endauth
                         <li><a href="#"><i class="icon fa fa-shopping-cart"></i>{{__('My Cart')}}</a></li>
                         {{--<li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>--}}
                         @auth
@@ -111,7 +115,8 @@
                                 <div class="basket"><i class="glyphicon glyphicon-shopping-cart"></i></div>
                                 <div class="basket-item-count"><span class="count" id="cartQty">0</span></div>
                                 <div class="total-price-basket"><span class="lbl">{{__('cart')}} -</span> <span
-                                        class="total-price"> <span class="value" id="cartSubTotal">0</span><span class="sign">{{__('EGP')}}</span></span></div>
+                                        class="total-price"> <span class="value" id="cartSubTotal">0</span><span
+                                            class="sign">{{__('EGP')}}</span></span></div>
                             </div>
                         </a>
                         <ul class="dropdown-menu">
@@ -121,7 +126,8 @@
                                 </div>
                                 <!-- /.cart-item -->
                                 <div class="clearfix cart-total">
-                                    <div class="{{--pull-right--}} text-center"><span class="text">{{__('Total')}} :</span><span class='price' id="cartSubTotal1">0</span>{{__('EGP')}}
+                                    <div class="{{--pull-right--}} text-center"><span
+                                            class="text">{{__('Total')}} :</span><span class='price' id="cartSubTotal1">0</span>{{__('EGP')}}
                                     </div>
                                     <div class="clearfix"></div>
                                     <a href="checkout.html"

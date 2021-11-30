@@ -179,14 +179,16 @@
                                                                         </button>
                                                                         <button class="btn btn-primary cart-btn"
                                                                                 type="button">
-                                                                            Add to cart
+                                                                            {{__('Add Cart')}}
                                                                         </button>
                                                                     </li>
-                                                                    <li class="lnk wishlist"><a data-toggle="tooltip"
-                                                                                                class="add-to-cart"
-                                                                                                href="detail.html"
-                                                                                                title="Wishlist"> <i
-                                                                                class="icon fa fa-heart"></i> </a></li>
+                                                                    <li class="lnk wishlist">
+                                                                        <a data-toggle="tooltip" class="add-to-cart"
+                                                                           href="javascript:addToWishlist({{$product->id}})"
+                                                                           title="{{__('Wishlist')}}">
+                                                                            <i class="icon fa fa-heart"></i>
+                                                                        </a>
+                                                                    </li>
                                                                     <li class="lnk"><a data-toggle="tooltip"
                                                                                        class="add-to-cart"
                                                                                        href="detail.html"
@@ -306,11 +308,13 @@
                                                                             Add to cart
                                                                         </button>
                                                                     </li>
-                                                                    <li class="lnk wishlist"><a data-toggle="tooltip"
-                                                                                                class="add-to-cart"
-                                                                                                href="detail.html"
-                                                                                                title="Wishlist"> <i
-                                                                                class="icon fa fa-heart"></i> </a></li>
+                                                                    <li class="lnk wishlist">
+                                                                        <a data-toggle="tooltip" class="add-to-cart"
+                                                                           href="javascript:addToWishlist({{$product->id}})"
+                                                                           title="{{__('Wishlist')}}">
+                                                                            <i class="icon fa fa-heart"></i>
+                                                                        </a>
+                                                                    </li>
                                                                     <li class="lnk"><a data-toggle="tooltip"
                                                                                        class="add-to-cart"
                                                                                        href="detail.html"
@@ -429,11 +433,13 @@
                                                                             Add to cart
                                                                         </button>
                                                                     </li>
-                                                                    <li class="lnk wishlist"><a data-toggle="tooltip"
-                                                                                                class="add-to-cart"
-                                                                                                href="detail.html"
-                                                                                                title="Wishlist"> <i
-                                                                                class="icon fa fa-heart"></i> </a></li>
+                                                                    <li class="lnk wishlist">
+                                                                        <a data-toggle="tooltip" class="add-to-cart"
+                                                                           href="javascript:addToWishlist({{$product->id}})"
+                                                                           title="{{__('Wishlist')}}">
+                                                                            <i class="icon fa fa-heart"></i>
+                                                                        </a>
+                                                                    </li>
                                                                     <li class="lnk"><a data-toggle="tooltip"
                                                                                        class="add-to-cart"
                                                                                        href="detail.html"

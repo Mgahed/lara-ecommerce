@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -113,15 +114,47 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::post('password-update', [IndexController::class, 'UserPasswordUpdate'])->name('user.password.update');
     });
 
+    /*----- auth -----*/
+    // Add to Wishlist
+    Route::post('wishlist/add/{product_id}', [WishlistController::class, 'AddToWishlist']);
+
+    Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+        // Wishlist page
+        Route::group(['prefix' => 'wishlist'], function () {
+            Route::get('/', [WishlistController::class, 'ViewWishlist'])->name('wishlist');
+            /*Route::get('/get-wishlist-product', [WishlistController::class, 'GetWishlistProduct']);*/
+            Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct'])->name('wishlist.delete');
+        });
+
+        /*Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');*/
+
+        Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
+
+        Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
+
+        Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
+
+        Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
+
+        Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
+
+        Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
+
+        Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
+
+
+        // Order Traking Route
+        Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');
+    });
     /*----- products -----*/
-    Route::group(['prefix' => 'product'],function () {
+    Route::group(['prefix' => 'product'], function () {
         Route::get('/details/{id}', [IndexController::class, 'ProductDetails'])->name('product.details');
         Route::get('/subcategory/{subcat_id}', [IndexController::class, 'SubCatWiseProduct'])->name('products.by.subcategory');
         Route::get('/view/modal/{id}', [IndexController::class, 'ProductViewAjax'])->name('get.product.ajax');
     });
 
     /*----- cart -----*/
-    Route::group(['prefix' => 'cart'],function () {
+    Route::group(['prefix' => 'cart'], function () {
         Route::post('/data/store/{id}', [CartController::class, 'AddToCart']);
         // Get Data from mini cart
         Route::get('/mini', [CartController::class, 'AddMiniCart']);
@@ -129,9 +162,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('/mini/remove/all', [CartController::class, 'RemoveAll']);
         // Remove mini cart
         Route::get('/mini/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
-
-        // Add to Wishlist
-        Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']);
     });
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
