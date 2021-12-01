@@ -169,6 +169,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('/mini/remove/all', [CartController::class, 'RemoveAll']);
         // Remove mini cart
         Route::get('/mini/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
+
+        /*-- coupon --*/
+        Route::post('/coupon-apply', [CartController::class, 'CouponApply'])->name('apply.coupon');
+        Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation'])->name('coupon.calculation');
+        Route::get('/coupon-remove', [CartController::class, 'CouponRemove'])->name('coupon.remove');
     });
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

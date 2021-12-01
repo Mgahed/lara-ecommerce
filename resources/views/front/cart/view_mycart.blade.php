@@ -72,7 +72,75 @@
                             </table>
                         </div>
                     </div>
-                </div><!-- /.row -->
+                </div>
+
+                @if ($carts->count())
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 estimate-ship-tax"></div>
+                        <div class="col-md-4 col-sm-12 estimate-ship-tax">
+                            @if (Session::has('coupon'))
+
+                            @else
+                                <table class="table" id="has_coupon">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <span class="estimate-title">{{__('Discount Code')}}</span>
+                                            <p class="text-muted">{{__('Enter your coupon code if you have one..')}}</p>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <input id="coupon_name" type="text"
+                                                       class="form-control unicase-form-control text-input"
+                                                       placeholder="{{__('Your Coupon..')}}">
+                                            </div>
+                                            <div class="clearfix pull-right">
+                                                <button type="submit" onclick="apply_coupon()"
+                                                        class="btn-upper btn btn-primary">{{__('APPLY COUPON')}}</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody><!-- /tbody -->
+                                </table><!-- /table -->
+                            @endif
+                        </div><!-- /.estimate-ship-tax -->
+
+                        <div class="col-md-4 col-sm-12 cart-shopping-total">
+                            <table class="table">
+                                <thead id="couponCalField">
+                                {{--<tr>
+                                    <th>
+                                        <div class="cart-sub-total">
+                                            {{('Subtotal')}}<span class="inner-left-md"><span
+                                                    id="cart_total">{{$cartTotal}}</span>{{__('EGP')}}</span>
+                                        </div>
+                                        <div class="cart-grand-total">
+                                            {{('Grand Total')}}<span class="inner-left-md"><span
+                                                    id="cart_total">{{$cartTotal}}</span>{{__('EGP')}}</span>
+                                        </div>
+                                    </th>
+                                </tr>--}}
+                                </thead><!-- /thead -->
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="cart-checkout-btn text-center">
+                                            <button type="submit" class="btn btn-primary checkout-btn">
+                                                {{__('PROCEED TO CHECKOUT')}}
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody><!-- /tbody -->
+                            </table><!-- /table -->
+                        </div><!-- /.cart-shopping-total -->
+                    </div><!-- /.row -->
+                @endif
+
             </div><!-- /.sigin-in-->
             <br><br>
         </div><!-- /.container -->

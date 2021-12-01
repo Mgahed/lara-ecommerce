@@ -688,6 +688,9 @@
     "Image": "الصورة",
     "Product name": "اسم المنتج",
     "Color": "اللون",
+    "Grand Total": "السعر النهائي",
+    "Subtotal": "السعر الكلي",
+    "Coupon removed": "تم ازالة الكوبون",
 
     "Wishlistttt": "/*---------------------------------------- ----------------------------------------*/",
     "Add to Cart": "اضف للسلة",
@@ -710,6 +713,11 @@
     "Coupon Updated Successfully": "تم تعديل الكوبون",
     "Coupon Deleted Successfully": "تم مسح الكوبون",
     "Edit Coupon": "تعديل الكوبون",
+    "Discount Code": "كود الخصم",
+    "Enter your coupon code if you have one..": "أدخل الكوبون الخاص بك إذا كان لديك واحد ..",
+    "Your Coupon..": "الكوبون الخاص..",
+    "APPLY COUPON": "تأكيد الكوبون",
+    "PROCEED TO CHECKOUT": "باشر بالدفع",
 
     "shippingg": "/*---------------------------------------- ----------------------------------------*/",
     "Shipping Area": "منطقة الشحن",

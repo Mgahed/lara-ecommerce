@@ -3,18 +3,21 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
 use App\Models\Product;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Session;
 
 class CartController extends Controller
 {
     public function AddToCart(Request $request, $id)
     {
         /*return $request;*/
-        /*if (Session::has('coupon')) {
+        if (Session::has('coupon')) {
             Session::forget('coupon');
-        }*/
+        }
 
         $product = Product::findOrFail($id);
 
@@ -85,31 +88,36 @@ class CartController extends Controller
     public function CouponApply(Request $request)
     {
 
-        $coupon = Coupon::where('coupon_name', $request->coupon_name)->where('coupon_validity', '>=', Carbon::now()->format('Y-m-d'))->first();
+        $coupon = Coupon::where('name', $request->coupon_name)->where('validity', '>=', Carbon::now()->format('Y-m-d'))->first();
         if ($coupon) {
-
             Session::put('coupon', [
-                'coupon_name' => $coupon->coupon_name,
-                'coupon_discount' => $coupon->coupon_discount,
-                'discount_amount' => round(Cart::total() * $coupon->coupon_discount / 100),
-                'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount / 100)
+                'coupon_name' => $coupon->name,
+                'coupon_discount' => $coupon->discount,
+                'discount_amount' => round(Cart::total() * $coupon->discount / 100),
+                'total_amount' => round(Cart::total() - Cart::total() * $coupon->discount / 100)
             ]);
-
+            if ($request->lang === 'en') {
+                $message = 'Coupon Applied Successfully';
+            }else{
+                $message = 'تم استخدام الكوبون بنجاح';
+            }
             return response()->json(array(
                 'validity' => true,
-                'success' => 'Coupon Applied Successfully'
+                'success' => $message
             ));
-
-        } else {
-            return response()->json(['error' => 'Invalid Coupon']);
         }
+        if ($request->lang === 'en') {
+            $message = 'Invalid Coupon';
+        }else{
+            $message = 'كوبون غير صالح';
+        }
+        return response()->json(['error' => $message]);
 
     } // end method
 
 
     public function CouponCalculation()
     {
-
         if (Session::has('coupon')) {
             return response()->json(array(
                 'subtotal' => Cart::total(),
@@ -118,12 +126,11 @@ class CartController extends Controller
                 'discount_amount' => session()->get('coupon')['discount_amount'],
                 'total_amount' => session()->get('coupon')['total_amount'],
             ));
-        } else {
-            return response()->json(array(
-                'total' => Cart::total(),
-            ));
-
         }
+
+        return response()->json(array(
+            'total' => Cart::total(),
+        ));
     } // end method
 
 
@@ -131,7 +138,12 @@ class CartController extends Controller
     public function CouponRemove()
     {
         Session::forget('coupon');
-        return response()->json(['success' => 'Coupon Remove Successfully']);
+
+        $notification = array(
+            'message' => __('Coupon removed'),
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
 
@@ -159,17 +171,13 @@ class CartController extends Controller
                 return redirect()->to('/')->with($notification);
 
             }
-
-
         } else {
-
             $notification = array(
                 'message' => 'You Need to Login First',
                 'alert-type' => 'error'
             );
 
             return redirect()->route('login')->with($notification);
-
         }
 
     } // end method

@@ -11,6 +11,9 @@
     <meta name="robots" content="all">
     <title>{{ config('app.name', 'Mr Technawy Ecommerce') }}</title>
 @if (app()->getLocale() === 'en')
+        <style>
+            .float-right{float:right!important}
+        </style>
     <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="{{asset('front/assets/css/bootstrap.min.css')}}">
 
@@ -26,6 +29,9 @@
         <!-- Icons/Glyphs -->
         <link rel="stylesheet" href="{{asset('front/assets/css/font-awesome.css')}}">
 @else
+        <style>
+            .float-right{float:left!important}
+        </style>
     <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_bootstrap.css')}}">
 
@@ -359,6 +365,61 @@
     }
 
     /*----- End Add to wishlist -----*/
+
+    /*----- Apply coupon -----*/
+    function apply_coupon() {
+        let coupon_name = $('#coupon_name').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: "{{route('apply.coupon')}}",
+            data: {
+                coupon_name: coupon_name,
+                lang: $('html').attr('lang')
+            },
+            success: function (data) {
+                const toast = Swal.mixin({
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    icon: 'success'
+                })
+                if ($.isEmptyObject(data.error)) {
+                    $('#has_coupon').hide();
+                    couponCalculation();
+                    toast.fire({
+                        type: 'success',
+                        title: data.success,
+                        icon: 'success'
+                    })
+                } else {
+                    toast.fire({
+                        type: 'error',
+                        title: data.error,
+                        icon: 'error'
+                    })
+                }
+            }
+        });
+    }
+
+    function couponCalculation() {
+        $.ajax({
+            type: 'GET',
+            url: "{{route('coupon.calculation')}}",
+            dataType: 'json',
+            success: function (data) {
+                if (data.total){
+                    $('#couponCalField').html('<tr><th><div class="cart-grand-total">{{__("Grand Total")}}<span class="float-right"><span id="cart_total">'+data.total+'</span>{{__('EGP')}}</span></div></th></tr>')
+                }else {
+                    $('#couponCalField').html('<tr><th><div class="cart-sub-total">{{__('Subtotal')}}<span class="float-right"><span id="cart_sub_total">'+data.subtotal+'</span>{{__('EGP')}}</span></div><div class="cart-sub-total">{{__('Coupon')}}<span class="float-right"><span>'+data.coupon_name+'</span> <a href="{{route('coupon.remove')}}"><i class="fa fa-times"></i></a></span></div> <div class="cart-sub-total">{{__('Discount')}}<span class="float-right"><span>'+data.discount_amount+'</span>{{__('EGP')}}</span></div><div class="cart-grand-total">{{__("Grand Total")}}<span class="float-right"><span id="cart_total">'+data.total_amount+'</span>{{__('EGP')}}</span></div></th></tr>')
+                }
+            }
+        });
+    }
+    couponCalculation();
+    /*----- End Apply coupon -----*/
 
 </script>
 </body>
