@@ -636,6 +636,10 @@
     "Disable ad blocker to enroll to the course": "اغلق مانع الاعلانات لتحصل على الدورة",
     "How to pass undirected link": "كيفية تخطي الرابط الغير مباشر",
     "pass undirected link": "تخطي الرابط الغير مباشر",
+    "Name in English": "الاسم بالانجليزية",
+    "Name in english": "الاسم بالانجليزية",
+    "Name in Arabic": "الاسم بالعربية",
+    "Name in arabic": "الاسم بالعربية",
 
     "navbar": "/*---------------------------------------- ----------------------------------------*/",
     "Home": "الرئيسية",
@@ -705,5 +709,15 @@
     "Invalid": "غير صالح",
     "Coupon Updated Successfully": "تم تعديل الكوبون",
     "Coupon Deleted Successfully": "تم مسح الكوبون",
-    "Edit Coupon": "تعديل الكوبون"
+    "Edit Coupon": "تعديل الكوبون",
+
+    "shippingg": "/*---------------------------------------- ----------------------------------------*/",
+    "Shipping Area": "منطقة الشحن",
+    "Shipping city": "المدينة",
+    "Cities List": "قائمة المدن",
+    "Add City": "اضافة مدينة",
+    "Edit City": "تعديل المدينة",
+    "City Inserted Successfully": "تم اضافة المدينة",
+    "City Updated Successfully": "تم تحديث المدينة",
+    "City Deleted Successfully": "تم حذف المدينة"
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\CartController;
@@ -86,6 +87,26 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::post('/update/{id}', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
             Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
         });
+
+        /*----- Admin shipping -----*/
+        Route::prefix('shipping')->group(function(){
+            // Ship Division
+            Route::get('/division/view', [ShippingAreaController::class, 'DivisionView'])->name('manage-division');
+            Route::post('/division/store', [ShippingAreaController::class, 'DivisionStore'])->name('division.store');
+            Route::get('/division/edit/{id}', [ShippingAreaController::class, 'DivisionEdit'])->name('division.edit');
+            Route::post('/division/update/{id}', [ShippingAreaController::class, 'DivisionUpdate'])->name('division.update');
+            Route::get('/division/delete/{id}', [ShippingAreaController::class, 'DivisionDelete'])->name('division.delete');
+
+
+            // Ship District
+            /*Route::get('/district/view', [ShippingAreaController::class, 'DistrictView'])->name('manage-district');
+            Route::post('/district/store', [ShippingAreaController::class, 'DistrictStore'])->name('district.store');
+            Route::get('/district/edit/{id}', [ShippingAreaController::class, 'DistrictEdit'])->name('district.edit');
+            Route::post('/district/update/{id}', [ShippingAreaController::class, 'DistrictUpdate'])->name('district.update');
+            Route::get('/district/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district.delete');*/
+
+        });
+
 
     });
 

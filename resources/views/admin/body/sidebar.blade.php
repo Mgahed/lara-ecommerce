@@ -87,6 +87,21 @@
                 </ul>
             </li>
 
+            <li class="treeview {{Request::is(app()->getLocale().'/admin/shipping/*') ? 'active' : ''}}">
+                <a href="#">
+                    <i class="fa fa-truck"></i> <span>{{__('Shipping Area')}}</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{Request::is(app()->getLocale().'/admin/shipping/division/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('manage-division')}}"><i class="ti-more"></i>{{__('Shipping city')}}</a>
+                    </li>
+                </ul>
+            </li>
+
 
             <li class="header nav-small-cap">User Interface</li>
 
