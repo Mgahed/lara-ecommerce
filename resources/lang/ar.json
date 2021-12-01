@@ -698,7 +698,7 @@
     "My Wishlist": "المفضلة",
     "No items in wishlist": "لا يوجد منتجات في المفضلة",
     "Product removed from cart": "تم ازالة المنتج من العربة",
-    "No items in cart": "لا يوجد منتجات في العربة",
+    "No items in cart": "لا يوجد منتجات في السلة",
 
     "coupoonnnnn": "/*---------------------------------------- ----------------------------------------*/",
     "Add New": "اضافة",
@@ -718,6 +718,7 @@
     "Your Coupon..": "الكوبون الخاص..",
     "APPLY COUPON": "تأكيد الكوبون",
     "PROCEED TO CHECKOUT": "باشر بالدفع",
+    "Checkout": "الدفع",
 
     "shippingg": "/*---------------------------------------- ----------------------------------------*/",
     "Shipping Area": "منطقة الشحن",
@@ -727,5 +728,7 @@
     "Edit City": "تعديل المدينة",
     "City Inserted Successfully": "تم اضافة المدينة",
     "City Updated Successfully": "تم تحديث المدينة",
-    "City Deleted Successfully": "تم حذف المدينة"
+    "City Deleted Successfully": "تم حذف المدينة",
+    "You Need to Login First": "تحتاج لتسجيل الدخول اولا",
+    "No Products at cart": "لا يوجد منتجات بالسلة"
 }

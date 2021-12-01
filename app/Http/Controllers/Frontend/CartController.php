@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Product;
+use App\Models\ShipDivision;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -65,6 +66,9 @@ class CartController extends Controller
 /// remove mini cart
     public function RemoveMiniCart($rowId)
     {
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
         Cart::remove($rowId);
         $notification = array(
             'message' => __('Product Removed from Cart'),
@@ -151,34 +155,32 @@ class CartController extends Controller
     public function CheckoutCreate()
     {
 
-        if (Auth::check()) {
+        if (auth()->check()) {
             if (Cart::total() > 0) {
 
                 $carts = Cart::content();
                 $cartQty = Cart::count();
                 $cartTotal = Cart::total();
 
-                $divisions = ShipDivision::orderBy('division_name', 'ASC')->get();
-                return view('frontend.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal', 'divisions'));
-
-            } else {
-
-                $notification = array(
-                    'message' => 'Shopping At list One Product',
-                    'alert-type' => 'error'
-                );
-
-                return redirect()->to('/')->with($notification);
+                $divisions = ShipDivision::orderBy('name_en', 'ASC')->get();
+                return view('front.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal', 'divisions'));
 
             }
-        } else {
+
             $notification = array(
-                'message' => 'You Need to Login First',
+                'message' => __('No Products at cart'),
                 'alert-type' => 'error'
             );
 
-            return redirect()->route('login')->with($notification);
+            return redirect()->to('/')->with($notification);
         }
+
+        $notification = array(
+            'message' => __('You Need to Login First'),
+            'alert-type' => 'error'
+        );
+
+        return redirect()->route('login')->with($notification);
 
     } // end method
 }

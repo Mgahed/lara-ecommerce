@@ -197,7 +197,7 @@
                         </div>
                         <div class="form-group">
                             <label for="quantity">{{__('Quantity')}}</label>
-                            <input type="number" class="form-control" id="quantity" value="1" min="1" name="quantity"
+                            <input type="number" class="form-control" id="quantity" value="1" min="1" max="" name="quantity"
                                    autocomplete="off">
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                 <input type="hidden" id="product_id">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         id="closeModel">{{__('Close')}}</button>
-                <button type="submit" class="btn btn-primary" onclick="addToCart()">{{__('Add to cart')}}</button>
+                <button type="submit" id="add_to_cart_submit" class="btn btn-primary" onclick="addToCart()">{{__('Add to cart')}}</button>
             </div>
         </div>
     </div>
@@ -228,6 +228,12 @@
             url: '/product/view/modal/' + id,
             dataType: 'json',
             success: function (data) {
+                $('#quantity').attr('max',data.product.quantity)
+                if(data.product.quantity<=0){
+                    $('#add_to_cart_submit').hide();
+                }else{
+                    $('#add_to_cart_submit').show();
+                }
                 /*console.log(data)*/
                 $('#product_id').val(data.product.id)
                 $('#quantity').val(1);

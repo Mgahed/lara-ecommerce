@@ -80,8 +80,8 @@
                             <div class='col-sm-6 col-md-7 product-info-block'>
                                 <div class="product-info">
                                     <h1 class="name" id="pname">{{app()->getLocale() === 'en'?$product->name_en:$product->name_ar}}</h1>
-
-                                    <div class="rating-reviews m-t-20">
+                                    <br>
+                                    {{--<div class="rating-reviews m-t-20">
                                         <div class="row">
                                             <div class="col-sm-3">
                                                 <div class="rating rateit-small"></div>
@@ -92,7 +92,7 @@
                                                 </div>
                                             </div>
                                         </div><!-- /.row -->
-                                    </div><!-- /.rating-reviews -->
+                                    </div>--}}<!-- /.rating-reviews -->
 
                                     <div class="stock-container info-container m-t-10">
                                         <div class="row">
@@ -199,12 +199,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" id="product_id" value="{{$product->id}}">
-                                            <div class="col-sm-7">
-                                                <button type="submit" onclick="addToCart()" class="btn btn-primary" ><i
-                                                        class="fa fa-shopping-cart inner-right-vs"></i> {{__('Add to cart')}}</button>
-                                            </div>
-
+                                            @if ($product->quantity>0)
+                                                <input type="hidden" id="product_id" value="{{$product->id}}">
+                                                <div class="col-sm-7">
+                                                    <button type="submit" onclick="addToCart()" class="btn btn-primary" ><i
+                                                            class="fa fa-shopping-cart inner-right-vs"></i> {{__('Add to cart')}}</button>
+                                                </div>
+                                            @endif
                                         </div><!-- /.row -->
                                     </div><!-- /.quantity-container -->
 

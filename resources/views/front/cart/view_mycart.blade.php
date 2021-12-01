@@ -37,14 +37,6 @@
                                                 <div class="product-name"><a
                                                         href="{{route('product.details',$cart->options->product_id)}}">{{$cart->name}}</a>
                                                 </div>
-                                                {{-- <div class="rating">
-                                                     <i class="fa fa-star rate"></i>
-                                                     <i class="fa fa-star rate"></i>
-                                                     <i class="fa fa-star rate"></i>
-                                                     <i class="fa fa-star rate"></i>
-                                                     <i class="fa fa-star non-rate"></i>
-                                                     <span class="review">( 06 Reviews )</span>
-                                                 </div>--}}
                                                 <div class="price">
                                                     {{$cart->price}}{{__('EGP')}} * {{$cart->qty}}
                                                 </div>
@@ -129,9 +121,9 @@
                                 <tr>
                                     <td>
                                         <div class="cart-checkout-btn text-center">
-                                            <button type="submit" class="btn btn-primary checkout-btn">
+                                            <a href="{{route('checkout')}}" class="btn btn-primary checkout-btn">
                                                 {{__('PROCEED TO CHECKOUT')}}
-                                            </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>

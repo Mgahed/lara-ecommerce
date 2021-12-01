@@ -130,8 +130,8 @@
                                             class="text">{{__('Total')}} :</span><span class='price' id="cartSubTotal1">0</span>{{__('EGP')}}
                                     </div>
                                     <div class="clearfix"></div>
-                                    <a href="checkout.html"
-                                       class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a></div>
+                                    <a href="{{route('mycart')}}"
+                                       class="btn btn-upper btn-primary btn-block m-t-20">{{__('Checkout')}}</a></div>
                                 <!-- /.cart-total-->
 
                             </li>

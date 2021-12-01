@@ -138,6 +138,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('/remove/{rowId}', [CartPageController::class, 'RemoveCartProduct'])->name('remove.mycart');
             /*Route::get('/increment/{rowId}', [CartPageController::class, 'CartIncrement']);
             Route::get('/decrement/{rowId}', [CartPageController::class, 'CartDecrement']);*/
+
+            /*-- checkout --*/
+            Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+            Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
+            Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
+            Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
         });
 
         /*Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');*/
@@ -174,6 +180,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::post('/coupon-apply', [CartController::class, 'CouponApply'])->name('apply.coupon');
         Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation'])->name('coupon.calculation');
         Route::get('/coupon-remove', [CartController::class, 'CouponRemove'])->name('coupon.remove');
+
     });
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
