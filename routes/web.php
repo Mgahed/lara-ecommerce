@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CartPageController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
@@ -141,8 +142,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
             /*-- checkout --*/
             Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
-            Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
-            Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
+            /*Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
+            Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);*/
             Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
         });
 

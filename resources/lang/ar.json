@@ -730,5 +730,16 @@
     "City Updated Successfully": "تم تحديث المدينة",
     "City Deleted Successfully": "تم حذف المدينة",
     "You Need to Login First": "تحتاج لتسجيل الدخول اولا",
-    "No Products at cart": "لا يوجد منتجات بالسلة"
+    "No Products at cart": "لا يوجد منتجات بالسلة",
+    "Shipping details": "تفاصيل الشحن",
+    "Shipping name": "الاسم للشحن",
+    "Shipping email": "البريد الإلكتروني للشحن",
+    "Shipping phone number": "رقم هاتف للشحن",
+    "Select city": "اختر مدينة",
+    "Shipping address details": "تفاصيل عنوان الشحن",
+    "Notes": "ملحوظات",
+    "Submit": "ادخال",
+    "Full Name": "الاسم بالكامل",
+    "Phone": "الهاتف",
+    "Your Checkout Progress": "تقدم عملية الدفع الخاصة بك"
 }
