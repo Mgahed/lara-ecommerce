@@ -157,7 +157,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
 
         Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
         Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails'])->name('OrderDetails');
-        Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
+        Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload'])->name('InvoiceDownload');
         Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
         Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
         Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
@@ -193,4 +193,8 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
         return redirect()->route('home');
     })->name('dashboard');
+});
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
 });
