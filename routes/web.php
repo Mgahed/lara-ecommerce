@@ -7,8 +7,10 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Frontend\AllUserController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CartPageController;
+use App\Http\Controllers\Frontend\CashController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\WishlistController;
@@ -25,7 +27,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)->setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
     /*Route::get('/', function () {
         return view('front.index');
     })->name('home');*/
@@ -149,8 +154,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
         /*Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');*/
         Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
+
         Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
-        Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
+        Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails'])->name('OrderDetails');
         Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
         Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
         Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');

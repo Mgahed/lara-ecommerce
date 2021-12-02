@@ -10,4 +10,9 @@ class ShipDivision extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function order()
+    {
+        return $this->hasMany(Order::class, 'division_id', 'id');
+    }
 }

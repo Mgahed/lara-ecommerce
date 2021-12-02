@@ -67,7 +67,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
-                    <div class="logo"><a href="{{url('/')}}"> <img src="{{asset('front/assets/images/logo.png')}}"
+                    <div class="logo"><a href="{{url('/')}}"> <img height="50" width="60" src="{{asset('logo.png')}}"
                                                                    alt="logo"> </a></div>
                     <!-- /.logo -->
                     <!-- ============================================================= LOGO : END ============================================================= -->

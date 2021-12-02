@@ -4,10 +4,10 @@
 
         <div class="user-profile">
             <div class="ulogo">
-                <a href="index.html">
+                <a href="/admin">
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{asset('admin-dashboard/images/logo-dark.png')}}" alt="">
+                        <img src="{{asset('logo.png')}}" width="50" height="50" alt="">
                         <h3><b>Mobile</b> Care</h3>
                     </div>
                 </a>
