@@ -102,8 +102,64 @@
                 </ul>
             </li>
 
+            <li class="treeview {{Request::is(app()->getLocale().'/admin/orders/*') ? 'active' : ''}}">
+                <a href="#">
+                    <i class="mdi mdi-briefcase-check"></i> <span>{{__('Orders')}}</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{Request::is(app()->getLocale().'/admin/orders/pending/orders') ? 'active' : ''}}">
+                        <a
+                            href="{{route('pending-orders')}}"><i class="ti-more"></i>{{__('Pending orders')}}</a>
+                    </li>
+                    <li class="{{Request::is(app()->getLocale().'/admin/orders/confirmed/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('confirmed-orders')}}"><i class="ti-more"></i>{{__('Confirmed orders')}}</a>
+                    </li>
+                    <li class="{{Request::is(app()->getLocale().'/admin/orders/processing/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('processing-orders')}}"><i class="ti-more"></i>{{__('Processing orders')}}</a>
+                    </li>
+                    <li class="{{Request::is(app()->getLocale().'/admin/orders/picked/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('picked-orders')}}"><i class="ti-more"></i>{{__('Picked orders')}}</a>
+                    </li>
+                    <li class="{{Request::is(app()->getLocale().'/admin/orders/shipped/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('shipped-orders')}}"><i class="ti-more"></i>{{__('Shipped orders')}}</a>
+                    </li>
+                    <li class="{{Request::is(app()->getLocale().'/admin/orders/delivered/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('delivered-orders')}}"><i class="ti-more"></i>{{__('Delivered orders')}}</a>
+                    </li>
+                    <li class="{{Request::is(app()->getLocale().'/admin/orders/cancel/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('cancel-orders')}}"><i class="ti-more"></i>{{__('Cancelled orders')}}</a>
+                    </li>
+                </ul>
+            </li>
 
-            <li class="header nav-small-cap">User Interface</li>
+            <li class="treeview {{Request::is(app()->getLocale().'/admin/order-return/*') ? 'active' : ''}}">
+                <a href="#">
+                    <i class="mdi mdi-backup-restore"></i> <span>{{__('Return orders')}}</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{Request::is(app()->getLocale().'/admin/order-return/request') ? 'active' : ''}}">
+                        <a
+                            href="{{route('return-request-orders')}}"><i class="ti-more"></i>{{__('Return requests')}}</a>
+                    </li>
+                    <li class="{{Request::is(app()->getLocale().'/admin/order-return/returned') ? 'active' : ''}}">
+                        <a href="{{route('returned-orders')}}"><i class="ti-more"></i>{{__('Returned orders')}}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="header nav-small-cap">{{__('Reports')}}</li>
 
             <li class="treeview">
                 <a href="#">
@@ -125,43 +181,6 @@
                 </ul>
             </li>
 
-            <li class="header nav-small-cap">EXTRA</li>
-
-            <li class="treeview">
-                <a href="#">
-                    <i data-feather="layers"></i>
-                    <span>Multilevel</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Level One</a></li>
-                    <li class="treeview">
-                        <a href="#">Level One
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#">Level Two</a></li>
-                            <li class="treeview">
-                                <a href="#">Level Two
-                                    <span class="pull-right-container">
-					  <i class="fa fa-angle-right pull-right"></i>
-					</span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#">Level Three</a></li>
-                                    <li><a href="#">Level Three</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Level One</a></li>
-                </ul>
-            </li>
-
             <li>
                 <a href="auth_login.html">
                     <i data-feather="lock"></i>
@@ -172,7 +191,7 @@
         </ul>
     </section>
 
-    <div class="sidebar-footer">
+    {{--<div class="sidebar-footer">
         <!-- item-->
         <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings"
            aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
@@ -182,5 +201,5 @@
         <!-- item-->
         <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i
                 class="ti-lock"></i></a>
-    </div>
+    </div>--}}
 </aside>

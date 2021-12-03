@@ -65,8 +65,9 @@
 
                                     <td class="col-md-2">
                                         <label for="">
-
-                                            @if($order->status === 'pending')
+                                            <span class="badge badge-pill {{$order->status === 'delivered' || $order->status === 'shipped' || $order->status === 'returned' ?'badge-success':'badge-warning'}}"
+                                                  style="background: #800080;">{{__($order->status)}}</span>
+                                            {{--@if($order->status === 'pending')
                                                 <span class="badge badge-pill badge-warning"
                                                       style="background: #800080;"> Pending </span>
                                             @elseif($order->status === 'confirm')
@@ -89,17 +90,16 @@
                                                 <span class="badge badge-pill badge-warning"
                                                       style="background: #008000;"> Delivered </span>
 
-                                                @if($order->return_order === 1)
-                                                    <span class="badge badge-pill badge-warning"
-                                                          style="background:red;">Return Requested </span>
+                                            @elseif($order->status === 'returned')
+                                                <span class="badge badge-pill badge-warning"
+                                                      style="background:red;">Return Requested </span>
 
-                                                @endif
 
                                             @else
                                                 <span class="badge badge-pill badge-warning"
                                                       style="background: #FF0000;"> Cancel </span>
 
-                                            @endif
+                                            @endif--}}
                                         </label>
                                     </td>
 

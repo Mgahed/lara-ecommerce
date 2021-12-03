@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
@@ -110,8 +111,31 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/district/edit/{id}', [ShippingAreaController::class, 'DistrictEdit'])->name('district.edit');
             Route::post('/district/update/{id}', [ShippingAreaController::class, 'DistrictUpdate'])->name('district.update');
             Route::get('/district/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district.delete');*/
-
         });
+
+        /*----- Admin orders -----*/
+        Route::prefix('orders')->group(function(){
+            Route::get('/pending/orders', [OrderController::class, 'PendingOrders'])->name('pending-orders');
+            Route::get('/details/{order_id}', [OrderController::class, 'PendingOrdersDetails'])->name('pending.order.details');
+            Route::get('/confirmed/orders', [OrderController::class, 'ConfirmedOrders'])->name('confirmed-orders');
+            Route::get('/processing/orders', [OrderController::class, 'ProcessingOrders'])->name('processing-orders');
+            Route::get('/picked/orders', [OrderController::class, 'PickedOrders'])->name('picked-orders');
+            Route::get('/shipped/orders', [OrderController::class, 'ShippedOrders'])->name('shipped-orders');
+            Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->name('delivered-orders');
+            Route::get('/cancel/orders', [OrderController::class, 'CancelOrders'])->name('cancel-orders');
+
+            // Update Status
+            Route::get('/pending/confirm/{order_id}', [OrderController::class, 'PendingToConfirm'])->name('pending-confirm');
+            Route::get('/pending/cancel-by-admin/{order_id}', [OrderController::class, 'PendingToCancelByAdmin'])->name('cancel-by-admin');
+            Route::get('/confirm/processing/{order_id}', [OrderController::class, 'ConfirmToProcessing'])->name('confirm.processing');
+            Route::get('/processing/picked/{order_id}', [OrderController::class, 'ProcessingToPicked'])->name('processing.picked');
+            Route::get('/picked/shipped/{order_id}', [OrderController::class, 'PickedToShipped'])->name('picked.shipped');
+            Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped.delivered');
+            Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
+        });
+        Route::get('/order-return/returned', [OrderController::class, 'ReturnedOrder'])->name('returned-orders');
+        Route::get('/order-return/request', [OrderController::class, 'ReturnRequest'])->name('return-request-orders');
+        Route::get('/order-return/status/{order_id}', [OrderController::class, 'ReturnStatus'])->name('return.done');
 
 
     });

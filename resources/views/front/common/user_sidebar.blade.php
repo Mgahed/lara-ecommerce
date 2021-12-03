@@ -18,9 +18,9 @@
 
         <a href="{{ route('my.orders') }}" class="btn btn-primary btn-sm btn-block">My Orders</a>
 
-        <a href="{{--{{ route('return.order.list') }}--}}" class="btn btn-primary btn-sm btn-block">Return Orders</a>
+        <a href="{{ route('return.order.list') }}" class="btn btn-primary btn-sm btn-block">Returned Orders</a>
 
-        <a href="{{--{{ route('cancel.orders') }}--}}" class="btn btn-primary btn-sm btn-block">Cancel Orders</a>
+        <a href="{{ route('cancel.orders') }}" class="btn btn-primary btn-sm btn-block">Cancelled Orders</a>
         <br>
         <form method="POST" class="mb-3" action="{{ route('logout') }}">
             <button class="btn btn-danger btn-sm btn-block">
@@ -28,7 +28,7 @@
                 <x-jet-dropdown-link style="color: #FFF;" href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                    <i class="icon fa fa-sign-out"></i>{{ __('Log Out') }}
+                    <i class="icon fa fa-sign-out"></i> {{ __('Log Out') }}
                 </x-jet-dropdown-link>
             </button>
         </form>

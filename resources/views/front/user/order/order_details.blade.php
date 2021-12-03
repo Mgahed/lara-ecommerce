@@ -165,7 +165,8 @@
                                         </td>
 
                                         <td class="col-md-2">
-                                            <label for=""> {{ $item->price }}{{__('EGP')}} ({{ $item->price * $item->qty}}{{__('EGP')}}) </label>
+                                            <label for=""> {{ $item->price }}{{__('EGP')}}
+                                                ({{ $item->price * $item->qty}}{{__('EGP')}}) </label>
                                         </td>
                                         {{--@php
                                             $file = App\Models\Product::where('id',$item->product_id)->first();
@@ -203,7 +204,7 @@
 
                 </div> <!-- // END ORDER ITEM ROW -->
 
-                @if($order->status !== "delivered")
+                @if($order->status !== "delivered" && \Carbon\Carbon::now()->diffInDays($order->dilivered_date)<=7)
 
                 @else
 
@@ -218,7 +219,8 @@
 
                             <div class="form-group">
                                 <label for="label"> Order Return Reason:</label>
-                                <textarea name="return_reason" id="" class="form-control" cols="30" rows="05">Return Reason</textarea>
+                                <textarea name="return_reason" id="" class="form-control" cols="30" rows="05"
+                                          placeholder=""></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-danger">Order Return</button>
@@ -226,7 +228,7 @@
                         </form>
                     @else
 
-                        <span class="badge badge-pill badge-warning" style="background: red">You Have send return request for this product</span>
+                        <span class="badge badge-pill badge-warning" style="background: red">You Have send return request for this order</span>
 
                     @endif
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -48,14 +49,14 @@ class AllUserController extends Controller
     {
 
         Order::findOrFail($order_id)->update([
-            'return_date' => Carbon::now()->format('d F Y'),
+            'return_date' => Carbon::now(),
             'return_reason' => $request->return_reason,
-            'return_order' => 1,
+            'status' => 'return requested'
         ]);
 
 
         $notification = array(
-            'message' => 'Return Request Send Successfully',
+            'message' => __('Return Request Send Successfully'),
             'alert-type' => 'success'
         );
 
@@ -67,18 +68,18 @@ class AllUserController extends Controller
     public function ReturnOrderList()
     {
 
-        $orders = Order::where('user_id', Auth::id())->where('return_reason', '!=', NULL)->orderBy('id', 'DESC')->get();
-        return view('frontend.user.order.return_order_view', compact('orders'));
+        $orders = Order::where('user_id', auth()->id())->where('return_reason', '!=', NULL)->orderBy('id', 'DESC')->get();
+        return view('front.user.order.return_order_view', compact('orders'));
 
     } // end method
 
 
     public function CancelOrders()
     {
-
-        $orders = Order::where('user_id', Auth::id())->where('status', 'cancel')->orderBy('id', 'DESC')->get();
-        return view('frontend.user.order.cancel_order_view', compact('orders'));
-
+        $orders = Order::where('user_id', auth()->id())->where(function($query) {
+            $query->where('status', 'cancelled')->orWhere('status', 'cancelled by admin');
+        })->orderBy('id', 'DESC')->get();
+        return view('front.user.order.cancel_order_view', compact('orders'));
     } // end method
 
 
@@ -89,25 +90,23 @@ class AllUserController extends Controller
 
         $invoice = $request->code;
 
-        $track = Order::where('invoice_no', $invoice)->first();
+        $track = Order::where('invoice_number', $invoice)->first();
 
         if ($track) {
 
             // echo "<pre>";
             // print_r($track);
 
-            return view('frontend.traking.track_order', compact('track'));
-
-        } else {
-
-            $notification = array(
-                'message' => 'Invoice Code Is Invalid',
-                'alert-type' => 'error'
-            );
-
-            return redirect()->back()->with($notification);
+            return view('front.traking.track_order', compact('track'));
 
         }
+
+        $notification = array(
+            'message' => 'Invoice Code Is Invalid',
+            'alert-type' => 'error'
+        );
+
+        return redirect()->back()->with($notification);
 
     } // end mehtod
 }
