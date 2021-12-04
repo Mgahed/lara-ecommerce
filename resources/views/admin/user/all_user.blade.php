@@ -43,10 +43,10 @@
                                             <td>{{ $user->role }}</td>
 
                                             <td>
-                                                @if($user->UserOnline)
-                                                    <span class="badge badge-pill badge-success">Active Now</span>
+                                                @if($user->email_verified_at !== NULL)
+                                                    <span class="badge badge-pill badge-success">{{$user->email_verified_at->diffForHumans()}}</span>
                                                 @else
-                                                    <span class="badge badge-pill badge-danger">{{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</span>
+                                                    <span class="badge badge-pill badge-danger">{{__('Email not verified')}}</span>
                                                 @endif
                                             </td>
 
@@ -56,9 +56,6 @@
                                                 @else
                                                     <a href="" class="btn btn-danger">{{__('Set normal')}} <i class="fa fa-arrow-down"></i></a>
                                                 @endif
-                                                {{--<a href="" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-                                                <a href="" class="btn btn-danger" title="Delete Data" id="delete">
-                                                    <i class="fa fa-up"></i></a>--}}
                                             </td>
 
                                         </tr>

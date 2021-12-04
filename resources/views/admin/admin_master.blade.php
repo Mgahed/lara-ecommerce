@@ -4,16 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    @inject('SEO', 'App\Traits\seoclass')
+    @php
+        $SEO->SEOTrait()
+    @endphp
+
+    {!! SEO::generate() !!}
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('admin-dashboard/images/favicon.ico')}}">
+    <link rel="icon" href="{{asset('logo.png')}}">
 
-    <title>{{ config('app.name', 'Mr Technawy Ecommerce') }}</title>
-
-@if (app()->getLocale() === 'en')
+    @if (app()->getLocale() === 'en')
 
 
-        <!-- Vendors Style-->
+    <!-- Vendors Style-->
         <link rel="stylesheet" href="{{asset('admin-dashboard/css/vendors_css.css')}}">
 
         <!-- Style-->

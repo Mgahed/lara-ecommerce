@@ -17,7 +17,6 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,7 +87,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         });
 
         /*----- Admin coupon -----*/
-        Route::prefix('coupons')->group(function(){
+        Route::prefix('coupons')->group(function () {
             Route::get('/view', [CouponController::class, 'CouponView'])->name('manage-coupon');
             Route::post('/store', [CouponController::class, 'CouponStore'])->name('coupon.store');
             Route::get('/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon.edit');
@@ -97,7 +96,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         });
 
         /*----- Admin shipping -----*/
-        Route::prefix('shipping')->group(function(){
+        Route::prefix('shipping')->group(function () {
             // Ship Division
             Route::get('/division/view', [ShippingAreaController::class, 'DivisionView'])->name('manage-division');
             Route::post('/division/store', [ShippingAreaController::class, 'DivisionStore'])->name('division.store');
@@ -115,7 +114,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         });
 
         /*----- Admin orders -----*/
-        Route::prefix('orders')->group(function(){
+        Route::prefix('orders')->group(function () {
             Route::get('/pending/orders', [OrderController::class, 'PendingOrders'])->name('pending-orders');
             Route::get('/details/{order_id}', [OrderController::class, 'PendingOrdersDetails'])->name('pending.order.details');
             Route::get('/confirmed/orders', [OrderController::class, 'ConfirmedOrders'])->name('confirmed-orders');
@@ -140,7 +139,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
 
 
         /*----- Admin Reports Routes -----*/
-        Route::prefix('reports')->group(function(){
+        Route::prefix('reports')->group(function () {
             Route::get('/view', [ReportController::class, 'ReportView'])->name('all-reports');
             Route::post('/search/by/date', [ReportController::class, 'ReportByDate'])->name('search-by-date');
             Route::post('/search/by/month', [ReportController::class, 'ReportByMonth'])->name('search-by-month');
@@ -148,10 +147,15 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         });
 
         /*----- Admin Get All User Routes -----*/
-        Route::prefix('alluser')->group(function(){
+        Route::prefix('alluser')->group(function () {
             Route::get('/view', [AdminController::class, 'AllUsers'])->name('all-users');
         });
 
+        /*----- Admin Seo -----*/
+        Route::prefix('site-settings')->group(function () {
+            Route::get('/seo/', [AdminController::class, 'SeoSetting'])->name('seo.setting');
+            Route::post('/seo/update', [AdminController::class, 'SeoSettingUpdate'])->name('update.seosetting');
+        });
     });
 
     /*----- normal -----*/
@@ -175,7 +179,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct'])->name('wishlist.delete');
         });
 
-        Route::group(['prefix' => 'mycart'],function () {
+        Route::group(['prefix' => 'mycart'], function () {
             // Cart page
             Route::get('/', [CartPageController::class, 'MyCart'])->name('mycart');
             /*Route::get('/user/get-cart-product', [CartPageController::class, 'GetCartProduct']);*/
@@ -232,7 +236,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         return redirect()->route('home');
     })->name('dashboard');
 });
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });

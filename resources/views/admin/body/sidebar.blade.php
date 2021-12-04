@@ -192,11 +192,19 @@
                 </ul>
             </li>
 
-            <li>
-                <a href="auth_login.html">
-                    <i data-feather="lock"></i>
-                    <span>Log Out</span>
+            <li class="treeview {{Request::is(app()->getLocale().'/admin/site-settings/*') ? 'active' : ''}}">
+                <a href="#">
+                    <i class="mdi mdi-file-document"></i> <span>{{__('Site settings')}}</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li class="{{Request::is(app()->getLocale().'/admin/site-settings/seo/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('seo.setting')}}"><i class="ti-more"></i>{{__('seo')}}</a>
+                    </li>
+                </ul>
             </li>
 
         </ul>
