@@ -151,7 +151,8 @@
                 <ul class="treeview-menu">
                     <li class="{{Request::is(app()->getLocale().'/admin/order-return/request') ? 'active' : ''}}">
                         <a
-                            href="{{route('return-request-orders')}}"><i class="ti-more"></i>{{__('Return requests')}}</a>
+                            href="{{route('return-request-orders')}}"><i class="ti-more"></i>{{__('Return requests')}}
+                        </a>
                     </li>
                     <li class="{{Request::is(app()->getLocale().'/admin/order-return/returned') ? 'active' : ''}}">
                         <a href="{{route('returned-orders')}}"><i class="ti-more"></i>{{__('Returned orders')}}</a>
@@ -159,25 +160,35 @@
                 </ul>
             </li>
 
-            <li class="header nav-small-cap">{{__('Reports')}}</li>
+            <li class="header nav-small-cap">{{__('Others')}}</li>
 
-            <li class="treeview">
+            <li class="treeview {{Request::is(app()->getLocale().'/admin/reports/*') ? 'active' : ''}}">
                 <a href="#">
-                    <i data-feather="grid"></i>
-                    <span>Components</span>
+                    <i class="mdi mdi-file-document"></i> <span>{{__('Reports')}}</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-                    <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-                    <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
-                    <li><a href="components_sliders.html"><i class="ti-more"></i>Sliders</a></li>
-                    <li><a href="components_dropdown.html"><i class="ti-more"></i>Dropdown</a></li>
-                    <li><a href="components_modals.html"><i class="ti-more"></i>Modal</a></li>
-                    <li><a href="components_nestable.html"><i class="ti-more"></i>Nestable</a></li>
-                    <li><a href="components_progress_bars.html"><i class="ti-more"></i>Progress Bars</a></li>
+                    <li class="{{Request::is(app()->getLocale().'/admin/reports/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('all-reports')}}"><i class="ti-more"></i>{{__('All reports')}}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview {{Request::is(app()->getLocale().'/admin/alluser/*') ? 'active' : ''}}">
+                <a href="#">
+                    <i class="mdi mdi-file-document"></i> <span>{{__('Users')}}</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{Request::is(app()->getLocale().'/admin/alluser/*') ? 'active' : ''}}">
+                        <a
+                            href="{{route('all-users')}}"><i class="ti-more"></i>{{__('All users')}}</a>
+                    </li>
                 </ul>
             </li>
 
