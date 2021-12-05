@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Seo;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,7 +16,11 @@ class AdminController extends Controller
             'message' => 'blablabla',
             'alert-type' => 'success'
         ];*/
-        return view('admin.index');
+        $this_month = Order::whereMonth('created_at', Carbon::now()->month)->sum('amount');
+        $last_month = Order::whereMonth('created_at', Carbon::now()->subMonth()->month)->sum('amount');
+        $two_month = Order::whereMonth('created_at', Carbon::now()->subMonths(2)->month)->sum('amount');
+
+        return view('admin.index',compact('this_month','last_month','two_month'));
     }
 
     public function AllUsers()
