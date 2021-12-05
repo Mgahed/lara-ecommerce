@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\URL;
 trait SEOTrait
 {
 
-    function SEOTrait($title = NULL, $img = '/logo.png', $currentURL = NULL, $property = 'Ecommerce')
+    function SEOTrait($title = '', $img = '/logo.png', $currentURL = NULL, $property = 'Ecommerce')
     {
         $seo = Seo::find(1);
-        if ($title === NULL) {
+        if ($title === '') {
             $title = $seo->meta_title;
         }
         $author = $seo->meta_author;

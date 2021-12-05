@@ -12,6 +12,7 @@ use App\Models\Slider;
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
 use App\Models\User;
+use App\Traits\SEOTrait;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Validator;
 
 class IndexController extends Controller
 {
+    use SEOTrait;
+
     protected function getRules()
     {
         return [
@@ -43,7 +46,7 @@ class IndexController extends Controller
     public function index()
     {
 //        $blogpost = BlogPost::latest()->get();
-        $products = Product::/*where('status', 1)->*/orderBy('id', 'DESC')->limit(6)->get();
+        $products = Product::/*where('status', 1)->*/ orderBy('id', 'DESC')->limit(6)->get();
         $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
         $categories = Category::with('subcategory')->orderBy('name_en', 'ASC')->get();
 
@@ -55,10 +58,10 @@ class IndexController extends Controller
 //        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(3)->get();
 //
         $skip_category_0 = Category::skip(0)->first();
-        $skip_product_0 = Product::/*where('status', 1)->*/where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->get();
+        $skip_product_0 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->get();
 
         $skip_category_1 = Category::skip(1)->first();
-        $skip_product_1 = Product::/*where('status', 1)->*/where('category_id', $skip_category_1->id)->orderBy('id', 'DESC')->get();
+        $skip_product_1 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_1->id)->orderBy('id', 'DESC')->get();
 
 //        $skip_brand_1 = Brand::skip(1)->first();
 //        $skip_brand_product_1 = Product::where('status', 1)->where('brand_id', $skip_brand_1->id)->orderBy('id', 'DESC')->get();
@@ -172,6 +175,8 @@ class IndexController extends Controller
 
         $multiImag = MultiImg::where('product_id', $id)->get();
 
+        $this->SEOTrait($product->name_en, $product->thumbnail);
+
         $cat_id = $product->category_id;
         $relatedProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
         return view('front.product.product_details', compact('product', 'multiImag', 'product_color_en', 'product_color_ar', 'relatedProduct'));
@@ -191,7 +196,7 @@ class IndexController extends Controller
     // Subcategory wise data
     public function SubCatWiseProduct(Request $request, $subcat_id)
     {
-        $products = Product::/*where('status', 1)->*/where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(6);
+        $products = Product::/*where('status', 1)->*/ where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(6);
         $categories = Category::orderBy('name_en', 'ASC')->get();
 
         $breadsubcat = SubCategory::with(['category'])->where('id', $subcat_id)->get();
@@ -231,7 +236,7 @@ class IndexController extends Controller
 
         if (app()->getLocale() === 'en') {
             $color = $product->color_en;
-        }else{
+        } else {
             $color = $product->color_ar;
         }
 

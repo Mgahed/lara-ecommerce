@@ -7,14 +7,24 @@
     <meta name="description" content="">
     <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+    @inject('SEO', 'App\Traits\seoclass')
+    @php
+        if (\Request::route()->getName() !== 'product.details') {
+            $SEO->SEOTrait();
+        }
+    @endphp
+
+    {!! SEO::generate() !!}
+    <meta name="author" content="">
+    <link rel="icon" href="{{asset('logo.png')}}">
     <meta name="robots" content="all">
-    <title>{{ config('app.name', 'Mr Technawy Ecommerce') }}</title>
-@if (app()->getLocale() === 'en')
+    @if (app()->getLocale() === 'en')
         <style>
-            .float-right{float:right!important}
+            .float-right {
+                float: right !important
+            }
         </style>
-    <!-- Bootstrap Core CSS -->
+        <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="{{asset('front/assets/css/bootstrap.min.css')}}">
 
         <!-- Customizable CSS -->
@@ -28,11 +38,13 @@
 
         <!-- Icons/Glyphs -->
         <link rel="stylesheet" href="{{asset('front/assets/css/font-awesome.css')}}">
-@else
+    @else
         <style>
-            .float-right{float:left!important}
+            .float-right {
+                float: left !important
+            }
         </style>
-    <!-- Bootstrap Core CSS -->
+        <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_bootstrap.css')}}">
 
         <!-- Customizable CSS -->
@@ -46,7 +58,7 @@
 
         <!-- Icons/Glyphs -->
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_font-awesome.css')}}">
-@endif
+    @endif
 
 <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -197,7 +209,8 @@
                         </div>
                         <div class="form-group">
                             <label for="quantity">{{__('Quantity')}}</label>
-                            <input type="number" class="form-control" id="quantity" value="1" min="1" max="" name="quantity"
+                            <input type="number" class="form-control" id="quantity" value="1" min="1" max=""
+                                   name="quantity"
                                    autocomplete="off">
                         </div>
                     </div>
@@ -207,7 +220,8 @@
                 <input type="hidden" id="product_id">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         id="closeModel">{{__('Close')}}</button>
-                <button type="submit" id="add_to_cart_submit" class="btn btn-primary" onclick="addToCart()">{{__('Add to cart')}}</button>
+                <button type="submit" id="add_to_cart_submit" class="btn btn-primary"
+                        onclick="addToCart()">{{__('Add to cart')}}</button>
             </div>
         </div>
     </div>
@@ -228,10 +242,10 @@
             url: '/product/view/modal/' + id,
             dataType: 'json',
             success: function (data) {
-                $('#quantity').attr('max',data.product.quantity)
-                if(data.product.quantity<=0){
+                $('#quantity').attr('max', data.product.quantity)
+                if (data.product.quantity <= 0) {
                     $('#add_to_cart_submit').hide();
-                }else{
+                } else {
                     $('#add_to_cart_submit').show();
                 }
                 /*console.log(data)*/
@@ -416,14 +430,15 @@
             url: "{{route('coupon.calculation')}}",
             dataType: 'json',
             success: function (data) {
-                if (data.total){
-                    $('#couponCalField').html('<tr><th><div class="cart-grand-total">{{__("Grand Total")}}<span class="float-right"><span id="cart_total">'+data.total+'</span>{{__('EGP')}}</span></div></th></tr>')
-                }else {
-                    $('#couponCalField').html('<tr><th><div class="cart-sub-total">{{__('Subtotal')}}<span class="float-right"><span id="cart_sub_total">'+data.subtotal+'</span>{{__('EGP')}}</span></div><div class="cart-sub-total">{{__('Coupon')}}<span class="float-right"><span>'+data.coupon_name+'</span> <a href="{{route('coupon.remove')}}"><i class="fa fa-times"></i></a></span></div> <div class="cart-sub-total">{{__('Discount')}}<span class="float-right"><span>'+data.discount_amount+'</span>{{__('EGP')}}</span></div><div class="cart-grand-total">{{__("Grand Total")}}<span class="float-right"><span id="cart_total">'+data.total_amount+'</span>{{__('EGP')}}</span></div></th></tr>')
+                if (data.total) {
+                    $('#couponCalField').html('<tr><th><div class="cart-grand-total">{{__("Grand Total")}}<span class="float-right"><span id="cart_total">' + data.total + '</span>{{__('EGP')}}</span></div></th></tr>')
+                } else {
+                    $('#couponCalField').html('<tr><th><div class="cart-sub-total">{{__('Subtotal')}}<span class="float-right"><span id="cart_sub_total">' + data.subtotal + '</span>{{__('EGP')}}</span></div><div class="cart-sub-total">{{__('Coupon')}}<span class="float-right"><span>' + data.coupon_name + '</span> <a href="{{route('coupon.remove')}}"><i class="fa fa-times"></i></a></span></div> <div class="cart-sub-total">{{__('Discount')}}<span class="float-right"><span>' + data.discount_amount + '</span>{{__('EGP')}}</span></div><div class="cart-grand-total">{{__("Grand Total")}}<span class="float-right"><span id="cart_total">' + data.total_amount + '</span>{{__('EGP')}}</span></div></th></tr>')
                 }
             }
         });
     }
+
     couponCalculation();
     /*----- End Apply coupon -----*/
 
