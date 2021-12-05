@@ -43,7 +43,7 @@ class SliderController extends Controller
 
         $img = $request->file('img');
         $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-        Image::Make($img)->resize(870, 370)->save('upload/slider/' . $name_gen);
+        Image::Make($img)->resize(870, 370)->save(public_path('/upload/slider/' . $name_gen));
         $save_img = 'upload/slider/' . $name_gen;
 
         Slider::create([
@@ -73,11 +73,11 @@ class SliderController extends Controller
 
         if ($request->file('img')) {
             $old_img = $request->old_image;
-            unlink($old_img);
+            unlink(public_path($old_img));
 
             $img = $request->file('img');
             $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-            Image::Make($img)->resize(870, 370)->save('upload/slider/' . $name_gen);
+            Image::Make($img)->resize(870, 370)->save(public_path('/upload/slider/' . $name_gen));
             $save_img = 'upload/slider/' . $name_gen;
 
             $slider->update([
@@ -109,7 +109,7 @@ class SliderController extends Controller
     public function SliderDelete($id)
     {
         $slider = Slider::findOrFail($id);
-        unlink($slider->img);
+        unlink(public_path($slider->img));
         $slider->delete();
         $notification = [
             'message' => __('Slider deleted successfully'),

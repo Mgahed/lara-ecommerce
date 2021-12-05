@@ -80,7 +80,7 @@ class ProductController extends Controller
 //        return $request;
         $thumbnail_img = $request->file('thumbnail');
         $name_gen = md5($thumbnail_img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $thumbnail_img->getClientOriginalExtension();
-        Image::Make($thumbnail_img)->resize(400, 400)->save('upload/products/thumbnail/' . $name_gen);
+        Image::Make($thumbnail_img)->resize(400, 400)->save(public_path('/upload/products/thumbnail/' . $name_gen));
         $save_thumbnail_img = 'upload/products/thumbnail/' . $name_gen;
 
         $product = Product::create([
@@ -108,7 +108,7 @@ class ProductController extends Controller
         $product_id = Product::orderBy('id', 'desc')->first();
         foreach ($multi_imgs as $multi_img) {
             $name_gen = md5($multi_img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $multi_img->getClientOriginalExtension();
-            Image::Make($multi_img)->resize(400, 400)->save('upload/products/multi-image/' . $name_gen);
+            Image::Make($multi_img)->resize(400, 400)->save(public_path('/upload/products/multi-image/' . $name_gen));
             $save_multi_img = 'upload/products/multi-image/' . $name_gen;
 
             MultiImg::create([
@@ -182,10 +182,10 @@ class ProductController extends Controller
 
         foreach ($imgs as $id => $img) {
             $imgDel = MultiImg::findOrFail($id);
-            unlink($imgDel->name);
+            unlink(public_path($imgDel->name));
 
             $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-            Image::Make($img)->resize(400, 400)->save('upload/products/multi-image/' . $name_gen);
+            Image::Make($img)->resize(400, 400)->save(public_path('/upload/products/multi-image/' . $name_gen));
             $save_multi_img = 'upload/products/multi-image/' . $name_gen;
 
             $imgDel->update([
@@ -205,12 +205,12 @@ class ProductController extends Controller
     {
         $product_id = $request->id;
         $oldImg = $request->old_img;
-        unlink($oldImg);
+        unlink(public_path($oldImg));
 
         $img = $request->file('product_thumbnail');
 
         $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-        Image::Make($img)->resize(400, 400)->save('upload/products/thumbnail/' . $name_gen);
+        Image::Make($img)->resize(400, 400)->save(public_path('/upload/products/thumbnail/' . $name_gen));
         $save_multi_img = 'upload/products/thumbnail/' . $name_gen;
 
         Product::findOrFail($product_id)->update([
@@ -227,7 +227,7 @@ class ProductController extends Controller
     public function MultiImageDelete($id)
     {
         $img = MultiImg::findOrFail($id);
-        unlink($img->name);
+        unlink(public_path($img->name));
         $delete = $img->delete();
         if ($delete) {
             $notification = [
@@ -250,7 +250,7 @@ class ProductController extends Controller
             unlink($img->name);
             MultiImg::findOrFail($img->id)->delete();
         }
-        unlink($product->thumbnail);
+        unlink(public_path($product->thumbnail));
         $delete = $product->delete();
         if ($delete) {
             $notification = [
