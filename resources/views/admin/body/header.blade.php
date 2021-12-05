@@ -16,28 +16,23 @@
                         <i class="nav-link-icon mdi mdi-crop-free"></i>
                     </a>
                 </li>
-                <li class="btn-group nav-item d-none d-xl-inline-block">
-                    <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-                        <i class="ti-check-box"></i>
-                    </a>
-                </li>
-                <li class="btn-group nav-item d-none d-xl-inline-block">
-                    <a href="calendar.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-                        <i class="ti-calendar"></i>
-                    </a>
-                </li>
             </ul>
         </div>
 
         <div class="navbar-custom-menu r-side">
             <ul class="nav navbar-nav">
-                <!-- full Screen -->
-                <li class="search-bar">
-                    <div class="lookup lookup-circle lookup-right">
-                        <input type="text" name="s">
-                    </div>
-                </li>
-                <!-- Notifications -->
+                @if (app()->getLocale()==='en')
+                    <li class="btn-group nav-item" style="margin-top: 10px;">
+                        <a rel="alternate" style="width: 100%" hreflang="ar" class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
+                           href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">العربية</a>
+                    </li>
+                @else
+                    <li class="btn-group nav-item" style="margin-top: 10px;">
+                        <a rel="alternate" style="width: 100%" hreflang="en" class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
+                           href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">English</a>
+                    </li>
+            @endif
+            <!-- Notifications -->
                 <li class="dropdown notifications-menu">
                     <a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown"
                        title="Notifications">
@@ -114,16 +109,20 @@
                     <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown"
                        title="User">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-{{--                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">--}}
-                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-{{--                            </button>--}}
+                            {{--                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">--}}
+                            <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
+                                 alt="{{ Auth::user()->name }}"/>
+                            {{--                            </button>--}}
                         @else
                             <span class="inline-flex rounded-md">
 {{--                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">--}}
-                                        {{ Auth::user()->name }}
+                                {{ Auth::user()->name }}
 
-                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                  clip-rule="evenodd"/>
                                         </svg>
 {{--                                    </button>--}}
                                 </span>
@@ -131,27 +130,20 @@
                     </a>
                     <ul class="dropdown-menu animated flipInX">
                         <li class="user-body">
-                            <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
-                            <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My
-                                Wallet</a>
-                            <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i>
-                                Settings</a>
+                            <a class="dropdown-item" href="{{route('home')}}"><i
+                                    class="mdi mdi-home text-muted mr-2"></i>
+                                {{__('Home page')}}</a>
                             <div class="dropdown-divider"></div>
-                                <form method="POST" class="mb-3" action="{{ route('logout') }}">
-                                    @csrf
-                                    <x-jet-dropdown-link href="{{ route('logout') }}"
-                                                         onclick="event.preventDefault();
+                            <form method="POST" class="mb-3" action="{{ route('logout') }}">
+                                @csrf
+                                <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                        <i class="ti-lock text-muted mr-2"></i> {{ __('Log Out') }}
-                                    </x-jet-dropdown-link>
-                                </form>
+                                    <i class="ti-lock text-muted mr-2"></i> {{ __('Log Out') }}
+                                </x-jet-dropdown-link>
+                            </form>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect waves-light">
-                        <i class="ti-settings"></i>
-                    </a>
                 </li>
 
             </ul>

@@ -7,10 +7,17 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
                         @auth
+                            @if (auth()->user()->role === 'admin')
+                                <li>
+                                    <a href="{{route('admin.dashboard')}}"><i
+                                            class="icon fa fa-dashboard"></i>{{__('Dashboard')}}</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="{{route('wishlist')}}"><i class="icon fa fa-heart"></i>{{__('Wishlist')}}</a>
                             </li>
-                        <li><a href="{{route('mycart')}}"><i class="icon fa fa-shopping-cart"></i>{{__('My Cart')}}</a></li>
+                            <li><a href="{{route('mycart')}}"><i class="icon fa fa-shopping-cart"></i>{{__('My Cart')}}
+                                </a></li>
                         @endauth
                         {{--<li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>--}}
                         @auth
