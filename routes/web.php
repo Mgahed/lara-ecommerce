@@ -203,6 +203,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
         Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
         Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
+        Route::get('/cancel/order/{id}', [AllUserController::class, 'CancelOrder'])->name('cancel.order');
 
         // Order Traking Route
         Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');

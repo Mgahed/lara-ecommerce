@@ -204,6 +204,12 @@
 
                 </div> <!-- // END ORDER ITEM ROW -->
 
+                @if ($order->status === 'pending')
+                    <a href="{{route('cancel.order',$order->id)}}" class="btn btn-warning">
+                        <i class="fa fa-times-circle"></i> {{__('Cancel order')}}
+                    </a>
+                @endif
+
                 @if($order->status !== "delivered" && \Carbon\Carbon::now()->diffInDays($order->dilivered_date)<=7)
 
                 @else

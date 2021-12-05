@@ -95,7 +95,7 @@ class OrderController extends Controller
     // Cancel Orders
     public function CancelOrders()
     {
-        $orders = Order::where('status', 'cancel')->orWhere('status','cancelled by admin')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'cancelled')->orWhere('status','cancelled by admin')->orderBy('id', 'DESC')->get();
         return view('admin.orders.cancel_orders', compact('orders'));
 
     } // end mehtod
