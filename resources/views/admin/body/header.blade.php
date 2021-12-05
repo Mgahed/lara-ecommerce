@@ -16,6 +16,10 @@
                         <i class="nav-link-icon mdi mdi-crop-free"></i>
                     </a>
                 </li>
+                <li class="btn-group nav-item">
+                    <a class="waves-effect waves-light nav-link rounded svg-bt-icon" title="{{__('Home')}}" href="{{route('home')}}"><i
+                            class="nav-link-icon mdi mdi-home text-muted mr-2"></i></a>
+                </li>
             </ul>
         </div>
 
@@ -130,10 +134,6 @@
                     </a>
                     <ul class="dropdown-menu animated flipInX">
                         <li class="user-body">
-                            <a class="dropdown-item" href="{{route('home')}}"><i
-                                    class="mdi mdi-home text-muted mr-2"></i>
-                                {{__('Home page')}}</a>
-                            <div class="dropdown-divider"></div>
                             <form method="POST" class="mb-3" action="{{ route('logout') }}">
                                 @csrf
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
