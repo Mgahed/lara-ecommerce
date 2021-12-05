@@ -1594,8 +1594,8 @@ Theme Primary Color
   -webkit-animation: ripple .2s linear forwards;
   animation: ripple .2s linear forwards; }
 .theme-primary [type=checkbox]:checked + label:before {
-  border-right: 2px solid #0F5EF7;
-  border-bottom: 2px solid #0F5EF7; }
+  /*border-right: 2px solid #0F5EF7;
+  border-bottom: 2px solid #0F5EF7;*/ }
 .theme-primary [type=checkbox].filled-in:checked + label:after {
   border: 2px solid #0F5EF7;
   background-color: #0F5EF7; }

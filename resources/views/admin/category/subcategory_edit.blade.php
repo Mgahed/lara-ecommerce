@@ -20,7 +20,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Edit SubCategory </h3>
+                            <h3 class="box-title">{{__('Edit SubCategory')}} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -31,10 +31,10 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <h5>Category Select <span class="text-danger">*</span></h5>
+                                        <h5>{{__('Category Select')}} <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <select name="category_id" class="form-control">
-                                                <option value="" selected="" disabled="">Select Category</option>
+                                                <option value="" selected="" disabled="">{{__('Select Category')}}</option>
                                                 @foreach($categories as $category)
                                                     <option
                                                         value="{{ $category->id }}" {{ $category->id == $subcategory->category_id ? 'selected': ''}} >{{ $category->name_en }}
@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Update')}}">
                                     </div>
                                 </form>
 

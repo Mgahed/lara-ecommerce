@@ -17,7 +17,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Category List <span
+                            <h3 class="box-title">{{__('Category List')}} <span
                                     class="badge badge-pill badge-danger"> {{ count($category) }} </span></h3>
                         </div>
                         <!-- /.box-header -->
@@ -67,7 +67,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add Category </h3>
+                            <h3 class="box-title">{{__('Add Category')}} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -101,7 +101,7 @@
 
 
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Add')}}">
                                     </div>
                                 </form>
 

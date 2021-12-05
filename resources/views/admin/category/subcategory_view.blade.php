@@ -17,7 +17,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">SubCategory List <span
+                            <h3 class="box-title">{{__('SubCategory List')}} <span
                                     class="badge badge-pill badge-danger"> {{ count($subcategories) }} </span></h3>
                         </div>
                         <!-- /.box-header -->
@@ -71,7 +71,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add SubCategory </h3>
+                            <h3 class="box-title">{{__('Add SubCategory')}} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -83,10 +83,10 @@
 
 
                                     <div class="form-group">
-                                        <h5>Category Select <span class="text-danger">*</span></h5>
+                                        <h5>{{__('Category Select')}} <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <select name="category_id" class="form-control">
-                                                <option value="" selected="" disabled="">Select Category</option>
+                                                <option value="" selected="" disabled="">{{__('Select Category')}}</option>
                                                 @foreach($categories as $category)
                                                     <option
                                                         value="{{ $category->id }}">{{ $category->name_en }}
@@ -125,7 +125,7 @@
 
 
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Add')}}">
                                     </div>
                                 </form>
 

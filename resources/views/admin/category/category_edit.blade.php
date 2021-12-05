@@ -20,7 +20,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Edit Category </h3>
+                            <h3 class="box-title">{{__('Edit Category')}} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -56,7 +56,7 @@
 
 
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Update')}}">
                                     </div>
                                 </form>
 
