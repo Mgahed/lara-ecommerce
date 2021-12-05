@@ -137,10 +137,10 @@
                                                 <div class="favorite-button m-t-10">
                                                     <a class="btn btn-primary" data-toggle="tooltip"
                                                        data-placement="right"
-                                                       title="Wishlist" href="#">
+                                                       title="Wishlist" href="javascript:addToWishlist({{$product->id}})">
                                                         <i class="fa fa-heart"></i>
                                                     </a>
-                                                    <a class="btn btn-primary" data-toggle="tooltip"
+                                                    {{--<a class="btn btn-primary" data-toggle="tooltip"
                                                        data-placement="right"
                                                        title="Add to Compare" href="#">
                                                         <i class="fa fa-signal"></i>
@@ -149,7 +149,7 @@
                                                        data-placement="right"
                                                        title="E-mail" href="#">
                                                         <i class="fa fa-envelope"></i>
-                                                    </a>
+                                                    </a>--}}
                                                 </div>
                                             </div>
 
@@ -220,7 +220,7 @@
                             <div class="col-sm-3">
                                 <ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
                                     <li class="active"><a data-toggle="tab" href="#description">{{__('DESCRIPTION')}}</a></li>
-                                    <li><a data-toggle="tab" href="#review">{{__('REVIEW')}}</a></li>
+                                    {{--<li><a data-toggle="tab" href="#review">{{__('REVIEW')}}</a></li>--}}
                                     {{--<li><a data-toggle="tab" href="#tags">TAGS</a></li>--}}
                                 </ul><!-- /.nav-tabs #product-tabs -->
                             </div>
@@ -234,7 +234,7 @@
                                         </div>
                                     </div><!-- /.tab-pane -->
 
-                                    <div id="review" class="tab-pane">
+                                    {{--<div id="review" class="tab-pane">
                                         <div class="product-tab">
 
                                             <div class="product-reviews">
@@ -359,7 +359,7 @@
                                             </div><!-- /.product-add-review -->
 
                                         </div><!-- /.product-tab -->
-                                    </div><!-- /.tab-pane -->
+                                    </div>--}}<!-- /.tab-pane -->
                                     {{--
 
                                                                         <div id="tags" class="tab-pane">
@@ -468,31 +468,32 @@
                                                         <ul class="list-unstyled">
                                                             <li class="add-cart-button btn-group">
                                                                 <button class="btn btn-primary icon"
-                                                                        data-toggle="dropdown"
+                                                                        type="button"
+                                                                        data-toggle="modal"
+                                                                        data-target="#add_to_cart"
+                                                                        onclick="productView({{$product->id}})"
+                                                                        title="{{__('Add Cart')}}"><i
+                                                                        class="fa fa-shopping-cart"></i>
+                                                                </button>
+                                                                <button class="btn btn-primary cart-btn"
                                                                         type="button">
-                                                                    <i class="fa fa-shopping-cart"></i>
+                                                                    {{__('Add Cart')}}
                                                                 </button>
-                                                                <button class="btn btn-primary cart-btn" type="button">
-                                                                    Add
-                                                                    to
-                                                                    cart
-                                                                </button>
-
                                                             </li>
 
                                                             <li class="lnk wishlist">
-                                                                <a class="add-to-cart" href="detail.html"
+                                                                <a class="add-to-cart" href="javascript:addToWishlist({{$product->id}})"
                                                                    title="Wishlist">
                                                                     <i class="icon fa fa-heart"></i>
                                                                 </a>
                                                             </li>
 
-                                                            <li class="lnk">
+                                                            {{--<li class="lnk">
                                                                 <a class="add-to-cart" href="detail.html"
                                                                    title="Compare">
                                                                     <i class="fa fa-signal"></i>
                                                                 </a>
-                                                            </li>
+                                                            </li>--}}
                                                         </ul>
                                                     </div><!-- /.action -->
                                                 </div><!-- /.cart -->

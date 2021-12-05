@@ -93,6 +93,7 @@ class IndexController extends Controller
     public function UserProfileStore(Request $request)
     {
         $rules = $this->getRules();
+        unset($rules['email']);
         $customMSG = $this->getMSG();
         $validator = Validator::make($request->all(), $rules, $customMSG);
         if ($validator->fails()) {
@@ -101,7 +102,7 @@ class IndexController extends Controller
 
         $data = User::find(Auth::user()->id);
         $data->name = $request->name;
-        $data->email = $request->email;
+        /*$data->email = $request->email;*/
         $data->phone = $request->phone;
 
 

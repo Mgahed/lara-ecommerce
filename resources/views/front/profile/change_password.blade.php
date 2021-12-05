@@ -17,7 +17,7 @@
 
                 <div class="col-md-6">
                     <div class="card">
-                        <h3 class="text-center"><span class="text-danger">Change Password</span><strong> </strong></h3>
+                        <h3 class="text-center"><span class="text-danger">{{__('Change Password')}}</span><strong> </strong></h3>
 
                         <div class="card-body">
 
@@ -27,21 +27,21 @@
 
 
                                 <div class="form-group">
-                                    <label class="info-title" for="exampleInputEmail1">Current Password
+                                    <label class="info-title" for="exampleInputEmail1">{{__('Current Password')}}
                                         <span> </span></label>
                                     <input type="password" id="current_password" name="oldpassword"
                                            class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="info-title" for="exampleInputEmail1">New Password
+                                    <label class="info-title" for="exampleInputEmail1">{{__('New Password')}}
                                         <span> </span></label>
                                     <input type="password" id="password" name="password" class="form-control">
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label class="info-title" for="exampleInputEmail1">Confirm Password
+                                    <label class="info-title" for="exampleInputEmail1">{{__('Confirm Password')}}
                                         <span> </span></label>
                                     <input type="password" id="password_confirmation" name="password_confirmation"
                                            class="form-control">
@@ -49,7 +49,7 @@
 
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-danger">Update</button>
+                                    <button type="submit" class="btn btn-danger">{{__('Update')}}</button>
                                 </div>
 
 

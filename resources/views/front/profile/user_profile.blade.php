@@ -14,8 +14,8 @@
                 <div class="col-md-6">
                     <div class="card">
                         <h3 class="text-center"><span
-                                class="text-danger">Hi....</span><strong>{{ Auth::user()->name }}</strong> Update Your
-                            Profile </h3>
+                                class="text-danger">{{__('Hi....')}}</span><strong>{{ Auth::user()->name }}</strong>
+                            {{__('Update Your Profile')}} </h3>
 
                         <div class="card-body">
 
@@ -26,7 +26,7 @@
 
 
                                 <div class="form-group">
-                                    <label class="info-title" for="name">Name <span> </span></label>
+                                    <label class="info-title" for="name">{{__('Name')}} <span> </span></label>
                                     <input type="text" id="name" name="name" class="form-control" value="{{ $user->name }}">
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -36,8 +36,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="info-title" for="email">Email <span> </span></label>
-                                    <input type="email" id="email" name="email" class="form-control" value="{{ $user->email }}">
+                                    <label class="info-title" for="email">{{__('Email')}} <span> </span></label>
+                                    <input type="email" disabled id="email" name="email" class="form-control" value="{{ $user->email }}">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                     <strong class="text-danger">{{$message}}</strong>
@@ -47,7 +47,7 @@
 
 
                                 <div class="form-group">
-                                    <label class="info-title" for="phone">Phone <span> </span></label>
+                                    <label class="info-title" for="phone">{{__('Phone')}} <span> </span></label>
                                     <input type="text" id="phone" name="phone" class="form-control" value="{{ $user->phone }}">
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                                 {{--                                </div>--}}
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-danger">Update</button>
+                                    <button type="submit" class="btn btn-danger">{{__('Update')}}</button>
                                 </div>
 
 

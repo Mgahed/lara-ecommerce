@@ -190,7 +190,7 @@
                                                             <ul class="links">
                                                                 @foreach ($category->subcategory as $subcategory)
                                                                     <li>
-                                                                        <a href="home.html">{{app()->getLocale() === 'en'?$subcategory->name_en:$subcategory->name_ar}}</a>
+                                                                        <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?$subcategory->name_en:$subcategory->name_ar}}</a>
                                                                     </li>
                                                                 @endforeach
                                                             </ul>

@@ -21,10 +21,10 @@
                                                     <span
                                                         style="color:grey;">{{app()->getLocale() === 'en'?$slider->descp_en:$slider->descp_ar}}</span>
                                                 </div>
-                                                <div class="button-holder fadeInDown-3"><a
+                                                {{--<div class="button-holder fadeInDown-3"><a
                                                         href="index.php?page=single-product"
                                                         class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop
-                                                        Now</a></div>
+                                                        Now</a></div>--}}
                                             </div>
                                             <!-- /.caption -->
                                         </div>
@@ -40,7 +40,7 @@
                 <!-- ========================================= SECTION – HERO : END ========================================= -->
 
                     <!-- ============================================== INFO BOXES ============================================== -->
-                    <div class="info-boxes wow fadeInUp">
+                    {{--<div class="info-boxes wow fadeInUp">
                         <div class="info-boxes-inner">
                             <div class="row">
                                 <div class="col-md-6 col-sm-4 col-lg-4">
@@ -83,7 +83,7 @@
                         </div>
                         <!-- /.info-boxes-inner -->
 
-                    </div>
+                    </div>--}}
                     <!-- /.info-boxes -->
                     <!-- ============================================== INFO BOXES : END ============================================== -->
                     <!-- ============================================== SCROLL TABS ============================================== -->
@@ -189,14 +189,14 @@
                                                                             <i class="icon fa fa-heart"></i>
                                                                         </a>
                                                                     </li>
-                                                                    <li class="lnk"><a data-toggle="tooltip"
+                                                                    {{--<li class="lnk"><a data-toggle="tooltip"
                                                                                        class="add-to-cart"
                                                                                        href="detail.html"
                                                                                        title="Compare">
                                                                             <i
                                                                                 class="fa fa-signal"
                                                                                 aria-hidden="true"></i>
-                                                                        </a></li>
+                                                                        </a></li>--}}
                                                                 </ul>
                                                             </div>
                                                             <!-- /.action -->
@@ -315,14 +315,14 @@
                                                                             <i class="icon fa fa-heart"></i>
                                                                         </a>
                                                                     </li>
-                                                                    <li class="lnk"><a data-toggle="tooltip"
+                                                                    {{--<li class="lnk"><a data-toggle="tooltip"
                                                                                        class="add-to-cart"
                                                                                        href="detail.html"
                                                                                        title="Compare">
                                                                             <i
                                                                                 class="fa fa-signal"
                                                                                 aria-hidden="true"></i>
-                                                                        </a></li>
+                                                                        </a></li>--}}
                                                                 </ul>
                                                             </div>
                                                             <!-- /.action -->
@@ -440,14 +440,14 @@
                                                                             <i class="icon fa fa-heart"></i>
                                                                         </a>
                                                                     </li>
-                                                                    <li class="lnk"><a data-toggle="tooltip"
+                                                                    {{--<li class="lnk"><a data-toggle="tooltip"
                                                                                        class="add-to-cart"
                                                                                        href="detail.html"
                                                                                        title="Compare">
                                                                             <i
                                                                                 class="fa fa-signal"
                                                                                 aria-hidden="true"></i>
-                                                                        </a></li>
+                                                                        </a></li>--}}
                                                                 </ul>
                                                             </div>
                                                             <!-- /.action -->

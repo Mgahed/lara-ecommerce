@@ -17,28 +17,28 @@
 
                             <tr style="background: #e2e2e2;">
                                 <td class="col-md-1">
-                                    <label for=""> Date</label>
+                                    <label for=""> {{__('Date')}}</label>
                                 </td>
 
                                 <td class="col-md-3">
-                                    <label for=""> Total</label>
+                                    <label for=""> {{__('Total')}}</label>
                                 </td>
 
                                 <td class="col-md-3">
-                                    <label for=""> Payment</label>
+                                    <label for=""> {{__('Payment')}}</label>
                                 </td>
 
 
                                 <td class="col-md-2">
-                                    <label for=""> Invoice</label>
+                                    <label for=""> {{__('Invoice')}}</label>
                                 </td>
 
                                 <td class="col-md-2">
-                                    <label for=""> Order</label>
+                                    <label for=""> {{__('Order status')}}</label>
                                 </td>
 
                                 <td class="col-md-1">
-                                    <label for=""> Action </label>
+                                    <label for=""> {{__('Action')}} </label>
                                 </td>
 
                             </tr>
@@ -105,11 +105,11 @@
 
                                     <td class="col-md-1">
                                         <a href="{{ route('OrderDetails',$order->id ) }}"
-                                           class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View</a>
+                                           class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> {{__('View')}}</a>
 
                                         <a target="_blank" href="{{ route('InvoiceDownload',$order->id ) }}"
                                            class="btn btn-sm btn-danger" style="margin-top: 5px;"><i
-                                                class="fa fa-download" style="color: white;"></i> Invoice </a>
+                                                class="fa fa-download" style="color: white;"></i> {{__('Invoice')}} </a>
 
                                     </td>
 
