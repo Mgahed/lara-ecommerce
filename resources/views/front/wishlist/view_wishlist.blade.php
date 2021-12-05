@@ -16,8 +16,10 @@
                                 @if ($wishlist->count())
                                     @foreach ($wishlist as $product)
                                         <tr>
-                                            <td class="col-md-2"><img src="{{asset($product->product->thumbnail)}}"
-                                                                      alt="{{app()->getLocale() === 'en'?$product->product->name_en:$product->product->name_ar}}">
+                                            <td class="col-md-2">
+                                                <img style="width: 60px !important;" height="60px;"
+                                                     src="{{asset($product->product->thumbnail)}}"
+                                                     alt="{{$product->product->name_en}}">
                                             </td>
                                             <td class="col-md-7">
                                                 <div class="product-name"><a
