@@ -6,17 +6,17 @@
                 <div class="row">
                     <!-- Sign-in -->
                     <div class="col-md-6 col-sm-6 sign-in">
-                        <h4 class="">Sign in</h4>
-                        <p class="">Hello, Welcome to your account.</p>
-                        <div class="social-sign-in outer-top-xs">
+                        <h4 class="">{{__('Sign in')}}</h4>
+                        <p class="">{{__('Hello, Welcome to your account.')}}</p>
+                        {{--<div class="social-sign-in outer-top-xs">
                             <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with
                                 Facebook</a>
                             <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
-                        </div>
+                        </div>--}}
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
+                                <label class="info-title" for="exampleInputEmail1">{{__('Email Address')}} <span>*</span></label>
                                 <input type="email" name="email" class="form-control unicase-form-control text-input"
                                        id="email">
                                 @error('email')
@@ -26,7 +26,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
+                                <label class="info-title" for="exampleInputPassword1">{{__('Password')}} <span>*</span></label>
                                 <input type="password" name="password"
                                        class="form-control unicase-form-control text-input"
                                        id="password">
@@ -37,22 +37,22 @@
                                 @enderror
                             </div>
                             <div class="radio outer-xs">
-                                <a href="{{ route('password.request') }}" class="forgot-password pull-left">Forgot your
-                                    Password?</a>
+                                <a href="{{ route('password.request') }}" class="forgot-password pull-left">
+                                    {{__('Forgot your Password?')}}</a>
                             </div>
-                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
+                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{__('Login')}}</button>
                         </form>
                     </div>
                     <!-- Sign-in -->
 
                     <!-- create a new account -->
                     <div class="col-md-6 col-sm-6 create-new-account">
-                        <h4 class="checkout-subtitle">Create a new account</h4>
-                        <p class="text title-tag-line">Create your new account.</p>
+                        <h4 class="checkout-subtitle">{{__('Create a new account')}}</h4>
+                        <p class="text title-tag-line">{{__('Create your new account')}}</p>
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="form-group">
-                                <label class="info-title" for="name">Name <span>*</span></label>
+                                <label class="info-title" for="name">{{__('Name')}} <span>*</span></label>
                                 <input type="text" name="name" class="form-control unicase-form-control text-input"
                                        id="name">
                                 @error('name')
@@ -62,7 +62,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="email">Email Address <span>*</span></label>
+                                <label class="info-title" for="email">{{__('Email Address')}} <span>*</span></label>
                                 <input type="email" name="email" class="form-control unicase-form-control text-input"
                                        id="email">
                                 @error('email')
@@ -72,7 +72,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="phone">Phone Number <span>*</span></label>
+                                <label class="info-title" for="phone">{{__('Phone Number')}} <span>*</span></label>
                                 <input type="text" name="phone" class="form-control unicase-form-control text-input"
                                        id="phone">
                                 @error('phone')
@@ -82,7 +82,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="password">Password <span>*</span></label>
+                                <label class="info-title" for="password">{{__('Password')}} <span>*</span></label>
                                 <input type="password" name="password"
                                        class="form-control unicase-form-control text-input"
                                        id="password">
@@ -93,7 +93,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="password_confirmation">Confirm Password
+                                <label class="info-title" for="password_confirmation">{{__('Confirm Password')}}
                                     <span>*</span></label>
                                 <input type="password" name="password_confirmation"
                                        class="form-control unicase-form-control text-input"
@@ -104,7 +104,7 @@
                                 </span>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up
+                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{__('Sign Up')}}
                             </button>
                         </form>
 

@@ -683,6 +683,13 @@
     "User role changed to admin": "تغير دور المستخدم إلى الادمن",
     "User role changed to normal": "تغير دور المستخدم إلى مستخدم عادي",
     "Seo Updated Successfully": "تم تحديث معلومات SEO بنجاح",
+    "Sign in": "تسجيل الدخول",
+    "Hello, Welcome to your account.": "مرحبا ، اهلا بك في حسابك.",
+    "Forgot your Password?": "نسيت كلمة المرور؟",
+    "Create a new account": "انشاء حساب جديد",
+    "Create your new account": "انشاء حسابك الجديد",
+    "Phone Number": "رقم الهاتف",
+    "Sign Up": "سجل",
 
     "navbar": "/*---------------------------------------- ----------------------------------------*/",
     "Home": "الرئيسية",
