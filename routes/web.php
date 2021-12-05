@@ -149,6 +149,8 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         /*----- Admin Get All User Routes -----*/
         Route::prefix('alluser')->group(function () {
             Route::get('/view', [AdminController::class, 'AllUsers'])->name('all-users');
+            Route::get('/set-admin/{id}', [AdminController::class, 'SetAdmin'])->name('SetAdmin');
+            Route::get('/set-normal/{id}', [AdminController::class, 'SetNormal'])->name('SetNormal');
         });
 
         /*----- Admin Seo -----*/

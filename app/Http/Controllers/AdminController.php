@@ -17,19 +17,46 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function AllUsers(){
+    public function AllUsers()
+    {
         $users = User::latest()->get();
-        return view('admin.user.all_user',compact('users'));
+        return view('admin.user.all_user', compact('users'));
     }
 
-    public function SeoSetting(){
+    public function SetAdmin($id)
+    {
+        User::findOrFail($id)->update([
+            'role' => 'admin'
+        ]);
+        $notification = [
+            'message' => __('User role changed to admin'),
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
+    public function SetNormal($id)
+    {
+        User::findOrFail($id)->update([
+            'role' => 'normal'
+        ]);
+        $notification = [
+            'message' => __('User role changed to normal'),
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
+    public function SeoSetting()
+    {
 
         $seo = Seo::find(1);
-        return view('admin.setting.seo_update',compact('seo'));
+        return view('admin.setting.seo_update', compact('seo'));
     }
 
 
-    public function SeoSettingUpdate(Request $request){
+    public function SeoSettingUpdate(Request $request)
+    {
 
         $seo_id = $request->id;
 

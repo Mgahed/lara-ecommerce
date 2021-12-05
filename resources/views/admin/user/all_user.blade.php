@@ -13,12 +13,12 @@
             <div class="row">
 
 
-
                 <div class="col-12">
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Total User <span class="badge badge-pill badge-danger"> {{ count($users) }} </span> </h3>
+                            <h3 class="box-title">Total User <span
+                                    class="badge badge-pill badge-danger"> {{ count($users) }} </span></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -44,17 +44,23 @@
 
                                             <td>
                                                 @if($user->email_verified_at !== NULL)
-                                                    <span class="badge badge-pill badge-success">{{$user->email_verified_at->diffForHumans()}}</span>
+                                                    <span
+                                                        class="badge badge-pill badge-success">{{$user->email_verified_at->diffForHumans()}}</span>
                                                 @else
-                                                    <span class="badge badge-pill badge-danger">{{__('Email not verified')}}</span>
+                                                    <span
+                                                        class="badge badge-pill badge-danger">{{__('Email not verified')}}</span>
                                                 @endif
                                             </td>
 
                                             <td>
                                                 @if ($user->role === 'normal')
-                                                    <a href="" class="btn btn-success">{{__('Set admin')}} <i class="fa fa-arrow-up"></i></a>
+                                                    <a href="{{route('SetAdmin',$user->id)}}"
+                                                       class="btn btn-success">{{__('Set admin')}} <i
+                                                            class="fa fa-arrow-up"></i></a>
                                                 @else
-                                                    <a href="" class="btn btn-danger">{{__('Set normal')}} <i class="fa fa-arrow-down"></i></a>
+                                                    <a href="{{route('SetNormal',$user->id)}}"
+                                                       class="btn btn-danger">{{__('Set normal')}} <i
+                                                            class="fa fa-arrow-down"></i></a>
                                                 @endif
                                             </td>
 
@@ -72,11 +78,6 @@
 
                 </div>
                 <!-- /.end col-12 -->
-
-
-
-
-
 
 
             </div>

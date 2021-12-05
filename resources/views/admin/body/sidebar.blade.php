@@ -179,7 +179,7 @@
 
             <li class="treeview {{Request::is(app()->getLocale().'/admin/alluser/*') ? 'active' : ''}}">
                 <a href="#">
-                    <i class="mdi mdi-file-document"></i> <span>{{__('Users')}}</span>
+                    <i class="fa fa-users"></i> <span>{{__('Users')}}</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
@@ -194,7 +194,7 @@
 
             <li class="treeview {{Request::is(app()->getLocale().'/admin/site-settings/*') ? 'active' : ''}}">
                 <a href="#">
-                    <i class="mdi mdi-file-document"></i> <span>{{__('Site settings')}}</span>
+                    <i class="mdi mdi-settings"></i> <span>{{__('Site settings')}}</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
