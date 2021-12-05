@@ -56,7 +56,7 @@ class AllUserController extends Controller
 
 
         $notification = array(
-            'message' => __('Return Request Send Successfully'),
+            'message' => __('Return Request Sent Successfully'),
             'alert-type' => 'success'
         );
 

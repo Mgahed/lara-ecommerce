@@ -82,7 +82,7 @@ class CashController extends Controller
         Cart::destroy();
 
         $notification = array(
-            'message' => 'Your Order Place Successfully',
+            'message' => __('Your Order Place Successfully'),
             'alert-type' => 'success'
         );
 

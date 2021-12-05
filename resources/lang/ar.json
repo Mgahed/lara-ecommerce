@@ -678,6 +678,11 @@
     "Select Category": "اختر تصنيف",
     "Category Select": "اختر تصنيف",
     "Edit SubCategory": "تعديل التصنيفات الفرعي",
+    "Order Cancelled Successfully": "تم إلغاء الطلب بنجاح",
+    "Return Request Sent Successfully": "تم إرسال طلب الإرجاع بنجاح",
+    "User role changed to admin": "تغير دور المستخدم إلى الادمن",
+    "User role changed to normal": "تغير دور المستخدم إلى مستخدم عادي",
+    "Seo Updated Successfully": "تم تحديث معلومات SEO بنجاح",
 
     "navbar": "/*---------------------------------------- ----------------------------------------*/",
     "Home": "الرئيسية",
@@ -729,6 +734,8 @@
     "Grand Total": "السعر النهائي",
     "Subtotal": "السعر الكلي",
     "Coupon removed": "تم ازالة الكوبون",
+    "Your Order Place Successfully": "تم ارسال طلبك بنجاح",
+    "User Profile Updated Successfully": "تم تحديث بياناتك الشخصية بنجاح",
 
     "Wishlistttt": "/*---------------------------------------- ----------------------------------------*/",
     "Add to Cart": "اضف للسلة",

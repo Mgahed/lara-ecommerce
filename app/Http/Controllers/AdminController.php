@@ -76,7 +76,7 @@ class AdminController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Seo Updated Successfully',
+            'message' => __('Seo Updated Successfully'),
             'alert-type' => 'info'
         );
 
