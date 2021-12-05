@@ -310,18 +310,19 @@
                     toast: true,
                     position: 'top',
                     showConfirmButton: false,
-                    timer: 3000,
-                    icon: 'success'
+                    timer: 3000
                 })
                 if ($.isEmptyObject(data.error)) {
                     toast.fire({
                         type: 'success',
-                        title: data.success
+                        title: data.success,
+                        icon: 'success'
                     })
                 } else {
                     toast.fire({
                         type: 'error',
-                        title: data.error
+                        title: data.error,
+                        icon: 'error'
                     })
                 }
             }

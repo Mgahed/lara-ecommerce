@@ -21,6 +21,14 @@ class CartController extends Controller
         }
 
         $product = Product::findOrFail($id);
+        if ($request->quantity > $product->quantity) {
+            if ($request->lang === 'en') {
+                $message = 'Quantity not available';
+            } else {
+                $message = 'كمية غير متوفرة';
+            }
+            return response()->json(['error' => $message]);
+        }
 
 
         Cart::add([
@@ -102,7 +110,7 @@ class CartController extends Controller
             ]);
             if ($request->lang === 'en') {
                 $message = 'Coupon Applied Successfully';
-            }else{
+            } else {
                 $message = 'تم استخدام الكوبون بنجاح';
             }
             return response()->json(array(
@@ -112,7 +120,7 @@ class CartController extends Controller
         }
         if ($request->lang === 'en') {
             $message = 'Invalid Coupon';
-        }else{
+        } else {
             $message = 'كوبون غير صالح';
         }
         return response()->json(['error' => $message]);
