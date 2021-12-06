@@ -319,7 +319,7 @@ class IndexController extends Controller
             'msg' => $request->msg
         ];
 
-        Mail::to('mrtechnawy@gmail.co')->send(new ContactUs($email_data));
+        Mail::to('mrtechnawy@gmail.com')->send(new ContactUs($email_data));
 
         $notification = array(
             'message' => __('Email sent successfully'),
