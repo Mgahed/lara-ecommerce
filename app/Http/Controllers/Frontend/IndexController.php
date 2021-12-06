@@ -273,7 +273,18 @@ class IndexController extends Controller
     public function SearchProduct(Request $request)
     {
 
-        $request->validate(["search" => "required"]);
+        $rules = [
+            'search' => 'required',
+        ];
+
+        $customMSG = [
+            'search.required' => __('Search field is required'),
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $customMSG);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
 
         $item = $request->search;
         $cateory = $request->category;

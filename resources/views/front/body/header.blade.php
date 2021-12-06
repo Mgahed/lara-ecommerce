@@ -100,12 +100,18 @@
                                         @endforeach
                                     </select>
                                 </ul>
-                                <input class="search-field" name="search" style="width: 60%;" placeholder="{{__('Search here...')}}"/>
+                                <input class="search-field" name="search" style="width: 60%;"
+                                       placeholder="{{__('Search here...')}}"/>
                                 <button type="submit" style="height: 47px;" class="search-button"></button>
                             </div>
                         </form>
                     </div>
-                    <!-- /.search-area -->
+                    @error('search')
+                    <span class="invalid-feedback badge-pill badge badge-danger text-center" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                @enderror
+                <!-- /.search-area -->
                     <!-- ============================================================= SEARCH AREA : END ============================================================= -->
                 </div>
                 <!-- /.top-search-holder -->
