@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactUs;
+use App\Mail\OrderMail;
 use App\Models\BlogPost;
 use App\Models\Brand;
 use App\Models\Category;
@@ -16,6 +18,7 @@ use App\Traits\SEOTrait;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class IndexController extends Controller
@@ -289,5 +292,40 @@ class IndexController extends Controller
 
     } // end method
 
+
+    public function contact_us(Request $request)
+    {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email',
+            'msg' => 'required'
+        ];
+
+        $customMSG = [
+            'name.required' => __('Must enter the name'),
+            'email.required' => __('Must enter an email'),
+            'email.email' => __('Must be valid email'),
+            'msg.required' => __('Must enter the message')
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $customMSG);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+
+        $email_data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'msg' => $request->msg
+        ];
+
+        Mail::to('mrtechnawy@gmail.co')->send(new ContactUs($email_data));
+
+        $notification = array(
+            'message' => __('Email sent successfully'),
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 
 }

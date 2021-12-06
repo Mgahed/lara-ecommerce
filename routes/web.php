@@ -247,6 +247,12 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
         return redirect()->route('home');
     })->name('dashboard');
+
+    Route::get('/contact-us', function () {
+        return view('front.contact_us');
+    })->name('contact-us');
+
+    Route::post('/contact-us', [IndexController::class, 'contact_us'])->name('contact-us');
 });
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
