@@ -160,6 +160,10 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         });
     });
 
+    /*----------------------------------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------------------------------*/
+
     /*----- normal -----*/
     /*----- user -----*/
     Route::group(['prefix' => 'user', 'middleware' => ['auth:sanctum', 'verified']], function () {
@@ -234,6 +238,11 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         Route::get('/coupon-remove', [CartController::class, 'CouponRemove'])->name('coupon.remove');
 
     });
+
+    /// Product Search Route
+    Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product.search');
+    // Advance Search Routes
+    Route::post('search-product', [IndexController::class, 'SearchProduct'])->name('advanced.search');
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
         return redirect()->route('home');

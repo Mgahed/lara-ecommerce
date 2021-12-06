@@ -80,32 +80,29 @@
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>
                 <!-- /.logo-holder -->
-
+                @php
+                    $categories = \App\Models\Category::with('subcategory')->orderBy('name_en', 'ASC')->get();
+                @endphp
                 <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder">
                     <!-- /.contact-row -->
                     <!-- ============================================================= SEARCH AREA ============================================================= -->
                     <div class="search-area">
-                        <form>
-                            <div class="control-group">
+                        <form action="{{route('advanced.search')}}" method="post">
+                            @csrf
+                            <div class="form-group control-group">
                                 <ul class="categories-filter animate-dropdown">
-                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                            href="category.html">{{__('Categories')}} <b
-                                                class="caret"></b></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li class="menu-header">Computer</li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                       href="category.html">- Clothing</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                       href="category.html">- Electronics</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                       href="category.html">- Shoes</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                       href="category.html">- Watches</a></li>
-                                        </ul>
-                                    </li>
+                                    <select name="category" class="form-control" style="height: 47px;">
+                                        <option value="all">{{__('All')}}</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">
+                                                {{app()->getLocale() === 'en'?$category->name_en:$category->name_ar}}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </ul>
-                                <input class="search-field" placeholder="{{__('Search here...')}}"/>
-                                <a class="search-button" href="#"></a></div>
+                                <input class="search-field" name="search" style="width: 60%;" placeholder="{{__('Search here...')}}"/>
+                                <button type="submit" style="height: 47px;" class="search-button"></button>
+                            </div>
                         </form>
                     </div>
                     <!-- /.search-area -->
@@ -169,9 +166,7 @@
                         <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
                             class="icon-bar"></span> <span class="icon-bar"></span></button>
                 </div>
-                @php
-                    $categories = \App\Models\Category::with('subcategory')->orderBy('name_en', 'ASC')->get();
-                @endphp
+
                 <div class="nav-bg-class">
                     <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
                         <div class="nav-outer">

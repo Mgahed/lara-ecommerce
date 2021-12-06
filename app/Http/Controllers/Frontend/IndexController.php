@@ -273,9 +273,18 @@ class IndexController extends Controller
         $request->validate(["search" => "required"]);
 
         $item = $request->search;
+        $cateory = $request->category;
+//        return $cateory;
 
-        $products = Product::where('product_name_en', 'LIKE', "%$item%")->select('product_name_en', 'product_thambnail', 'selling_price', 'id', 'product_slug_en')->limit(5)->get();
-        return view('front.product.search_product', compact('products'));
+        if ($cateory === 'all') {
+            $products = Product::where('name_en', 'LIKE', "%$item%")->orWhere('name_ar', 'LIKE', "%$item%")->paginate(6);
+        } else {
+            $products = Product::with('category')->where('category_id', $cateory)->where(function ($query) use ($item) {
+                $query->where('name_en', 'LIKE', "%$item%")->orWhere('name_ar', 'LIKE', "%$item%");
+            })->paginate(6);
+        }
+
+        return view('front.product.subcategory_view', compact('products'));
 
 
     } // end method
