@@ -18686,8 +18686,10 @@ form p:last-child {
     border-right: 2px solid transparent;
     border-left: 2px solid #26a69a;
     border-bottom: 2px solid #26a69a;
-    -webkit-transform: rotate(-40deg);
-    transform: rotate(-40deg);
+    /*-webkit-transform: rotate(-40deg);*/
+    transform: rotate(40deg) scalex(-1);
+    -webkit-transform: rotate(40deg) scalex(-1);
+    /*transform: rotate(-40deg);*/
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-transform-origin: 0% 100%;

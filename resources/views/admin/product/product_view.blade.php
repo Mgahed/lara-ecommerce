@@ -17,7 +17,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Product List <span
+                            <h3 class="box-title">{{__('Product List')}} <span
                                     class="badge badge-pill badge-danger"> {{ count($products) }} </span></h3>
                         </div>
                         <!-- /.box-header -->
@@ -26,13 +26,13 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Image</th>
-                                        <th>Product code</th>
-                                        <th>Product name</th>
-                                        <th>Product Price</th>
-                                        <th>Quantity</th>
-                                        <th>Discount</th>
-                                        <th>Action</th>
+                                        <th>{{__('Image')}}</th>
+                                        <th>{{__('Product Code')}}</th>
+                                        <th>{{__('Product name')}}</th>
+                                        <th>{{__('Price')}}</th>
+                                        <th>{{__('Quantity')}}</th>
+                                        <th>{{__('Discount')}}</th>
+                                        <th>{{__('Action')}}</th>
 
                                     </tr>
                                     </thead>

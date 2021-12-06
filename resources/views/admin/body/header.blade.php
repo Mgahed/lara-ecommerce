@@ -136,7 +136,7 @@
                         <li class="user-body">
                             <form method="POST" class="mb-3" action="{{ route('logout') }}">
                                 @csrf
-                                <x-jet-dropdown-link href="{{ route('logout') }}"
+                                <x-jet-dropdown-link style="width: 105% !important;" href="{{ route('logout') }}"
                                                      onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                     <i class="ti-lock text-muted mr-2"></i> {{ __('Log Out') }}

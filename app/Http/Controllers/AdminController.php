@@ -16,11 +16,11 @@ class AdminController extends Controller
             'message' => 'blablabla',
             'alert-type' => 'success'
         ];*/
-        $this_month = Order::whereMonth('created_at', Carbon::now()->month)->sum('amount');
-        $last_month = Order::whereMonth('created_at', Carbon::now()->subMonth()->month)->sum('amount');
-        $two_month = Order::whereMonth('created_at', Carbon::now()->subMonths(2)->month)->sum('amount');
-
-        return view('admin.index',compact('this_month','last_month','two_month'));
+        /*return Carbon::now()->subMonth()->month;*/
+        $this_month = Order::whereMonth('updated_at', Carbon::now()->month)->where('status', 'delivered')->sum('amount');
+        $last_month = Order::whereMonth('updated_at', Carbon::now()->subMonth()->month)->where('status', 'delivered')->sum('amount');
+        $two_month = Order::whereMonth('updated_at', Carbon::now()->subMonths(2)->month)->where('status', 'delivered')->sum('amount');
+        return view('admin.index', compact('this_month', 'last_month', 'two_month'));
     }
 
     public function AllUsers()

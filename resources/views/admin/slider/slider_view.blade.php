@@ -16,7 +16,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Slider List</h3>
+                            <h3 class="box-title">{{__('Slider List')}}</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -24,11 +24,11 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Slider Image </th>
-                                        <th>Title</th>
-                                        <th>Decription</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>{{__('Slider Image')}} </th>
+                                        <th>{{__('Title')}}</th>
+                                        <th>{{__('Description')}}</th>
+                                        <th>{{__('Status')}}</th>
+                                        <th>{{__('Action')}}</th>
 
                                     </tr>
                                     </thead>
@@ -39,7 +39,7 @@
                                             <td><img src="{{ asset($item->img) }}" style="width: 70px; height: 40px;"> </td>
                                             <td>
                                                 @if($item->title_en == NULL)
-                                                    <span class="badge badge-pill badge-danger"> No Title </span>
+                                                    <span class="badge badge-pill badge-danger"> {{__('No Title')}} </span>
                                                 @else
                                                     {{ $item->title_en }} - {{ $item->title_ar }}
                                                 @endif
@@ -48,9 +48,9 @@
                                             <td>{{ $item->descp_en }}</td>
                                             <td>
                                                 @if($item->status == 1)
-                                                    <span class="badge badge-pill badge-success"> Active </span>
+                                                    <span class="badge badge-pill badge-success"> {{__('Active')}} </span>
                                                 @else
-                                                    <span class="badge badge-pill badge-danger"> InActive </span>
+                                                    <span class="badge badge-pill badge-danger"> {{__('InActive')}} </span>
                                                 @endif
 
                                             </td>
@@ -148,7 +148,7 @@
 
 
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Add')}}">
                                     </div>
                                 </form>
 

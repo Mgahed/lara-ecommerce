@@ -202,7 +202,7 @@
                 <ul class="treeview-menu">
                     <li class="{{Request::is(app()->getLocale().'/admin/site-settings/seo/*') ? 'active' : ''}}">
                         <a
-                            href="{{route('seo.setting')}}"><i class="ti-more"></i>{{__('seo')}}</a>
+                            href="{{route('seo.setting')}}"><i class="ti-more"></i>{{__('SEO')}}</a>
                     </li>
                 </ul>
             </li>

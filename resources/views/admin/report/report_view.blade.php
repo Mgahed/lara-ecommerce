@@ -24,7 +24,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Search By Date </h3>
+                            <h3 class="box-title">{{__('Search By Date')}}</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -36,9 +36,9 @@
 
 
                                     <div class="form-group">
-                                        <h5>Select Date <span class="text-danger">*</span></h5>
+                                        <h5>{{__('Select Date')}} <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="date" name="date" class="form-control" >
+                                            <input required type="date" name="date" class="form-control" >
                                             @error('date')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -47,7 +47,7 @@
 
 
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Search">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Search')}}">
                                     </div>
                                 </form>
 
@@ -66,7 +66,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Search By Month </h3>
+                            <h3 class="box-title">{{__('Search By Month')}} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -76,11 +76,10 @@
                                 <form method="post" action="{{ route('search-by-month') }}">
                                     @csrf
 
-
                                     <div class="form-group">
-                                        <h5>Select Month  <span class="text-danger">*</span></h5>
+                                        <h5>{{__('Select Month')}}  <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="month" name="month" class="form-control">
+                                            <input required type="month" placeholder="December 2021" name="month" class="form-control">
                                             {{--<select name="month" class="form-control">
                                                 <option label="Choose One"></option>
                                                 <option value="January">January</option>
@@ -96,7 +95,6 @@
                                                 <option value="November">November</option>
                                                 <option value="December">December</option>
                                             </select>--}}
-
                                             @error('month')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -126,7 +124,7 @@
                                     </div>--}}
 
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Search">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Search')}}">
                                     </div>
                                 </form>
 
@@ -146,7 +144,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Select Year </h3>
+                            <h3 class="box-title">{{__('Select Year')}} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -157,11 +155,11 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <h5>Select Year  <span class="text-danger">*</span></h5>
+                                        <h5>{{__('Select Year')}}  <span class="text-danger">*</span></h5>
                                         <div class="controls">
 
-                                            <select name="year" class="form-control">
-                                                <option label="Choose One"></option>
+                                            <select required name="year" class="form-control">
+                                                <option disabled label="Choose One"></option>
                                                 <option value="2021">2021</option>
                                                 <option value="2022">2022</option>
                                                 <option value="2023">2023</option>
@@ -178,7 +176,7 @@
                                     </div>
 
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Search">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Search')}}">
                                     </div>
                                 </form>
 

@@ -302,7 +302,7 @@
                                                         <fieldset>
                                                             <input type="checkbox" id="checkbox_1" name="special_offer"
                                                                    value="1" {{$product->special_offer === 1 ? 'checked' : ''}}>
-                                                            <label for="checkbox_1">Special Offer</label>
+                                                            <label for="checkbox_1">{{__('Special Offer')}}</label>
                                                         </fieldset>
                                                     </div>
                                                 </div>
@@ -313,7 +313,7 @@
 
                                         <div class="text-xs-right">
                                             <input type="submit" class="btn btn-rounded btn-success mb-5"
-                                                   value="Update Product">
+                                                   value="{{__('Update')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -362,7 +362,7 @@
                                                         </h5>
                                                         <p class="card-text">
                                                         <div class="form-group">
-                                                            <label class="form-control-label">Change Image {{--<span
+                                                            <label class="form-control-label">{{__('Change Image')}} {{--<span
                                                                 class="text-danger">*</span>--}}</label>
                                                             <input class="form-control" type="file"
                                                                    name="multi_img[{{ $img->id }}]">
@@ -377,7 +377,7 @@
 
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-success mb-5"
-                                               value="Update Image">
+                                               value="{{__('Update')}}">
                                     </div>
                                     <br><br>
 
@@ -402,7 +402,7 @@
                 <div class="col-md-12">
                     <div class="box bt-3 border-info">
                         <div class="box-header">
-                            <h4 class="box-title">{{__('Thambnail Image')}} <strong>{{__('Update')}}</strong></h4>
+                            <h4 class="box-title">{{__('Main Thumbnail')}} <strong>{{__('Update')}}</strong></h4>
                         </div>
 
                         <div class="container-fluid mt-3">
@@ -424,7 +424,7 @@
 
                                                 <p class="card-text">
                                                 <div class="form-group">
-                                                    <label class="form-control-label">Change Image <span
+                                                    <label class="form-control-label">{{__('Change Image')}} <span
                                                             class="tx-danger">*</span></label>
                                                     <input type="file" name="product_thumbnail" class="form-control"
                                                            onChange="mainThamUrl(this)">
@@ -441,7 +441,7 @@
                                 </div>
 
                                 <div class="text-xs-right">
-                                    <input type="submit" class="btn btn-rounded btn-success mb-5" value="Update Image">
+                                    <input type="submit" class="btn btn-rounded btn-success mb-5" value="{{__('Update')}}">
                                 </div>
                                 <br><br>
 

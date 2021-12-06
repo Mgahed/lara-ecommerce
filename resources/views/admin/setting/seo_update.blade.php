@@ -8,7 +8,7 @@
             <!-- Basic Forms -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Seo Setting Page </h4>
+                    <h4 class="box-title">{{__('SEO Setting Page')}} </h4>
 
                 </div>
                 <!-- /.box-header -->
@@ -27,7 +27,7 @@
 
 
                                                 <div class="form-group">
-                                                    <h5>Meta Title <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Meta Title')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="meta_title" class="form-control"
                                                                value="{{ $seo->meta_title }}"></div>
@@ -35,21 +35,21 @@
 
 
                                                 <div class="form-group">
-                                                    <h5>Meta Author <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Meta Author')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="meta_author" class="form-control"
                                                                value="{{ $seo->meta_author }}"></div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>Meta Keyword <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Meta Keywords')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="meta_keyword" class="form-control"
                                                                data-role="tagsinput" value="{{ $seo->meta_tag }}"></div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>Meta Description <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Meta Description')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <textarea name="meta_description" id="textarea"
                                                                   class="form-control"

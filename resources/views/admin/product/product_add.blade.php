@@ -12,7 +12,7 @@
             <!-- Basic Forms -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Add Product </h4>
+                    <h4 class="box-title">{{__('Add Product')}} </h4>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -208,7 +208,7 @@
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <h5>Main Thambnail <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Main Thumbnail')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="file" accept="image/png, image/jpg, image/jpeg" name="thumbnail" class="form-control"
                                                                onChange="mainThamUrl(this)" required="">
@@ -222,7 +222,7 @@
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <h5>Multiple Image <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Multiple Image')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="file" accept="image/png, image/jpg, image/jpeg" name="multi_img[]" class="form-control"
                                                                multiple="" id="multiImg" required="">
@@ -303,7 +303,7 @@
                                                         <fieldset>
                                                             <input type="checkbox" id="checkbox_1" name="special_offer"
                                                                    value="1">
-                                                            <label for="checkbox_1">Special Offer</label>
+                                                            <label for="checkbox_1">{{__('Special Offer')}}</label>
                                                         </fieldset>
                                                     </div>
                                                 </div>
@@ -328,7 +328,7 @@
 
                                         <div class="text-xs-right">
                                             <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                                   value="Add Product">
+                                                   value="{{__('Add Product')}}">
                                         </div>
                                     </div>
                                 </div>
