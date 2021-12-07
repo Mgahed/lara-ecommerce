@@ -172,7 +172,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         Route::get('change-password', [IndexController::class, 'UserChangePassword'])->name('change.password');
         Route::post('password-update', [IndexController::class, 'UserPasswordUpdate'])->name('user.password.update');
     });
-    
+
     Route::fallback(function () {
         return view("errors.404"); // template should exists
     });

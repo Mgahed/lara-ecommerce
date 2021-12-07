@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{app()->getLocale() === 'en' ? 'ltr' : 'rtl'}}">
 <head>
+    {{--    pwa--}}
+    <link rel="manifest" href="{{asset('manifest.json')}}">
+    <link rel="apple-touch-icon" href="{{asset('images/icons/icon-96x96.png')}}">
+    <meta name="theme-color" content="#157ED2"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0F6CB2">
+    <meta name="apple-mobile-web-app-title" content="Mobile Care">
+    {{--    End pwa--}}
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -439,6 +447,24 @@
     couponCalculation();
     /*----- End Apply coupon -----*/
 
+</script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('{{asset('sw.js')}}')
+            .then(reg => console.log('sw registerd', reg))
+            .catch(err => console.log('sw registerd error', err))
+    }
+    var deferredPrompt;
+
+    if (!window.Promise) {
+        window.Promise = Promise;
+    }
+    window.addEventListener('beforeinstallprompt', function (event) {
+        console.log('beforeinstallprompt fired');
+        event.preventDefault();
+        deferredPrompt = event;
+        return false;
+    });
 </script>
 </body>
 </html>
