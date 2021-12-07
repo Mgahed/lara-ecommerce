@@ -28,7 +28,8 @@
                             <li class="media">
                                 <div class="pull-left"><span class="icon fa-stack fa-lg"> <i
                                             class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span></div>
-                                <div class="media-body"><span><a href="mailto:mrtechnawy@gmail.com">mrtechnawy@gmail.com</a></span></div>
+                                <div class="media-body"><span><a
+                                            href="mailto:mrtechnawy@gmail.com">mrtechnawy@gmail.com</a></span></div>
                             </li>
                         </ul>
                     </div>
@@ -68,23 +69,38 @@
                 </div>
                 <!-- /.col -->
 
-                {{--<div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="module-heading">
-                        <h4 class="module-title">Why Choose Us</h4>
+                        <h4 class="module-title">{{__('Download our app')}}</h4>
                     </div>
                     <!-- /.module-heading -->
 
                     <div class="module-body">
-                        <ul class='list-unstyled'>
-                            <li class="first"><a href="#" title="About us">Shopping Guide</a></li>
-                            <li><a href="#" title="Blog">Blog</a></li>
-                            <li><a href="#" title="Company">Company</a></li>
-                            <li><a href="#" title="Investor Relations">Investor Relations</a></li>
-                            <li class=" last"><a href="contact-us.html" title="Suppliers">Contact Us</a></li>
-                        </ul>
+                        {{--<ul class='list-unstyled'>
+                            --}}{{--<li class="first">
+                                <div class="page-content page-container" id="page-content">
+                                    <div class="padding">
+                                        <div class="row container d-flex justify-content-center">
+                                            <div class="template-demo mt-2">
+                                                <button class="btn btn-outline-dark btn-icon-text"><i
+                                                        class="fa fa-apple btn-icon-prepend mdi-36px"></i> <span
+                                                        class="d-inline-block text-left"> <small
+                                                            class="font-weight-light d-block">Available on the</small> App Store </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <br>--}}{{--
+                            <li class="first">--}}
+                                <!-- Google Play button -->
+                                <a href="{{asset('Mobile_Care.apk')}}"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="150" height="60" alt="Get it on Google Play" border="0"></a>
+                            {{--</li>
+                        </ul>--}}
                     </div>
                     <!-- /.module-body -->
-                </div>--}}
+                </div>
             </div>
         </div>
     </div>
@@ -112,7 +128,9 @@
                         <li><img src="--}}{{--assets/images/payments/4.png--}}{{--" alt=""></li>
                         <li><img src="--}}{{--assets/images/payments/5.png--}}{{--" alt=""></li>
                     </ul>--}}
-                    &copy; {{\Carbon\Carbon::now()->year}} {{__('Made by')}} <a target="_blank" href="https://mrtechnawy.com">Mr Technawy</a> {{__('All Rights Reserved.')}}
+                    &copy; {{\Carbon\Carbon::now()->year}} {{__('Made by')}} <a target="_blank"
+                                                                                href="https://mrtechnawy.com">Mr
+                        Technawy</a> {{__('All Rights Reserved.')}}
                 </div>
                 <!-- /.payment-methods -->
             </div>
