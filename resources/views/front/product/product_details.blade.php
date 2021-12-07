@@ -206,6 +206,11 @@
                                                             class="fa fa-shopping-cart inner-right-vs"></i> {{__('Add to cart')}}</button>
                                                 </div>
                                             @endif
+                                            <br><br><br><br>
+
+                                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                            <div class="addthis_inline_share_toolbox"></div>
+
                                         </div><!-- /.row -->
                                     </div><!-- /.quantity-container -->
 
@@ -516,10 +521,8 @@
         <!-- /.container -->
     </div><!-- /.body-content -->
 
+
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e4b85f98de5201f"></script>
-
-
-
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61af412ea9a3161b"></script>
 
 @endsection
