@@ -17,7 +17,8 @@
                     </a>
                 </li>
                 <li class="btn-group nav-item">
-                    <a class="waves-effect waves-light nav-link rounded svg-bt-icon" title="{{__('Home')}}" href="{{route('home')}}"><i
+                    <a class="waves-effect waves-light nav-link rounded svg-bt-icon" title="{{__('Home')}}"
+                       href="{{route('home')}}"><i
                             class="nav-link-icon mdi mdi-home text-muted mr-2"></i></a>
                 </li>
             </ul>
@@ -27,88 +28,65 @@
             <ul class="nav navbar-nav">
                 @if (app()->getLocale()==='en')
                     <li class="btn-group nav-item" style="margin-top: 10px;">
-                        <a rel="alternate" style="width: 100%" hreflang="ar" class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
+                        <a rel="alternate" style="width: 100%" hreflang="ar"
+                           class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
                            href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">العربية</a>
                     </li>
                 @else
                     <li class="btn-group nav-item" style="margin-top: 10px;">
-                        <a rel="alternate" style="width: 100%" hreflang="en" class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
+                        <a rel="alternate" style="width: 100%" hreflang="en"
+                           class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
                            href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">English</a>
                     </li>
-            @endif
+                @endif
+                @php
+                    $products = \App\Models\Product::where('quantity','<=',5)->get();
+                @endphp
             <!-- Notifications -->
-                <li class="dropdown notifications-menu">
-                    <a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown"
-                       title="Notifications">
-                        <i class="ti-bell"></i>
-                    </a>
-                    <ul class="dropdown-menu animated bounceIn">
-
-                        <li class="header">
-                            <div class="p-20">
-                                <div class="flexbox">
-                                    <div>
-                                        <h4 class="mb-0 mt-0">Notifications</h4>
-                                    </div>
-                                    <div>
-                                        <a href="#" class="text-danger">Clear All</a>
+                @if ($products->count())
+                    <li class="dropdown notifications-menu">
+                        <a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown"
+                           title="{{__('Notifications')}}">
+                            <i class="ti-bell"></i>
+                        </a>
+                        <ul class="dropdown-menu animated bounceIn">
+                            <li class="header">
+                                <div class="p-20">
+                                    <div class="flexbox">
+                                        <div>
+                                            <h4 class="mb-0 mt-0">{{__('Notifications')}}</h4>
+                                        </div>
+                                        {{--<div>
+                                            <a href="#" class="text-danger">Clear All</a>
+                                        </div>--}}
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu sm-scrol">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc suscipit
-                                        blandit.
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-warning text-warning"></i> Duis malesuada justo eu sapien
-                                        elementum, in semper diam posuere.
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-users text-danger"></i> Donec at nisi sit amet tortor
-                                        commodo porttitor pretium a erat.
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-shopping-cart text-success"></i> In gravida mauris et nisi
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-user text-danger"></i> Praesent eu lacus in libero dictum
-                                        fermentum.
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-user text-primary"></i> Nunc fringilla lorem
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-user text-success"></i> Nullam euismod dolor ut quam
-                                        interdum, at scelerisque ipsum imperdiet.
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="footer">
-                            <a href="#">View all</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- User Account-->
+                            </li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu sm-scrol">
+                                    <li>
+                                        <a href="{{route('in.notification')}}"
+                                           title="{{__('There is ')}}{{$products->count()}}{{__(' products will almost finish.')}}">
+                                            <i class="fa fa-shopping-basket text-danger"></i>
+                                            {{__('There is ')}}{{$products->count()}}{{__(' products will almost finish.')}}
+                                        </a>
+                                    </li>
+                                    {{--<li>
+                                        <a href="#" title="{{__('Don\'t forget to renew domain subscription')}}">
+                                            <i class="fa fa-warning text-warning"></i>
+                                            {{__('Don\'t forget to renew domain subscription')}}
+                                        </a>
+                                    </li>--}}
+                                </ul>
+                            </li>
+                            {{--<li class="footer">
+                                <a href="#">View all</a>
+                            </li>--}}
+                        </ul>
+                    </li>
+            @endif
+            <!-- User Account-->
                 <li class="dropdown user user-menu">
                     <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown"
                        title="User">

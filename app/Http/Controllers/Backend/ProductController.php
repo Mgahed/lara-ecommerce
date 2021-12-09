@@ -265,4 +265,11 @@ class ProductController extends Controller
         ];
         return redirect()->back()->with($notification);
     }
+
+    public function ProductNotification()
+    {
+        $products = Product::where('quantity', '<=', 5)->get();
+        return view('admin.product.product_view', compact('products'));
+
+    }
 }

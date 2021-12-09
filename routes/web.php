@@ -73,6 +73,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::post('/thambnail/update', [ProductController::class, 'ThambnailImageUpdate'])->name('update-product-thambnail');
             Route::get('/multiimg/delete/{id}', [ProductController::class, 'MultiImageDelete'])->name('product.multiimg.delete');
             Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
+            Route::get('/in-notification', [ProductController::class, 'ProductNotification'])->name('in.notification');
         });
 
         /*----- Admin Slider All Routes -----*/
