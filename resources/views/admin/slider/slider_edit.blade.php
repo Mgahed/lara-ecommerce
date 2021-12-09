@@ -47,7 +47,7 @@
                                     <div class="form-group">
                                         <h5>{{__('Title in arabic')}}</h5>
                                         <div class="controls">
-                                            <input type="text" style="direction: rtl;" name="title_ar" class="form-control" value="{{ $slider->title_en }}" >
+                                            <input type="text" style="direction: rtl;" name="title_ar" class="form-control" value="{{ $slider->title_ar }}" >
                                         </div>
                                     </div>
 
