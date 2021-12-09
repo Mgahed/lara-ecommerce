@@ -43,7 +43,7 @@ class ProductController extends Controller
             'code.required' => __('This field is required'),
             'quantity.required' => __('This field is required'),
             'quantity.numeric' => __('Must be a number'),
-            'quantity.min' => __('Must be grater than 0'),
+            'quantity.min' => __('Must be greater than 0'),
             'color_en.required' => __('This field is required'),
             'color_ar.required' => __('This field is required'),
             'sell_price.required' => __('This field is required'),
@@ -260,7 +260,7 @@ class ProductController extends Controller
             return redirect()->back()->with($notification);
         }
         $notification = [
-            'message' => __('Can not delete product successfully'),
+            'message' => __('Can not delete product'),
             'alert-type' => 'error'
         ];
         return redirect()->back()->with($notification);

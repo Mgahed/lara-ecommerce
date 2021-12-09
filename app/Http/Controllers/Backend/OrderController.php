@@ -127,7 +127,7 @@ class OrderController extends Controller
         ]);
 
         $notification = array(
-            'message' => __('Order Confirm Successfully'),
+            'message' => __('Order Confirmed Successfully'),
             'alert-type' => 'success'
         );
 
