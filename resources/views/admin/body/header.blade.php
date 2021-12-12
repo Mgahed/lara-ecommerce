@@ -30,13 +30,13 @@
                     <li class="btn-group nav-item" style="margin-top: 10px;">
                         <a rel="alternate" style="width: 100%" hreflang="ar"
                            class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
-                           href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">العربية</a>
+                           href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}"><i title="العربية" class="flag-icon flag-icon-eg"></i></a>
                     </li>
                 @else
                     <li class="btn-group nav-item" style="margin-top: 10px;">
                         <a rel="alternate" style="width: 100%" hreflang="en"
                            class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
-                           href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">English</a>
+                           href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}"><i title="English" class="flag-icon flag-icon-us"></i></a>
                     </li>
                 @endif
                 @php
