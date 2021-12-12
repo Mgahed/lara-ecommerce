@@ -34,12 +34,16 @@
                                                     </h5>
                                                     <div class="controls">
                                                         <select name="category_id" class="form-control" required="">
-                                                            <option value="" selected="" disabled="">Select Category
+                                                            <option value="{{$product->category->id}}"
+                                                                    selected="">{{$product->category->name_en}}
+                                                                - {{$product->category->name_ar}}
                                                             </option>
                                                             @foreach($categories as $category)
-                                                                <option
-                                                                    value="{{ $category->id }}" {{ $category->id === $product->category_id ? 'selected' : ''}}>{{ $category->name_en }}
-                                                                    - {{$category->name_ar}}</option>
+                                                                @if ($product->category->id != $category->id)
+                                                                    <option
+                                                                        value="{{ $category->id }}" {{ $category->id === $product->category_id ? 'selected' : ''}}>{{ $category->name_en }}
+                                                                        - {{$category->name_ar}}</option>
+                                                                @endif
                                                             @endforeach
                                                         </select>
                                                         @error('category_id')
@@ -73,7 +77,8 @@
                                                 <div class="form-group">
                                                     <h5>{{__('Selling Price')}} <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="number" step="0.01" autocomplete="off" name="sell_price"
+                                                        <input type="number" step="0.01" autocomplete="off"
+                                                               name="sell_price"
                                                                class="form-control"
                                                                required="" value="{{$product->sell_price}}">
                                                         @error('sell_price')
@@ -123,7 +128,8 @@
                                                 <div class="form-group">
                                                     <h5>{{__('Discount Price')}}</h5>
                                                     <div class="controls">
-                                                        <input type="number" step="0.01" autocomplete="off" name="discount_price"
+                                                        <input type="number" step="0.01" autocomplete="off"
+                                                               name="discount_price"
                                                                class="form-control"
                                                                value="{{$product->discount_price}}">
                                                         @error('discount_price')
@@ -157,7 +163,8 @@
                                                     <h5>{{__('Product Quantity')}} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
-                                                        <input type="number" step="0.01" autocomplete="off" name="quantity"
+                                                        <input type="number" step="0.01" autocomplete="off"
+                                                               name="quantity"
                                                                class="form-control"
                                                                required="" value="{{$product->quantity}}">
                                                         @error('quantity')
@@ -365,6 +372,7 @@
                                                             <label class="form-control-label">{{__('Change Image')}} {{--<span
                                                                 class="text-danger">*</span>--}}</label>
                                                             <input class="form-control" type="file"
+                                                                   accept="image/png, image/jpg, image/jpeg"
                                                                    name="multi_img[{{ $img->id }}]">
                                                         </div>
                                                         </p>
@@ -426,7 +434,9 @@
                                                 <div class="form-group">
                                                     <label class="form-control-label">{{__('Change Image')}} <span
                                                             class="tx-danger">*</span></label>
-                                                    <input type="file" name="product_thumbnail" class="form-control"
+                                                    <input type="file" name="product_thumbnail"
+                                                           accept="image/png, image/jpg, image/jpeg"
+                                                           class="form-control"
                                                            onChange="mainThamUrl(this)">
                                                     <img src="" id="mainThmb">
                                                 </div>
@@ -441,7 +451,8 @@
                                 </div>
 
                                 <div class="text-xs-right">
-                                    <input type="submit" class="btn btn-rounded btn-success mb-5" value="{{__('Update')}}">
+                                    <input type="submit" class="btn btn-rounded btn-success mb-5"
+                                           value="{{__('Update')}}">
                                 </div>
                                 <br><br>
 
