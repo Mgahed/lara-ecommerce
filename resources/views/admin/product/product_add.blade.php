@@ -222,10 +222,10 @@
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <h5>{{__('Multiple Image')}} <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Multiple Image')}}</h5>
                                                     <div class="controls">
                                                         <input type="file" accept="image/png, image/jpg, image/jpeg" name="multi_img[]" class="form-control"
-                                                               multiple="" id="multiImg" required="">
+                                                               multiple="" id="multiImg">
                                                         @error('multi_img')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
