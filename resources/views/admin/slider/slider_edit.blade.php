@@ -70,7 +70,7 @@
                                     <div class="form-group">
                                         <h5>{{__('Image')}}</h5>
                                         <div class="controls">
-                                            <input type="file" accept="image/jpg image/png image/jpeg" name="img" class="form-control">
+                                            <input type="file" accept="image/png, image/jpg, image/jpeg" name="img" class="form-control">
                                             @error('img')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror

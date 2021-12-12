@@ -41,7 +41,7 @@
                                             <td>{{ $item->discount }}%</td>
                                             <td>{{\Carbon\Carbon::parse($item->validity)->diffForHumans()}}</td>
                                             <td>
-                                                @if($item->status === 1  && \Carbon\Carbon::parse($item->validity)>=\Carbon\Carbon::today())
+                                                @if($item->status == 1  && (\Carbon\Carbon::parse($item->validity)>=\Carbon\Carbon::today()))
                                                     <span
                                                         class="badge badge-pill badge-success"> {{__('Valid')}} </span>
                                                 @else

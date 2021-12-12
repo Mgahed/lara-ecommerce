@@ -68,7 +68,7 @@ class AllUserController extends Controller
     public function ReturnOrderList()
     {
 
-        $orders = Order::where('user_id', auth()->id())->where('return_reason', '!=', NULL)->orderBy('id', 'DESC')->get();
+        $orders = Order::where('user_id', auth()->id())->where('status', 'returned')->orderBy('id', 'DESC')->get();
         return view('front.user.order.return_order_view', compact('orders'));
 
     } // end method
