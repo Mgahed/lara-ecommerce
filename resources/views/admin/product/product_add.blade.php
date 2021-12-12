@@ -183,7 +183,7 @@
                                                     </h5>
                                                     <div class="controls">
                                                         <input style="direction: ltr;" type="text" name="color_en" class="form-control"
-                                                               placeholder="red,Black,Green" data-role="tagsinput" required="" value="{{old('color_en')}}">
+                                                               placeholder="red,Black,Green" data-role="tagsinput" value="{{old('color_en')}}">
                                                         @error('color_en')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -198,7 +198,7 @@
                                                     <div class="controls">
                                                         <input style="direction: rtl;" type="text" name="color_ar" class="form-control"
                                                                placeholder="احمر,اسود,اخضر" data-role="tagsinput"
-                                                               required="" value="{{old('color_ar')}}">
+                                                               value="{{old('color_ar')}}">
                                                         @error('color_ar')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror

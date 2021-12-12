@@ -106,17 +106,18 @@ class ProductController extends Controller
         /*----- Multi IMG Upload -----*/
         $multi_imgs = $request->file('multi_img');
         $product_id = Product::orderBy('id', 'desc')->first();
-        foreach ($multi_imgs as $multi_img) {
-            $name_gen = md5($multi_img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $multi_img->getClientOriginalExtension();
-            Image::Make($multi_img)->resize(400, 400)->save(public_path('/upload/products/multi-image/' . $name_gen));
-            $save_multi_img = 'upload/products/multi-image/' . $name_gen;
+        if ($multi_imgs) {
+            foreach ($multi_imgs as $multi_img) {
+                $name_gen = md5($multi_img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $multi_img->getClientOriginalExtension();
+                Image::Make($multi_img)->resize(400, 400)->save(public_path('/upload/products/multi-image/' . $name_gen));
+                $save_multi_img = 'upload/products/multi-image/' . $name_gen;
 
-            MultiImg::create([
-                'product_id' => $product_id->id,
-                'name' => $save_multi_img,
-            ]);
+                MultiImg::create([
+                    'product_id' => $product_id->id,
+                    'name' => $save_multi_img,
+                ]);
+            }
         }
-
         $notification = [
             'message' => __('Product added successfully'),
             'alert-type' => 'success'
@@ -203,6 +204,17 @@ class ProductController extends Controller
 
     public function ThambnailImageUpdate(Request $request)
     {
+        $rules = [
+            "product_thumbnail" => 'required'
+        ];
+        $customMSG = [
+            "product_thumbnail.required" => __('This field is required')
+        ];
+        $validator = Validator::make($request->all(), $rules, $customMSG);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+
         $product_id = $request->id;
         $oldImg = $request->old_img;
         unlink(public_path($oldImg));

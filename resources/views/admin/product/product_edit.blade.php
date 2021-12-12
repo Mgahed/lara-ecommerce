@@ -204,7 +204,7 @@
                                                         <input style="direction: ltr;" type="text" name="color_en"
                                                                class="form-control"
                                                                placeholder="red,Black,Green" data-role="tagsinput"
-                                                               required="" value="{{$product->color_en}}">
+                                                               value="{{$product->color_en}}">
                                                         @error('color_en')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -220,7 +220,7 @@
                                                         <input style="direction: rtl;" type="text" name="color_ar"
                                                                class="form-control"
                                                                placeholder="احمر,اسود,اخضر" data-role="tagsinput"
-                                                               required="" value="{{$product->color_ar}}">
+                                                               value="{{$product->color_ar}}">
                                                         @error('color_ar')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -436,7 +436,7 @@
                                                             class="tx-danger">*</span></label>
                                                     <input type="file" name="product_thumbnail"
                                                            accept="image/png, image/jpg, image/jpeg"
-                                                           class="form-control"
+                                                           class="form-control" required
                                                            onChange="mainThamUrl(this)">
                                                     <img src="" id="mainThmb">
                                                 </div>
