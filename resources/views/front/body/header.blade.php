@@ -181,26 +181,28 @@
                                         href="{{route('home')}}">{{__('Home')}}</a>
                                 </li>
                                 @foreach ($categories as $category)
-                                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-hover="dropdown"
-                                                            data-toggle="dropdown">{{app()->getLocale() === 'en'?$category->name_en:$category->name_ar}}</a>
-                                        <ul class="dropdown-menu pages">
-                                            <li>
-                                                <div class="yamm-content">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-menu">
-                                                            <ul class="links">
-                                                                @foreach ($category->subcategory as $subcategory)
-                                                                    <li>
-                                                                        <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?$subcategory->name_en:$subcategory->name_ar}}</a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
+                                    @if ($category->subcategory->count())
+                                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-hover="dropdown"
+                                                                data-toggle="dropdown">{{app()->getLocale() === 'en'?$category->name_en:$category->name_ar}}</a>
+                                            <ul class="dropdown-menu pages">
+                                                <li>
+                                                    <div class="yamm-content">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-menu">
+                                                                <ul class="links">
+                                                                    @foreach ($category->subcategory as $subcategory)
+                                                                        <li>
+                                                                            <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?$subcategory->name_en:$subcategory->name_ar}}</a>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    @endif
                                 @endforeach
                                 {{--<li class="dropdown  navbar-right special-menu"><a href="#">Todays offer</a></li>--}}
                             </ul>

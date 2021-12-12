@@ -10,27 +10,29 @@
         <nav class="yamm megamenu-horizontal">
             <ul class="nav">
                 @foreach ($categories as $category)
-                    <li class="dropdown menu-item"><a href="#" class="dropdown-toggle"
-                                                      data-toggle="dropdown"
-                                                      aria-hidden="true">{{app()->getLocale() === 'en'?ucfirst($category->name_en):$category->name_ar}}</a>
-                        <ul class="dropdown-menu mega-menu">
-                            <li>
-                                <div class="yamm-content">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-3">
-                                            <ul class="links list-unstyled">
-                                                @foreach ($category->subcategory as $subcategory)
-                                                    <li>
-                                                        <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?ucfirst($subcategory->name_en):$subcategory->name_ar}}</a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
+                    @if ($category->subcategory->count())
+                        <li class="dropdown menu-item"><a href="#" class="dropdown-toggle"
+                                                          data-toggle="dropdown"
+                                                          aria-hidden="true">{{app()->getLocale() === 'en'?ucfirst($category->name_en):$category->name_ar}}</a>
+                            <ul class="dropdown-menu mega-menu">
+                                <li>
+                                    <div class="yamm-content">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3">
+                                                <ul class="links list-unstyled">
+                                                    @foreach ($category->subcategory as $subcategory)
+                                                        <li>
+                                                            <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?ucfirst($subcategory->name_en):$subcategory->name_ar}}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                 @endforeach
 
             </ul>
