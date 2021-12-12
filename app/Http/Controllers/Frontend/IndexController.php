@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ContactUs;
-use App\Mail\OrderMail;
 use App\Models\BlogPost;
 use App\Models\Brand;
 use App\Models\Category;
@@ -66,6 +65,9 @@ class IndexController extends Controller
         $skip_category_1 = Category::skip(1)->first();
         $skip_product_1 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_1->id)->orderBy('id', 'DESC')->get();
 
+        $skip_category_2 = Category::skip(2)->first();
+        $skip_product_2 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_2->id)->orderBy('id', 'DESC')->get();
+
 //        $skip_brand_1 = Brand::skip(1)->first();
 //        $skip_brand_product_1 = Product::where('status', 1)->where('brand_id', $skip_brand_1->id)->orderBy('id', 'DESC')->get();
 
@@ -73,7 +75,7 @@ class IndexController extends Controller
         // return $skip_category->id;
         // die();
 
-        return view('front.index', compact('categories', 'sliders', 'products', /*'featured', 'hot_deals',*/ 'special_offer', /*'special_deals',*/ 'skip_category_0', 'skip_product_0', 'skip_category_1', 'skip_product_1'/*, 'skip_brand_1', 'skip_brand_product_1', 'blogpost'*/));
+        return view('front.index', compact('categories', 'sliders', 'products', /*'featured', 'hot_deals',*/ 'special_offer', /*'special_deals',*/ 'skip_category_0', 'skip_product_0', 'skip_category_1', 'skip_product_1', 'skip_category_2', 'skip_product_2'/*, 'skip_brand_1', 'skip_brand_product_1', 'blogpost'*/));
 
     }
 
