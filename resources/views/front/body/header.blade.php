@@ -188,13 +188,26 @@
                                                 <li>
                                                     <div class="yamm-content">
                                                         <div class="row">
-                                                            <div class="col-xs-12 col-menu">
+                                                            @php($i=1)
+
+                                                            <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
                                                                 <ul class="links">
                                                                     @foreach ($category->subcategory as $subcategory)
+                                                                        @if ($i%5===0)
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                                                <ul class="links">
+                                                                    <li>
+                                                                        <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?$subcategory->name_en:$subcategory->name_ar}}</a>
+                                                                    </li>
+                                                                    @else
                                                                         <li>
                                                                             <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?$subcategory->name_en:$subcategory->name_ar}}</a>
                                                                         </li>
-                                                                    @endforeach
+                                                                    @endif
+                                                                    @php($i++)
+                                                            @endforeach
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -204,6 +217,35 @@
                                         </li>
                                     @endif
                                 @endforeach
+                                {{--<li class="dropdown"><a href="#" class="dropdown-toggle" data-hover="dropdown"
+                                                        data-toggle="dropdown">aaa</a>
+                                    <ul class="dropdown-menu pages">
+                                        <li>
+                                            <div class="yamm-content">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                                        <ul class="links">
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                                        <ul class="links">
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                            <li><a href="#">bbdbdfbd</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>--}}
                                 {{--<li class="dropdown  navbar-right special-menu"><a href="#">Todays offer</a></li>--}}
                             </ul>
                             <!-- /.navbar-nav -->

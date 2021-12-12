@@ -20,7 +20,7 @@
                 <!--   ------------ Add Search Page -------- -->
 
 
-                <div class="col-4">
+                <div class="col-md-4">
 
                     <div class="box">
                         <div class="box-header with-border">
@@ -62,7 +62,7 @@
 
 
 
-                <div class="col-4">
+                <div class="col-md-4">
 
                     <div class="box">
                         <div class="box-header with-border">
@@ -140,7 +140,7 @@
 
 
 
-                <div class="col-4">
+                <div class="col-md-4">
 
                     <div class="box">
                         <div class="box-header with-border">
