@@ -183,8 +183,9 @@ class ProductController extends Controller
 
         foreach ($imgs as $id => $img) {
             $imgDel = MultiImg::findOrFail($id);
-            unlink(public_path($imgDel->name));
-
+            if (file_exists(public_path($imgDel->name))) {
+                unlink(public_path($imgDel->name));
+            }
             $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
             Image::Make($img)->resize(400, 400)->save(public_path('/upload/products/multi-image/' . $name_gen));
             $save_multi_img = 'upload/products/multi-image/' . $name_gen;
@@ -217,7 +218,9 @@ class ProductController extends Controller
 
         $product_id = $request->id;
         $oldImg = $request->old_img;
-        unlink(public_path($oldImg));
+        if (file_exists(public_path($oldImg))) {
+            unlink(public_path($oldImg));
+        }
 
         $img = $request->file('product_thumbnail');
 
@@ -239,7 +242,9 @@ class ProductController extends Controller
     public function MultiImageDelete($id)
     {
         $img = MultiImg::findOrFail($id);
-        unlink(public_path($img->name));
+        if (file_exists(public_path($img->name))) {
+            unlink(public_path($img->name));
+        }
         $delete = $img->delete();
         if ($delete) {
             $notification = [
@@ -259,10 +264,14 @@ class ProductController extends Controller
     {
         $product = Product::with('multiimg')->findOrFail($id);
         foreach ($product->multiimg as $img) {
-            unlink($img->name);
+            if (file_exists(public_path($img->name))) {
+                unlink($img->name);
+            }
             MultiImg::findOrFail($img->id)->delete();
         }
-        unlink(public_path($product->thumbnail));
+        if (file_exists(public_path($product->thumbnail))) {
+            unlink(public_path($product->thumbnail));
+        }
         $delete = $product->delete();
         if ($delete) {
             $notification = [

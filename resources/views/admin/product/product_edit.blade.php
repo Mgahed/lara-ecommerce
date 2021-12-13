@@ -438,6 +438,9 @@
                                                            accept="image/png, image/jpg, image/jpeg"
                                                            class="form-control" required
                                                            onChange="mainThamUrl(this)">
+                                                    @error('product_thumbnail')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                     <img src="" id="mainThmb">
                                                 </div>
                                                 </p>
