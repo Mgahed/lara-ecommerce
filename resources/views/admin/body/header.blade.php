@@ -30,13 +30,15 @@
                     <li class="btn-group nav-item" style="margin-top: 10px;">
                         <a rel="alternate" style="width: 100%" hreflang="ar"
                            class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
-                           href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}"><i title="العربية" class="flag-icon flag-icon-eg"></i></a>
+                           href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}"><i title="العربية"
+                                                                                                      class="flag-icon flag-icon-eg"></i></a>
                     </li>
                 @else
                     <li class="btn-group nav-item" style="margin-top: 10px;">
                         <a rel="alternate" style="width: 100%" hreflang="en"
                            class="waves-effect waves-light nav-link rounded dropdown-toggle p-0"
-                           href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}"><i title="English" class="flag-icon flag-icon-us"></i></a>
+                           href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}"><i title="English"
+                                                                                                      class="flag-icon flag-icon-us"></i></a>
                     </li>
                 @endif
                 @php
@@ -98,15 +100,15 @@
                         @else
                             <span class="inline-flex rounded-md">
 {{--                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">--}}
-                                {{ Auth::user()->name }}
-
-                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                <div id="name" class="d-none">{{ Auth::user()->name }}</div>
+                                <div id="profileImage"></div>
+                                        {{--<svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                              viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd"
                                                   d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                                   clip-rule="evenodd"/>
-                                        </svg>
-{{--                                    </button>--}}
+                                        </svg>--}}
+                                {{--                                    </button>--}}
                                 </span>
                         @endif
                     </a>

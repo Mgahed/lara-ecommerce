@@ -32,7 +32,17 @@
     @endif
     {{-- toaster --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-
+    <style>
+        #profileImage {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            background: #512DA8;
+            color: #fff;
+            text-align: center;
+            line-height: 43px;
+            }
+</style>
 </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -87,6 +97,12 @@
 <script src="{{asset('admin-dashboard/js/template.js')}}"></script>
 <script src="{{asset('admin-dashboard/js/pages/dashboard.js')}}"></script>
 
+<script>
+    $(document).ready(function(){
+        var intials = $('#name').text().charAt(0);
+        var profileImage = $('#profileImage').text(intials);
+    });
+</script>
 {{-- toaster --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
