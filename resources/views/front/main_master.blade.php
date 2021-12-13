@@ -241,6 +241,13 @@
 
     /*----- Product view -----*/
     function productView(id) {
+        $('#product_id').val('')
+        $('#pname').text('')
+        $('#pprice').text('')
+        $('#poldprice').text('')
+        $('#pbrand').text('')
+        $('#pimage').attr('src', '')
+        $('#add_to_cart_submit').addClass('hide');
         $.ajax({
             type: 'GET',
             url: '/product/view/modal/' + id,
@@ -250,6 +257,7 @@
                 if (data.product.quantity <= 0) {
                     $('#add_to_cart_submit').hide();
                 } else {
+                    $('#add_to_cart_submit').removeClass('hide');
                     $('#add_to_cart_submit').show();
                 }
                 /*console.log(data)*/
