@@ -66,7 +66,7 @@
                                     </div>
                                 </center>
                                 <div>
-                                    <p class="text-mute mt-20 mb-0 font-size-16">Products</p>
+                                    <p class="text-mute mt-20 mb-0 font-size-16">{{__('Products')}}</p>
                                     <h3 class="text-white mb-0 font-weight-500">{{$products}}</h3>
                                 </div>
                             </div>

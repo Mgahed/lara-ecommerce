@@ -945,5 +945,8 @@
     "Subcategory added successfully": "تمت إضافة تصنيف فرعي بنجاح",
     "Can not add Subcategory": "لا يمكن إضافة تصنيف فرعي",
     "subcategory update successfully": "تم تحديث التصنيف الفرعي بنجاح",
-    "subcategory deleted successfully": "تم حذف التصنيف الفرعي بنجاح"
+    "subcategory deleted successfully": "تم حذف التصنيف الفرعي بنجاح",
+    "Customers": "العملاء",
+    "This Year Revenue": "إيرادات هذا العام",
+    "This Year Orders": "طلبات هذا العام"
 }
