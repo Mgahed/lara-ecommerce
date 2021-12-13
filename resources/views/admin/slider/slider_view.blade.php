@@ -91,8 +91,8 @@
                 <div class="col-md-4">
 
                     <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">{{__('Add Slider')}} </h3>
+                        <div class="box-header with-border badge badge-success">
+                            <h3 class="box-title" style="color: white;">{{__('Add Slider')}} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
