@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-md-12 contact-map outer-bottom-vs">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.0080692193424!2d80.29172299999996!3d13.098675000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f446a1c3187%3A0x298011b0b0d14d47!2sTransvelo!5e0!3m2!1sen!2sin!4v1412844527190"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d371.01845084446563!2d30.982855239013507!3d30.033781508290833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145859bd7a44e109%3A0x3217075113096c85!2z2YbYp9mB2YjYsdipINin2YTYp9mB2YI!5e0!3m2!1sen!2seg!4v1639430215253!5m2!1sen!2seg"
                             width="600" height="450" style="border:0"></iframe>
                     </div>
                     <form action="{{route('contact-us')}}" method="post">
@@ -68,7 +68,7 @@
                         </div>
                         <div class="clearfix address">
                             <span class="contact-i"><i class="fa fa-map-marker"></i></span>
-                            <span class="contact-span">ThemesGround, 789 Main rd, Anytown, CA 12345 USA</span>
+                            <span class="contact-span"><a href="https://maps.app.goo.gl/iho5mpCiBaWkRSF79"><p>االجيزة, الشيخ زايد, نافورة الافق</p></a></span>
                         </div>
                         <div class="clearfix phone-no">
                             <span class="contact-i"><i class="fa fa-mobile"></i></span>

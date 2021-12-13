@@ -7,7 +7,7 @@
                 <a href="/admin">
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{asset('logo.png')}}" width="50" height="50" alt="">
+                        <img class="rounded-circle" src="{{asset('logo.png')}}" width="50" height="50" alt="">
                         <h3><b>Mobile</b> Care</h3>
                     </div>
                 </a>

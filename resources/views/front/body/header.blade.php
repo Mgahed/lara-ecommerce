@@ -74,8 +74,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
-                    <div class="logo"><a href="{{url('/')}}"> <img height="50" width="60" src="{{asset('logo.png')}}"
-                                                                   alt="logo"> </a></div>
+                    <div class="logo"><a href="{{url('/')}}"> <img style="border-radius: 50% !important; position: relative; top: -9px;" height="60" width="60" src="{{asset('logo.png')}}"
+                                                                   alt="logo"> <span style="font-size: 26px; font-family: fantasy; font-weight: bold;"><span style="color: #FDD922;">Mobile</span> <span style="color: white;">Care</span></span></a></div>
                     <!-- /.logo -->
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>
