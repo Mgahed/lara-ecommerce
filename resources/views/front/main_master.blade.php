@@ -333,6 +333,50 @@
         })
     }
 
+    function addcToCart() {
+        let name = $('#pcname').text();
+        let id = $('#cproduct_id').val();
+        let price = $('#pcprice').text();
+        let color = $('#cselect_color option:selected').text();
+        let quantity = $('#cquantity').val();
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data: {
+                color: color,
+                name: name,
+                price: price,
+                quantity: quantity,
+                lang: $('html').attr('lang')
+            },
+            url: '/cart/data/store/' + id,
+            success: function (data) {
+                miniCart();
+                $('#closeModel').click()
+                /*console.log(data)*/
+                const toast = Swal.mixin({
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+                    toast.fire({
+                        type: 'success',
+                        title: data.success,
+                        icon: 'success'
+                    })
+                } else {
+                    toast.fire({
+                        type: 'error',
+                        title: data.error,
+                        icon: 'error'
+                    })
+                }
+            }
+        })
+    }
+
     /*----- End Add to cart -----*/
 
     function miniCart() {

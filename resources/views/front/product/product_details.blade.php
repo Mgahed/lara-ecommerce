@@ -79,7 +79,7 @@
                             </div><!-- /.gallery-holder -->
                             <div class='col-sm-6 col-md-7 product-info-block'>
                                 <div class="product-info">
-                                    <h1 class="name" id="pname">{{app()->getLocale() === 'en'?$product->name_en:$product->name_ar}}</h1>
+                                    <h1 class="name" id="pcname">{{app()->getLocale() === 'en'?$product->name_en:$product->name_ar}}</h1>
                                     <br>
                                     {{--<div class="rating-reviews m-t-20">
                                         <div class="row">
@@ -121,13 +121,13 @@
                                                 <div class="price-box">
                                                     @if ($product->discount_price != NULL)
                                                         <div class="product-price"><span
-                                                                class="price" id="pprice">{{$product->discount_price}}</span><span>{{__('EGP')}}</span>
+                                                                class="price" id="pcprice">{{$product->discount_price}}</span><span>{{__('EGP')}}</span>
                                                             <span
                                                                 class="price-strike">{{$product->sell_price}}{{__('EGP')}}</span>
                                                         </div>
                                                     @else
                                                         <div class="product-price"><span
-                                                                class="price" id="pprice">{{$product->sell_price}}</span><span>{{__('EGP')}}</span>
+                                                                class="price" id="pcprice">{{$product->sell_price}}</span><span>{{__('EGP')}}</span>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -162,7 +162,7 @@
                                             <div class="form-group">
                                                 <label for="" class="info-title control-label">{{__('Color')}}
                                                     <span></span></label>
-                                                <select id="select_color" class="form-control unicase-form-control selectpicker"
+                                                <select id="cselect_color" class="form-control unicase-form-control selectpicker"
                                                         style="display: none;" required>
                                                     <option disabled>--{{__('Choose color')}}--</option>
                                                     @if (app()->getLocale() === 'en')
@@ -195,14 +195,14 @@
                                                             <div class="arrow minus gradient"><span class="ir"><i
                                                                         class="icon fa fa-sort-desc"></i></span></div>
                                                         </div>--}}
-                                                        <input type="number" id="quantity" min="1" value="1" autocomplete="off">
+                                                        <input type="number" id="cquantity" min="1" value="1" autocomplete="off">
                                                     </div>
                                                 </div>
                                             </div>
                                             @if ($product->quantity>0)
-                                                <input type="hidden" id="product_id" value="{{$product->id}}">
+                                                <input type="hidden" id="cproduct_id" value="{{$product->id}}">
                                                 <div class="col-sm-7">
-                                                    <button type="submit" onclick="addToCart()" class="btn btn-primary" ><i
+                                                    <button type="submit" onclick="addcToCart()" class="btn btn-primary" ><i
                                                             class="fa fa-shopping-cart inner-right-vs"></i> {{__('Add to cart')}}</button>
                                                 </div>
                                             @endif
