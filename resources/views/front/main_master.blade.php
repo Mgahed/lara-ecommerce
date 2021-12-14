@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#0F6CB2">
     <meta name="apple-mobile-web-app-title" content="Mobile Care">
     {{--    End pwa--}}
-    <!-- Meta -->
+<!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="csrf-token" content="{{csrf_token()}}">
@@ -77,6 +77,18 @@
             position: fixed;
             top: 0;
             width: 100%;
+        }
+    </style>
+    <style>
+        #profileImage {
+            width: 133px;
+            height: 133px;
+            border-radius: 50%;
+            background: #157ED2;
+            color: #FDD922;
+            text-align: center;
+            line-height: 130px;
+            font-size: 50px;
         }
     </style>
 </head>
@@ -231,7 +243,12 @@
     </div>
 </div>
 {{----- End Add to cart modal -----}}
-
+<script>
+    $(document).ready(function () {
+        var intials = $('#name').text().charAt(0);
+        var profileImage = $('#profileImage').text(intials);
+    });
+</script>
 <script>
     $.ajaxSetup({
         headers: {

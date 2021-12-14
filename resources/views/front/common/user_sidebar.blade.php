@@ -5,9 +5,14 @@
 
 
 <div class="col-md-2"><br>
-    <img class="card-img-top" style="border-radius: 50%"
+    {{--<img class="card-img-top" style="border-radius: 50%"
          src="{{ (!empty($user->profile_photo_path))? url('upload/user_images/'.$user->profile_photo_path):asset('images/user/no-image.png') }}"
-         height="100%" width="100%"><br><br>
+         height="100%" width="100%">--}}
+    <div id="name" style="display: none;">{{ Auth::user()->name }}</div>
+    <center>
+        <div id="profileImage"></div>
+        <br>
+    </center>
 
     <ul class="list-group list-group-flush">
         <a href="{{ route('home') }}" class="btn btn-primary btn-sm btn-block">{{__('Home')}}</a>
@@ -18,7 +23,8 @@
 
         <a href="{{ route('my.orders') }}" class="btn btn-primary btn-sm btn-block">{{__('My Orders')}}</a>
 
-        <a href="{{ route('return.order.list') }}" class="btn btn-primary btn-sm btn-block">{{__('Returned Orders')}}</a>
+        <a href="{{ route('return.order.list') }}"
+           class="btn btn-primary btn-sm btn-block">{{__('Returned Orders')}}</a>
 
         <a href="{{ route('cancel.orders') }}" class="btn btn-primary btn-sm btn-block">{{__('Cancelled Orders')}}</a>
         <br>
