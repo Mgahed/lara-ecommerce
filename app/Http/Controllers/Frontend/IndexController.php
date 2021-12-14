@@ -222,6 +222,15 @@ class IndexController extends Controller
 
     }
 
+    public function special_offer() {
+        $products = Product::where('special_offer', 1)->orderBy('id', 'DESC')->paginate(6);
+        return view('front.product.subcategory_view', compact('products'));
+    }
+    public function best_seller() {
+        $products = Product::where('best_seller', 1)->orderBy('id', 'DESC')->paginate(6);
+        return view('front.product.subcategory_view', compact('products'));
+    }
+
     // Sub-Subcategory wise data
     public function SubSubCatWiseProduct($subsubcat_id, $slug)
     {

@@ -217,35 +217,12 @@
                                         </li>
                                     @endif
                                 @endforeach
-                                {{--<li class="dropdown"><a href="#" class="dropdown-toggle" data-hover="dropdown"
-                                                        data-toggle="dropdown">aaa</a>
-                                    <ul class="dropdown-menu pages">
-                                        <li>
-                                            <div class="yamm-content">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                        <ul class="links">
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                        <ul class="links">
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                            <li><a href="#">bbdbdfbd</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>--}}
+                                <li>
+                                    <a href="{{route('special.offer')}}">{{__('Special Offer')}}</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('best.seller')}}">{{__('Best Seller')}}</a>
+                                </li>
                                 {{--<li class="dropdown  navbar-right special-menu"><a href="#">Todays offer</a></li>--}}
                             </ul>
                             <!-- /.navbar-nav -->
