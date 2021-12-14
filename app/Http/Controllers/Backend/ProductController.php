@@ -98,6 +98,7 @@ class ProductController extends Controller
             'long_descp_ar' => $request->long_descp_ar,
             'thumbnail' => $save_thumbnail_img,
             'special_offer' => $request->special_offer ? $request->special_offer : 0,
+            'best_seller' => $request->best_seller ? $request->best_seller : 0,
             'brand' => $request->brand,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id
@@ -164,6 +165,7 @@ class ProductController extends Controller
             'long_descp_en' => $request->long_descp_en,
             'long_descp_ar' => $request->long_descp_ar,
             'special_offer' => $request->special_offer ? $request->special_offer : 0,
+            'best_seller' => $request->best_seller ? $request->best_seller : 0,
             'brand' => $request->brand,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id

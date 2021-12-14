@@ -30,6 +30,7 @@ class CreateProductsTable extends Migration
             $table->string('long_descp_ar');
             $table->string('thumbnail');
             $table->integer('special_offer')->default(0);
+            $table->integer('best_seller')->default(0);
             $table->string('brand');
             $table->integer('category_id');
             $table->integer('subcategory_id');

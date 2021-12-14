@@ -297,7 +297,7 @@
 
                                         <div class="row">
 
-                                            <div class="col-md-12">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <fieldset>
@@ -308,6 +308,20 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <fieldset>
+                                                            <input type="checkbox" id="checkbox_2" name="best_seller"
+                                                                   value="1">
+                                                            <label for="checkbox_2">{{__('Best Seller')}}</label>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6"></div>
 
                                         </div>
 
