@@ -210,7 +210,7 @@
                     </a>
                 @endif
 
-                @if($order->status !== "delivered" && \Carbon\Carbon::now()->diffInDays($order->dilivered_date)<=7)
+                @if($order->status !== "delivered" && \Carbon\Carbon::now()->diffInDays($order->dilivered_date)<=14)
 
                 @else
 
