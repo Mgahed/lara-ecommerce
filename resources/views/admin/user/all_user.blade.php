@@ -16,9 +16,10 @@
                 <div class="col-12">
 
                     <div class="box">
-                        <div class="box-header with-border">
+                        <div class="box-header with-border" style="display: flex;">
                             <h3 class="box-title">{{__('Users')}} <span
                                     class="badge badge-pill badge-danger"> {{ count($users) }} </span></h3>
+                            <button type="button" id="export_button" class="btn btn-success" style="margin: auto;">{{__('Export')}}</button>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -88,6 +89,19 @@
     </div>
 
 
+    <script>
+        function html_table_to_excel(type) {
+            var data = document.getElementById('example1');
+            var file = XLSX.utils.table_to_book(data, {sheet: "sheet1"});
+            XLSX.write(file, {bookType: type, bookSST: true, type: 'base64'});
+            XLSX.writeFile(file, 'file.' + type);
+        }
 
+        const export_button = document.getElementById('export_button');
+
+        export_button.addEventListener('click', () => {
+            html_table_to_excel('xlsx');
+        });
+    </script>
 
 @endsection

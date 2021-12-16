@@ -97,6 +97,9 @@
 <script src="{{asset('admin-dashboard/js/template.js')}}"></script>
 <script src="{{asset('admin-dashboard/js/pages/dashboard.js')}}"></script>
 
+{{-- Excell --}}
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
 <script>
     $(document).ready(function(){
         var intials = $('#name').text().charAt(0);
