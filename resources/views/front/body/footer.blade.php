@@ -21,8 +21,7 @@
                                 <div class="pull-left"><span class="icon fa-stack fa-lg"> <i
                                             class="fa fa-mobile fa-stack-1x fa-inverse"></i> </span></div>
                                 <div class="media-body">
-                                    <p>+(888) 123-4567<br>
-                                        +(888) 456-7890</p>
+                                    <a href="tel:+201095226151"><p>00201095226151</p></a>
                                 </div>
                             </li>
                             <li class="media">
@@ -109,6 +108,7 @@
             <div class="col-xs-12 col-sm-6 no-padding social">
                 <ul class="link">
                     <li class="fb pull-left"><a target="_blank" rel="nofollow" href="#" title="Facebook"></a></li>
+                    <li class="whatsapp pull-left"><a target="_blank" rel="nofollow" href="https://wa.me/+201095226151" title="Whatsapp"></a></li>
                     <li class="instagram pull-left"><a target="_blank" rel="nofollow" href="https://www.instagram.com/storemobilecare/" title="Instagram"></a>
                     </li>
                     <li class="youtube pull-left"><a target="_blank" rel="nofollow" href="#" title="Youtube"></a></li>

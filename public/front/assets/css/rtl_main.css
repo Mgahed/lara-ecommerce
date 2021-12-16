@@ -3236,6 +3236,17 @@ age-container #owl-main .owl-next {
     padding: 0;
     background: #F03434 !important;
 }
+.social .whatsapp a:before {
+    content: "\f232";
+    font-family: FontAwesome;
+}
+.social .whatsapp a {
+    font-size: 20px;
+    display: inline-block!important;
+    text-align: center;
+    padding: 0;
+    background: #41DE5D !important;
+}
 .social h4 {
     margin: 25px 0px 0px 0;
 }

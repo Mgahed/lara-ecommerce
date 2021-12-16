@@ -72,11 +72,11 @@
                         </div>
                         <div class="clearfix phone-no">
                             <span class="contact-i"><i class="fa fa-mobile"></i></span>
-                            <span class="contact-span">+(888) 123-4567<br>+(888) 456-7890</span>
+                            <span class="contact-span"><a href="tel:+201095226151">00201095226151</a></span>
                         </div>
                         <div class="clearfix email">
                             <span class="contact-i"><i class="fa fa-envelope"></i></span>
-                            <span class="contact-span"><a href="#">flipmart@themesground.com</a></span>
+                            <span class="contact-span"><a href="#">mrtechnawy@gmail.com</a></span>
                         </div>
                     </div>
                 </div><!-- /.contact-page -->
