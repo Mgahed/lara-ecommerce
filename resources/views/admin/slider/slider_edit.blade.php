@@ -68,9 +68,11 @@
 
 
                                     <div class="form-group">
-                                        <h5>{{__('Image')}}</h5>
+                                        <h5>{{__('Image')}}
+                                            <span class="badge badge-danger">{{__('When upload gif it\'s better to upload gif with width 870 and height 370')}}</span>
+                                        </h5>
                                         <div class="controls">
-                                            <input type="file" accept="image/png, image/jpg, image/jpeg" name="img" class="form-control">
+                                            <input type="file" accept="image/png, image/jpg, image/jpeg, image/gif" name="img" class="form-control">
                                             @error('img')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror

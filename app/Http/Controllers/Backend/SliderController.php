@@ -43,7 +43,11 @@ class SliderController extends Controller
 
         $img = $request->file('img');
         $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-        Image::Make($img)->resize(870, 370)->save(public_path('/upload/slider/' . $name_gen));
+        if ($img->getClientOriginalExtension() == 'gif' || $img->getClientOriginalExtension() == 'GIF') {
+            $request->img->move(public_path('/upload/slider'), $name_gen);
+        } else {
+            Image::Make($img)->resize(870, 370)->save(public_path('/upload/slider/' . $name_gen));
+        }
         $save_img = 'upload/slider/' . $name_gen;
 
         Slider::create([
@@ -77,7 +81,12 @@ class SliderController extends Controller
 
             $img = $request->file('img');
             $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-            Image::Make($img)->resize(870, 370)->save(public_path('/upload/slider/' . $name_gen));
+            if ($img->getClientOriginalExtension() == 'gif' || $img->getClientOriginalExtension() == 'GIF') {
+                $request->img->move(public_path('/upload/slider'), $name_gen);
+//                $img->move(public_path('/upload/slider/' . $name_gen));
+            } else {
+                Image::Make($img)->resize(870, 370)->save(public_path('/upload/slider/' . $name_gen));
+            }
             $save_img = 'upload/slider/' . $name_gen;
 
             $slider->update([
