@@ -14,21 +14,21 @@
                                 <div class="pull-left"><span class="icon fa-stack fa-lg"> <i
                                             class="fa fa-map-marker fa-stack-1x fa-inverse"></i> </span></div>
                                 <div class="media-body">
-                                    <a href="https://maps.app.goo.gl/iho5mpCiBaWkRSF79"><p>االجيزة, الشيخ زايد, نافورة الافق</p></a>
+                                    <a href="https://maps.app.goo.gl/iho5mpCiBaWkRSF79"><p>الجيزة, الشيخ زايد, نافورة الافق</p></a>
                                 </div>
                             </li>
                             <li class="media">
                                 <div class="pull-left"><span class="icon fa-stack fa-lg"> <i
                                             class="fa fa-mobile fa-stack-1x fa-inverse"></i> </span></div>
                                 <div class="media-body">
-                                    <a href="tel:+201095226151"><p>00201095226151</p></a>
+                                    <a href="tel:+201095226151"><p>01095226151</p></a>
                                 </div>
                             </li>
                             <li class="media">
                                 <div class="pull-left"><span class="icon fa-stack fa-lg"> <i
                                             class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span></div>
                                 <div class="media-body"><span><a
-                                            href="mailto:mrtechnawy@gmail.com">mrtechnawy@gmail.com</a></span></div>
+                                            href="mailto:support@mobilecarestore.com">support@mobilecarestore.com</a></span></div>
                             </li>
                         </ul>
                     </div>

@@ -16,9 +16,9 @@
                 <div class="col-12">
 
                     <div class="box">
-                        <div class="box-header with-border" style="margin: auto;">
+                        <div class="box-header with-border" style="display: flex;">
                             <h3 class="box-title">{{__('Report')}}</h3>
-                            <button type="button" id="export_button" class="btn btn-success" style="margin: auto;">{{__('Export')}}</button>
+                            <button type="button" id="export_button" class="btn btn-success" style="margin: auto;">{{__('Export')}} <i class="fa fa-file-excel-o"></i></button>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">

@@ -19,7 +19,7 @@
                         <div class="box-header with-border" style="display: flex;">
                             <h3 class="box-title">{{__('Users')}} <span
                                     class="badge badge-pill badge-danger"> {{ count($users) }} </span></h3>
-                            <button type="button" id="export_button" class="btn btn-success" style="margin: auto;">{{__('Export')}}</button>
+                            <button type="button" id="export_button" class="btn btn-success" style="margin: auto;">{{__('Export')}} <i class="fa fa-file-excel-o"></i></button>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">

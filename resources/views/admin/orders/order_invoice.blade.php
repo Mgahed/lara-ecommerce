@@ -59,10 +59,10 @@
         </td>
         <td align="right">
             <pre class="font">
-               EasyShop Head Office
-               Email:support@easylearningbd.com <br>
-               Mob: 1245454545 <br>
-               Dhaka 1207,Dhanmondi:#4 <br>
+               Mobile Care Head Office
+               Email:support@mobilecarestore.com <br>
+               Mob: 01095226151 <br>
+               Giza, Sheikh zaid <br>
 
             </pre>
         </td>
@@ -85,7 +85,7 @@
                 @endphp
 
                 <strong>Address:</strong> {{ $div }},{{ $order->address }} <br>
-                <strong>Post Code:</strong> {{ $order->post_code }}
+                {{--<strong>Post Code:</strong> {{ $order->post_code }}--}}
             </p>
         </td>
         <td>
