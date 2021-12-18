@@ -960,6 +960,9 @@
     "Submit Payment": "الدفع",
     "Coupon Name": "الكوبون",
     "Shipping cost:": "تكلفة الشحن:",
-    "Shipping cost": "تكلفة الشحن"
+    "Shipping cost": "تكلفة الشحن",
+    "City / District / Street / Building / Floor / Apartment": "المدينة / المنطقة / الشارع / المبنى / الطابق / الشقة",
+    "Detailed Address": "عنوان تفصيلي",
+    "You cant use this number": "لا يمكنك استخدام هذا الرقم"
 
 }

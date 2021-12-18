@@ -30,6 +30,7 @@
                                         <th>{{__('Name')}}</th>
                                         <th>{{__('Email')}}</th>
                                         <th>{{__('Phone')}}</th>
+                                        <th>{{__('Detailed Address')}}</th>
                                         <th>{{__('Role')}}</th>
                                         <th>{{__('Status')}}</th>
                                         <th>{{__('Action')}}</th>
@@ -41,6 +42,7 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->phone }}</td>
+                                            <td>{{ $user->address }}</td>
                                             <td>{{ $user->role }}</td>
 
                                             <td>

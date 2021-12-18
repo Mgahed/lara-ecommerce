@@ -16,7 +16,8 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">{{__('Email Address')}} <span>*</span></label>
+                                <label class="info-title" for="exampleInputEmail1">{{__('Email Address')}}
+                                    <span>*</span></label>
                                 <input type="email" name="email" class="form-control unicase-form-control text-input"
                                        id="email">
                                 @error('email')
@@ -40,7 +41,8 @@
                                 <a href="{{ route('password.request') }}" class="forgot-password pull-left">
                                     {{__('Forgot your Password?')}}</a>
                             </div>
-                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{__('Login')}}</button>
+                            <button type="submit"
+                                    class="btn-upper btn btn-primary checkout-page-button">{{__('Login')}}</button>
                         </form>
                     </div>
                     <!-- Sign-in -->
@@ -82,6 +84,17 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label class="info-title" for="address">{{__('Detailed Address')}} <span>*</span></label>
+                                <textarea type="text" name="address" class="form-control unicase-form-control text-input"
+                                       id="address" placeholder="{{__('City / District / Street / Building / Floor / Apartment')}}"
+                                          autocomplete="off" required>{{old('address')}}</textarea>
+                                @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label class="info-title" for="password">{{__('Password')}} <span>*</span></label>
                                 <input type="password" name="password"
                                        class="form-control unicase-form-control text-input"
@@ -104,7 +117,8 @@
                                 </span>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{__('Sign Up')}}
+                            <button type="submit"
+                                    class="btn-upper btn btn-primary checkout-page-button">{{__('Sign Up')}}
                             </button>
                         </form>
 

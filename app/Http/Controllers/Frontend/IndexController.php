@@ -109,6 +109,7 @@ class IndexController extends Controller
         $data->name = $request->name;
         /*$data->email = $request->email;*/
         $data->phone = $request->phone;
+        $data->address = $request->address;
 
 
         if ($request->file('profile_photo_path')) {

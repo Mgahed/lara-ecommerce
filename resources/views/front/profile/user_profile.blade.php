@@ -56,6 +56,18 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="info-title" for="address">{{__('Detailed Address')}}</label>
+                                    <textarea type="text" name="address" class="form-control unicase-form-control text-input"
+                                           id="address" placeholder="{{__('City / District / Street / Building / Floor / Apartment')}}"
+                                              autocomplete="off" required>{{ $user->address }}</textarea>
+                                    @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                    @enderror
+                                </div>
+
                                 {{--                                <div class="form-group">--}}
                                 {{--                                    <label class="info-title" for="exampleInputEmail1">User Image <span> </span></label>--}}
                                 {{--                                    <input type="file" name="profile_photo_path" class="form-control">--}}

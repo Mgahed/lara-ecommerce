@@ -85,10 +85,10 @@
                                                                     {{__('Select city')}}<span
                                                                         class="text-danger"> *</span>
                                                                 </label>
-                                                                <select name="division_id" class="form-control"
+                                                                <select name="division_id" required class="form-control"
                                                                         id="shipping_city">
                                                                     <option value=""
-                                                                            disabled>{{__('Select city')}}</option>
+                                                                            disabled selected>{{__('Select city')}}</option>
                                                                     @foreach ($divisions as $item)
                                                                         <option value="{{$item->id}}">
                                                                             {{app()->getLocale() === 'en'?$item->name_en:$item->name_ar}}
@@ -106,7 +106,7 @@
                                                                 </label>
                                                                 <textarea required name="address" autocomplete="off"
                                                                           class="form-control unicase-form-control"
-                                                                          id="shipping_address"></textarea>
+                                                                          id="shipping_address">{{auth()->user()->address}}</textarea>
                                                                 @error('address')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
