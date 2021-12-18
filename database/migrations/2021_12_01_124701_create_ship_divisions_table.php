@@ -17,6 +17,7 @@ class CreateShipDivisionsTable extends Migration
             $table->id();
             $table->string('name_en')->unique();
             $table->string('name_ar')->unique();
+            $table->float('cost', 8, 2);
             $table->timestamps();
         });
     }
