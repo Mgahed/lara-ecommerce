@@ -113,44 +113,47 @@
                                           style="background: #418DB9;">{{ __($order->status) }} </span></th>
                                 </tr>
 
+                                @if (auth()->user()->role === 'admin' || auth()->user()->role === 'shipping')
+                                    <tr>
+                                        <th></th>
+                                        <th>
+                                            @if($order->status === 'pending')
+                                                <a href="{{ route('pending-confirm',$order->id) }}"
+                                                   class="btn btn-block btn-success"
+                                                   id="confirm">{{__('Confirm Order')}}</a>
+                                                <br>
+                                                <a href="{{ route('cancel-by-admin',$order->id) }}"
+                                                   class="btn btn-block btn-danger"
+                                                   id="cancel">{{__('Cancel Order')}}</a>
 
-                                <tr>
-                                    <th></th>
-                                    <th>
-                                        @if($order->status === 'pending')
-                                            <a href="{{ route('pending-confirm',$order->id) }}"
-                                               class="btn btn-block btn-success"
-                                               id="confirm">{{__('Confirm Order')}}</a>
-                                            <br>
-                                            <a href="{{ route('cancel-by-admin',$order->id) }}"
-                                               class="btn btn-block btn-danger" id="cancel">{{__('Cancel Order')}}</a>
+                                            @elseif($order->status === 'confirm')
+                                                <a href="{{ route('confirm.processing',$order->id) }}"
+                                                   class="btn btn-block btn-success"
+                                                   id="processing">{{__('Processing Order')}}</a>
 
-                                        @elseif($order->status === 'confirm')
-                                            <a href="{{ route('confirm.processing',$order->id) }}"
-                                               class="btn btn-block btn-success"
-                                               id="processing">{{__('Processing Order')}}</a>
+                                            @elseif($order->status === 'processing')
+                                                <a href="{{ route('processing.picked',$order->id) }}"
+                                                   class="btn btn-block btn-success"
+                                                   id="picked">{{__('Pick Order')}}</a>
 
-                                        @elseif($order->status === 'processing')
-                                            <a href="{{ route('processing.picked',$order->id) }}"
-                                               class="btn btn-block btn-success" id="picked">{{__('Pick Order')}}</a>
+                                            @elseif($order->status === 'picked')
+                                                <a href="{{ route('picked.shipped',$order->id) }}"
+                                                   class="btn btn-block btn-success"
+                                                   id="shipped">{{__('Ship Order')}}</a>
 
-                                        @elseif($order->status === 'picked')
-                                            <a href="{{ route('picked.shipped',$order->id) }}"
-                                               class="btn btn-block btn-success"
-                                               id="shipped">{{__('Ship Order')}}</a>
+                                            @elseif($order->status === 'shipped')
+                                                <a href="{{ route('shipped.delivered',$order->id) }}"
+                                                   class="btn btn-block btn-success"
+                                                   id="delivered">{{__('Delivered Order')}}</a>
+                                            @elseif ($order->status === 'return requested')
+                                                <a href="{{ route('return.done',$order->id) }}" class="btn btn-success">
+                                                    {{__('Confirm return')}}
+                                                </a>
+                                            @endif
 
-                                        @elseif($order->status === 'shipped')
-                                            <a href="{{ route('shipped.delivered',$order->id) }}"
-                                               class="btn btn-block btn-success"
-                                               id="delivered">{{__('Delivered Order')}}</a>
-                                        @elseif ($order->status === 'return requested')
-                                            <a href="{{ route('return.done',$order->id) }}" class="btn btn-success">
-                                                {{__('Confirm return')}}
-                                            </a>
-                                        @endif
-
-                                    </th>
-                                </tr>
+                                        </th>
+                                    </tr>
+                                @endif
 
                             </table>
                         </div>

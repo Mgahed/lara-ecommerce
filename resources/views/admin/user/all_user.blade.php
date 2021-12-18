@@ -19,7 +19,8 @@
                         <div class="box-header with-border" style="display: flex;">
                             <h3 class="box-title">{{__('Users')}} <span
                                     class="badge badge-pill badge-danger"> {{ count($users) }} </span></h3>
-                            <button type="button" id="export_button" class="btn btn-success" style="margin: auto;">{{__('Export')}} <i class="fa fa-file-excel-o"></i></button>
+                            <button type="button" id="export_button" class="btn btn-success"
+                                    style="margin: auto;">{{__('Export')}} <i class="fa fa-file-excel-o"></i></button>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -31,9 +32,11 @@
                                         <th>{{__('Email')}}</th>
                                         <th>{{__('Phone')}}</th>
                                         <th>{{__('Detailed Address')}}</th>
-                                        <th>{{__('Role')}}</th>
-                                        <th>{{__('Status')}}</th>
-                                        <th>{{__('Action')}}</th>
+                                        @if (auth()->user()->role === 'admin')
+                                            <th>{{__('Role')}}</th>
+                                            <th>{{__('Status')}}</th>
+                                            <th>{{__('Action')}}</th>
+                                        @endif
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -43,30 +46,50 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->address }}</td>
-                                            <td>{{ $user->role }}</td>
+                                            @if (auth()->user()->role === 'admin')
+                                                <td>{{ $user->role }}</td>
+                                                <td>
+                                                    @if($user->email_verified_at !== NULL)
+                                                        <span
+                                                            class="badge badge-pill badge-success">{{$user->email_verified_at->diffForHumans()}}</span>
+                                                    @else
+                                                        <span
+                                                            class="badge badge-pill badge-danger">{{__('Email not verified')}}</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($user->role !== 'admin')
+                                                        <a href="{{route('SetAdmin',$user->id)}}"
+                                                           class="mt-2 btn btn-success btn-md">{{__('Set admin')}} <i
+                                                                class="fa fa-arrow-up"></i></a>
+                                                    @endif
 
-                                            <td>
-                                                @if($user->email_verified_at !== NULL)
-                                                    <span
-                                                        class="badge badge-pill badge-success">{{$user->email_verified_at->diffForHumans()}}</span>
-                                                @else
-                                                    <span
-                                                        class="badge badge-pill badge-danger">{{__('Email not verified')}}</span>
-                                                @endif
-                                            </td>
+                                                    @if ($user->role !== 'normal')
+                                                        <a href="{{route('SetNormal',$user->id)}}"
+                                                           class="mt-2 btn btn-danger btn-md">{{__('Set normal')}} <i
+                                                                class="fa fa-arrow-down"></i></a>
+                                                    @endif
 
-                                            <td>
-                                                @if ($user->role === 'normal')
-                                                    <a href="{{route('SetAdmin',$user->id)}}"
-                                                       class="btn btn-success">{{__('Set admin')}} <i
-                                                            class="fa fa-arrow-up"></i></a>
-                                                @else
-                                                    <a href="{{route('SetNormal',$user->id)}}"
-                                                       class="btn btn-danger">{{__('Set normal')}} <i
-                                                            class="fa fa-arrow-down"></i></a>
-                                                @endif
-                                            </td>
+                                                    @if ($user->role !== 'marketing')
+                                                        <a href="{{route('SetMarketing',$user->id)}}"
+                                                           class="mt-2 btn btn-primary btn-md">{{__('Set marketing')}}
+                                                            <i
+                                                                class="fa fa-bullhorn"></i></a>
+                                                    @endif
 
+                                                    @if ($user->role !== 'financial')
+                                                        <a href="{{route('SetFinancial',$user->id)}}"
+                                                           class="mt-2 btn btn-info btn-md">{{__('Set financial')}} <i
+                                                                class="fa fa-money"></i></a>
+                                                    @endif
+
+                                                    @if ($user->role !== 'shipping')
+                                                        <a href="{{route('SetShipping',$user->id)}}"
+                                                           class="mt-2 btn btn-dark btn-md">{{__('Set Shipping')}} <i
+                                                                class="fa fa-truck"></i></a>
+                                                    @endif
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -57,6 +57,42 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    public function SetMarketing($id)
+    {
+        User::findOrFail($id)->update([
+            'role' => 'marketing'
+        ]);
+        $notification = [
+            'message' => __('User role changed to marketing'),
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
+    public function SetFinancial($id)
+    {
+        User::findOrFail($id)->update([
+            'role' => 'financial'
+        ]);
+        $notification = [
+            'message' => __('User role changed to financial'),
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
+    public function SetShipping($id)
+    {
+        User::findOrFail($id)->update([
+            'role' => 'shipping'
+        ]);
+        $notification = [
+            'message' => __('User role changed to shipping'),
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
     public function SeoSetting()
     {
 

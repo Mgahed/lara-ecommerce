@@ -963,6 +963,13 @@
     "Shipping cost": "تكلفة الشحن",
     "City / District / Street / Building / Floor / Apartment": "المدينة / المنطقة / الشارع / المبنى / الطابق / الشقة",
     "Detailed Address": "عنوان تفصيلي",
-    "You cant use this number": "لا يمكنك استخدام هذا الرقم"
+    "You cant use this number": "لا يمكنك استخدام هذا الرقم",
+    "Set marketing": "تعيين للتسويق",
+    "Set financial": "تعيين للمالية",
+    "Set Shipping": "تعيين للشحن",
+    "User role changed to marketing": "تغير دور المستخدم إلى التسويق",
+    "User role changed to financial": "تغير دور المستخدم إلى المالية",
+    "User role changed to shipping": "تغير دور المستخدم إلى الشحن"
+
 
 }

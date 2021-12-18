@@ -152,6 +152,9 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/view', [AdminController::class, 'AllUsers'])->name('all-users');
             Route::get('/set-admin/{id}', [AdminController::class, 'SetAdmin'])->name('SetAdmin');
             Route::get('/set-normal/{id}', [AdminController::class, 'SetNormal'])->name('SetNormal');
+            Route::get('/set-marketing/{id}', [AdminController::class, 'SetMarketing'])->name('SetMarketing');
+            Route::get('/set-financial/{id}', [AdminController::class, 'SetFinancial'])->name('SetFinancial');
+            Route::get('/set-shipping/{id}', [AdminController::class, 'SetShipping'])->name('SetShipping');
         });
 
         /*----- Admin Seo -----*/

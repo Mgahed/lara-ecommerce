@@ -7,9 +7,19 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
                         @auth
-                            @if (auth()->user()->role === 'admin')
+                            @if (auth()->user()->role === 'admin' || auth()->user()->role === 'financial')
                                 <li>
                                     <a href="{{route('admin.dashboard')}}"><i
+                                            class="icon fa fa-dashboard"></i>{{__('Dashboard')}}</a>
+                                </li>
+                            @elseif(auth()->user()->role === 'marketing')
+                                <li>
+                                    <a href="{{route('manage-product')}}"><i
+                                            class="icon fa fa-dashboard"></i>{{__('Dashboard')}}</a>
+                                </li>
+                            @elseif(auth()->user()->role === 'shipping')
+                                <li>
+                                    <a href="{{route('manage-division')}}"><i
                                             class="icon fa fa-dashboard"></i>{{__('Dashboard')}}</a>
                                 </li>
                             @endif
@@ -74,8 +84,13 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
-                    <div class="logo"><a href="{{url('/')}}"> <img style="border-radius: 50% !important; position: relative; top: -9px;" height="60" width="60" src="{{asset('logo.png')}}"
-                                                                   alt="logo"> <span style="font-size: 26px; font-family: fantasy; font-weight: bold;"><span style="color: #FDD922;">Mobile</span> <span style="color: white;">Care</span></span></a></div>
+                    <div class="logo"><a href="{{url('/')}}"> <img
+                                style="border-radius: 50% !important; position: relative; top: -9px;" height="60"
+                                width="60" src="{{asset('logo.png')}}"
+                                alt="logo"> <span
+                                style="font-size: 26px; font-family: fantasy; font-weight: bold;"><span
+                                    style="color: #FDD922;">Mobile</span> <span style="color: white;">Care</span></span></a>
+                    </div>
                     <!-- /.logo -->
                     <!-- ============================================================= LOGO : END ============================================================= -->
                 </div>
@@ -207,7 +222,7 @@
                                                                         </li>
                                                                     @endif
                                                                     @php($i++)
-                                                            @endforeach
+                                                                    @endforeach
                                                                 </ul>
                                                             </div>
                                                         </div>
