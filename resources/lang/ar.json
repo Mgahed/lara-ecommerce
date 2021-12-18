@@ -952,5 +952,14 @@
     "Cancelled Orders List": "قائمة الطلبات الملغاة",
     "Best Seller": "الافضل مبيعا",
     "When upload gif it's better to upload gif with width 870 and height 370": "عند رفع gif، من الأفضل تحميل gif بعرض 870 وارتفاع 370",
-    "Export": "تصدير"
+    "Export": "تصدير",
+    "Your Shopping Amount": "مبلغ التسوق الخاص بك",
+    "Grand Total:": "السعر النهائي:",
+    "SubTotal:": "السعر الكلي:",
+    "Payment Method": "طريقة الدفع او السداد",
+    "Submit Payment": "الدفع",
+    "Coupon Name": "الكوبون",
+    "Shipping cost:": "تكلفة الشحن:",
+    "Shipping cost": "تكلفة الشحن"
+
 }

@@ -13,7 +13,8 @@ class ShippingAreaController extends Controller
     {
         return [
             'name_en' => 'required|unique:ship_divisions',
-            'name_ar' => 'required|unique:ship_divisions'
+            'name_ar' => 'required|unique:ship_divisions',
+            'cost' => 'required'
         ];
     }
 
@@ -22,6 +23,7 @@ class ShippingAreaController extends Controller
         return [
             'name_en.required' => __('This field is required'),
             'name_ar.required' => __('This field is required'),
+            'cost.required' => __('This field is required'),
             'name_en.unique' => __('Name should be unique'),
             'name_ar.unique' => __('Name should be unique')
         ];
@@ -46,7 +48,9 @@ class ShippingAreaController extends Controller
 
         ShipDivision::create([
             'name_en' => ucfirst(strtolower($request->name_en)),
-            'name_ar' => $request->name_ar
+            'name_ar' => $request->name_ar,
+            'cost' => $request->cost
+
         ]);
 
         $notification = array(
@@ -80,6 +84,7 @@ class ShippingAreaController extends Controller
         ShipDivision::findOrFail($id)->update([
             'name_en' => ucfirst(strtolower($request->name_en)),
             'name_ar' => $request->name_ar,
+            'cost' => $request->cost,
         ]);
 
         $notification = array(

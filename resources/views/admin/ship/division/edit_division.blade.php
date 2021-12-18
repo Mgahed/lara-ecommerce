@@ -52,6 +52,17 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <h5>{{__('Shipping cost')}} <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input autocomplete="off" type="number" step="0.01" name="cost" min="0.0" class="form-control"
+                                                   value="{{ $division->cost }}">
+                                            @error('cost')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Update')}}">
                                     </div>

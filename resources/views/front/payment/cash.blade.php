@@ -24,29 +24,39 @@
                                             <li>
                                                 @if(Session::has('coupon'))
 
-                                                    <strong>SubTotal: </strong> ${{ $cartTotal }}
+                                                    <strong>{{__('SubTotal:')}} </strong> {{ $cartTotal }}{{__('EGP')}}
                                                     <hr>
 
-                                                    <strong>Coupon Name
+                                                    <strong>{{__('Coupon Name')}}
                                                         : </strong> {{ session()->get('coupon')['coupon_name'] }}
                                                     ( {{ session()->get('coupon')['coupon_discount'] }} % )
                                                     <hr>
 
                                                     <strong>Coupon Discount : </strong>
-                                                    ${{ session()->get('coupon')['discount_amount'] }}
+                                                    {{ session()->get('coupon')['discount_amount'] }}{{__('EGP')}}
                                                     <hr>
 
                                                     <strong>Grand Total : </strong>
-                                                    ${{ session()->get('coupon')['total_amount'] }}
+                                                    {{ session()->get('coupon')['total_amount'] }}{{__('EGP')}}
                                                     <hr>
 
 
                                                 @else
 
-                                                    <strong>SubTotal: </strong> ${{ $cartTotal }}
+                                                    <strong>{{__('SubTotal:')}} </strong>
+                                                    <span>{{ $cartTotal }}{{__('EGP')}}</span>
                                                     <hr>
 
-                                                    <strong>Grand Total : </strong> ${{ $cartTotal }}
+                                                    @php
+                                                        $find_city = \App\Models\ShipDivision::select('cost')->findOrFail($data['division_id']);
+                                                        $cost_of_shipping = $find_city->cost;
+                                                    @endphp
+                                                    <strong>{{__('Shipping cost:')}} </strong>
+                                                    <span>{{ $cost_of_shipping }}{{__('EGP')}}</span>
+                                                    <hr>
+
+                                                    <strong>{{__('Grand Total:')}} </strong>
+                                                    <span>{{ $cartTotal+$cost_of_shipping }}{{__('EGP')}}</span>
                                                     <hr>
 
 
@@ -77,7 +87,8 @@
                                         @csrf
                                         <div class="form-row">
 
-                                            <img src="{{ asset('front/assets/images/payments/cash.png') }}" alt="{{__('Cash on delivery')}}">
+                                            <img src="{{ asset('front/assets/images/payments/cash.png') }}"
+                                                 alt="{{__('Cash on delivery')}}">
 
                                             <label for="card-element">
 
@@ -88,13 +99,15 @@
                                                 <input type="hidden" name="division_id"
                                                        value="{{ $data['division_id'] }}">
                                                 <input type="hidden" name="notes" value="{{ $data['notes'] }}">
+                                                <input type="hidden" name="shipping_cost"
+                                                       value="{{ $cost_of_shipping }}">
 
                                             </label>
 
 
                                         </div>
                                         <br>
-                                        <button class="btn btn-primary">Submit Payment</button>
+                                        <button class="btn btn-primary">{{__('Submit Payment')}}</button>
                                     </form>
 
 

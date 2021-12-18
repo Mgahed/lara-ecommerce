@@ -68,7 +68,7 @@ class CheckoutController extends Controller
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
         $data['address'] = $request->address;
-        $data['division_id'] = $request->division_id;;
+        $data['division_id'] = $request->division_id;
         $data['notes'] = $request->notes;
         $cartTotal = Cart::total();
 

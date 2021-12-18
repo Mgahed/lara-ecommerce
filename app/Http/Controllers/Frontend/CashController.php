@@ -39,7 +39,7 @@ class CashController extends Controller
             'payment_type' => 'cash',
             'payment_method' => 'cash',
 
-            'amount' => $total_amount,
+            'amount' => $total_amount + $request->shipping_cost,
 
             'order_number' => $number,
             'invoice_number' => 'EOS' . $number,
