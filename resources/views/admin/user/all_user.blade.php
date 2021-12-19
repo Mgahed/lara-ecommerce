@@ -58,7 +58,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <div class="btn-group-vertical">
+                                                    <div class="btn-group-vertical" style="display: inline-flex; width: 100%;">
                                                         @if ($user->role !== 'admin')
                                                             <a href="{{route('SetAdmin',$user->id)}}"
                                                                class="btn btn-success btn-md">{{__('Set admin')}}
