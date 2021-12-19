@@ -58,36 +58,42 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($user->role !== 'admin')
-                                                        <a href="{{route('SetAdmin',$user->id)}}"
-                                                           class="mt-2 btn btn-success btn-md">{{__('Set admin')}} <i
-                                                                class="fa fa-arrow-up"></i></a>
-                                                    @endif
+                                                    <div class="btn-group-vertical">
+                                                        @if ($user->role !== 'admin')
+                                                            <a href="{{route('SetAdmin',$user->id)}}"
+                                                               class="btn btn-success btn-md">{{__('Set admin')}}
+                                                                <i
+                                                                    class="fa fa-arrow-up"></i></a>
+                                                        @endif
 
-                                                    @if ($user->role !== 'normal')
-                                                        <a href="{{route('SetNormal',$user->id)}}"
-                                                           class="mt-2 btn btn-danger btn-md">{{__('Set normal')}} <i
-                                                                class="fa fa-arrow-down"></i></a>
-                                                    @endif
+                                                        @if ($user->role !== 'normal')
+                                                            <a href="{{route('SetNormal',$user->id)}}"
+                                                               class="btn btn-danger btn-md">{{__('Set normal')}}
+                                                                <i
+                                                                    class="fa fa-arrow-down"></i></a>
+                                                        @endif
 
-                                                    @if ($user->role !== 'marketing')
-                                                        <a href="{{route('SetMarketing',$user->id)}}"
-                                                           class="mt-2 btn btn-primary btn-md">{{__('Set marketing')}}
-                                                            <i
-                                                                class="fa fa-bullhorn"></i></a>
-                                                    @endif
+                                                        @if ($user->role !== 'marketing')
+                                                            <a href="{{route('SetMarketing',$user->id)}}"
+                                                               class="btn btn-primary btn-md">{{__('Set marketing')}}
+                                                                <i
+                                                                    class="fa fa-bullhorn"></i></a>
+                                                        @endif
 
-                                                    @if ($user->role !== 'financial')
-                                                        <a href="{{route('SetFinancial',$user->id)}}"
-                                                           class="mt-2 btn btn-info btn-md">{{__('Set financial')}} <i
-                                                                class="fa fa-money"></i></a>
-                                                    @endif
+                                                        @if ($user->role !== 'financial')
+                                                            <a href="{{route('SetFinancial',$user->id)}}"
+                                                               class="btn btn-info btn-md">{{__('Set financial')}}
+                                                                <i
+                                                                    class="fa fa-money"></i></a>
+                                                        @endif
 
-                                                    @if ($user->role !== 'shipping')
-                                                        <a href="{{route('SetShipping',$user->id)}}"
-                                                           class="mt-2 btn btn-dark btn-md">{{__('Set Shipping')}} <i
-                                                                class="fa fa-truck"></i></a>
-                                                    @endif
+                                                        @if ($user->role !== 'shipping')
+                                                            <a href="{{route('SetShipping',$user->id)}}"
+                                                               class="btn btn-dark btn-md">{{__('Set Shipping')}}
+                                                                <i
+                                                                    class="fa fa-truck"></i></a>
+                                                        @endif
+                                                    </div>
                                                 </td>
                                             @endif
                                         </tr>
