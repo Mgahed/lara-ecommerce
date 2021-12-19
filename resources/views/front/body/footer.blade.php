@@ -124,7 +124,7 @@
                         <li><img src="--}}{{--assets/images/payments/5.png--}}{{--" alt=""></li>
                     </ul>--}}
                     &copy; {{\Carbon\Carbon::now()->year}} {{__('Made by')}} <a target="_blank"
-                                                                                href="https://mrtechnawy.com">Mr
+                                                                                href="https://business.mrtechnawy.com">Mr
                         Technawy</a> {{__('All Rights Reserved.')}}
                 </div>
                 <!-- /.payment-methods -->

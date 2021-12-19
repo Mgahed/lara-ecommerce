@@ -157,7 +157,7 @@
     <h1>Coming Soon - انتظرونا قريبا</h1>
 </header>
 <p>Our new site is almost ready! - !موقعنا الجديد جاهز تقريبًا</p>
-<p style="margin: 0; padding: 0;">Created by <a style="color: lightblue;" href="https://mrtechnawy.com">Mr Technawy</a></p>
+<p style="margin: 0; padding: 0;">Created by <a style="color: lightblue;" href="https://business.mrtechnawy.com">Mr Technawy</a></p>
 <!-- SDG -->
 </body>
 </html>
