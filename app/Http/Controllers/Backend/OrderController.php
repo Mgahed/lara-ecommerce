@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactUs;
+use App\Mail\ShippingMail;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
-use PDF;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -95,7 +98,7 @@ class OrderController extends Controller
     // Cancel Orders
     public function CancelOrders()
     {
-        $orders = Order::where('status', 'cancelled')->orWhere('status','cancelled by admin')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'cancelled')->orWhere('status', 'cancelled by admin')->orderBy('id', 'DESC')->get();
         return view('admin.orders.cancel_orders', compact('orders'));
 
     } // end mehtod
@@ -175,10 +178,20 @@ class OrderController extends Controller
     public function ProcessingToPicked($order_id)
     {
 
-        Order::findOrFail($order_id)->update([
+        $order = Order::findOrFail($order_id);
+        $order->update([
             'status' => 'picked',
             'picked_date' => Carbon::now()
         ]);
+
+        $email_data = [
+            'name' => __('Dear customer, ') . $order->name,
+            'email' => $order->email,
+            'invoice' => __('Order number ') . $order->invoice_number,
+            'msg' => __('Your order is ready and it will be delivered to you soon')
+        ];
+
+        Mail::to($order->email)->send(new ShippingMail($email_data));
 
         $notification = array(
             'message' => __('Order Picked Successfully'),

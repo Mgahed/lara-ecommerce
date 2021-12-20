@@ -969,7 +969,12 @@
     "Set Shipping": "تعيين للشحن",
     "User role changed to marketing": "تغير دور المستخدم إلى التسويق",
     "User role changed to financial": "تغير دور المستخدم إلى المالية",
-    "User role changed to shipping": "تغير دور المستخدم إلى الشحن"
+    "User role changed to shipping": "تغير دور المستخدم إلى الشحن",
+    "Your order is ready and it will be delivered to you soon": "طلبك جاهز و سيصل إليك قريبًا",
+    "Your order on the way to you": "طلبك في الطريق إليك",
+    "Dear customer, ": "عزيزنا العميل، ",
+    "Order number ": "طلب رقم ",
+    "Thanks,": "شكرا،"
 
 
 }
