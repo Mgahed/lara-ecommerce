@@ -182,7 +182,7 @@ class IndexController extends Controller
 
         $multiImag = MultiImg::where('product_id', $id)->get();
 
-        $this->SEOTrait($product->name_en, $product->thumbnail);
+        $this->SEOTrait($product->name_en, '/'.$product->thumbnail);
 
         $cat_id = $product->category_id;
         $relatedProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
