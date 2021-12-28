@@ -126,6 +126,56 @@
 <script src="{{asset('front/assets/js/wow.min.js')}}"></script>
 <script src="{{asset('front/assets/js/scripts.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{{-- truncate --}}
+<script>
+    (function () {
+        var showChar = 700;
+        var ellipsestext = "...........";
+        if ($('html').attr('lang') == "ar") {
+            var readMore = 'اقرأ المزيد +';
+            var readLess = 'اقرأ اقل -';
+        } else {
+            readMore = 'Read More +';
+            readLess = 'Read Less -';
+        }
+
+        $(".truncate").each(function () {
+            var content = $(this).html();
+            if (content.length > showChar) {
+                var c = content.substr(0, showChar);
+                var h = content;
+                var html =
+                    '<div class="truncate-text" style="display:block">' +
+                    c +
+                    '<span class="moreellipses">' +
+                    ellipsestext +
+                    '&nbsp;&nbsp;<br><br><span style="white-space: nowrap;"><a href="" class="moreless more btn-sm btn-primary" style="color: #fff;">' + readMore + '</a></span></span></span></div><div class="truncate-text" style="display:none">' +
+                    h +
+                    '<br><br><span style="white-space: nowrap;"><a href="" class="moreless less btn-sm btn-primary" style="color: #fff;">' + readLess + '</a></span></span></div>';
+
+                $(this).html(html);
+            }
+        });
+
+        $(".moreless").click(function () {
+            var thisEl = $(this);
+            var cT = thisEl.closest(".truncate-text");
+            var tX = ".truncate-text";
+
+            if (thisEl.hasClass("less")) {
+                cT.prev(tX).toggle();
+                cT.slideToggle();
+            } else {
+                cT.toggle();
+                cT.next(tX).fadeToggle();
+            }
+            return false;
+        });
+        /* end iffe */
+    })();
+</script>
+
 <script>
     window.onscroll = function () {
         myFunction()

@@ -232,11 +232,19 @@
                                         </li>
                                     @endif
                                 @endforeach
-                                <li>
-                                    <a href="{{route('special.offer')}}">{{__('Special Offer')}}</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('best.seller')}}">{{__('Best Seller')}}</a>
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-hover="dropdown"
+                                                        data-toggle="dropdown">{{__('Other')}}</a>
+                                    <ul class="dropdown-menu pages">
+                                        <li>
+                                            <a href="{{route('special.offer')}}">{{__('Special Offer')}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('best.seller')}}">{{__('Best Seller')}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('blogs')}}">{{__('Articles')}}</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 {{--<li class="dropdown  navbar-right special-menu"><a href="#">Todays offer</a></li>--}}
                             </ul>

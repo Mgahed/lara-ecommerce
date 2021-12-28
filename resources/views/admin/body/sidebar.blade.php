@@ -76,6 +76,20 @@
                         </li>
                     </ul>
                 </li>
+                <li class="treeview {{Request::is(app()->getLocale().'/admin/blogs/*') ? 'active' : ''}}">
+                    <a href="#">
+                        <i class="mdi mdi-library-books"></i> <span>{{__('Articles')}}</span>
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{Request::is(app()->getLocale().'/admin/blogs/*') ? 'active' : ''}}">
+                            <a
+                                href="{{route('manage-blog')}}"><i class="ti-more"></i>{{__('Manage Articles')}}</a>
+                        </li>
+                    </ul>
+                </li>
             @endif
             @if (auth()->user()->role === 'admin' || auth()->user()->role === 'marketing')
                 <li class="treeview {{Request::is(app()->getLocale().'/admin/coupons/*') ? 'active' : ''}}">

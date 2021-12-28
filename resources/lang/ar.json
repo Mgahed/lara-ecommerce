@@ -974,7 +974,17 @@
     "Your order on the way to you": "طلبك في الطريق إليك",
     "Dear customer, ": "عزيزنا العميل، ",
     "Order number ": "طلب رقم ",
-    "Thanks,": "شكرا،"
+    "Thanks,": "شكرا،",
+    "Other": "اخرى",
+    "Articles": "مقالات",
+    "Articles List": "قائمة المقالات",
+    "Article Image": "صورة المقال",
+    "Manage Articles": "إدارة المقالات",
+    "Add Article": "أضف مقال",
+    "Article Inserted Successfully": "تم أضافة المقال بنجاح",
+    "Article Updated Successfully": "تم تحديث المقالة بنجاح",
+    "Edit Article": "تعديل المقال",
+    "Article Deleted Successfully": "تم حذف المقال بنجاح"
 
 
 }

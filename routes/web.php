@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Frontend\AllUserController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CartPageController;
@@ -94,6 +95,15 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon.edit');
             Route::post('/update/{id}', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
             Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
+        });
+
+        /*----- Admin blog -----*/
+        Route::prefix('blogs')->group(function () {
+            Route::get('/view', [BlogController::class, 'BlogsView'])->name('manage-blog');
+            Route::post('/store', [BlogController::class, 'BlogsStore'])->name('blog.store');
+            Route::get('/edit/{id}', [BlogController::class, 'BlogsEdit'])->name('blog.edit');
+            Route::post('/update', [BlogController::class, 'BlogsUpdate'])->name('blog.update');
+            Route::get('/delete/{id}', [BlogController::class, 'BlogsDelete'])->name('blog.delete');
         });
 
         /*----- Admin shipping -----*/
@@ -250,6 +260,11 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
 
     });
 
+    /*----- blogs -----*/
+    Route::group(['prefix' => 'cart'], function () {
+        Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
+    });
+
     /// Product Search Route
     Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product.search');
     // Advance Search Routes
@@ -265,6 +280,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
 
     Route::post('/contact-us', [IndexController::class, 'contact_us'])->name('contact-us');
 });
+
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('view:clear');
