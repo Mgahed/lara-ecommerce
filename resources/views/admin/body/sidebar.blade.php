@@ -96,13 +96,20 @@
                     <a href="#">
                         <i class="fa fa-percent"></i> <span>{{__('Coupon')}}</span>
                         <span class="pull-right-container">
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="{{Request::is(app()->getLocale().'/admin/coupons/*') ? 'active' : ''}}">
+                        <li class="{{Request::is(app()->getLocale().'/admin/coupons/percentage/*') ? 'active' : ''}}">
                             <a
-                                href="{{route('manage-coupon')}}"><i class="ti-more"></i>{{__('Manage coupon')}}</a>
+                                href="{{route('manage-coupon')}}"><i class="ti-more"></i>{{__('Percentage coupons')}}
+                            </a>
+                        </li>
+                        {{-- price coupon --}}
+                        <li class="{{Request::is(app()->getLocale().'/admin/coupons/price/*') ? 'active' : ''}}">
+                            <a
+                                href="{{route('price.manage-coupon')}}"><i class="ti-more"></i>{{__('Price coupons')}}
+                            </a>
                         </li>
                     </ul>
                 </li>

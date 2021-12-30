@@ -90,11 +90,17 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
 
         /*----- Admin coupon -----*/
         Route::prefix('coupons')->group(function () {
-            Route::get('/view', [CouponController::class, 'CouponView'])->name('manage-coupon');
-            Route::post('/store', [CouponController::class, 'CouponStore'])->name('coupon.store');
-            Route::get('/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon.edit');
-            Route::post('/update/{id}', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
-            Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
+            Route::get('percentage/view', [CouponController::class, 'CouponView'])->name('manage-coupon');
+            Route::post('percentage/store', [CouponController::class, 'CouponStore'])->name('coupon.store');
+            Route::get('percentage/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon.edit');
+            Route::post('percentage/update/{id}', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
+            Route::get('percentage/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
+            /*--- price coupon ---*/
+            Route::get('/price/view', [CouponController::class, 'PriceCouponView'])->name('price.manage-coupon');
+            Route::post('/price/store', [CouponController::class, 'PriceCouponStore'])->name('price.coupon.store');
+            Route::get('/price/edit/{id}', [CouponController::class, 'PriceCouponEdit'])->name('price.coupon.edit');
+            Route::post('/price/update/{id}', [CouponController::class, 'PriceCouponUpdate'])->name('price.coupon.update');
+            Route::get('/price/delete/{id}', [CouponController::class, 'PriceCouponDelete'])->name('price.coupon.delete');
         });
 
         /*----- Admin blog -----*/

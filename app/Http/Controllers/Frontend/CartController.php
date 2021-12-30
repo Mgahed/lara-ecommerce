@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
+use App\Models\PriceCoupon;
 use App\Models\Product;
 use App\Models\ShipDivision;
 use Carbon\Carbon;
@@ -118,6 +119,26 @@ class CartController extends Controller
                 'success' => $message
             ));
         }
+
+        $price_coupon = PriceCoupon::where('name', $request->coupon_name)->where('validity', '>=', Carbon::now()->format('Y-m-d'))->first();
+        if ($price_coupon) {
+            Session::put('coupon', [
+                'coupon_name' => $price_coupon->name,
+                'coupon_discount' => $price_coupon->discount,
+                'discount_amount' => round($price_coupon->discount),
+                'total_amount' => round(Cart::total() - $price_coupon->discount)
+            ]);
+            if ($request->lang === 'en') {
+                $message = 'Coupon Applied Successfully';
+            } else {
+                $message = 'تم استخدام الكوبون بنجاح';
+            }
+            return response()->json(array(
+                'validity' => true,
+                'success' => $message
+            ));
+        }
+        /*----- No Coupon -----*/
         if ($request->lang === 'en') {
             $message = 'Invalid Coupon';
         } else {

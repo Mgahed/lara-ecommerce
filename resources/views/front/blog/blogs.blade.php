@@ -3,7 +3,6 @@
     <div class="body-content outer-top-xs">
         <div class="container">
             <div class="row">
-                @include('front.common.sidebar')
                 <div class="blog-page">
 
                     <div class="text-right">
@@ -30,7 +29,8 @@
 
                         @endforeach
 
-                        <div class="clearfix blog-pagination filters-container  wow fadeInUp" style="padding:0px; background:none; box-shadow:none; margin-top:15px; border:none">
+                        <div class="clearfix blog-pagination filters-container  wow fadeInUp"
+                             style="padding:0px; background:none; box-shadow:none; margin-top:15px; border:none">
 
                             <div class="text-right">
                                 <div class="pagination-container">
@@ -49,6 +49,7 @@
                         </div><!-- /.filters-container -->
                     </div>
                 </div>
+                @include('front.common.sidebar')
             </div>
         </div>
 @endsection
