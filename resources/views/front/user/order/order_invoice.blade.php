@@ -59,11 +59,10 @@
         </td>
         <td align="right">
             <pre class="font">
-               EasyShop Head Office
-               Email:support@easylearningbd.com <br>
-               Mob: 1245454545 <br>
-               Dhaka 1207,Dhanmondi:#4 <br>
-
+               Mobile Care Head Office
+               Email:support@mobilecarestore.com <br>
+               Mob: 01095226151 <br>
+               Giza, Sheikh zaid <br>
             </pre>
         </td>
     </tr>
@@ -71,9 +70,8 @@
 </table>
 
 
-<table width="100%" style="background:white; padding:2px;"
-"></table>
-<table width="100%" style="background: #F7F7F7; padding:0 5 0 5px;" class="font">
+<table width="100%" style="background:white; padding:2px;"></table>
+<table width="100%" style="background: #F7F7F7; padding:0 5px 0 5px;" class="font">
     <tr>
         <td>
             <p class="font" style="margin-left: 20px;">
@@ -85,13 +83,14 @@
                 @endphp
 
                 <strong>Address:</strong> {{ $div }},{{ $order->address }} <br>
-                <strong>Post Code:</strong> {{ $order->post_code }}
+                {{--<strong>Post Code:</strong> {{ $order->post_code }}--}}
             </p>
         </td>
         <td>
             <p class="font">
-            <h3><span style="color: #157ED2;">Invoice:</span> #{{ $order->invoice_number}}</h3>
-            Order Date: {{ $order->created_at }} <br>
+            <h3><span style="color: #157ED2;">Invoice:</span> {{ $order->invoice_number}}</h3>
+            <h4><span style="color: #157ED2;">Order number:</span> #{{ $order->order_number}}</h4>
+            Order Date: {{ $order->created_at->format('Y-m-d') }} <br>
             {{--Delivery Date: {{ $order->delivered_date }} <br>--}}
             Payment Type : {{ $order->payment_method }} </span>
             </p>

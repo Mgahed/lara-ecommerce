@@ -13,7 +13,6 @@
             <div class="row">
 
 
-
                 <div class="col-12">
 
                     <div class="box">
@@ -43,11 +42,16 @@
                                             <td> {{ $item->amount }}{{__('EGP')}}  </td>
 
                                             <td> {{ $item->payment_method }}  </td>
-                                            <td> <span class="badge badge-pill badge-primary">{{ __($item->status) }} </span>  </td>
+                                            <td><span
+                                                    class="badge badge-pill badge-primary">{{ __($item->status) }} </span>
+                                            </td>
 
                                             <td width="25%">
-                                                <a href="{{ route('pending.order.details',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-eye"></i> </a>
-
+                                                <a href="{{ route('pending.order.details',$item->id) }}"
+                                                   class="btn btn-info" title="Edit Data"><i class="fa fa-eye"></i> </a>
+                                                <a target="_blank" href="{{ route('shipping.invoice.download',$item->id) }}"
+                                                   class="btn btn-primary" title="Shipping Invoice Download">
+                                                    <i class="mdi mdi-truck-delivery"></i></a>
                                             </td>
 
                                         </tr>
@@ -64,10 +68,6 @@
 
                 </div>
                 <!-- /.col -->
-
-
-
-
 
 
             </div>

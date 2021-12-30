@@ -83,7 +83,6 @@
                 @endphp
 
                 <strong>Address:</strong> {{ $div }},{{ $order->address }} <br>
-                {{--<strong>Post Code:</strong> {{ $order->post_code }}--}}
             </p>
         </td>
         <td>
@@ -97,53 +96,15 @@
         </td>
     </tr>
 </table>
-<br/>
-<h3>Products</h3>
-<table width="100%">
-    <thead style="background-color: #157ED2; color:#FFFFFF;">
-    <tr class="font">
-        <th>Image</th>
-        <th>Product Name</th>
-        <th>Color</th>
-        <th>Code</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Total</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach($orderItem as $item)
-        <tr class="font">
-            <td align="center">
-                <img src="{{ public_path($item->product->thumbnail)  }}" height="60px;" width="60px;" alt="">
-            </td>
-            <td align="center"> {{ $item->product->name_en }}</td>
-            <td align="center">{{ $item->color }}</td>
-            <td align="center">{{ $item->product->code }}</td>
-            <td align="center">{{ $item->qty }}</td>
-            <td align="center">{{ $item->price }}{{'EGP'}}</td>
-            <td align="center">{{ $item->price * $item->qty }}{{'EGP'}} </td>
-        </tr>
-    @endforeach
-
-    </tbody>
-</table>
 <br>
 <table width="100%" style=" padding:0 10px 0 10px;">
     <tr>
-        <td align="right">
-            <h2><span style="color: #157ED2;">Subtotal:</span>{{ $order->amount }}{{'EGP'}}</h2>
+        <center>
+            {{--<h2><span style="color: #157ED2;">Subtotal:</span>{{ $order->amount }}{{'EGP'}}</h2>--}}
             <h2><span style="color: #157ED2;">Total:</span> {{ $order->amount }}{{'EGP'}}</h2>
             {{-- <h2><span style="color: #157ED2;">Full Payment PAID</h2> --}}
-        </td>
+        </center>
     </tr>
 </table>
-<div class="thanks mt-3">
-    <p>Thanks For Buying Products..!!</p>
-</div>
-<div class="authority float-right mt-5">
-    <p>-----------------------------------</p>
-    <h5>Authority Signature:</h5>
-</div>
 </body>
 </html>

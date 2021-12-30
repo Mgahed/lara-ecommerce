@@ -16,8 +16,6 @@ class CashController extends Controller
 {
     public function CashOrder(Request $request)
     {
-
-
         if (Session::has('coupon')) {
             $total_amount = Session::get('coupon')['total_amount'];
         } else {
@@ -26,7 +24,14 @@ class CashController extends Controller
 
 
         // dd($charge);
-        $number = strtotime(Carbon::now()) . mt_rand(10000000, 99999999);
+//        $number = strtotime(Carbon::now()) . mt_rand(10000000, 99999999);
+        $last_order = Order::orderBy('id', 'DESC')->first();
+        if ($last_order) {
+            $id = $last_order->id + 1;
+        } else {
+            $id = 1;
+        }
+        $number = str_pad($id, 9, "0", STR_PAD_LEFT);
         $order_id = Order::insertGetId([
             'user_id' => auth()->id(),
             'division_id' => $request->division_id,

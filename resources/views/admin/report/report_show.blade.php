@@ -18,7 +18,8 @@
                     <div class="box">
                         <div class="box-header with-border" style="display: flex;">
                             <h3 class="box-title">{{__('Report')}}</h3>
-                            <button type="button" id="export_button" class="btn btn-success" style="margin: auto;">{{__('Export')}} <i class="fa fa-file-excel-o"></i></button>
+                            <button type="button" id="export_button" class="btn btn-success"
+                                    style="margin: auto;">{{__('Export')}} <i class="fa fa-file-excel-o"></i></button>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -40,7 +41,7 @@
                                         <tr>
                                             <td> {{ $item->created_at }}  </td>
                                             <td> {{ $item->invoice_number }}  </td>
-                                            <td> {{ $item->amount }}{{__('EGP')}}  </td>
+                                            <td> {{ $item->amount }} </td>
 
                                             <td> {{ $item->payment_method }}  </td>
 
@@ -55,6 +56,11 @@
                                                 <a target="_blank" href="{{ route('invoice.download',$item->id) }}"
                                                    class="btn btn-danger" title="Invoice Download">
                                                     <i class="fa fa-download"></i></a>
+
+                                                <a target="_blank"
+                                                   href="{{ route('shipping.invoice.download',$item->id) }}"
+                                                   class="btn btn-primary" title="Shipping Invoice Download">
+                                                    <i class="mdi mdi-truck-delivery"></i></a>
                                             </td>
 
                                         </tr>

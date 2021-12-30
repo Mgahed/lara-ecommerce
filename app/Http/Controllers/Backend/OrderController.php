@@ -261,4 +261,19 @@ class OrderController extends Controller
         return $pdf->download('invoice.pdf');
 
     } // end method
+
+
+    public function AdminShippingDownload($order_id)
+    {
+
+        $order = Order::with('division', 'user')->where('id', $order_id)->first();
+        $orderItem = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
+
+        $pdf = PDF::loadView('admin.orders.shipping_invoice', compact('order', 'orderItem'))->setPaper('a4')->setOptions([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('shipping_invoice.pdf');
+
+    } // end method
 }

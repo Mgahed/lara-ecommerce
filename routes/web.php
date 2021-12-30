@@ -143,6 +143,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/picked/shipped/{order_id}', [OrderController::class, 'PickedToShipped'])->name('picked.shipped');
             Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped.delivered');
             Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
+            Route::get('/invoice/shipping/download/{order_id}', [OrderController::class, 'AdminShippingDownload'])->name('shipping.invoice.download');
         });
         Route::get('/order-return/returned', [OrderController::class, 'ReturnedOrder'])->name('returned-orders');
         Route::get('/order-return/request', [OrderController::class, 'ReturnRequest'])->name('return-request-orders');
