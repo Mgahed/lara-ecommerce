@@ -97,6 +97,18 @@
 <script src="{{asset('admin-dashboard/js/template.js')}}"></script>
 <script src="{{asset('admin-dashboard/js/pages/dashboard.js')}}"></script>
 
+{{-- DataTable Edit --}}
+<script>
+    $(document).ready(function () {
+        $('div.example1_length select').css('width', '100% !important');
+        let o400 = new Option("option text", "99000000");
+        $(o400).html("{{__('All')}}");
+        setTimeout(function () {
+            $("select[name='example1_length']").append(o400);
+        }, 900)
+    });
+</script>
+
 {{-- Excell --}}
 <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 
