@@ -169,7 +169,7 @@ class CouponController extends Controller
     public function PriceCouponDelete($id)
     {
 
-        Coupon::findOrFail($id)->delete();
+        PriceCoupon::findOrFail($id)->delete();
         $notification = array(
             'message' => __('Coupon Deleted Successfully'),
             'alert-type' => 'info'
