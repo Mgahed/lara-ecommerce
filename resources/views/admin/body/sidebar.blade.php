@@ -111,6 +111,12 @@
                                 href="{{route('price.manage-coupon')}}"><i class="ti-more"></i>{{__('Price coupons')}}
                             </a>
                         </li>
+                        {{-- user coupon --}}
+                        <li class="{{Request::is(app()->getLocale().'/admin/coupons/user/*') ? 'active' : ''}}">
+                            <a
+                                href="{{route('user.manage-coupon')}}"><i class="ti-more"></i>{{__('User coupons')}}
+                            </a>
+                        </li>
                     </ul>
                 </li>
             @endif

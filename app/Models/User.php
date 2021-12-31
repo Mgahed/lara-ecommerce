@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
+
+    public function usercoupon()
+    {
+        return $this->hasMany(UserCoupon::class, 'user_id', 'id');
+    }
 }

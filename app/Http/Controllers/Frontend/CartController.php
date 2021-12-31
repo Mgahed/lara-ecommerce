@@ -7,6 +7,7 @@ use App\Models\Coupon;
 use App\Models\PriceCoupon;
 use App\Models\Product;
 use App\Models\ShipDivision;
+use App\Models\UserCoupon;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -100,6 +101,24 @@ class CartController extends Controller
 
     public function CouponApply(Request $request)
     {
+        $user_coupon = UserCoupon::with('user')->where('name', $request->coupon_name)->where('validity', '>=', Carbon::now()->format('Y-m-d'))->first();
+        if ($user_coupon && $user_coupon->user->id === \Auth::user()->id) {
+            Session::put('coupon', [
+                'coupon_name' => $user_coupon->name,
+                'coupon_discount' => $user_coupon->discount,
+                'discount_amount' => round($user_coupon->discount),
+                'total_amount' => round(Cart::total() - $user_coupon->discount) < 0 ? 0 : round(Cart::total() - $user_coupon->discount)
+            ]);
+            if ($request->lang === 'en') {
+                $message = 'Coupon Applied Successfully';
+            } else {
+                $message = 'تم استخدام الكوبون بنجاح';
+            }
+            return response()->json(array(
+                'validity' => true,
+                'success' => $message
+            ));
+        }
 
         $coupon = Coupon::where('name', $request->coupon_name)->where('validity', '>=', Carbon::now()->format('Y-m-d'))->first();
         if ($coupon) {
@@ -126,7 +145,7 @@ class CartController extends Controller
                 'coupon_name' => $price_coupon->name,
                 'coupon_discount' => $price_coupon->discount,
                 'discount_amount' => round($price_coupon->discount),
-                'total_amount' => round(Cart::total() - $price_coupon->discount)
+                'total_amount' => round(Cart::total() - $price_coupon->discount) < 0 ? 0 : round(Cart::total() - $price_coupon->discount)
             ]);
             if ($request->lang === 'en') {
                 $message = 'Coupon Applied Successfully';

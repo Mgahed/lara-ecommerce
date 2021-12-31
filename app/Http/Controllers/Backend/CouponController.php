@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\PriceCoupon;
+use App\Models\User;
+use App\Models\UserCoupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -170,6 +172,94 @@ class CouponController extends Controller
     {
 
         PriceCoupon::findOrFail($id)->delete();
+        $notification = array(
+            'message' => __('Coupon Deleted Successfully'),
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+
+    }
+
+
+
+    /*----- user coupon -----*/
+
+    public function UserCouponView()
+    {
+        $coupons = UserCoupon::with('user')->orderBy('id', 'DESC')->get();
+        return view('admin.coupon_user.view_coupon', compact('coupons'));
+    }
+
+
+    public function UserCouponStore(Request $request)
+    {
+
+        $rules = $this->getRules();
+        $customMSG = $this->getMSG();
+        $validator = Validator::make($request->all(), $rules, $customMSG);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+
+        $user = User::where('email',$request->email)->first();
+        if (!$user) {
+            $notification = array(
+                'message' => __('User not exist'),
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification)->withInput($request->all());
+        }
+
+
+        UserCoupon::create([
+            'name' => strtoupper($request->name),
+            'discount' => $request->discount,
+            'validity' => $request->validity,
+            'user_id' => $user->id
+        ]);
+
+        $notification = array(
+            'message' => __('Coupon Inserted Successfully'),
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // end method
+
+
+    public function UserCouponEdit($id)
+    {
+        $coupons = UserCoupon::with('user')->findOrFail($id);
+        return view('admin.coupon_user.edit_coupon', compact('coupons'));
+    }
+
+
+    public function UserCouponUpdate(Request $request, $id)
+    {
+
+        UserCoupon::findOrFail($id)->update([
+            'name' => strtoupper($request->name),
+            'discount' => $request->discount,
+            'validity' => $request->validity
+        ]);
+
+        $notification = array(
+            'message' => __('Coupon Updated Successfully'),
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('user.manage-coupon')->with($notification);
+
+
+    } // end mehtod
+
+
+    public function UserCouponDelete($id)
+    {
+
+        UserCoupon::findOrFail($id)->delete();
         $notification = array(
             'message' => __('Coupon Deleted Successfully'),
             'alert-type' => 'info'

@@ -986,7 +986,10 @@
     "Edit Article": "تعديل المقال",
     "Article Deleted Successfully": "تم حذف المقال بنجاح",
     "Percentage coupons": "كوبونات النسبة المئوية",
-    "Price coupons": "كوبونات السعر"
+    "Price coupons": "كوبونات السعر",
+    "User not exist": "العميل غير موجود",
+    "User": "العملاء",
+    "User coupons": "كوبونات العملاء"
 
 
 }

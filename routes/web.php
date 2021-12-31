@@ -101,6 +101,12 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/price/edit/{id}', [CouponController::class, 'PriceCouponEdit'])->name('price.coupon.edit');
             Route::post('/price/update/{id}', [CouponController::class, 'PriceCouponUpdate'])->name('price.coupon.update');
             Route::get('/price/delete/{id}', [CouponController::class, 'PriceCouponDelete'])->name('price.coupon.delete');
+            /*--- user coupon ---*/
+            Route::get('/user/view', [CouponController::class, 'UserCouponView'])->name('user.manage-coupon');
+            Route::post('/user/store', [CouponController::class, 'UserCouponStore'])->name('user.coupon.store');
+            Route::get('/user/edit/{id}', [CouponController::class, 'UserCouponEdit'])->name('user.coupon.edit');
+            Route::post('/user/update/{id}', [CouponController::class, 'UserCouponUpdate'])->name('user.coupon.update');
+            Route::get('/user/delete/{id}', [CouponController::class, 'UserCouponDelete'])->name('user.coupon.delete');
         });
 
         /*----- Admin blog -----*/
