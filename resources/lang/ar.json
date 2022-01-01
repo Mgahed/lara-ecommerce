@@ -989,7 +989,9 @@
     "Price coupons": "كوبونات السعر",
     "User not exist": "العميل غير موجود",
     "User": "العملاء",
-    "User coupons": "كوبونات العملاء"
+    "User coupons": "كوبونات العملاء",
+    "This coupon must be unique": "هذا الكوبون مكرر",
+    "Product coupons": "كوبونات المنتجات"
 
 
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\PriceCoupon;
 use App\Models\Product;
+use App\Models\ProductCoupon;
 use App\Models\ShipDivision;
 use App\Models\UserCoupon;
 use Carbon\Carbon;
@@ -92,6 +93,7 @@ class CartController extends Controller
     {
         /*return "dasdas";*/
         $carts = Cart::content();
+        return $carts;
         foreach ($carts as $cart) {
             Cart::remove($cart->rowId);
         }
@@ -157,6 +159,34 @@ class CartController extends Controller
                 'success' => $message
             ));
         }
+
+        $product_coupon = ProductCoupon::where('name', $request->coupon_name)->where('validity', '>=', Carbon::now()->format('Y-m-d'))->first();
+        if ($product_coupon) {
+            $first_total = Cart::total();
+//return  $product_coupon->product_id;
+            $carts = Cart::content();
+            foreach ($carts as $cart) {
+                if ($cart->id == $product_coupon->product_id) {
+                    $discount = $cart->subtotal * $product_coupon->discount / 100;
+                    $cart->discount = $discount;
+                }
+            }
+            Session::put('coupon', [
+                'coupon_name' => $product_coupon->name,
+                'coupon_discount' => $first_total - Cart::total(),
+                'discount_amount' => $first_total - Cart::total(),
+                'total_amount' => round(Cart::total())
+            ]);
+            if ($request->lang === 'en') {
+                $message = 'Coupon Applied Successfully';
+            } else {
+                $message = 'تم استخدام الكوبون بنجاح';
+            }
+            return response()->json(array(
+                'validity' => true,
+                'success' => $message
+            ));
+        }
         /*----- No Coupon -----*/
         if ($request->lang === 'en') {
             $message = 'Invalid Coupon';
@@ -168,7 +198,8 @@ class CartController extends Controller
     } // end method
 
 
-    public function CouponCalculation()
+    public
+    function CouponCalculation()
     {
         if (Session::has('coupon')) {
             return response()->json(array(
@@ -187,8 +218,14 @@ class CartController extends Controller
 
 
     // Remove Coupon
-    public function CouponRemove()
+    public
+    function CouponRemove()
     {
+        $carts = Cart::content();
+        foreach ($carts as $cart) {
+            $cart->discount = 0;
+        }
+
         Session::forget('coupon');
 
         $notification = array(
@@ -200,7 +237,8 @@ class CartController extends Controller
 
 
     // Checkout Method
-    public function CheckoutCreate()
+    public
+    function CheckoutCreate()
     {
 
         if (auth()->check()) {

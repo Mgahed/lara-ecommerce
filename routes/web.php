@@ -65,6 +65,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         /*----- Admin Products All Routes -----*/
 
         Route::prefix('product')->group(function () {
+            Route::get('/ajax/{category_id}/{subcategory_id}', [ProductController::class, 'GetAllProducts']);
             Route::get('/add', [ProductController::class, 'AddProduct'])->name('add-product');
             Route::post('/store', [ProductController::class, 'StoreProduct'])->name('product-store');
             Route::get('/manage', [ProductController::class, 'ManageProduct'])->name('manage-product');
@@ -107,6 +108,12 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/user/edit/{id}', [CouponController::class, 'UserCouponEdit'])->name('user.coupon.edit');
             Route::post('/user/update/{id}', [CouponController::class, 'UserCouponUpdate'])->name('user.coupon.update');
             Route::get('/user/delete/{id}', [CouponController::class, 'UserCouponDelete'])->name('user.coupon.delete');
+            /*--- product coupon ---*/
+            Route::get('/product/view', [CouponController::class, 'ProductCouponView'])->name('product.manage-coupon');
+            Route::post('/product/store', [CouponController::class, 'ProductCouponStore'])->name('product.coupon.store');
+            Route::get('/product/edit/{id}', [CouponController::class, 'ProductCouponEdit'])->name('product.coupon.edit');
+            Route::post('/product/update/{id}', [CouponController::class, 'ProductCouponUpdate'])->name('product.coupon.update');
+            Route::get('/product/delete/{id}', [CouponController::class, 'ProductCouponDelete'])->name('product.coupon.delete');
         });
 
         /*----- Admin blog -----*/

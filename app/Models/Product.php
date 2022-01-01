@@ -33,4 +33,9 @@ class Product extends Model
     public function orderitem() {
         return $this->hasMany(OrderItem::class, 'product_id', 'id');
     }
+
+    public function productcoupon()
+    {
+        return $this->hasMany(ProductCoupon::class, 'product_id', 'id');
+    }
 }

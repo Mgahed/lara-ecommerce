@@ -295,4 +295,10 @@ class ProductController extends Controller
         return view('admin.product.product_view', compact('products'));
 
     }
+
+    public function GetAllProducts($category_id, $subcategory_id)
+    {
+        $products = Product::where('category_id', $category_id)->where('subcategory_id', $subcategory_id)->orderBy('name_en', 'ASC')->get();
+        return json_encode($products);
+    }
 }

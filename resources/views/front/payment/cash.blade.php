@@ -22,6 +22,11 @@
 
                                             <hr>
                                             <li>
+                                                @php
+                                                    $find_city = \App\Models\ShipDivision::select('cost')->findOrFail($data['division_id']);
+                                                    $cost_of_shipping = $find_city->cost;
+                                                @endphp
+
                                                 @if(Session::has('coupon'))
 
                                                     <strong>{{__('SubTotal:')}} </strong> {{ $cartTotal }}{{__('EGP')}}
@@ -29,15 +34,13 @@
 
                                                     <strong>{{__('Coupon Name')}}
                                                         : </strong> {{ session()->get('coupon')['coupon_name'] }}
-                                                    ( {{ session()->get('coupon')['coupon_discount'] }} % )
                                                     <hr>
 
-                                                    <strong>Coupon Discount : </strong>
-                                                    {{ session()->get('coupon')['discount_amount'] }}{{__('EGP')}}
+                                                    <strong>{{__('Shipping cost:')}}</strong> {{ $cost_of_shipping }}{{__('EGP')}}
                                                     <hr>
 
-                                                    <strong>Grand Total : </strong>
-                                                    {{ session()->get('coupon')['total_amount'] }}{{__('EGP')}}
+                                                    <strong>{{__('Grand Total:')}} </strong>
+                                                    {{ session()->get('coupon')['total_amount'] + $cost_of_shipping }}{{__('EGP')}}
                                                     <hr>
 
 
@@ -47,10 +50,6 @@
                                                     <span>{{ $cartTotal }}{{__('EGP')}}</span>
                                                     <hr>
 
-                                                    @php
-                                                        $find_city = \App\Models\ShipDivision::select('cost')->findOrFail($data['division_id']);
-                                                        $cost_of_shipping = $find_city->cost;
-                                                    @endphp
                                                     <strong>{{__('Shipping cost:')}} </strong>
                                                     <span>{{ $cost_of_shipping }}{{__('EGP')}}</span>
                                                     <hr>
