@@ -98,11 +98,13 @@ class BlogController extends Controller
         Image::Make($img)->resize(800, 400)->save(public_path('/upload/blogs/' . $name_gen));
         $save_img = 'upload/blogs/' . $name_gen;
 
+        $pattern = '#\<pre.*?\>(.*?)\<\/pre\>#si';
+        $replace = '$1';
         Blog::findOrFail($request->id)->update([
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
-            'description_en' => strip_tags($request->description_en, '<a><p><span><div><h1><h2><h3><h4></br><h5><br>'),
-            'description_ar' => strip_tags($request->description_ar, '<a><p><span><div><h1><h2><h3><h4></br><h5><br>'),
+            'description_en' => preg_replace($pattern, $replace, $request->description_en),//strip_tags($request->description_en, '<a><p><span><div><h1><h2><h3><h4></br><h5><br>'),
+            'description_ar' => preg_replace($pattern, $replace, $request->description_ar),
             'img' => $save_img
         ]);
 
