@@ -74,16 +74,20 @@ class ShippingAreaController extends Controller
 
     public function DivisionUpdate(Request $request,$id){
 
-        $rules = $this->getRules();
-        $customMSG = $this->getMSG();
+        $rules = [
+            "cost" => 'required'
+        ];
+        $customMSG = [
+            "cost.required" => __('This field is required')
+        ];
         $validator = Validator::make($request->all(), $rules, $customMSG);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
         ShipDivision::findOrFail($id)->update([
-            'name_en' => ucfirst(strtolower($request->name_en)),
-            'name_ar' => $request->name_ar,
+            /*'name_en' => ucfirst(strtolower($request->name_en)),
+            'name_ar' => $request->name_ar,*/
             'cost' => $request->cost,
         ]);
 
