@@ -3,7 +3,7 @@
 <head>
     {{--    pwa--}}
     <link rel="manifest" href="{{asset('manifest.json')}}">
-    <link rel="apple-touch-icon" href="{{asset('images/icons/icon-96x96.png')}}">
+    <link rel="apple-touch-icon" href="{{asset('images/icon-96x96.png')}}">
     <meta name="theme-color" content="#157ED2"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#0F6CB2">
@@ -91,6 +91,11 @@
             font-size: 50px;
         }
     </style>
+    <script type="module">
+        import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+        const el = document.createElement('pwa-update');
+        document.body.appendChild(el);
+    </script>
 </head>
 <body class="cnt-home">
 <!-- ============================================== HEADER ============================================== -->
@@ -569,7 +574,7 @@
 </script>
 <script>
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('{{asset('sw.js')}}')
+        navigator.serviceWorker.register('{{asset('pwabuilder-sw.js')}}')
             .then(reg => console.log('sw registerd', reg))
             .catch(err => console.log('sw registerd error', err))
     }
