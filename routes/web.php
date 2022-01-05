@@ -191,6 +191,8 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         Route::prefix('site-settings')->group(function () {
             Route::get('/seo/', [AdminController::class, 'SeoSetting'])->name('seo.setting');
             Route::post('/seo/update', [AdminController::class, 'SeoSettingUpdate'])->name('update.seosetting');
+            Route::get('/social-media/', [AdminController::class, 'SocialSetting'])->name('social.setting');
+            Route::post('/social-media/update', [AdminController::class, 'SocialSettingUpdate'])->name('update.socialsetting');
         });
     });
 

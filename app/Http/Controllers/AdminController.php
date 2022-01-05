@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Seo;
+use App\Models\SocialMedia;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -117,6 +118,38 @@ class AdminController extends Controller
 
         $notification = array(
             'message' => __('Seo Updated Successfully'),
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // end mehtod
+
+
+    public function SocialSetting()
+    {
+
+        $social = SocialMedia::find(1);
+        return view('admin.setting.social_update', compact('social'));
+    }
+
+
+    public function SocialSettingUpdate(Request $request)
+    {
+
+        $seo_id = $request->id;
+
+        SocialMedia::findOrFail($seo_id)->update([
+            'facebook' => $request->facebook,
+            'instagram' => $request->instagram,
+            'tiktok' => $request->tiktok,
+            'youtube' => $request->youtube,
+            'whatsapp' => $request->whatsapp,
+
+        ]);
+
+        $notification = array(
+            'message' => __('Updated Successfully'),
             'alert-type' => 'info'
         );
 

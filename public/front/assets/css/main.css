@@ -3237,6 +3237,18 @@ age-container #owl-main .owl-next {
 	background: #F03434 !important;
 }
 
+.social .tiktok a:before {
+    content: "\e07b";
+    font-family: FontAwesome;
+}
+.social .tiktok a {
+    font-size: 16px;
+    display: inline-block!important;
+    text-align: center;
+    padding: 0;
+    background: black !important;
+}
+
 .social .whatsapp a:before {
     content: "\f232";
     font-family: FontAwesome;

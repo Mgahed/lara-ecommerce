@@ -73,7 +73,7 @@
 
                                         <div class="text-xs-right">
                                             <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                                   value="Update">
+                                                   value="{{__('Update')}}">
                                         </div>
                                     </div>
                                 </div>
