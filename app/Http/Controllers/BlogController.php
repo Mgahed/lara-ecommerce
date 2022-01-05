@@ -89,14 +89,15 @@ class BlogController extends Controller
     {
 
         $oldImg = $request->old_img;
-        if (file_exists(public_path($oldImg))) {
-            unlink(public_path($oldImg));
-        }
-
         $img = $request->file('img');
-        $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-        Image::Make($img)->resize(800, 400)->save(public_path('/upload/blogs/' . $name_gen));
-        $save_img = 'upload/blogs/' . $name_gen;
+        $save_img = $oldImg;
+        if (file_exists(public_path($oldImg)) && $img) {
+            unlink(public_path($oldImg));
+
+            $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
+            Image::Make($img)->resize(800, 400)->save(public_path('/upload/blogs/' . $name_gen));
+            $save_img = 'upload/blogs/' . $name_gen;
+        }
 
         $pattern = '#\<pre.*?\>(.*?)\<\/pre\>#si';
         $replace = '$1';
