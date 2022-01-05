@@ -301,6 +301,10 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
     })->name('contact-us');
 
     Route::post('/contact-us', [IndexController::class, 'contact_us'])->name('contact-us');
+
+    Route::get('/privacy-policy', function () {
+        return view('front.privacy');
+    });
 });
 
 Route::get('/clear-cache', function () {
