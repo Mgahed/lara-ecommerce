@@ -995,7 +995,10 @@
     "Social media Setting Page": "صفحة إعداد وسائل التواصل الاجتماعية",
     "Social media": "وسائل التواصل الاجتماعية",
     "User email": "البريد الالكتروني للمستخدم",
-    "Select Product": "حدد المنتج"
+    "Select Product": "حدد المنتج",
+    "Cancel order": "الغاء الطلب",
+    "Order Return Reason:": "سبب إرجاع الطلب:",
+    "Return Order": "إرجاع الطلب"
 
 
 }

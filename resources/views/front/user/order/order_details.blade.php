@@ -224,12 +224,12 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="label"> Order Return Reason:</label>
+                                <label for="label"> {{__('Order Return Reason:')}}</label>
                                 <textarea name="return_reason" id="" class="form-control" cols="30" rows="05"
                                           placeholder=""></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-danger">Order Return</button>
+                            <button type="submit" class="btn btn-danger">{{__('Return Order')}}</button>
 
                         </form>
                     @else
