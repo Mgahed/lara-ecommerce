@@ -3,9 +3,9 @@
 
 
 $(function () {
-    "use strict";   
+    "use strict";
 
-		
+
 	  $("#print1").click(function() {
             var mode = 'iframe'; //popup
             var close = mode == "popup";
@@ -14,9 +14,9 @@ $(function () {
                 popClose: close
             };
             $("section.printableArea").printArea(options);
-        }); 
+        });
 
-		
+
 	  $("#print2").click(function() {
             var mode = 'iframe'; //popup
             var close = mode == "popup";
@@ -26,5 +26,5 @@ $(function () {
             };
             $("section.printableArea").printArea(options);
         });
-	
+
   }); // End of use strict

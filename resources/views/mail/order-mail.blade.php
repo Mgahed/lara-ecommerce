@@ -1,10 +1,12 @@
 @component('mail::message')
 # Invoice No : {{$order['invoice_number']}}
 
+## Name : {{$order['name']}}<br>
+## Enail : {{$order['email']}}
 @component('mail::table')
-    | Name          | Email         | Amount  | Shipping cost  | Total amount  |
-    | ------------- |:-------------:| --------:| -------------:| -------------:|
-    | {{$order['name']}}| {{$order['email']}}| {{$order['amountbefore']}}EGP | {{$order['cost']}} | {{$order['amount']}}EGP |
+    | Amount  | Shipping cost  | Total amount  |
+    |:--------:|:--------------:|:-------------:|
+    | {{$order['amountbefore']}}EGP | {{$order['cost']}}EGP | {{$order['amount']}}EGP |
 @endcomponent
 
 
