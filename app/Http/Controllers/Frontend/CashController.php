@@ -69,7 +69,9 @@ class CashController extends Controller
         $invoice = Order::findOrFail($order_id);
         $data = [
             'invoice_number' => $invoice->invoice_number,
-            'amount' => $total_amount,
+            'amount' => $total_amount + $request->shipping_cost,
+            'amountbefore' => $total_amount,
+            'cost' => $request->shipping_cost,
             'name' => $invoice->name,
             'email' => $invoice->email,
 

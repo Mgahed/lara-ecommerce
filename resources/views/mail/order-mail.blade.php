@@ -2,9 +2,9 @@
 # Invoice No : {{$order['invoice_number']}}
 
 @component('mail::table')
-    | Name          | Email         | Amount  |
-    | ------------- |:-------------:| --------:|
-    | {{$order['name']}}| {{$order['email']}}| {{$order['amount']}}EGP |
+    | Name          | Email         | Amount  | Shipping cost  | Total amount  |
+    | ------------- |:-------------:| --------:| -------------:| -------------:|
+    | {{$order['name']}}| {{$order['email']}}| {{$order['amountbefore']}}EGP | {{$order['cost']}} | {{$order['amount']}}EGP |
 @endcomponent
 
 
