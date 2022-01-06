@@ -725,7 +725,7 @@
     "Special Offer": "عروض خاصة",
     "Category": "التصنيف",
     "All categories": "جميع التصنيفات",
-    "All sub categories": "جمبع التصنيفات الفرعية",
+    "All sub categories": "جميع التصنيفات الفرعية",
     "Products": "المنتجات",
     "Add products": "اضافة منتجات",
     "Manage products": "ادارة المنتجات",
@@ -993,7 +993,9 @@
     "This coupon must be unique": "هذا الكوبون مكرر",
     "Product coupons": "كوبونات المنتجات",
     "Social media Setting Page": "صفحة إعداد وسائل التواصل الاجتماعية",
-    "Social media": "وسائل التواصل الاجتماعية"
+    "Social media": "وسائل التواصل الاجتماعية",
+    "User email": "البريد الالكتروني للمستخدم",
+    "Select Product": "حدد المنتج"
 
 
 }
