@@ -96,7 +96,7 @@
                         <br>--}}{{--
                         <li class="first">--}}
                     <!-- Google Play button -->
-                        <a href="{{asset('Mobile_Care.apk')}}"><img
+                        <a href="https://play.google.com/store/apps/details?id=com.mobilecarestore.twa"><img
                                 src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
                                 width="150" height="60" alt="Get it on Google Play" border="0"></a>
                         {{--</li>

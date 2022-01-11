@@ -59,14 +59,23 @@ class IndexController extends Controller
 
 //        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(3)->get();
 //
+        $skip_product_0 = null;
+        $skip_product_1 = null;
+        $skip_product_2 = null;
         $skip_category_0 = Category::skip(0)->first();
-        $skip_product_0 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->get();
+        if ($skip_category_0) {
+            $skip_product_0 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->get();
+        }
 
         $skip_category_1 = Category::skip(1)->first();
-        $skip_product_1 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_1->id)->orderBy('id', 'DESC')->get();
+        if ($skip_category_1) {
+            $skip_product_1 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_1->id)->orderBy('id', 'DESC')->get();
+        }
 
         $skip_category_2 = Category::skip(2)->first();
-        $skip_product_2 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_2->id)->orderBy('id', 'DESC')->get();
+        if ($skip_category_2) {
+            $skip_product_2 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_2->id)->orderBy('id', 'DESC')->get();
+        }
 
 //        $skip_brand_1 = Brand::skip(1)->first();
 //        $skip_brand_product_1 = Product::where('status', 1)->where('brand_id', $skip_brand_1->id)->orderBy('id', 'DESC')->get();
@@ -182,7 +191,7 @@ class IndexController extends Controller
 
         $multiImag = MultiImg::where('product_id', $id)->get();
 
-        $this->SEOTrait($product->name_en, '/'.$product->thumbnail);
+        $this->SEOTrait($product->name_en, '/' . $product->thumbnail);
 
         $cat_id = $product->category_id;
         $relatedProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
@@ -223,11 +232,14 @@ class IndexController extends Controller
 
     }
 
-    public function special_offer() {
+    public function special_offer()
+    {
         $products = Product::where('special_offer', 1)->orderBy('id', 'DESC')->paginate(6);
         return view('front.product.subcategory_view', compact('products'));
     }
-    public function best_seller() {
+
+    public function best_seller()
+    {
         $products = Product::where('best_seller', 1)->orderBy('id', 'DESC')->paginate(6);
         return view('front.product.subcategory_view', compact('products'));
     }

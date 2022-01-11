@@ -40,7 +40,7 @@
                                                         <input type="text" style="direction: ltr;"  name="instagram" class="form-control"
                                                                value="{{ $social->instagram }}"></div>
                                                 </div>
-                                                <link rel="stylesheet" href="{{asset('fontawesome6/css/all.css')}}">
+                                                <link rel="stylesheet" href="{{app()->getLocale() === 'en' ? asset('fontawesome6/css/all.css') : asset('fontawesome6/css/all_rtl.css')}}">
                                                 <div class="form-group">
                                                     <h5 style="float: left;"><i class="fab fa-tiktok"></i> {{__('Tiktok')}} </h5>
                                                     <div class="controls">
