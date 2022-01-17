@@ -259,6 +259,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
     Route::group(['prefix' => 'product'], function () {
         Route::get('/details/{id}', [IndexController::class, 'ProductDetails'])->name('product.details');
         Route::get('/subcategory/{subcat_id}', [IndexController::class, 'SubCatWiseProduct'])->name('products.by.subcategory');
+        Route::get('/category/{cat_id}', [IndexController::class, 'CatWiseProduct'])->name('products.by.category');
         Route::get('/view/modal/{id}', [IndexController::class, 'ProductViewAjax'])->name('get.product.ajax');
 
         Route::get('/special-offer', [IndexController::class, 'special_offer'])->name('special.offer');
