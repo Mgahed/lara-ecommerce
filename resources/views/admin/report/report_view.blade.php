@@ -31,7 +31,7 @@
                             <div class="table-responsive">
 
 
-                                <form method="post" action="{{ route('search-by-date') }}">
+                                <form method="get" action="{{ route('search-by-date') }}">
                                     @csrf
 
 
@@ -73,7 +73,7 @@
                             <div class="table-responsive">
 
 
-                                <form method="post" action="{{ route('search-by-month') }}">
+                                <form method="get" action="{{ route('search-by-month') }}">
                                     @csrf
 
                                     <div class="form-group">
@@ -151,7 +151,7 @@
                             <div class="table-responsive">
 
 
-                                <form method="post" action="{{ route('search-by-year') }}" >
+                                <form method="get" action="{{ route('search-by-year') }}" >
                                     @csrf
 
                                     <div class="form-group">

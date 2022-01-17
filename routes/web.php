@@ -172,9 +172,9 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         /*----- Admin Reports Routes -----*/
         Route::prefix('reports')->group(function () {
             Route::get('/view', [ReportController::class, 'ReportView'])->name('all-reports');
-            Route::post('/search/by/date', [ReportController::class, 'ReportByDate'])->name('search-by-date');
-            Route::post('/search/by/month', [ReportController::class, 'ReportByMonth'])->name('search-by-month');
-            Route::post('/search/by/year', [ReportController::class, 'ReportByYear'])->name('search-by-year');
+            Route::get('/search/by/date', [ReportController::class, 'ReportByDate'])->name('search-by-date');
+            Route::get('/search/by/month', [ReportController::class, 'ReportByMonth'])->name('search-by-month');
+            Route::get('/search/by/year', [ReportController::class, 'ReportByYear'])->name('search-by-year');
         });
 
         /*----- Admin Get All User Routes -----*/
