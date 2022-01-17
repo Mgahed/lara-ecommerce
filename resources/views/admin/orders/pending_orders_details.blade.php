@@ -202,21 +202,35 @@
 
                                 @foreach($orderItem as $item)
                                     <tr>
-                                        <td width="10%">
-                                            <label for=""><img src="{{ asset($item->product->thumbnail) }}"
-                                                               height="50px;"
-                                                               width="50px;"> </label>
-                                        </td>
+                                        @if ($item->product)
+                                            <td width="10%">
+                                                <label for=""><img src="{{ asset($item->product->thumbnail) }}"
+                                                                   height="50px;"
+                                                                   width="50px;"> </label>
+                                            </td>
 
-                                        <td width="20%">
-                                            <label for=""> {{ $item->product->name_en }}</label>
-                                        </td>
+                                            <td width="20%">
+                                                <label for=""> {{ $item->product->name_en }}</label>
+                                            </td>
 
 
-                                        <td width="10%">
-                                            <label for=""> {{ $item->product->code }}</label>
-                                        </td>
+                                            <td width="10%">
+                                                <label for=""> {{ $item->product->code }}</label>
+                                            </td>
+                                        @else
+                                            <td width="10%">
+                                                <label class="text-danger"> {{__('Deleted product')}}</label>
+                                            </td>
 
+                                            <td width="20%">
+                                                <label class="text-danger"> {{__('Deleted product')}}</label>
+                                            </td>
+
+
+                                            <td width="10%">
+                                                <label class="text-danger"> {{__('Deleted product')}}</label>
+                                            </td>
+                                        @endif
                                         <td width="10%">
                                             <label for=""> {{ $item->color }}</label>
                                         </td>

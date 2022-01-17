@@ -29,7 +29,8 @@
 
                                 <tr>
                                     <th> {{__('Order Address')}}:</th>
-                                    <th> {{app()->getLocale() === 'en'?$order->division->name_en:$order->division->name_ar }}, {{$order->address}} </th>
+                                    <th> {{app()->getLocale() === 'en'?$order->division->name_en:$order->division->name_ar }}
+                                        , {{$order->address}} </th>
                                 </tr>
 
                                 <tr>
@@ -142,20 +143,25 @@
 
                                 @foreach($orderItem as $item)
                                     <tr>
-                                        <td class="col-md-1">
-                                            <label for=""><img src="{{ asset($item->product->thumbnail) }}"
-                                                               height="50px;" width="50px;"> </label>
-                                        </td>
+                                        @if ($item->product)
+                                            <td class="col-md-1">
+                                                <label for=""><img src="{{ asset($item->product->thumbnail) }}"
+                                                                   height="50px;" width="50px;"> </label>
+                                            </td>
 
-                                        <td class="col-md-3">
-                                            <label for=""> {{ $item->product->name_en }}</label>
-                                        </td>
+                                            <td class="col-md-3">
+                                                <label for=""> {{ $item->product->name_en }}</label>
+                                            </td>
 
 
-                                        <td class="col-md-3">
-                                            <label for=""> {{ $item->product->code }}</label>
-                                        </td>
-
+                                            <td class="col-md-3">
+                                                <label for=""> {{ $item->product->code }}</label>
+                                            </td>
+                                        @else
+                                            <td class="col-md-3">{{__('Deleted product')}}</td>
+                                            <td class="col-md-3">{{__('Deleted product')}}</td>
+                                            <td class="col-md-3">{{__('Deleted product')}}</td>
+                                        @endif
                                         <td class="col-md-2">
                                             <label for=""> {{ $item->color }}</label>
                                         </td>

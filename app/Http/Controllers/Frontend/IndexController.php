@@ -210,7 +210,7 @@ class IndexController extends Controller
 
 
     // Subcategory wise data
-    public function SubCatWiseProduct(Request $request, $subcat_id)
+    public function SubCatWiseProduct($subcat_id)
     {
         $products = Product::/*where('status', 1)->*/ where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(6);
         $categories = Category::orderBy('name_en', 'ASC')->get();
@@ -227,6 +227,19 @@ class IndexController extends Controller
 
         }*/
         ///  End Load More Product with Ajax
+
+        return view('front.product.subcategory_view', compact('products', 'categories', 'breadsubcat'));
+
+    }
+
+    // Category wise data
+    public function CatWiseProduct($cat_id)
+    {
+        $products = Product::/*where('status', 1)->*/ where('category_id', $cat_id)->orderBy('id', 'DESC')->paginate(6);
+        $categories = Category::orderBy('name_en', 'ASC')->get();
+
+        $breadsubcat = SubCategory::with(['category'])->where('id', $cat_id)->get();
+
 
         return view('front.product.subcategory_view', compact('products', 'categories', 'breadsubcat'));
 

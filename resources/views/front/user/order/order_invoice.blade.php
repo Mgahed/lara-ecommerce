@@ -54,8 +54,10 @@
                 </td>
                 <td style="float: right;">
                     <p>
-                    <h3 style="white-space: nowrap;"><span style="color: #157ED2;">Invoice:</span> {{ $order->invoice_number}}</h3>
-                    <h4 style="white-space: nowrap;"><span style="color: #157ED2;">Order number:</span> #{{ $order->order_number}}</h4>
+                    <h3 style="white-space: nowrap;"><span
+                            style="color: #157ED2;">Invoice:</span> {{ $order->invoice_number}}</h3>
+                    <h4 style="white-space: nowrap;"><span style="color: #157ED2;">Order number:</span>
+                        #{{ $order->order_number}}</h4>
                     Order Date: {{ $order->created_at->format('Y-m-d') }} <br>
                     {{--Delivery Date: {{ $order->delivered_date }} <br>--}}
                     Payment Type : {{ $order->payment_method }} </span>
@@ -70,8 +72,8 @@
             <tr class="font">
                 <th>Image</th>
                 <th>Product Name</th>
-                <th>Color</th>
                 <th>Code</th>
+                <th>Color</th>
                 <th>Quantity</th>
                 <th>Unit Price</th>
                 <th>Total</th>
@@ -80,12 +82,18 @@
             <tbody>
             @foreach($orderItem as $item)
                 <tr class="font">
-                    <td {{--align="center"--}}>
-                        <img src="{{ asset($item->product->thumbnail)  }}" height="60px;" width="60px;" alt="">
-                    </td>
-                    <td {{--align="center"--}}> {{ $item->product->name_en }}</td>
+                    @if ($item->product)
+                        <td {{--align="center"--}}>
+                            <img src="{{ asset($item->product->thumbnail)  }}" height="60px;" width="60px;" alt="">
+                        </td>
+                        <td {{--align="center"--}}> {{ $item->product->name_en }}</td>
+                        <td {{--align="center"--}}>{{ $item->product->code }}</td>
+                    @else
+                        <td>{{__('Deleted product')}}</td>
+                        <td>{{__('Deleted product')}}</td>
+                        <td>{{__('Deleted product')}}</td>
+                    @endif
                     <td {{--align="center"--}}>{{ $item->color }}</td>
-                    <td {{--align="center"--}}>{{ $item->product->code }}</td>
                     <td {{--align="center"--}}>{{ $item->qty }}</td>
                     <td {{--align="center"--}}>{{ $item->price }}{{'EGP'}}</td>
                     <td {{--align="center"--}}>{{ $item->price * $item->qty }}{{'EGP'}} </td>

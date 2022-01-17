@@ -267,7 +267,7 @@ class ProductController extends Controller
         $product = Product::with('multiimg')->findOrFail($id);
         foreach ($product->multiimg as $img) {
             if (file_exists(public_path($img->name))) {
-                unlink($img->name);
+                unlink(public_path($img->name));
             }
             MultiImg::findOrFail($img->id)->delete();
         }
