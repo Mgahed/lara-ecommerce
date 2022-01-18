@@ -119,7 +119,7 @@
                     <div class="search-area">
                         <form action="{{route('advanced.search')}}" method="post">
                             @csrf
-                            <div class="form-group control-group">
+                            <div class="form-group control-group" style="display: flex">
                                 <ul class="categories-filter animate-dropdown">
                                     <select name="category" class="form-control" style="height: 47px;">
                                         <option value="all">{{__('All')}}</option>
@@ -130,9 +130,9 @@
                                         @endforeach
                                     </select>
                                 </ul>
-                                <input class="search-field" name="search" style="width: 60%;"
+                                <input class="search-field" name="search" style="width: 100%;"
                                        placeholder="{{__('Search here...')}}"/>
-                                <button type="submit" style="height: 47px;" class="search-button"></button>
+                                <button type="submit" style="height: 47px; margin-left: auto;" class="search-button"></button>
                             </div>
                         </form>
                     </div>

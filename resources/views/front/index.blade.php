@@ -3,8 +3,10 @@
     <div class="body-content outer-top-xs" id="top-banner-and-menu">
         <div class="container">
             <div class="row">
-            @include('front.common.sidebar')
-            <!-- ============================================== CONTENT ============================================== -->
+                <span class="my-d-none my-d-sm-block">
+                    @include('front.common.sidebar')
+                </span>
+                <!-- ============================================== CONTENT ============================================== -->
                 <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
                     <!-- ========================================== SECTION – HERO ========================================= -->
                     @if ($sliders->count())
@@ -605,6 +607,9 @@
                 <!-- /.homebanner-holder -->
                 <!-- ============================================== CONTENT : END ============================================== -->
             </div>
+            <span class="my-d-block my-d-sm-none">
+                @include('front.common.sidebar')
+            </span>
             <!-- /.row -->
             <!-- ============================================== BRANDS CAROUSEL ============================================== -->
             <div id="brands-carousel" class="logo-slider wow fadeInUp">

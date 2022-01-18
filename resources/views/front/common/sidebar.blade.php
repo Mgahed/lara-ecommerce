@@ -6,7 +6,7 @@
     $best_seller = \App\Models\Product::where('best_seller', 1)->orderBy('id', 'DESC')->limit(6)->get();
 @endphp
 <!-- ================================== TOP NAVIGATION ================================== -->
-    <div class="side-menu animate-dropdown outer-bottom-xs">
+    <div class="side-menu animate-dropdown outer-bottom-xs my-d-none my-d-sm-block">
         <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> {{__('Categories')}}</div>
         <nav class="yamm megamenu-horizontal">
             <ul class="nav">

@@ -103,6 +103,25 @@
             font-size: 50px;
         }
     </style>
+    <style>
+        .my-d-none {
+            display: none !important;
+        }
+
+        .my-d-block {
+            display: block !important;
+        }
+
+        @media (min-width: 576px) {
+            .my-d-sm-block {
+                display: block !important;
+            }
+
+            .my-d-sm-none {
+                display: none !important;
+            }
+        }
+    </style>
     <script type="module">
         import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
 
