@@ -33,7 +33,6 @@
 
         <!-- Customizable CSS -->
         <link rel="stylesheet" href="{{asset('front/assets/css/main.css')}}">
-        <link rel="stylesheet" href="{{asset('front/assets/css/blue.css')}}">
         <link rel="stylesheet" href="{{asset('front/assets/css/owl.carousel.css')}}">
         <link rel="stylesheet" href="{{asset('front/assets/css/owl.transitions.css')}}">
         <link rel="stylesheet" href="{{asset('front/assets/css/animate.min.css')}}">
@@ -53,7 +52,6 @@
 
         <!-- Customizable CSS -->
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_main.css')}}">
-        <link rel="stylesheet" href="{{asset('front/assets/css/rtl_blue.css')}}">
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_owl.carousel.css')}}">
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_owl.transitions.css')}}">
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_animate.css')}}">
@@ -62,6 +60,20 @@
 
         <!-- Icons/Glyphs -->
         <link rel="stylesheet" href="{{asset('front/assets/css/rtl_font-awesome.css')}}">
+    @endif
+    @auth
+        @if (Auth::user()->theme == 'light')
+            <link rel="stylesheet" href="{{asset('front/assets/css/blue.css')}}">
+        @endif
+        @if (Auth::user()->theme == 'mint')
+            <link rel="stylesheet" href="{{asset('front/assets/css/themes/green.css')}}">
+        @endif
+        @if (Auth::user()->theme == 'dark')
+            <link rel="stylesheet" href="{{asset('front/assets/css/themes/dark.css')}}">
+        @endif
+    @endauth
+    @if (Auth::guest())
+        <link rel="stylesheet" href="{{asset('front/assets/css/blue.css')}}">
     @endif
 
 <!-- Fonts -->
@@ -93,6 +105,7 @@
     </style>
     <script type="module">
         import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
         const el = document.createElement('pwa-update');
         document.body.appendChild(el);
     </script>

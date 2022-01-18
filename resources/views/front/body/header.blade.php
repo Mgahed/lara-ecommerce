@@ -196,9 +196,10 @@
                                         href="{{route('home')}}">{{__('Home')}}</a>
                                 </li>
                                 @foreach ($categories as $category)
-{{--                                    @if ($category->subcategory->count())--}}
-                                        <li class="dropdown"><a href="{{route('products.by.category',$category->id)}}" class="dropdown-toggle" data-hover="dropdown"
-                                                                {{--data-toggle="dropdown"--}}>{{app()->getLocale() === 'en'?$category->name_en:$category->name_ar}}</a>
+                                    <li class="dropdown"><a href="{{route('products.by.category',$category->id)}}"
+                                                            class="dropdown-toggle" data-hover="dropdown"
+                                            {{--data-toggle="dropdown"--}}>{{app()->getLocale() === 'en'?$category->name_en:$category->name_ar}}</a>
+                                        @if ($category->subcategory->count())
                                             <ul class="dropdown-menu pages">
                                                 <li>
                                                     <div class="yamm-content">
@@ -229,8 +230,8 @@
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </li>
-{{--                                    @endif--}}
+                                        @endif
+                                    </li>
                                 @endforeach
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-hover="dropdown"
                                                         data-toggle="dropdown">{{__('Other')}}</a>

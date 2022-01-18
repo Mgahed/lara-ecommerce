@@ -52,4 +52,16 @@
                 @include('front.common.sidebar')
             </div>
         </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('body').bind('cut copy', function (e) {
+                    e.preventDefault();
+                });
+                $("body").on("contextmenu", function(e) {
+                    return false;
+                });
+            });
+        </script>
 @endsection

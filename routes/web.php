@@ -284,8 +284,8 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
     });
 
     /*----- blogs -----*/
-    Route::group(['prefix' => 'cart'], function () {
-        Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
+    Route::group(['prefix' => 'blogs'], function () {
+        Route::get('/all', [BlogController::class, 'index'])->name('blogs');
     });
 
     /// Product Search Route
