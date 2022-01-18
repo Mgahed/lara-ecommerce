@@ -3837,6 +3837,7 @@ age-container #owl-main .owl-next {
   text-align: left;
 }
 .single-product .gallery-holder .gallery-thumbs .owl-item .item {
+  text-align: -webkit-center;
   margin-right: 10px;
   border: 0 solid #e5e5e5;
 }
