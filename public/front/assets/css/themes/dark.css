@@ -5,6 +5,10 @@
     background-color: #222222;
 }
 
+.quant-input input{
+    color: black;
+}
+
 .more-info-tab, .tab-content, #product-tabs-slider, .clearfix {
     background: #282828;
     color: white;
@@ -19,7 +23,11 @@
     color: white;
 }
 
-.panel, .unicase-checkout-title, .checkout-subtitle{
+.blog-page .blog-post p{
+    color: #cecece;
+}
+
+.panel, .unicase-checkout-title, .checkout-subtitle, .blog-post, .detail-block, .product-tabs, .featured-product{
     background: #282828 !important;
     color: white !important;
 }

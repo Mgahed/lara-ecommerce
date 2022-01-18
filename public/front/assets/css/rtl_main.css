@@ -3839,7 +3839,7 @@ age-container #owl-main .owl-next {
 }
 .single-product .gallery-holder .gallery-thumbs .owl-item .item {
     margin-left: 10px;
-    border: 1px solid #e5e5e5;
+    border: 0 solid #e5e5e5;
 }
 
 .single-product .product-info .rating-reviews .reviews .lnk {

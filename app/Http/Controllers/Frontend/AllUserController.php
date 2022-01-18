@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PDF;
@@ -34,7 +35,7 @@ class AllUserController extends Controller
     {
         $order = Order::with('division', 'user')->where('id', $order_id)->where('user_id', auth()->id())->first();
         $orderItem = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
-        return view('front.user.order.order_invoice',compact('order','orderItem'));
+        return view('front.user.order.order_invoice', compact('order', 'orderItem'));
         $pdf = PDF::loadView('front.user.order.order_invoice', compact('order', 'orderItem'))->setPaper('a4')->setOptions([
             'tempDir' => public_path(),
             'chroot' => public_path(),
@@ -76,14 +77,15 @@ class AllUserController extends Controller
 
     public function CancelOrders()
     {
-        $orders = Order::where('user_id', auth()->id())->where(function($query) {
+        $orders = Order::where('user_id', auth()->id())->where(function ($query) {
             $query->where('status', 'cancelled')->orWhere('status', 'cancelled by admin');
         })->orderBy('id', 'DESC')->get();
         return view('front.user.order.cancel_order_view', compact('orders'));
     } // end method
 
 
-    public function CancelOrder($order_id) {
+    public function CancelOrder($order_id)
+    {
         Order::findOrFail($order_id)->update([
             'status' => 'cancelled',
             'cancel_date' => Carbon::now()
@@ -124,4 +126,23 @@ class AllUserController extends Controller
         return redirect()->back()->with($notification);
 
     } // end mehtod
+
+    ///////////// themes ///////
+    public function light()
+    {
+        User::findOrFail(\Auth::user()->id)->update(['theme'=>'light']);
+        return redirect()->back();
+    }
+
+    public function mint()
+    {
+        User::findOrFail(\Auth::user()->id)->update(['theme'=>'mint']);
+        return redirect()->back();
+    }
+
+    public function dark()
+    {
+        User::findOrFail(\Auth::user()->id)->update(['theme'=>'dark']);
+        return redirect()->back();
+    }
 }

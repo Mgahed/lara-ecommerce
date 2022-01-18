@@ -253,6 +253,12 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
 
         // Order Traking Route
         Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');
+
+        Route::group(['prefix' => 'theme'], function () {
+            Route::get('/light', [AllUserController::class, 'light'])->name('light.theme');
+            Route::get('/dark', [AllUserController::class, 'dark'])->name('dark.theme');
+            Route::get('/mint', [AllUserController::class, 'mint'])->name('mint.theme');
+        });
     });
 
     /*----- products -----*/
