@@ -194,7 +194,7 @@
 
     <!-- ============================================== NAVBAR ============================================== -->
     <div id="navbar" class="header-nav animate-dropdown" style="z-index:2;">
-        <div class="container">
+        <div class="{{--container--}}">
             <div class="yamm navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse"
