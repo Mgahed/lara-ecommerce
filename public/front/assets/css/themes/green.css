@@ -231,7 +231,7 @@ a {
     background: #12cca7;
 }
 .single-product .gallery-holder .gallery-thumbs .owl-item .item:hover {
-    border: 1px solid #12cca7;
+    border: 0 solid #12cca7;
 }
 .single-product .product-info .rating-reviews .reviews .lnk:hover,
 .single-product .product-info .rating-reviews .reviews .lnk:focus {

@@ -327,7 +327,7 @@ a {
 }
 
 .single-product .gallery-holder .gallery-thumbs .owl-item .item:hover {
-    border: 1px solid #428bca;
+    border: 0 solid #428bca;
 }
 
 .single-product .product-info .rating-reviews .reviews .lnk:hover,
