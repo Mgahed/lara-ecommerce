@@ -64,6 +64,20 @@
                                     <th> {{ $order->created_at }} </th>
                                 </tr>
 
+                                @if ($order->notes)
+                                    <tr>
+                                        <th> {{__('Order notes')}} :</th>
+                                        <th> {{ $order->notes }} </th>
+                                    </tr>
+                                @endif
+
+                                @if ($order->return_reason)
+                                    <tr>
+                                        <th> {{__('Return reason')}} :</th>
+                                        <th> {{ $order->return_reason }} </th>
+                                    </tr>
+                                @endif
+
                             </table>
 
                         </div>

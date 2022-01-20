@@ -999,7 +999,10 @@
     "Select Product": "حدد المنتج",
     "Cancel order": "الغاء الطلب",
     "Order Return Reason:": "سبب إرجاع الطلب:",
-    "Return Order": "إرجاع الطلب"
+    "Return Order": "إرجاع الطلب",
+    "return requested": "طلب ارجاع",
+    "Order notes": "ملاحظات",
+    "Return reason": "سبب طلب الارجاع"
 
 
 }

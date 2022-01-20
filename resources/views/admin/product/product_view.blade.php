@@ -43,7 +43,7 @@
                                                      style="width: 60px; height: 50px;"></td>
                                             <td>{{ $item->code }}</td>
                                             <td>{{ $item->name_en }} - {{ $item->name_ar }}</td>
-                                            <td>{{ $item->sell_price }} EGP</td>
+                                            <td>{{ $item->sell_price }}{{__('EGP')}}</td>
                                             <td>{{ $item->quantity }}</td>
 
                                             <td>
