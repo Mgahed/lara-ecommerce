@@ -41,7 +41,7 @@ class CategoryController extends Controller
         if ($request->file('img')) {
             $img = $request->file('img');
             $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-            Image::Make($img)->resize(300, 300)->save(public_path('/upload/category/' . $name_gen));
+            Image::Make($img)->resize(200, 200)->save(public_path('/upload/category/' . $name_gen));
             $save_img = 'upload/category/' . $name_gen;
         }
 
@@ -87,18 +87,22 @@ class CategoryController extends Controller
 
         $id = $request->id;
 
+        $category = Category::findOrFail($id);
         if ($request->file('img')) {
+            if (file_exists(public_path($category->img))) {
+                unlink(public_path($category->img));
+            }
             $img = $request->file('img');
             $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
-            Image::Make($img)->resize(300, 300)->save(public_path('/upload/category/' . $name_gen));
+            Image::Make($img)->resize(200, 200)->save(public_path('/upload/category/' . $name_gen));
             $save_img = 'upload/category/' . $name_gen;
-            Category::findOrFail($id)->update([
+            $category->update([
                 'name_en' => strtolower($request->name_en),
                 'name_ar' => $request->name_ar,
                 'img' => $save_img
             ]);
         } else {
-            Category::findOrFail($id)->update([
+            $category->update([
                 'name_en' => strtolower($request->name_en),
                 'name_ar' => $request->name_ar
             ]);

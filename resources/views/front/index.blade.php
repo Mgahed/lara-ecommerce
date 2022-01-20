@@ -38,7 +38,16 @@
                             <!-- /.owl-carousel -->
                         </div>
                     @endif
-
+                    <br>
+                    @foreach ($categories as $item)
+                        <div class="col-md-4 text-center" style="margin-top: 15px;">
+                            <a href="{{route('products.by.category',$item->id)}}">
+                                <img src="{{$item->img}}" style="/*color: white;*/ width: 100%; border-radius: 20px;"
+                                     alt="{{app()->getLocale()=='en'?$item->name_en:$item->name_ar}}">
+                                <h3>{{app()->getLocale()=='en'?$item->name_en:$item->name_ar}}</h3>
+                            </a>
+                        </div>
+                    @endforeach
                 <!-- ========================================= SECTION – HERO : END ========================================= -->
 
                     <!-- ============================================== INFO BOXES ============================================== -->
@@ -89,10 +98,10 @@
                 <!-- /.info-boxes -->
                     <!-- ============================================== INFO BOXES : END ============================================== -->
                     <!-- ============================================== SCROLL TABS ============================================== -->
-                    <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
+                    {{--<div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
                         <div class="more-info-tab clearfix ">
                             <h3 class="new-product-title pull-left">{{__('New Products')}}</h3>
-                        {{--<ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
+                        --}}{{--<ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
                             <li class="active"><a data-transition-type="backSlide" href="#all"
                                                   data-toggle="tab">All</a>
                             </li>
@@ -102,14 +111,14 @@
                             <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Electronics</a>
                             </li>
                             <li><a data-transition-type="backSlide" href="#apple" data-toggle="tab">Shoes</a></li>
-                        </ul>--}}
+                        </ul>--}}{{--
                         <!-- /.nav-tabs -->
                         </div>
                         <div class="tab-content outer-top-xs">
                             <div class="tab-pane in active" id="all">
                                 <div class="product-slider">
                                     <div class="owl-carousel home-owl-carousel custom-carousel owl-theme"
-                                         data-item="4{{--{{$products->count()}}--}}">
+                                         data-item="4--}}{{--{{$products->count()}}--}}{{--">
                                         @foreach ($products as $product)
                                             <div class="item item-carousel">
                                                 <div class="products">
@@ -144,7 +153,7 @@
                                                                     @endif
                                                                 </a>
                                                             </h3>
-                                                            {{--<div class="rating rateit-small"></div>--}}
+                                                            --}}{{--<div class="rating rateit-small"></div>--}}{{--
                                                             <div class="description">
                                                                 @if (app()->getLocale() === 'en')
                                                                     {{Str::limit($product->short_descp_en, 20, $end='.......')}}
@@ -191,14 +200,14 @@
                                                                             <i class="icon fa fa-heart"></i>
                                                                         </a>
                                                                     </li>
-                                                                    {{--<li class="lnk"><a data-toggle="tooltip"
+                                                                    --}}{{--<li class="lnk"><a data-toggle="tooltip"
                                                                                        class="add-to-cart"
                                                                                        href="detail.html"
                                                                                        title="Compare">
                                                                             <i
                                                                                 class="fa fa-signal"
                                                                                 aria-hidden="true"></i>
-                                                                        </a></li>--}}
+                                                                        </a></li>--}}{{--
                                                                 </ul>
                                                             </div>
                                                             <!-- /.action -->
@@ -255,7 +264,7 @@
                                                                     <div class="tag hot">
                                                                         <span>{{round($percentage)}}%</span></div>
                                                                 @else
-                                                                    {{--<div class="tag hot"><span>{{__('new')}}</span></div>--}}
+                                                                    --}}{{--<div class="tag hot"><span>{{__('new')}}</span></div>--}}{{--
                                                                 @endif
                                                             </div>
                                                             <!-- /.product-image -->
@@ -270,7 +279,7 @@
                                                                         @endif
                                                                     </a>
                                                                 </h3>
-                                                                {{--<div class="rating rateit-small"></div>--}}
+                                                                --}}{{--<div class="rating rateit-small"></div>--}}{{--
                                                                 <div class="description">
                                                                     @if (app()->getLocale() === 'en')
                                                                         {{Str::limit($product->short_descp_en, 20, $end='.......')}}
@@ -317,14 +326,14 @@
                                                                                 <i class="icon fa fa-heart"></i>
                                                                             </a>
                                                                         </li>
-                                                                        {{--<li class="lnk"><a data-toggle="tooltip"
+                                                                        --}}{{--<li class="lnk"><a data-toggle="tooltip"
                                                                                            class="add-to-cart"
                                                                                            href="detail.html"
                                                                                            title="Compare">
                                                                                 <i
                                                                                     class="fa fa-signal"
                                                                                     aria-hidden="true"></i>
-                                                                            </a></li>--}}
+                                                                            </a></li>--}}{{--
                                                                     </ul>
                                                                 </div>
                                                                 <!-- /.action -->
@@ -381,7 +390,7 @@
                                                                     <div class="tag hot">
                                                                         <span>{{round($percentage)}}%</span></div>
                                                                 @else
-                                                                    {{--<div class="tag hot"><span>{{__('new')}}</span></div>--}}
+                                                                    --}}{{--<div class="tag hot"><span>{{__('new')}}</span></div>--}}{{--
                                                                 @endif
                                                             </div>
                                                             <!-- /.product-image -->
@@ -396,7 +405,7 @@
                                                                         @endif
                                                                     </a>
                                                                 </h3>
-                                                                {{--<div class="rating rateit-small"></div>--}}
+                                                                --}}{{--<div class="rating rateit-small"></div>--}}{{--
                                                                 <div class="description">
                                                                     @if (app()->getLocale() === 'en')
                                                                         {{Str::limit($product->short_descp_en, 20, $end='.......')}}
@@ -443,14 +452,14 @@
                                                                                 <i class="icon fa fa-heart"></i>
                                                                             </a>
                                                                         </li>
-                                                                        {{--<li class="lnk"><a data-toggle="tooltip"
+                                                                        --}}{{--<li class="lnk"><a data-toggle="tooltip"
                                                                                            class="add-to-cart"
                                                                                            href="detail.html"
                                                                                            title="Compare">
                                                                                 <i
                                                                                     class="fa fa-signal"
                                                                                     aria-hidden="true"></i>
-                                                                            </a></li>--}}
+                                                                            </a></li>--}}{{--
                                                                     </ul>
                                                                 </div>
                                                                 <!-- /.action -->
@@ -507,7 +516,7 @@
                                                                     <div class="tag hot">
                                                                         <span>{{round($percentage)}}%</span></div>
                                                                 @else
-                                                                    {{--<div class="tag hot"><span>{{__('new')}}</span></div>--}}
+                                                                    --}}{{--<div class="tag hot"><span>{{__('new')}}</span></div>--}}{{--
                                                                 @endif
                                                             </div>
                                                             <!-- /.product-image -->
@@ -522,7 +531,7 @@
                                                                         @endif
                                                                     </a>
                                                                 </h3>
-                                                                {{--<div class="rating rateit-small"></div>--}}
+                                                                --}}{{--<div class="rating rateit-small"></div>--}}{{--
                                                                 <div class="description">
                                                                     @if (app()->getLocale() === 'en')
                                                                         {{Str::limit($product->short_descp_en, 20, $end='.......')}}
@@ -569,14 +578,14 @@
                                                                                 <i class="icon fa fa-heart"></i>
                                                                             </a>
                                                                         </li>
-                                                                        {{--<li class="lnk"><a data-toggle="tooltip"
+                                                                        --}}{{--<li class="lnk"><a data-toggle="tooltip"
                                                                                            class="add-to-cart"
                                                                                            href="detail.html"
                                                                                            title="Compare">
                                                                                 <i
                                                                                     class="fa fa-signal"
                                                                                     aria-hidden="true"></i>
-                                                                            </a></li>--}}
+                                                                            </a></li>--}}{{--
                                                                     </ul>
                                                                 </div>
                                                                 <!-- /.action -->
@@ -602,7 +611,7 @@
                             <!-- /.tab-content -->
                         </div>
                         <!-- ============================================== SKIPPED PRODUCT 2 : END ============================================== -->
-                    @endif
+                    @endif--}}
                 </div>
                 <!-- /.homebanner-holder -->
                 <!-- ============================================== CONTENT : END ============================================== -->
