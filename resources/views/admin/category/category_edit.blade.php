@@ -27,14 +27,15 @@
                             <div class="table-responsive">
 
 
-                                <form method="post" action="{{ route('category.update',$category->id) }}">
+                                <form method="post" action="{{ route('category.update',$category->id) }}" enctype="multipart/form-data">
                                     @csrf
 
 
                                     <div class="form-group">
                                         <h5>{{__('Name in English')}} <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input autocomplete="off" style="direction: ltr;" type="text" name="name_en" class="form-control"
+                                            <input autocomplete="off" style="direction: ltr;" type="text" name="name_en"
+                                                   class="form-control"
                                                    value="{{ $category->name_en }}">
                                             @error('name_en')
                                             <span class="text-danger">{{ $message }}</span>
@@ -46,7 +47,8 @@
                                     <div class="form-group">
                                         <h5>{{__('Name in Arabic')}} <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input autocomplete="off" style="direction: rtl;" type="text" name="name_ar" class="form-control"
+                                            <input autocomplete="off" style="direction: rtl;" type="text" name="name_ar"
+                                                   class="form-control"
                                                    value="{{ $category->name_ar }}">
                                             @error('name_ar')
                                             <span class="text-danger">{{ $message }}</span>
@@ -55,8 +57,21 @@
                                     </div>
 
 
+                                    <div class="form-group">
+                                        <h5>{{__('Image')}}</h5>
+                                        <div class="controls">
+                                            <input type="file" accept="image/png, image/jpg, image/jpeg" name="img"
+                                                   class="form-control">
+                                            @error('img')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+
                                     <div class="text-xs-right">
-                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{__('Update')}}">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5"
+                                               value="{{__('Update')}}">
                                     </div>
                                 </form>
 

@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Content Wrapper. Contains page content -->
 
@@ -26,6 +26,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
+                                        <th>{{__('Image')}}</th>
                                         <th>{{__('Name in English')}}</th>
                                         <th>{{__('Name in Arabic')}}</th>
                                         <th>{{__('Actions')}}</th>
@@ -35,6 +36,7 @@
                                     <tbody>
                                     @foreach($category as $item)
                                         <tr>
+                                            <td><img src="{{ asset($item->img) }}" alt="{{ $item->name_en }}" style="width: 60px; height: 50px;"></td>
                                             <td>{{ $item->name_en }}</td>
                                             <td>{{ $item->name_ar }}</td>
                                             <td>
@@ -74,7 +76,7 @@
                             <div class="table-responsive">
 
 
-                                <form method="post" action="{{ route('category.store') }}">
+                                <form method="post" action="{{ route('category.store') }}" enctype="multipart/form-data">
                                     @csrf
 
 
@@ -96,6 +98,19 @@
                                             @error('name_ar')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <h5>{{__('Image')}}</h5>
+                                        <div class="controls">
+                                            <input type="file" accept="image/png, image/jpg, image/jpeg" name="img" class="form-control"
+                                                   onChange="mainThamUrl(this)" required="">
+                                            @error('img')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                            <img src="" id="mainThmb">
                                         </div>
                                     </div>
 
@@ -122,6 +137,16 @@
     </div>
 
 
-
+    <script type="text/javascript">
+        function mainThamUrl(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#mainThmb').attr('src', e.target.result).width(80).height(80);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 
 @endsection

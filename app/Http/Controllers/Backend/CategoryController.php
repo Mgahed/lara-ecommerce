@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Image;
 
 class CategoryController extends Controller
 {
     protected function getRules()
     {
         return [
-            'name_en' => 'required|unique:categories',
-            'name_ar' => 'required|unique:categories',
+            'name_en' => 'required',//|unique:categories',
+            'name_ar' => 'required',//|unique:categories',
         ];
     }
 
@@ -35,6 +37,14 @@ class CategoryController extends Controller
 
     public function CategoryStore(Request $request)
     {
+        $save_img = null;
+        if ($request->file('img')) {
+            $img = $request->file('img');
+            $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
+            Image::Make($img)->resize(300, 300)->save(public_path('/upload/category/' . $name_gen));
+            $save_img = 'upload/category/' . $name_gen;
+        }
+
         $rules = $this->getRules();
         $customMSG = $this->getMSG();
         $validator = Validator::make($request->all(), $rules, $customMSG);
@@ -43,7 +53,8 @@ class CategoryController extends Controller
         }
         $category = Category::create([
             'name_en' => strtolower($request->name_en),
-            'name_ar' => $request->name_ar
+            'name_ar' => $request->name_ar,
+            'img' => $save_img,
         ]);
         if ($category) {
             $notification = array(
@@ -76,10 +87,22 @@ class CategoryController extends Controller
 
         $id = $request->id;
 
-        Category::findOrFail($id)->update([
-            'name_en' => strtolower($request->name_en),
-            'name_ar' => $request->name_ar
-        ]);
+        if ($request->file('img')) {
+            $img = $request->file('img');
+            $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
+            Image::Make($img)->resize(300, 300)->save(public_path('/upload/category/' . $name_gen));
+            $save_img = 'upload/category/' . $name_gen;
+            Category::findOrFail($id)->update([
+                'name_en' => strtolower($request->name_en),
+                'name_ar' => $request->name_ar,
+                'img' => $save_img
+            ]);
+        } else {
+            Category::findOrFail($id)->update([
+                'name_en' => strtolower($request->name_en),
+                'name_ar' => $request->name_ar
+            ]);
+        }
 
         $notification = [
             'message' => __('Category update successfully'),
@@ -91,7 +114,11 @@ class CategoryController extends Controller
 
     public function CategoryDelete($id)
     {
-        Category::findOrFail($id)->delete();
+        $category = Category::findOrFail($id);
+        if (file_exists(public_path($category->img))) {
+            unlink(public_path($category->img));
+        }
+        $category->delete();
 
         $notification = [
             'message' => __('Category deleted successfully'),
