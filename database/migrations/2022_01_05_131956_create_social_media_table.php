@@ -20,6 +20,10 @@ class CreateSocialMediaTable extends Migration
             $table->string('tiktok')->nullable();
             $table->string('youtube')->nullable();
             $table->string('whatsapp')->nullable();
+            $table->string('email')->nullable();
+            $table->string('number')->nullable();
+            $table->string('address')->nullable();
+            $table->string('google_map_address')->nullable();
             $table->timestamps();
         });
     }

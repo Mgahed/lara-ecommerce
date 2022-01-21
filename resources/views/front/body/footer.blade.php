@@ -1,3 +1,6 @@
+@php
+    $social = \App\Models\SocialMedia::find(1);
+@endphp
 <footer id="footer" class="footer color-bg">
     <div class="footer-bottom">
         <div class="container">
@@ -14,22 +17,21 @@
                                 <div class="pull-left"><span class="icon fa-stack fa-lg"> <i
                                             class="fa fa-map-marker fa-stack-1x fa-inverse"></i> </span></div>
                                 <div class="media-body">
-                                    <a href="https://maps.app.goo.gl/iho5mpCiBaWkRSF79"><p>الجيزة, الشيخ زايد, نافورة
-                                            الافق</p></a>
+                                    <a href="{{$social->google_map_address}}"><p>{{$social->address}}</p></a>
                                 </div>
                             </li>
                             <li class="media">
                                 <div class="pull-left"><span class="icon fa-stack fa-lg"> <i
                                             class="fa fa-mobile fa-stack-1x fa-inverse"></i> </span></div>
                                 <div class="media-body">
-                                    <a href="tel:+201095226151"><p>01095226151</p></a>
+                                    <a href="tel:+2{{$social->number}}"><p>{{$social->number}}</p></a>
                                 </div>
                             </li>
                             <li class="media">
                                 <div class="pull-left"><span class="icon fa-stack fa-lg"> <i
                                             class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span></div>
                                 <div class="media-body"><span><a
-                                            href="mailto:support@mobilecarestore.com">support@mobilecarestore.com</a></span>
+                                            href="mailto:{{$social->email}}">{{$social->email}}</a></span>
                                 </div>
                             </li>
                         </ul>
@@ -107,9 +109,6 @@
             </div>
         </div>
     </div>
-    @php
-        $social = \App\Models\SocialMedia::find(1);
-    @endphp
     <div class="copyright-bar">
         <div class="container">
             <div class="col-xs-12 col-sm-6 no-padding social">

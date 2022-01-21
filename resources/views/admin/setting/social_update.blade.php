@@ -65,6 +65,38 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <h5 style="float: left;"><i class="mdi mdi-email"></i> {{__('Email')}} </h5>
+                                                    <div class="controls">
+                                                        <input type="text" style="direction: ltr;" name="email" id="email"
+                                                               class="form-control" value="{{ $social->email }}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <h5 style="float: left;"><i class="mdi mdi-phone-classic"></i> {{__('Number')}} </h5>
+                                                    <div class="controls">
+                                                        <input type="text" style="direction: ltr;" name="number" id="number"
+                                                               class="form-control" value="{{ $social->number }}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <h5 style="float: left;"><i class="mdi mdi-map-marker"></i> {{__('Address')}} </h5>
+                                                    <div class="controls">
+                                                        <input type="text" style="direction: ltr;" name="address" id="address"
+                                                               class="form-control" value="{{ $social->address }}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <h5 style="float: left;"><i class="mdi mdi-google-maps"></i> {{__('google map address')}} </h5>
+                                                    <div class="controls">
+                                                        <input type="text" style="direction: ltr;" name="google_map_address" id="google_map_address"
+                                                               class="form-control" value="{{ $social->google_map_address }}"/>
+                                                    </div>
+                                                </div>
+
                                             </div> <!-- end cold md 6 -->
 
                                         </div>    <!-- end row 	 -->

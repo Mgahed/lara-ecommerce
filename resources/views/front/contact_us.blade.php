@@ -1,3 +1,6 @@
+@php
+    $social = \App\Models\SocialMedia::find(1);
+@endphp
 @extends('front.main_master')
 @section('content')
     <div class="body-content outer-top-xs">
@@ -68,15 +71,15 @@
                         </div>
                         <div class="clearfix address">
                             <span class="contact-i"><i class="fa fa-map-marker"></i></span>
-                            <span class="contact-span"><a href="https://maps.app.goo.gl/iho5mpCiBaWkRSF79"><p>الجيزة, الشيخ زايد, نافورة الافق</p></a></span>
+                            <span class="contact-span"><a href="{{$social->google_map_address}}"><p>{{$social->address}}</p></a></span>
                         </div>
                         <div class="clearfix phone-no">
                             <span class="contact-i"><i class="fa fa-mobile"></i></span>
-                            <span class="contact-span"><a href="tel:+201095226151">01095226151</a></span>
+                            <span class="contact-span"><a href="tel:+2{{$social->number}}">{{$social->number}}</a></span>
                         </div>
                         <div class="clearfix email">
                             <span class="contact-i"><i class="fa fa-envelope"></i></span>
-                            <span class="contact-span"><a href="mailto:support@mobilecarestore.com">support@mobilecarestore.com</a></span>
+                            <span class="contact-span"><a href="mailto:{{$social->email}}">{{$social->email}}</a></span>
                         </div>
                     </div>
                 </div><!-- /.contact-page -->

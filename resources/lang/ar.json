@@ -1002,7 +1002,10 @@
     "Return Order": "إرجاع الطلب",
     "return requested": "طلب ارجاع",
     "Order notes": "ملاحظات",
-    "Return reason": "سبب طلب الارجاع"
+    "Return reason": "سبب طلب الارجاع",
+    "Number": "الرقم",
+    "Address": "العنوان",
+    "google map address": "الرابط على خرائط جوجل"
 
 
 }
