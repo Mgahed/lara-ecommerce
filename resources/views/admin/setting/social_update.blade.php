@@ -8,7 +8,7 @@
             <!-- Basic Forms -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">{{__('Social media Setting Page')}} </h4>
+                    <h4 class="box-title">{{__('Footer settings')}} </h4>
 
                 </div>
                 <!-- /.box-header -->
