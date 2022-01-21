@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Order;
 use App\Models\Seo;
 use App\Models\SocialMedia;
@@ -160,4 +161,26 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
 
     } // end mehtod
+
+    public function AboutEdit()
+    {
+        $about = About::findOrFail(1);
+        return view('admin.setting.about_us', compact('about'));
+    }
+
+    public function AboutUpdate(Request $request)
+    {
+        $pattern = '#\<pre.*?\>(.*?)\<\/pre\>#si';
+        $replace = '$1';
+        About::findOrFail(1)->update([
+            'description_en' => preg_replace($pattern, $replace, $request->description_en),
+            'description_ar' => preg_replace($pattern, $replace, $request->description_ar),
+        ]);
+        $notification = array(
+            'message' => __('Updated Successfully'),
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }

@@ -64,7 +64,7 @@
 
                     <div class="module-body">
                         <ul class='list-unstyled'>
-                            <li class="first"><a href="#">{{__('About us')}}</a></li>
+                            <li class="first"><a href="{{route('about-us')}}">{{__('About us')}}</a></li>
                             <li><a href="{{route('contact-us')}}">{{__('Contact us')}}</a></li>
                         </ul>
                     </div>

@@ -194,6 +194,12 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/social-media/', [AdminController::class, 'SocialSetting'])->name('social.setting');
             Route::post('/social-media/update', [AdminController::class, 'SocialSettingUpdate'])->name('update.socialsetting');
         });
+
+        /*----- Admin about us -----*/
+        Route::prefix('about-us')->group(function () {
+            Route::get('/edit', [AdminController::class, 'AboutEdit'])->name('about.setting');
+            Route::post('/update', [AdminController::class, 'AboutUpdate'])->name('update.about_us');
+        });
     });
 
     /*----------------------------------------------------------------------------------------------------*/
@@ -308,6 +314,10 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
     })->name('contact-us');
 
     Route::post('/contact-us', [IndexController::class, 'contact_us'])->name('contact-us');
+
+    Route::get('/about-us', function () {
+        return view('front.about_us');
+    })->name('about-us');
 
     Route::get('/privacy-policy', function () {
         return view('front.privacy');
