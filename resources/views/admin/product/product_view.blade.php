@@ -29,6 +29,7 @@
                                         <th>{{__('Image')}}</th>
                                         <th>{{__('Product Code')}}</th>
                                         <th>{{__('Product name')}}</th>
+                                        <th>{{__('Category')}}</th>
                                         <th>{{__('Price')}}</th>
                                         <th>{{__('Quantity')}}</th>
                                         <th>{{__('Discount')}}</th>
@@ -43,6 +44,11 @@
                                                      style="width: 60px; height: 50px;"></td>
                                             <td>{{ $item->code }}</td>
                                             <td>{{ $item->name_en }} - {{ $item->name_ar }}</td>
+                                            @if ($item->category_id)
+                                                <td>{{ $item->category->name_en }}</td>
+                                            @else
+                                                <td>{{__('No category or deleted')}}</td>
+                                            @endif
                                             <td>{{ $item->sell_price }}{{__('EGP')}}</td>
                                             <td>{{ $item->quantity }}</td>
 
@@ -63,8 +69,8 @@
 
 
                                             <td width="30%">
-                                                <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary"
-                                                   title="Product Details Data"><i class="fa fa-eye"></i> </a>
+                                                {{--<a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary"
+                                                   title="Product Details Data"><i class="fa fa-eye"></i> </a>--}}
 
                                                 <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info"
                                                    title="Edit Data"><i class="fa fa-pencil"></i> </a>
@@ -73,6 +79,10 @@
                                                    title="Delete Data" id="delete">
                                                     <i class="fa fa-trash"></i></a>
 
+                                                <button onclick="openModal({{$item->id}})" type="button"
+                                                        class="btn btn-success" data-target="#modal-center">
+                                                    <i class="mdi mdi-library-plus"></i>
+                                                </button>
 
                                             </td>
 
@@ -99,7 +109,58 @@
 
     </div>
 
+    <!-- Modal -->
+    <div class="modal center-modal fade" id="modal-center" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{__('Duplicate product')}}</h5>
+                    <button onclick="dismiss()" type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('duplicate.product')}}" method="post">
+                        <h5>{{__('Select Category')}} <span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            @php
+                                $categories = \App\Models\Category::orderBy('name_en', 'ASC')->get();
+                            @endphp
+                            <select name="category_id" class="form-control" required="">
+                                @foreach($categories as $category)
+                                    <option
+                                        value="{{ $category->id }}">{{ $category->name_en }}
+                                        - {{$category->name_ar}}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <br>
+                        <input type="hidden" name="product_id" value="">
+                        @csrf
+                        <input type="submit" class="btn btn-rounded btn-primary float-right" value="{{__('Save')}}">
+                    </form>
+                </div>
+                <div class="modal-footer modal-footer-uniform">
+                    <button onclick="dismiss()" type="button" class="btn btn-rounded btn-danger" data-dismiss="modal">
+                        {{__('Close')}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
 
+    <script>
+        function openModal(id) {
+            $('input[name="product_id"]').val(id);
+            $('#modal-center').modal('show');
+        }
 
+        function dismiss() {
+            $('#modal-center').modal('hide');
+        }
+    </script>
 
 @endsection

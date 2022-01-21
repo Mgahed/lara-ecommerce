@@ -1008,7 +1008,9 @@
     "google map address": "الرابط على خرائط جوجل",
     "Footer": "الجزء السفلي",
     "Footer settings": "إعدادات الجزء السفلي",
-    "non": "لا يوجد"
+    "non": "لا يوجد",
+    "Duplicate product": "تكرار المنتج",
+    "Product already have this category": "المنتج يحتوي بالفعل على هذا التصنيف"
 
 
 }

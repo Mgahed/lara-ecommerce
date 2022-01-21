@@ -68,6 +68,85 @@ class ProductController extends Controller
         return view('admin.product.product_add', compact('categories'));
     }
 
+    public function DuplicateProduct(Request $request)
+    {
+//        return $request;
+        $check = Product::with('multiimg')->findOrFail($request->product_id);
+        $flag = true;
+        $check_product = Product::where('code', $check->code)->get();
+        foreach ($check_product as $product) {
+            if ($product->category_id == $request->category_id) {
+                $flag = false;
+            }
+        }
+//        return $flag;
+        if ($check->category_id == $request->category_id || !$flag) {
+            $notification = [
+                'message' => __('Product already have this category'),
+                'alert-type' => 'error'
+            ];
+            return redirect()->back()->with($notification);
+        }
+        /*----- Duplicate -----*/
+        $oldPath = $check->thumbnail;
+        $fileExtension = \File::extension($oldPath);
+        $newName = md5(rand()) . strtotime(Carbon::now()) . '.' . $fileExtension;
+//        $newName = 'new file.'.$fileExtension;
+//        $newPathWithName = 'images/'.$newName;
+        $newPathWithName = public_path('/upload/products/thumbnail/' . $newName);
+        \File::copy(public_path($oldPath), $newPathWithName);
+//        $thumbnail_img = $request->file('thumbnail');
+//        Image::Make($thumbnail_img)->resize(400, 400)->save(public_path('/upload/products/thumbnail/' . $name_gen));
+//        $save_thumbnail_img = 'upload/products/thumbnail/' . $name_gen;
+        $product = Product::create([
+            'name_en' => strtolower($check->name_en),
+            'name_ar' => $check->name_ar,
+            'code' => $check->code,
+            'quantity' => $check->quantity,
+            'color_en' => $check->color_en,
+            'color_ar' => $check->color_ar,
+            'sell_price' => $check->sell_price,
+            'discount_price' => $check->discount_price,
+            'short_descp_en' => $check->short_descp_en,
+            'short_descp_ar' => $check->short_descp_ar,
+            'long_descp_en' => $check->long_descp_en,
+            'long_descp_ar' => $check->long_descp_ar,
+            'thumbnail' => 'upload/products/thumbnail/' . $newName,
+            'special_offer' => $check->special_offer ? $check->special_offer : 0,
+            'best_seller' => $check->best_seller ? $check->best_seller : 0,
+            'brand' => $check->brand,
+            'category_id' => $request->category_id,
+            'subcategory_id' => null,
+        ]);
+
+        /*----- Multi IMG Upload -----*/
+//        $multi_imgs = $request->file('multi_img');
+        $product_id = Product::orderBy('id', 'desc')->first();
+        if ($check->multiimg) {
+            foreach ($check->multiimg as $multi_img) {
+                $oldPath = $multi_img->name;
+                $fileExtension = \File::extension($oldPath);
+                $newName = md5(rand()) . strtotime(Carbon::now()) . '.' . $fileExtension;
+                $newPathWithName = public_path('/upload/products/multi-image/' . $newName);
+                \File::copy(public_path($oldPath), $newPathWithName);
+
+                /*$name_gen = md5($multi_img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $multi_img->getClientOriginalExtension();
+                Image::Make($multi_img)->resize(400, 400)->save(public_path('/upload/products/multi-image/' . $name_gen));
+                $save_multi_img = 'upload/products/multi-image/' . $name_gen;*/
+
+                MultiImg::create([
+                    'product_id' => $product_id->id,
+                    'name' => 'upload/products/multi-image/' . $newName,
+                ]);
+            }
+        }
+        $notification = [
+            'message' => __('Product added successfully'),
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
     public function StoreProduct(Request $request)
     {
         $rules = $this->getRules();
@@ -128,7 +207,7 @@ class ProductController extends Controller
 
     public function ManageProduct()
     {
-        $products = Product::latest()->get();
+        $products = Product::with('category')->latest()->get();
         return view('admin.product.product_view', compact('products'));
     }
 

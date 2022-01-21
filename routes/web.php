@@ -67,6 +67,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         Route::prefix('product')->group(function () {
             Route::get('/ajax/{category_id}/{subcategory_id}', [ProductController::class, 'GetAllProducts']);
             Route::get('/add', [ProductController::class, 'AddProduct'])->name('add-product');
+            Route::post('/duplicate', [ProductController::class, 'DuplicateProduct'])->name('duplicate.product');
             Route::post('/store', [ProductController::class, 'StoreProduct'])->name('product-store');
             Route::get('/manage', [ProductController::class, 'ManageProduct'])->name('manage-product');
             Route::get('/edit/{id}', [ProductController::class, 'EditProduct'])->name('product.edit');
