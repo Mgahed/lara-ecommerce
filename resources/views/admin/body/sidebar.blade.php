@@ -253,7 +253,7 @@
                         </li>
                         <li class="{{Request::is(app()->getLocale().'/admin/site-settings/social-media/*') ? 'active' : ''}}">
                             <a
-                                href="{{route('social.setting')}}"><i class="ti-more"></i>{{__('Social media')}}</a>
+                                href="{{route('social.setting')}}"><i class="ti-more"></i>{{__('Footer')}}</a>
                         </li>
                     </ul>
                 </li>
