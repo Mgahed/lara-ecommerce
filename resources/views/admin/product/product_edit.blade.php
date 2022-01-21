@@ -34,12 +34,14 @@
                                                     </h5>
                                                     <div class="controls">
                                                         <select name="category_id" class="form-control" required="">
-                                                            <option value="{{$product->category->id}}"
-                                                                    selected="">{{$product->category->name_en}}
-                                                                - {{$product->category->name_ar}}
-                                                            </option>
+                                                            @if ($product->category_id)
+                                                                <option value="{{$product->category->id}}"
+                                                                        selected="">{{$product->category->name_en}}
+                                                                    - {{$product->category->name_ar}}
+                                                                </option>
+                                                            @endif
                                                             @foreach($categories as $category)
-                                                                @if ($product->category->id != $category->id)
+                                                                @if ($product->category_id != $category->id)
                                                                     <option
                                                                         value="{{ $category->id }}" {{ $category->id === $product->category_id ? 'selected' : ''}}>{{ $category->name_en }}
                                                                         - {{$category->name_ar}}</option>
@@ -60,10 +62,15 @@
                                                     </h5>
                                                     <div class="controls">
                                                         <select name="subcategory_id" class="form-control" required="">
-                                                            <option value="{{$product->subcategory_id}}" selected="">
-                                                                {{$product->subcategory->name_en}}
-                                                                - {{$product->subcategory->name_ar}}
-                                                            </option>
+                                                            @if ($product->subcategory_id)
+                                                                <option value="{{$product->subcategory_id}}"
+                                                                        selected="">
+                                                                    {{$product->subcategory->name_en}}
+                                                                    - {{$product->subcategory->name_ar}}
+                                                                </option>
+                                                            @else
+                                                                <option value="null">{{__('non')}}</option>
+                                                            @endif
                                                         </select>
                                                         @error('subcategory_id')
                                                         <span class="text-danger">{{ $message }}</span>
@@ -495,7 +502,7 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            var d = $('select[name="subcategory_id"]').empty();
+                            var d = $('select[name="subcategory_id"]').empty().append('<option value="null" selected="" >{{__('non')}}</option>');
                             $.each(data, function (key, value) {
                                 $('select[name="subcategory_id"]').append('<option value="' + value.id + '">' + value.name_en + ' - ' + value.name_ar + '</option>');
                             });

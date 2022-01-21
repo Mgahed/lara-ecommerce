@@ -103,7 +103,7 @@
 
 
                                     <div class="form-group">
-                                        <h5>{{__('Image')}}</h5>
+                                        <h5>{{__('Image')}}<span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="file" accept="image/png, image/jpg, image/jpeg" name="img" class="form-control"
                                                    onChange="mainThamUrl(this)" required="">

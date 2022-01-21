@@ -101,7 +101,7 @@ class ProductController extends Controller
             'best_seller' => $request->best_seller ? $request->best_seller : 0,
             'brand' => $request->brand,
             'category_id' => $request->category_id,
-            'subcategory_id' => $request->subcategory_id
+            'subcategory_id' => $request->subcategory_id == 'null' ? null : $request->subcategory_id
         ]);
 
         /*----- Multi IMG Upload -----*/
@@ -168,7 +168,7 @@ class ProductController extends Controller
             'best_seller' => $request->best_seller ? $request->best_seller : 0,
             'brand' => $request->brand,
             'category_id' => $request->category_id,
-            'subcategory_id' => $request->subcategory_id
+            'subcategory_id' => $request->subcategory_id == 'null' ? null : $request->subcategory_id
         ]);
 
         $notification = [

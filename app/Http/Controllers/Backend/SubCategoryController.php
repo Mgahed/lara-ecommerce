@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -97,6 +98,12 @@ class SubCategoryController extends Controller
 
     public function SubCategoryDelete($id)
     {
+        $products = Product::where('subcategory_id', $id)->get();
+        foreach ($products as $product) {
+            $product->update([
+                'subcategory_id' => 0
+            ]);
+        }
         SubCategory::findOrFail($id)->delete();
 
         $notification = [

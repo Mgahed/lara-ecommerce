@@ -50,12 +50,10 @@
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <h5>{{__('Select SubCategory')}} <span class="text-danger">*</span></h5>
+                                                    <h5>{{__('Select SubCategory')}} {{--<span class="text-danger">*</span>--}}</h5>
                                                     <div class="controls">
-                                                        <select name="subcategory_id" class="form-control" required="">
-                                                            <option value="" selected="" disabled="">Select
-                                                                SubCategory
-                                                            </option>
+                                                        <select name="subcategory_id" class="form-control" {{--required=""--}}>
+                                                            <option selected="" >{{__('non')}}</option>
                                                         </select>
                                                         @error('subcategory_id')
                                                         <span class="text-danger">{{ $message }}</span>
@@ -371,7 +369,7 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            var d = $('select[name="subcategory_id"]').empty();
+                            var d = $('select[name="subcategory_id"]').empty().append('<option value="null" selected="" >{{__('non')}}</option>');
                             $.each(data, function (key, value) {
                                 $('select[name="subcategory_id"]').append('<option value="' + value.id + '">' + value.name_en + ' - ' + value.name_ar + '</option>');
                             });

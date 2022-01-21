@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -121,6 +122,12 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         if (file_exists(public_path($category->img))) {
             unlink(public_path($category->img));
+        }
+        $products = Product::where('category_id', $id)->get();
+        foreach ($products as $product) {
+            $product->update([
+                'category_id' => 0
+            ]);
         }
         $category->delete();
 
