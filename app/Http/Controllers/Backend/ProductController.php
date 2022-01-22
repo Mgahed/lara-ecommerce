@@ -207,7 +207,7 @@ class ProductController extends Controller
 
     public function ManageProduct()
     {
-        $products = Product::with('category')->latest()->get();
+        $products = Product::withTrashed()->with('category')->latest()->get();
         return view('admin.product.product_view', compact('products'));
     }
 
@@ -353,7 +353,7 @@ class ProductController extends Controller
         if (file_exists(public_path($product->thumbnail))) {
             unlink(public_path($product->thumbnail));
         }
-        $delete = $product->delete();
+        $delete = $product->forceDelete();
         if ($delete) {
             $notification = [
                 'message' => __('Product deleted successfully'),
@@ -379,5 +379,25 @@ class ProductController extends Controller
     {
         $products = Product::where('category_id', $category_id)->where('subcategory_id', $subcategory_id)->orderBy('name_en', 'ASC')->get();
         return json_encode($products);
+    }
+
+    public function deactivate($id)
+    {
+        Product::findOrFail($id)->delete();
+        $notification = [
+            'message' => __('Product deactivated successfully'),
+            'alert-type' => 'info'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
+    public function activate($id)
+    {
+        Product::onlyTrashed()->findOrFail($id)->restore();
+        $notification = [
+            'message' => __('Product activated successfully'),
+            'alert-type' => 'info'
+        ];
+        return redirect()->back()->with($notification);
     }
 }

@@ -84,6 +84,17 @@
                                                     <i class="mdi mdi-library-plus"></i>
                                                 </button>
 
+                                                @if ($item->deleted_at)
+                                                    <a href="{{ route('product.up',$item->id) }}"
+                                                       class="btn btn-success"
+                                                       title="Delete Data">
+                                                        <i class="fa fa-arrow-up"></i></a>
+                                                @else
+                                                    <a href="{{ route('product.down',$item->id) }}"
+                                                       class="btn btn-danger" title="Delete Data">
+                                                        <i class="fa fa-arrow-down"></i></a>
+                                                @endif
+
                                             </td>
 
                                         </tr>

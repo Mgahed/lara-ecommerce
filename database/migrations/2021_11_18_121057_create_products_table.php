@@ -34,6 +34,7 @@ class CreateProductsTable extends Migration
             $table->string('brand');
             $table->integer('category_id');
             $table->integer('subcategory_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

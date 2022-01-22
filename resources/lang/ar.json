@@ -1010,7 +1010,9 @@
     "Footer settings": "إعدادات الجزء السفلي",
     "non": "لا يوجد",
     "Duplicate product": "تكرار المنتج",
-    "Product already have this category": "المنتج يحتوي بالفعل على هذا التصنيف"
+    "Product already have this category": "المنتج يحتوي بالفعل على هذا التصنيف",
+    "Product deactivated successfully": "تم إلغاء تفعيل المنتج بنجاح",
+    "Product activated successfully": "تم تفعيل المنتج بنجاح"
 
 
 }
