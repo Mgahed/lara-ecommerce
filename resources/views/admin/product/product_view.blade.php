@@ -87,11 +87,11 @@
                                                 @if ($item->deleted_at)
                                                     <a href="{{ route('product.up',$item->id) }}"
                                                        class="btn btn-success"
-                                                       title="Delete Data">
+                                                       title="Activate">
                                                         <i class="fa fa-arrow-up"></i></a>
                                                 @else
                                                     <a href="{{ route('product.down',$item->id) }}"
-                                                       class="btn btn-danger" title="Delete Data">
+                                                       class="btn btn-danger" title="Dactivate">
                                                         <i class="fa fa-arrow-down"></i></a>
                                                 @endif
 
