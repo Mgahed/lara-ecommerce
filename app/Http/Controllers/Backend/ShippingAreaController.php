@@ -109,8 +109,8 @@ class ShippingAreaController extends Controller
         }
 
         ShipDivision::findOrFail($id)->update([
-            /*'name_en' => ucfirst(strtolower($request->name_en)),
-            'name_ar' => $request->name_ar,*/
+            'name_en' => ucfirst(strtolower($request->name_en)),
+            'name_ar' => $request->name_ar,
             'cost' => $request->cost,
         ]);
 

@@ -33,7 +33,7 @@
                                     <div class="form-group">
                                         <h5>{{__('Name in english')}} <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input disabled autocomplete="off" type="text" style="direction: ltr;" name="name_en" class="form-control"
+                                            <input {{--disabled--}} required autocomplete="off" type="text" style="direction: ltr;" name="name_en" class="form-control"
                                                    value="{{ $division->name_en }}">
                                             @error('name_en')
                                             <span class="text-danger">{{ $message }}</span>
@@ -44,7 +44,7 @@
                                     <div class="form-group">
                                         <h5>{{__('Name in arabic')}} <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input disabled autocomplete="off" type="text" style="direction: rtl;" name="name_ar" class="form-control"
+                                            <input {{--disabled--}} required autocomplete="off" type="text" style="direction: rtl;" name="name_ar" class="form-control"
                                                    value="{{ $division->name_ar }}">
                                             @error('name_ar')
                                             <span class="text-danger">{{ $message }}</span>
