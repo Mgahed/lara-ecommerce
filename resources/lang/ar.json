@@ -1012,7 +1012,16 @@
     "Duplicate product": "تكرار المنتج",
     "Product already have this category": "المنتج يحتوي بالفعل على هذا التصنيف",
     "Product deactivated successfully": "تم إلغاء تفعيل المنتج بنجاح",
-    "Product activated successfully": "تم تفعيل المنتج بنجاح"
+    "Product activated successfully": "تم تفعيل المنتج بنجاح",
+    "City": "المدينه",
+    "Districts list": "قائمة المناطق",
+    "Add District": "أضف منطقة",
+    "District Inserted Successfully": "تم إضافة المنطقة بنجاح",
+    "District Updated Successfully": "تم تحديث المنطقة بنجاح",
+    "District Deleted Successfully": "تم حذف المنطقة بنجاح",
+    "Shipping district": "منطقة الشحن",
+    "Edit District": "تحديث المنطقة",
+    "Select district": "حدد المنطقة"
 
 
 }

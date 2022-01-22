@@ -38,6 +38,7 @@ class CreateOrdersTable extends Migration
             $table->string('status');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('division_id');
+            $table->unsignedBigInteger('district_id');
             $table->timestamps();
         });
     }

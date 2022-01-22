@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShipDivision extends Model
+class District extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,11 @@ class ShipDivision extends Model
 
     public function order()
     {
-        return $this->hasMany(Order::class, 'division_id', 'id');
+        return $this->hasMany(Order::class, 'district_id', 'id');
     }
 
-    public function district()
+    public function city()
     {
-        return $this->hasMany(District::class, 'city_id', 'id');
+        return $this->belongsTo(ShipDivision::class, 'city_id', 'id');
     }
 }

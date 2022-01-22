@@ -1,5 +1,6 @@
 @extends('front.main_master')
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="body-content outer-top-xs" id="top-banner-and-menu">
         <div class="container">
             <div class="body-content">
@@ -88,12 +89,28 @@
                                                                 <select name="division_id" required class="form-control"
                                                                         id="shipping_city">
                                                                     <option value=""
-                                                                            disabled selected>{{__('Select city')}}</option>
+                                                                            disabled
+                                                                            selected>{{__('Select city')}}</option>
                                                                     @foreach ($divisions as $item)
                                                                         <option value="{{$item->id}}">
                                                                             {{app()->getLocale() === 'en'?$item->name_en:$item->name_ar}}
                                                                         </option>
                                                                     @endforeach
+                                                                </select>
+                                                                @error('division_id')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="info-title" for="shipping_city">
+                                                                    {{__('Select district')}}<span
+                                                                        class="text-danger"> *</span>
+                                                                </label>
+                                                                <select name="district_id" required class="form-control"
+                                                                        id="district_id">
+                                                                    <option value=""
+                                                                            disabled
+                                                                            selected>{{__('Select district')}}</option>
                                                                 </select>
                                                                 @error('division_id')
                                                                 <span class="text-danger">{{ $message }}</span>
@@ -206,4 +223,27 @@
             </div><!-- /.body-content -->
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select[name="division_id"]').on('change', function () {
+                var city_id = $(this).val();
+                if (city_id) {
+                    $.ajax({
+                        url: "{{  url('/admin/shipping/district/ajax') }}/" + city_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            var d = $('select[name="district_id"]').empty().append('<option value="null" selected="" >{{__('Other')}}</option>');
+                            $.each(data, function (key, value) {
+                                $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('{{__('Error')}}');
+                }
+            });
+        });
+    </script>
 @endsection

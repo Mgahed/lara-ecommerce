@@ -45,7 +45,7 @@
                             $div = $order->division->name_en;
                         @endphp
 
-                        <strong>Address:</strong> {{ $div }},{{ $order->address }} <br>
+                        <strong>Address:</strong> {{ $div }}, {{ $order->district_id?$order->district->name_en.',':'' }} {{ $order->address }} <br>
                     </p>
                 </td>
                 <td style="float: right;">

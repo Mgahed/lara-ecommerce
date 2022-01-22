@@ -35,6 +35,7 @@ class CashController extends Controller
         $order_id = Order::insertGetId([
             'user_id' => auth()->id(),
             'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,

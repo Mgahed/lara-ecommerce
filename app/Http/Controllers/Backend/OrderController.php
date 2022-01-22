@@ -43,7 +43,7 @@ class OrderController extends Controller
     public function PendingOrdersDetails($order_id)
     {
 
-        $order = Order::with('division', 'user')->where('id', $order_id)->first();
+        $order = Order::with('division', 'user', 'district')->where('id', $order_id)->first();
         $orderItem = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
         return view('admin.orders.pending_orders_details', compact('order', 'orderItem'));
 
@@ -252,7 +252,7 @@ class OrderController extends Controller
     public function AdminInvoiceDownload($order_id)
     {
 
-        $order = Order::with('division', 'user')->where('id', $order_id)->first();
+        $order = Order::with('division', 'district', 'user')->where('id', $order_id)->first();
         $orderItem = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
         return view('admin.orders.order_invoice', compact('order', 'orderItem'));
 
@@ -268,7 +268,7 @@ class OrderController extends Controller
     public function AdminShippingDownload($order_id)
     {
 
-        $order = Order::with('division', 'user')->where('id', $order_id)->first();
+        $order = Order::with('division', 'district', 'user')->where('id', $order_id)->first();
         $orderItem = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
 
         return view('admin.orders.shipping_invoice' , compact('order', 'orderItem'));

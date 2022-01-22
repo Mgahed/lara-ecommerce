@@ -56,7 +56,7 @@
 
                                 <tr>
                                     <th> {{__('Shipping address details')}} :</th>
-                                    <th> {{ $order->division->name_en }}, {{$order->address}} </th>
+                                    <th> {{ $order->division->name_en }}, {{ $order->district_id?$order->district->name_en.',':'' }} {{$order->address}} </th>
                                 </tr>
 
                                 <tr>

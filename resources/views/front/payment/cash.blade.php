@@ -25,6 +25,10 @@
                                                 @php
                                                     $find_city = \App\Models\ShipDivision::select('cost')->findOrFail($data['division_id']);
                                                     $cost_of_shipping = $find_city->cost;
+                                                    if($data['district_id'] != null){
+                                                        $find_district = \App\Models\District::select('cost')->findOrFail($data['district_id']);
+                                                        $cost_of_shipping = $find_district->cost;
+                                                    }
                                                 @endphp
 
                                                 @if(Session::has('coupon'))
@@ -95,8 +99,8 @@
                                                 <input type="hidden" name="email" value="{{ $data['email'] }}">
                                                 <input type="hidden" name="phone" value="{{ $data['phone'] }}">
                                                 <input type="hidden" name="address" value="{{ $data['address'] }}">
-                                                <input type="hidden" name="division_id"
-                                                       value="{{ $data['division_id'] }}">
+                                                <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
+                                                <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
                                                 <input type="hidden" name="notes" value="{{ $data['notes'] }}">
                                                 <input type="hidden" name="shipping_cost"
                                                        value="{{ $cost_of_shipping }}">

@@ -20,4 +20,9 @@ class Order extends Model
     {
         return $this->belongsTo(ShipDivision::class, 'division_id', 'id');
     }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id', 'id');
+    }
 }

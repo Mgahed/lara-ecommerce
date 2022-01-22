@@ -48,7 +48,7 @@
                             $div = $order->division->name_en;
                         @endphp
 
-                        <strong>Address:</strong> {{ $div }},{{ $order->address }} <br>
+                        <strong>Address:</strong> {{ $div }}, {{ $order->district_id?$order->district->name_en.',':'' }} {{ $order->address }} <br>
                         {{--<strong>Post Code:</strong> {{ $order->post_code }}--}}
                     </p>
                 </td>

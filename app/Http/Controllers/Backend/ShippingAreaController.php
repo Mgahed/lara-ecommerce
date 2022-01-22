@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
 use App\Models\ShipDivision;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -29,15 +30,37 @@ class ShippingAreaController extends Controller
         ];
     }
 
+    protected function getRulesDist()
+    {
+        return [
+            'name_en' => 'required|unique:districts',
+            'name_ar' => 'required|unique:districts',
+            'cost' => 'required'
+        ];
+    }
 
-    public function DivisionView(){
-        $divisions = ShipDivision::orderBy('name_en','ASC')->get();
-        return view('admin.ship.division.view_division',compact('divisions'));
+    protected function getMSGDist()
+    {
+        return [
+            'name_en.required' => __('This field is required'),
+            'name_ar.required' => __('This field is required'),
+            'cost.required' => __('This field is required'),
+            'name_en.unique' => __('Name should be unique'),
+            'name_ar.unique' => __('Name should be unique')
+        ];
+    }
+
+
+    public function DivisionView()
+    {
+        $divisions = ShipDivision::orderBy('name_en', 'ASC')->get();
+        return view('admin.ship.division.view_division', compact('divisions'));
 
     }
 
 
-    public function DivisionStore(Request $request){
+    public function DivisionStore(Request $request)
+    {
 
         $rules = $this->getRules();
         $customMSG = $this->getMSG();
@@ -63,16 +86,16 @@ class ShippingAreaController extends Controller
     } // end method
 
 
-
-    public function DivisionEdit($id){
+    public function DivisionEdit($id)
+    {
 
         $division = ShipDivision::findOrFail($id);
-        return view('admin.ship.division.edit_division',compact('division'));
+        return view('admin.ship.division.edit_division', compact('division'));
     }
 
 
-
-    public function DivisionUpdate(Request $request,$id){
+    public function DivisionUpdate(Request $request, $id)
+    {
 
         $rules = [
             "cost" => 'required'
@@ -102,7 +125,8 @@ class ShippingAreaController extends Controller
     } // end mehtod
 
 
-    public function DivisionDelete($id){
+    public function DivisionDelete($id)
+    {
 
         ShipDivision::findOrFail($id)->delete();
 
@@ -116,35 +140,37 @@ class ShippingAreaController extends Controller
     } // end method
 
 
+    ////////////////////////////////////////////////////
+    /// ///////////////////////////////////////////////
 
-    //// Start Ship District
-/*
-    public function DistrictView(){
-        $division = ShipDivision::orderBy('division_name','ASC')->get();
-        $district = ShipDistrict::with('division')->orderBy('id','DESC')->get();
-        return view('backend.ship.district.view_district',compact('division','district'));
+    public function DistrictView()
+    {
+        $districts = District::orderBy('name_en', 'ASC')->get();
+        return view('admin.ship.district.view_district', compact('districts'));
+
     }
 
 
-    public function DistrictStore(Request $request){
+    public function DistrictStore(Request $request)
+    {
 
-        $request->validate([
-            'division_id' => 'required',
-            'district_name' => 'required',
+        $rules = $this->getRulesDist();
+        $customMSG = $this->getMSGDist();
+        $validator = Validator::make($request->all(), $rules, $customMSG);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
 
-        ]);
-
-
-        ShipDistrict::insert([
-
-            'division_id' => $request->division_id,
-            'district_name' => $request->district_name,
-            'created_at' => Carbon::now(),
+        District::create([
+            'name_en' => ucfirst(strtolower($request->name_en)),
+            'name_ar' => $request->name_ar,
+            'cost' => $request->cost,
+            'city_id' => $request->city_id
 
         ]);
 
         $notification = array(
-            'message' => 'District Inserted Successfully',
+            'message' => __('District Inserted Successfully'),
             'alert-type' => 'success'
         );
 
@@ -153,28 +179,37 @@ class ShippingAreaController extends Controller
     } // end method
 
 
+    public function DistrictEdit($id)
+    {
 
-    public function DistrictEdit($id){
-
-        $division = ShipDivision::orderBy('division_name','ASC')->get();
-        $district = ShipDistrict::findOrFail($id);
-        return view('backend.ship.district.edit_district',compact('district','division'));
+        $district = District::findOrFail($id);
+        return view('admin.ship.district.edit_district', compact('district'));
     }
 
 
+    public function DistrictUpdate(Request $request, $id)
+    {
 
-    public function DistrictUpdate(Request $request,$id){
+        $rules = [
+            "cost" => 'required'
+        ];
+        $customMSG = [
+            "cost.required" => __('This field is required')
+        ];
+        $validator = Validator::make($request->all(), $rules, $customMSG);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
 
-        ShipDistrict::findOrFail($id)->update([
-
-            'division_id' => $request->division_id,
-            'district_name' => $request->district_name,
-            'created_at' => Carbon::now(),
-
+        District::findOrFail($id)->update([
+            'name_en' => ucfirst(strtolower($request->name_en)),
+            'name_ar' => $request->name_ar,
+            'cost' => $request->cost,
+            'city_id' => $request->city_id,
         ]);
 
         $notification = array(
-            'message' => 'District Updated Successfully',
+            'message' => __('District Updated Successfully'),
             'alert-type' => 'info'
         );
 
@@ -184,20 +219,24 @@ class ShippingAreaController extends Controller
     } // end mehtod
 
 
+    public function DistrictDelete($id)
+    {
 
-    public function DistrictDelete($id){
-
-        ShipDistrict::findOrFail($id)->delete();
+        District::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'District Deleted Successfully',
+            'message' => __('District Deleted Successfully'),
             'alert-type' => 'info'
         );
 
         return redirect()->back()->with($notification);
 
     } // end method
-*/
-    //// End Ship District
+
+    public function DistrictAjax($id)
+    {
+        $districts = District::select('name_' . app()->getLocale() . ' as name', 'id')->orderBy('name_' . app()->getLocale(), 'ASC')->where('city_id', $id)->get();
+        return json_encode($districts);
+    }
 
 }

@@ -140,6 +140,10 @@
                             <a
                                 href="{{route('manage-division')}}"><i class="ti-more"></i>{{__('Shipping city')}}</a>
                         </li>
+                        <li class="{{Request::is(app()->getLocale().'/admin/shipping/district/*') ? 'active' : ''}}">
+                            <a
+                                href="{{route('manage-district')}}"><i class="ti-more"></i>{{__('Shipping district')}}</a>
+                        </li>
                     </ul>
                 </li>
             @endif
