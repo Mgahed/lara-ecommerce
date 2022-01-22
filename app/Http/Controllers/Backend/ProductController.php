@@ -249,6 +249,10 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id == 'null' ? null : $request->subcategory_id
         ]);
+        $products = Product::where('code', $request->code)->get();
+        foreach ($products as $product) {
+            Product::findOrFail($product->id)->update(['quantity' => $request->quantity]);
+        }
 
         $notification = [
             'message' => __('Product updated without updating Images'),
