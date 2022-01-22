@@ -209,7 +209,8 @@ class OrderController extends Controller
 
         $product = OrderItem::where('order_id', $order_id)->get();
         foreach ($product as $item) {
-            Product::where('id', $item->product_id)
+            $current_product = Product::findOrFail($item->product_id);
+            Product::where('code', $current_product->code)
                 ->update(['quantity' => DB::raw('quantity-' . $item->qty)]);
         }
 
