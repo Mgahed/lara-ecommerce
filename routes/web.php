@@ -79,6 +79,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/down/{id}', [ProductController::class, 'deactivate'])->name('product.down');
             Route::get('/up/{id}', [ProductController::class, 'activate'])->name('product.up');
             Route::get('/in-notification', [ProductController::class, 'ProductNotification'])->name('in.notification');
+            Route::post('/free-shipping', [ProductController::class, 'ProductFreeShipping'])->name('product.free.shipping');
         });
 
         /*----- Admin Slider All Routes -----*/

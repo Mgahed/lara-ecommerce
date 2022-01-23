@@ -379,6 +379,18 @@ class ProductController extends Controller
 
     }
 
+    public function ProductFreeShipping(Request $request)
+    {
+        $product = Product::findOrFail($request->product_id_shipping);
+        $products = Product::where('code', $product->code)->get();
+        foreach ($products as $item) {
+            $item->update([
+                'free_shipping' => $request->date
+            ]);
+        }
+        return redirect()->back();
+    }
+
     public function GetAllProducts($category_id, $subcategory_id)
     {
         $products = Product::where('category_id', $category_id)->where('subcategory_id', $subcategory_id)->orderBy('name_en', 'ASC')->get();
