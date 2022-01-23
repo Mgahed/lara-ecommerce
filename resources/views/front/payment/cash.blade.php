@@ -40,6 +40,11 @@
                                                             $cost_of_shipping = 0;
                                                         }
                                                     }
+
+                                                    $free_shipping_general = \App\Models\FreeShipping::findOrFail(1);
+                                                    if($free_shipping_general->free_shipping_date>=\Carbon\Carbon::today()){
+                                                        $cost_of_shipping = 0;
+                                                    }
                                                 @endphp
 
                                                 @if(Session::has('coupon'))

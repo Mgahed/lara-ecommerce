@@ -81,6 +81,8 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
             Route::get('/in-notification', [ProductController::class, 'ProductNotification'])->name('in.notification');
             Route::post('/free-shipping', [ProductController::class, 'ProductFreeShipping'])->name('product.free.shipping');
         });
+        Route::get('/free-shipping', [AdminController::class, 'FreeShipping'])->name('free.shipping');
+        Route::post('/set-free-shipping', [AdminController::class, 'SetFreeShipping'])->name('set.free.shipping');
 
         /*----- Admin Slider All Routes -----*/
         Route::prefix('slider')->group(function () {

@@ -44,6 +44,12 @@
                 </li>
             @endif
             @if (auth()->user()->role === 'admin' || auth()->user()->role === 'marketing')
+                    <li class="{{Request::is(app()->getLocale().'/admin/free-shipping') ? 'active' : ''}}">
+                        <a href="{{route('free.shipping')}}">
+                            <i class="mdi mdi-truck-delivery" style="{{Request::is(app()->getLocale().'/admin/free-shipping') ? 'color: white;' : ''}}"></i>
+                            <span>{{__('Free shipping')}}</span>
+                        </a>
+                    </li>
                 <li class="treeview {{Request::is(app()->getLocale().'/admin/product/*') ? 'active' : ''}}">
                     <a href="#">
                         <i class="fa fa-shopping-basket"></i> <span>{{__('Products')}}</span>

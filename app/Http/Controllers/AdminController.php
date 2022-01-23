@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\FreeShipping;
 use App\Models\Order;
 use App\Models\Seo;
 use App\Models\SocialMedia;
@@ -182,5 +183,17 @@ class AdminController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function FreeShipping()
+    {
+        $data = FreeShipping::findOrFail(1);
+        return view('admin.free_shipping', compact('data'));
+    }
+
+    public function SetFreeShipping(Request $request)
+    {
+        $data = FreeShipping::findOrFail(1)->update(['free_shipping_date'=>$request->date]);
+        return redirect()->back();
     }
 }
