@@ -224,6 +224,7 @@
 
         function dismiss() {
             $('#modal-center').modal('hide');
+            $('#modal-center-product').modal('hide');
         }
     </script>
 
