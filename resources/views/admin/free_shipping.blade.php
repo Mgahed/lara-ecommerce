@@ -17,7 +17,7 @@
 
                     <div class="box">
                         <div class="box-header with-border d-flex">
-                            <h3 class="box-title p-2">{{__('Product List')}} </h3>
+                            <h3 class="box-title p-2">{{__('Free shipping')}} </h3>
                             <span class="ml-auto p-2">
                                 <button onclick="openModal()" type="button" class="btn btn-primary"
                                     data-target="#modal-center">
