@@ -90,8 +90,10 @@ class CategoryController extends Controller
 
         $category = Category::findOrFail($id);
         if ($request->file('img')) {
-            if (file_exists(public_path($category->img))) {
-                unlink(public_path($category->img));
+            if ($category->img != null) {
+                if (file_exists(public_path($category->img))) {
+                    unlink(public_path($category->img));
+                }
             }
             $img = $request->file('img');
             $name_gen = md5($img->getClientOriginalName()) . strtotime(Carbon::now()) . '.' . $img->getClientOriginalExtension();
@@ -120,8 +122,10 @@ class CategoryController extends Controller
     public function CategoryDelete($id)
     {
         $category = Category::findOrFail($id);
-        if (file_exists(public_path($category->img))) {
-            unlink(public_path($category->img));
+        if ($category->img != null) {
+            if (file_exists(public_path($category->img))) {
+                unlink(public_path($category->img));
+            }
         }
         $products = Product::where('category_id', $id)->get();
         foreach ($products as $product) {
