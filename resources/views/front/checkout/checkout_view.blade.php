@@ -234,7 +234,7 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            var d = $('select[name="district_id"]').empty().append('<option value="null" selected="" >{{__('Other')}}</option>');
+                            var d = $('select[name="district_id"]').empty();//.append('<option value="null" selected="" >{{__('Other')}}</option>');
                             $.each(data, function (key, value) {
                                 $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
                             });

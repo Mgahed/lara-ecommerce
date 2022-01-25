@@ -2,8 +2,8 @@
 <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
 @php
     $categories = \App\Models\Category::with('subcategory')->orderBy('name_en', 'ASC')->get();
-    $special_offer = \App\Models\Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(6)->get();
-    $best_seller = \App\Models\Product::where('best_seller', 1)->orderBy('id', 'DESC')->limit(6)->get();
+    $special_offer = \App\Models\Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(6)/*->groupBy('barcode')*/->get();
+    $best_seller = \App\Models\Product::where('best_seller', 1)->orderBy('id', 'DESC')->limit(6)/*->groupBy('barcode')*/->get();
 @endphp
 <!-- ================================== TOP NAVIGATION ================================== -->
     <div class="side-menu animate-dropdown outer-bottom-xs my-d-none my-d-sm-block">

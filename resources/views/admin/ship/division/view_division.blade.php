@@ -28,7 +28,7 @@
                                     <tr>
                                         <th>{{__('Name in english')}}</th>
                                         <th>{{__('Name in arabic')}}</th>
-                                        <th>{{__('Shipping cost')}}</th>
+{{--                                        <th>{{__('Shipping cost')}}</th>--}}
                                         <th>{{__('Actions')}}</th>
                                     </tr>
                                     </thead>
@@ -37,7 +37,7 @@
                                         <tr>
                                             <td>{{ $item->name_en }}</td>
                                             <td>{{ $item->name_ar }}</td>
-                                            <td>{{ $item->cost }}{{__('EGP')}}</td>
+{{--                                            <td>{{ $item->cost }}{{__('EGP')}}</td>--}}
                                             <td>
                                                 <a href="{{ route('division.edit',$item->id) }}" class="btn btn-info"
                                                    title="Edit Data"><i class="fa fa-pencil"></i> </a>
@@ -100,9 +100,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <h5>{{__('Shipping cost')}}<span class="text-danger">*</span></h5>
+{{--                                        <h5>{{__('Shipping cost')}}<span class="text-danger">*</span></h5>--}}
                                         <div class="controls">
-                                            <input type="number" step="0.01" name="cost" min="0.0"
+                                            <input type="hidden" step="0.01" name="cost" min="0.0" value="0"
                                                    class="form-control" autocomplete="off">
                                             @error('cost')
                                             <span class="text-danger">{{ $message }}</span>
