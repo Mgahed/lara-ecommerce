@@ -50,22 +50,25 @@
                     </ul>
                 </div>
                 <!-- /.cnt-account -->
-
-                <div class="cnt-block">
-                    <ul class="list-unstyled list-inline">
-                        <li class="dropdown dropdown-small">
-                            <a href="#" class="dropdown-toggle" data-hover="dropdown"
-                               data-toggle="dropdown">
-                                <span class="value">{{__('Themes')}}</span><b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{route('light.theme')}}">Light</a></li>
-                                <li><a href="{{route('dark.theme')}}">Dark</a></li>
-                                <li><a href="{{route('mint.theme')}}">Mint</a></li>
+                @auth
+                    @if (Auth::user()->role=='admin')
+                        <div class="cnt-block">
+                            <ul class="list-unstyled list-inline">
+                                <li class="dropdown dropdown-small">
+                                    <a href="#" class="dropdown-toggle" data-hover="dropdown"
+                                       data-toggle="dropdown">
+                                        <span class="value">{{__('Themes')}}</span><b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{route('light.theme')}}">Light</a></li>
+                                        <li><a href="{{route('dark.theme')}}">Dark</a></li>
+                                        <li><a href="{{route('mint.theme')}}">Mint</a></li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    @endif
+                @endauth
                 <div class="cnt-block">
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small"><a href="#" class="dropdown-toggle" data-hover="dropdown"

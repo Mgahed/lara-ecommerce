@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -130,19 +131,22 @@ class AllUserController extends Controller
     ///////////// themes ///////
     public function light()
     {
-        User::findOrFail(\Auth::user()->id)->update(['theme'=>'light']);
+        DB::table('users')->update(array('theme' => 'light'));
+//        User::findOrFail(\Auth::user()->id)->update(['theme'=>'light']);
         return redirect()->back();
     }
 
     public function mint()
     {
-        User::findOrFail(\Auth::user()->id)->update(['theme'=>'mint']);
+        DB::table('users')->update(array('theme' => 'mint'));
+//        User::findOrFail(\Auth::user()->id)->update(['theme'=>'mint']);
         return redirect()->back();
     }
 
     public function dark()
     {
-        User::findOrFail(\Auth::user()->id)->update(['theme'=>'dark']);
+        DB::table('users')->update(array('theme' => 'dark'));
+//        User::findOrFail(\Auth::user()->id)->update(['theme'=>'dark']);
         return redirect()->back();
     }
 }
