@@ -51,8 +51,9 @@ class IndexController extends Controller
         //$products = Product::/*where('status', 1)->*/ orderBy('id', 'DESC')->limit(6)->get();
         $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
         $categories = Category::with('subcategory')->orderBy('name_en', 'ASC')->get();
+        $all = Category::where('name_en', 'all')->first();
 
-        return view('front.index', compact('categories','sliders'));
+        return view('front.index', compact('categories', 'all', 'sliders'));
 //        $special_offer = Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(6)->get();
 //
 //        $skip_product_0 = null;
@@ -72,7 +73,6 @@ class IndexController extends Controller
 //        if ($skip_category_2) {
 //            $skip_product_2 = Product::/*where('status', 1)->*/ where('category_id', $skip_category_2->id)->orderBy('id', 'DESC')->get();
 //        }
-
 
 
         // return $skip_category->id;

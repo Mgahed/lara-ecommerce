@@ -41,19 +41,29 @@
                     <br>
                     <style>
                         @media screen and (max-width: 767px) {
-                            h3{
+                            h3 {
                                 font-size: 17px;
                             }
                         }
                     </style>
+                    <div class="col-xs-4 text-center" style="margin-top: 15px;">
+                        <a href="{{route('products.by.category',$all->id)}}">
+                            <img src="{{$all->img}}" style="/*color: white;*/ width: 100%; border-radius: 20px;"
+                                 alt="{{app()->getLocale()=='en'?$all->name_en:$all->name_ar}}">
+                            <h3>{{app()->getLocale()=='en'?$all->name_en:$all->name_ar}}</h3>
+                        </a>
+                    </div>
                     @foreach ($categories as $item)
-                        <div class="col-xs-4 text-center" style="margin-top: 15px;">
-                            <a href="{{route('products.by.category',$item->id)}}">
-                                <img src="{{$item->img}}" style="/*color: white;*/ width: 100%; border-radius: 20px;"
-                                     alt="{{app()->getLocale()=='en'?$item->name_en:$item->name_ar}}">
-                                <h3>{{app()->getLocale()=='en'?$item->name_en:$item->name_ar}}</h3>
-                            </a>
-                        </div>
+                        @if ($item->name_en != 'all')
+                            <div class="col-xs-4 text-center" style="margin-top: 15px;">
+                                <a href="{{route('products.by.category',$item->id)}}">
+                                    <img src="{{$item->img}}"
+                                         style="/*color: white;*/ width: 100%; border-radius: 20px;"
+                                         alt="{{app()->getLocale()=='en'?$item->name_en:$item->name_ar}}">
+                                    <h3>{{app()->getLocale()=='en'?$item->name_en:$item->name_ar}}</h3>
+                                </a>
+                            </div>
+                        @endif
                     @endforeach
                 <!-- ========================================= SECTION – HERO : END ========================================= -->
 

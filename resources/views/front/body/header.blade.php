@@ -112,6 +112,7 @@
                 <!-- /.logo-holder -->
                 @php
                     $categories = \App\Models\Category::with('subcategory')->orderBy('name_en', 'ASC')->get();
+                    $all = \App\Models\Category::where('name_en', 'all')->first();
                 @endphp
                 <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder">
                     <!-- /.contact-row -->
@@ -124,15 +125,18 @@
                                     <select name="category" class="form-control" style="height: 47px;">
                                         <option value="all">{{__('All')}}</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{$category->id}}">
-                                                {{app()->getLocale() === 'en'?$category->name_en:$category->name_ar}}
-                                            </option>
+                                            @if ($category->name_en != 'all')
+                                                <option value="{{$category->id}}">
+                                                    {{app()->getLocale() === 'en'?$category->name_en:$category->name_ar}}
+                                                </option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </ul>
                                 <input class="search-field" name="search" style="width: 100%;"
                                        placeholder="{{__('Search here...')}}"/>
-                                <button type="submit" style="height: 47px; margin-left: auto;" class="search-button"></button>
+                                <button type="submit" style="height: 47px; margin-left: auto;"
+                                        class="search-button"></button>
                             </div>
                         </form>
                     </div>
@@ -210,43 +214,50 @@
                                 <li class="{{Route::is('home')?'active':''}} dropdown yamm-fw"><a
                                         href="{{route('home')}}">{{__('Home')}}</a>
                                 </li>
+                                <li class="dropdown yamm-fw">
+                                    <a href="{{route('products.by.category',$all->id)}}">
+                                        {{app()->getLocale() === 'en'?$all->name_en:$all->name_ar}}
+                                    </a>
+                                </li>
                                 @foreach ($categories as $category)
-                                    <li class="dropdown"><a href="{{route('products.by.category',$category->id)}}"
-                                                            class="dropdown-toggle" data-hover="dropdown"
-                                            {{--data-toggle="dropdown"--}}>{{app()->getLocale() === 'en'?$category->name_en:$category->name_ar}}</a>
-                                        @if ($category->subcategory->count())
-                                            <ul class="dropdown-menu pages">
-                                                <li>
-                                                    <div class="yamm-content">
-                                                        <div class="row">
-                                                            @php($i=1)
+                                    @if ($category->name_en != 'all')
+                                        <li class="dropdown"><a href="{{route('products.by.category',$category->id)}}"
+                                                                class="dropdown-toggle" data-hover="dropdown"
+                                                {{--data-toggle="dropdown"--}}>{{app()->getLocale() === 'en'?$category->name_en:$category->name_ar}}</a>
+                                            @if ($category->subcategory->count())
+                                                <ul class="dropdown-menu pages">
+                                                    <li>
+                                                        <div class="yamm-content">
+                                                            <div class="row">
+                                                                @php($i=1)
 
-                                                            <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                                <ul class="links">
-                                                                    @foreach ($category->subcategory as $subcategory)
-                                                                        @if ($i%5===0)
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                                <ul class="links">
-                                                                    <li>
-                                                                        <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?$subcategory->name_en:$subcategory->name_ar}}</a>
-                                                                    </li>
-                                                                    @else
+                                                                <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                                                    <ul class="links">
+                                                                        @foreach ($category->subcategory as $subcategory)
+                                                                            @if ($i%5===0)
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                                                    <ul class="links">
                                                                         <li>
                                                                             <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?$subcategory->name_en:$subcategory->name_ar}}</a>
                                                                         </li>
-                                                                    @endif
-                                                                    @php($i++)
-                                                                    @endforeach
-                                                                </ul>
+                                                                        @else
+                                                                            <li>
+                                                                                <a href="{{route('products.by.subcategory',$subcategory->id)}}">{{app()->getLocale() === 'en'?$subcategory->name_en:$subcategory->name_ar}}</a>
+                                                                            </li>
+                                                                        @endif
+                                                                        @php($i++)
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        @endif
-                                    </li>
+                                                    </li>
+                                                </ul>
+                                            @endif
+                                        </li>
+                                    @endif
                                 @endforeach
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-hover="dropdown"
                                                         data-toggle="dropdown">{{__('Other')}}</a>
