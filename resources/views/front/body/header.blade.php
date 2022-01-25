@@ -217,11 +217,13 @@
                                 <li class="{{Route::is('home')?'active':''}} dropdown yamm-fw"><a
                                         href="{{route('home')}}">{{__('Home')}}</a>
                                 </li>
-                                <li class="dropdown yamm-fw">
-                                    <a href="{{route('products.by.category',$all->id)}}">
-                                        {{app()->getLocale() === 'en'?$all->name_en:$all->name_ar}}
-                                    </a>
-                                </li>
+                                @if ($all)
+                                    <li class="dropdown yamm-fw">
+                                        <a href="{{route('products.by.category',$all->id)}}">
+                                            {{app()->getLocale() === 'en'?$all->name_en:$all->name_ar}}
+                                        </a>
+                                    </li>
+                                @endif
                                 @foreach ($categories as $category)
                                     @if ($category->name_en != 'all')
                                         <li class="dropdown"><a href="{{route('products.by.category',$category->id)}}"

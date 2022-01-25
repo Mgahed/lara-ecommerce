@@ -45,19 +45,22 @@
                                 font-size: 17px;
                             }
                         }
+
                         @media screen and (max-width: 416px) {
                             h3 {
                                 font-size: 10px;
                             }
                         }
                     </style>
-                    <div class="col-xs-4 text-center" style="margin-top: 15px;">
-                        <a href="{{route('products.by.category',$all->id)}}">
-                            <img src="{{$all->img}}" style="/*color: white;*/ width: 100%; border-radius: 20px;"
-                                 alt="{{app()->getLocale()=='en'?$all->name_en:$all->name_ar}}">
-                            <h3>{{app()->getLocale()=='en'?$all->name_en:$all->name_ar}}</h3>
-                        </a>
-                    </div>
+                    @if ($all)
+                        <div class="col-xs-4 text-center" style="margin-top: 15px;">
+                            <a href="{{route('products.by.category',$all->id)}}">
+                                <img src="{{$all->img}}" style="/*color: white;*/ width: 100%; border-radius: 20px;"
+                                     alt="{{app()->getLocale()=='en'?$all->name_en:$all->name_ar}}">
+                                <h3>{{app()->getLocale()=='en'?$all->name_en:$all->name_ar}}</h3>
+                            </a>
+                        </div>
+                    @endif
                     @foreach ($categories as $item)
                         @if ($item->name_en != 'all')
                             <div class="col-xs-4 text-center" style="margin-top: 15px;">

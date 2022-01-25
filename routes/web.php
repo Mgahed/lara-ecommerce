@@ -208,6 +208,7 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         });
     });
     Route::get('/shipping/district/ajax/{id}', [ShippingAreaController::class, 'DistrictAjax']);
+    Route::post('/change-logo', [AdminController::class, 'UpdateLogo'])->name('change.logo');
     /*----------------------------------------------------------------------------------------------------*/
     /*----------------------------------------------------------------------------------------------------*/
     /*----------------------------------------------------------------------------------------------------*/

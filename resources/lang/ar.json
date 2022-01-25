@@ -1024,7 +1024,11 @@
     "Select district": "حدد المنطقة",
     "Free shipping": "الشحن المجاني",
     "No date": "لا يوجد تاريخ للشحن المجاني",
-    "Set date for free shipping": "تحديد تاريخ للشحن المجاني"
+    "Set date for free shipping": "تحديد تاريخ للشحن المجاني",
+    "Logo changed successfully": "تم تغيير الشعار بنجاح",
+    "Cannot change logo": "لا يمكن تغيير الشعار",
+    "Change logo": "تغيير الشعار",
+    "Select image": "اختر صورة"
 
 
 }

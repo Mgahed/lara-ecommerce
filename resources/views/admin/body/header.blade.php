@@ -10,16 +10,21 @@
                         <i class="nav-link-icon mdi mdi-menu"></i>
                     </a>
                 </li>
-                <li class="btn-group nav-item">
+                {{--<li class="btn-group nav-item">
                     <a href="#" data-provide="fullscreen"
                        class="waves-effect waves-light nav-link rounded svg-bt-icon" title="Full Screen">
                         <i class="nav-link-icon mdi mdi-crop-free"></i>
                     </a>
-                </li>
+                </li>--}}
                 <li class="btn-group nav-item">
                     <a class="waves-effect waves-light nav-link rounded svg-bt-icon" title="{{__('Home')}}"
                        href="{{route('home')}}"><i
                             class="nav-link-icon mdi mdi-home text-muted mr-2"></i></a>
+                </li>
+                <li class="btn-group nav-item">
+                    <a class="waves-effect waves-light nav-link rounded svg-bt-icon" onclick="openModalLogo()"
+                       href="#"><i
+                            class="nav-link-icon mdi mdi-image-area text-muted mr-2"></i></a>
                 </li>
             </ul>
         </div>
@@ -133,3 +138,44 @@
         </div>
     </nav>
 </header>
+<!-- Modal -->
+<div class="modal center-modal fade" id="modal-center-logo" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{__('Change logo')}}</h5>
+                <button onclick="dismiss()" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('change.logo')}}" method="post" enctype="multipart/form-data">
+                    <h5>{{__('Select image')}} <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <input type="file" accept="image/png, image/jpg, image/jpeg, image/gif" name="img" class="form-control" required>
+                        @error('img')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <br>
+                    @csrf
+                    <input type="submit" class="btn btn-rounded btn-primary float-right" value="{{__('Save')}}">
+                </form>
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button onclick="dismiss()" type="button" class="btn btn-rounded btn-danger" data-dismiss="modal">
+                    {{__('Close')}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.modal -->
+<script>
+    function openModalLogo() {
+        $('#modal-center-logo').modal('show');
+    }
+
+    function dismiss() {
+        $('#modal-center-logo').modal('hide');
+    }
+</script>

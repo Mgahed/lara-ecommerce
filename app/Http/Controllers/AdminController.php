@@ -10,6 +10,7 @@ use App\Models\SocialMedia;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Image;
 
 class AdminController extends Controller
 {
@@ -193,7 +194,31 @@ class AdminController extends Controller
 
     public function SetFreeShipping(Request $request)
     {
-        $data = FreeShipping::findOrFail(1)->update(['free_shipping_date'=>$request->date]);
+        $data = FreeShipping::findOrFail(1)->update(['free_shipping_date' => $request->date]);
         return redirect()->back();
+    }
+
+    public function UpdateLogo(Request $request)
+    {
+//        return $request;
+        if ($request->file('img')) {
+            if (file_exists(public_path('logo.png'))) {
+                unlink(public_path('logo.png'));
+            }
+            $img = $request->file('img');
+            $name_gen = 'logo' . '.' . 'png';
+            Image::Make($img)->resize(500, 500)->save(public_path($name_gen));
+            $notification = [
+                'message' => __('Logo changed successfully'),
+                'alert-type' => 'success'
+            ];
+            return redirect()->back()->with($notification);
+        }
+
+        $notification = [
+            'message' => __('Cannot change logo'),
+            'alert-type' => 'error'
+        ];
+        return redirect()->back()->with($notification);
     }
 }
