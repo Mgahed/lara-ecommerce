@@ -230,7 +230,7 @@
                 var city_id = $(this).val();
                 if (city_id) {
                     $.ajax({
-                        url: "{{  url('/admin/shipping/district/ajax') }}/" + city_id,
+                        url: "{{  url('/shipping/district/ajax') }}/" + city_id,
                         type: "GET",
                         dataType: "json",
                         success: function (data) {

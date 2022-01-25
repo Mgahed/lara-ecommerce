@@ -39,8 +39,15 @@
                         </div>
                     @endif
                     <br>
+                    <style>
+                        @media screen and (max-width: 767px) {
+                            h3{
+                                font-size: 17px;
+                            }
+                        }
+                    </style>
                     @foreach ($categories as $item)
-                        <div class="col-md-4 text-center" style="margin-top: 15px;">
+                        <div class="col-xs-4 text-center" style="margin-top: 15px;">
                             <a href="{{route('products.by.category',$item->id)}}">
                                 <img src="{{$item->img}}" style="/*color: white;*/ width: 100%; border-radius: 20px;"
                                      alt="{{app()->getLocale()=='en'?$item->name_en:$item->name_ar}}">
@@ -616,6 +623,7 @@
                 <!-- /.homebanner-holder -->
                 <!-- ============================================== CONTENT : END ============================================== -->
             </div>
+            <br><br>
             <span class="my-d-block my-d-sm-none">
                 @include('front.common.sidebar')
             </span>
