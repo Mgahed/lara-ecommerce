@@ -642,7 +642,7 @@
                 <!-- ============================================== CONTENT : END ============================================== -->
             </div>
             <br><br>
-            <span class="my-d-block my-d-sm-none">
+            <span class="my-d-block my-d-sm-none row">
                 @include('front.common.sidebar')
             </span>
             <!-- /.row -->
