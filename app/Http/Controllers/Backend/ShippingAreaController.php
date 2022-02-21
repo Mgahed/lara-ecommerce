@@ -145,7 +145,7 @@ class ShippingAreaController extends Controller
 
     public function DistrictView()
     {
-        $districts = District::orderBy('name_en', 'ASC')->get();
+        $districts = District::with('city')->orderBy('name_en', 'ASC')->get();
         return view('admin.ship.district.view_district', compact('districts'));
 
     }

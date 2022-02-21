@@ -26,6 +26,7 @@
                                     {!! $item->description !!}
                                 </div>
                             </div>
+                            <br><br>
 
                         @endforeach
 

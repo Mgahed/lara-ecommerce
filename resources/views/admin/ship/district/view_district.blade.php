@@ -35,6 +35,9 @@
                                     </thead>
                                     <tbody>
                                     @foreach($districts as $item)
+                                        @if (!$item->city)
+                                            @continue
+                                        @endif
                                         <tr>
                                             <td>{{ $item->city->name_en }} - {{ $item->city->name_ar }}</td>
                                             <td>{{ $item->name_en }}</td>
