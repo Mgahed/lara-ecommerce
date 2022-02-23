@@ -23,8 +23,16 @@ class CartController extends Controller
             Session::forget('coupon');
         }
 
+        $items = Cart::content();
+        $count = 0;
+
+        foreach ($items as $item) {
+            if ($item->id == $id) {
+                $count += $item->qty;
+            }
+        }
         $product = Product::findOrFail($id);
-        if ($request->quantity > $product->quantity) {
+        if ($request->quantity + $count > $product->quantity) {
             if ($request->lang === 'en') {
                 $message = 'Quantity not available';
             } else {
