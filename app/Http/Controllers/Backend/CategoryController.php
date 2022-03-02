@@ -32,7 +32,7 @@ class CategoryController extends Controller
 
     public function CategoryView()
     {
-        $category = Category::latest()->get();
+        $category = Category::where('name_en', '!=', 'all')->latest()->get();
         return view('admin.category.category_view', compact('category'));
     }
 

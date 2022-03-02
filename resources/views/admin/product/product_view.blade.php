@@ -153,6 +153,9 @@
                             @endphp
                             <select name="category_id" class="form-control" required="">
                                 @foreach($categories as $category)
+                                    @if ($category->name_en == 'all')
+                                        @continue
+                                    @endif
                                     <option
                                         value="{{ $category->id }}">{{ $category->name_en }}
                                         - {{$category->name_ar}}</option>

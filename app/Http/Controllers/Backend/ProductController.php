@@ -64,7 +64,7 @@ class ProductController extends Controller
 
     public function AddProduct()
     {
-        $categories = Category::orderBy('name_en', 'ASC')->get();
+        $categories = Category::where('name_en', '!=', 'all')->orderBy('name_en', 'ASC')->get();
         return view('admin.product.product_add', compact('categories'));
     }
 
@@ -215,7 +215,7 @@ class ProductController extends Controller
     {
         $multiImgs = MultiImg::where('product_id', $id)->get();
 
-        $categories = Category::orderBy('name_en', 'asc')->get();
+        $categories = Category::where('name_en', '!=', 'all')->orderBy('name_en', 'asc')->get();
         $product = Product::with('category')->with('subcategory')->findOrFail($id);
 
         return view('admin.product.product_edit', compact('product', 'categories', 'multiImgs'));

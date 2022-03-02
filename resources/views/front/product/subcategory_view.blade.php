@@ -70,9 +70,9 @@
                                                                 <h3 class="name"><a
                                                                         href="{{route('product.details',$product->id)}}">
                                                                         @if (app()->getLocale() === 'en')
-                                                                            {{$product->name_en}}
+                                                                            {{Str::limit($product->name_en, 15, $end='.......')}}
                                                                         @else
-                                                                            {{$product->name_ar}}
+                                                                            {{Str::limit($product->name_ar, 15, $end='.......')}}
                                                                         @endif
                                                                     </a>
                                                                 </h3>
