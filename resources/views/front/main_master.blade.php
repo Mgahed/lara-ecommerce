@@ -164,6 +164,8 @@
 <script src="{{asset('front/assets/js/scripts.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+@yield('bottom-script')
+
 {{-- truncate --}}
 <script>
     (function () {

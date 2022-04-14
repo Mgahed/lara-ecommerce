@@ -1,6 +1,67 @@
 @extends('front.main_master')
 @section('content')
+    <style>
+        .radio_label {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
+        .radio_label input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 40%;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .container .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+    </style>
 
     <div class="body-content outer-top-xs">
         <div class="container">
@@ -101,12 +162,26 @@
                                         <h4 class="unicase-checkout-title">{{__('Payment Method')}}</h4>
                                     </div>
 
-                                    <form action="{{ route('cash.order') }}" method="post" id="payment-form">
+                                    <form action="{{--{{ route('cash.order') }}--}}" method="post" id="payment-form">
                                         @csrf
                                         <div class="form-row">
 
-                                            <img src="{{ asset('front/assets/images/payments/cash.png') }}"
-                                                 alt="{{__('Cash on delivery')}}">
+                                            <label for="cash" style="cursor: pointer;" class="radio_label">
+                                                <img src="{{ asset('front/assets/images/payments/cash.png') }}"
+                                                     alt="{{__('Cash on delivery')}}" class="img-responsive">
+                                                <input type="radio" id="cash" name="select_payment_method"
+                                                       style="cursor: pointer;" value="cash" checked>
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <br><br>
+                                            <label for="card" style="cursor: pointer;" class="radio_label">
+                                                <img src="{{ asset('front/assets/images/payments/card.png') }}"
+                                                     class="img-responsive"
+                                                     alt="{{__('Visa/Master/Meeza')}}" style="width: 500px;">
+                                                <input type="radio" id="card" name="select_payment_method"
+                                                       style="cursor: pointer;" value="card">
+                                                <span class="checkmark"></span>
+                                            </label>
 
                                             <label for="card-element">
 
@@ -137,8 +212,6 @@
                         <!-- checkout-progress-sidebar -->
                     </div><!--  // end col md 6 -->
 
-
-                    </form>
                 </div><!-- /.row -->
             </div><!-- /.checkout-box -->
             <!-- === ===== BRANDS CAROUSEL ==== ======== -->
@@ -148,11 +221,18 @@
         </div><!-- /.container -->
     </div><!-- /.body-content -->
 
-
-
-
-
-
-
-
+@endsection
+@section('bottom-script')
+    <script>
+        $('input[name="select_payment_method"]').click(function () {
+            let val = $(this).val();
+            if (val === 'cash') {
+                let attr = '{{route('cash.order')}}';
+                $("#payment-form").attr("action", attr);
+            } else if (val === 'card') {
+                let attr = '{{route('card.order')}}';
+                $("#payment-form").attr("action", attr);
+            }
+        })
+    </script>
 @endsection

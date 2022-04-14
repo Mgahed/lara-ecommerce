@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\CartPageController;
 use App\Http\Controllers\Frontend\CashController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\PaymobController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -254,6 +255,10 @@ Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)-
         });
 
         /*Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');*/
+        //https://accept.paymobsolutions.com/api/acceptance/post_pay
+        Route::post('/paymob/order', [PaymobController::class, 'card_order'])->name('card.order');
+        Route::post('/paymob/order/card-callback-post', [PaymobController::class, 'paymob_card_callback_post'])->name('card.order.callback.post');
+        Route::get('/paymob/order/card-callback-get', [PaymobController::class, 'paymob_card_callback_get'])->name('card.order.callback.get');
         Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
 
         Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');

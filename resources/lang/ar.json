@@ -1028,7 +1028,9 @@
     "Logo changed successfully": "تم تغيير الشعار بنجاح",
     "Cannot change logo": "لا يمكن تغيير الشعار",
     "Change logo": "تغيير الشعار",
-    "Select image": "اختر صورة"
+    "Select image": "اختر صورة",
+    "Paymob Order id": "رقم الطلب في paymob",
+    "Error happened please try again or contact us": "حدث خطأ يرجى المحاولة مرة أخرى أو الاتصال بنا"
 
 
 }

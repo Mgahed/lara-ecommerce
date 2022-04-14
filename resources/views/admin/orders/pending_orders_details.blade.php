@@ -56,13 +56,23 @@
 
                                 <tr>
                                     <th> {{__('Shipping address details')}} :</th>
-                                    <th> {{ $order->division->name_en }}, {{ $order->district_id?$order->district->name_en.',':'' }} {{$order->address}} </th>
+                                    <th>
+                                        @if ($order->division) {{ $order->division->name_en }},@endif
+                                            {{ $order->district_id?$order->district->name_en.',':'' }} {{$order->address}}
+                                    </th>
                                 </tr>
 
                                 <tr>
                                     <th> {{__('Order Date')}} :</th>
                                     <th> {{ $order->created_at }} </th>
                                 </tr>
+
+                                @if ($order->transaction_id)
+                                    <tr>
+                                        <th> {{__('Paymob Order id')}} :</th>
+                                        <th> {{ $order->transaction_id }} </th>
+                                    </tr>
+                                @endif
 
                                 @if ($order->notes)
                                     <tr>
