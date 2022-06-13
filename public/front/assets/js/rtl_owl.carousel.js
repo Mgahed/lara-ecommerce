@@ -172,15 +172,15 @@
             var a = this, b = f('<div class="owl-buttons"/>');
             a.owlControls.append(b);
             a.buttonPrev =
-                f("<div/>", {"class": "owl-prev", html: a.options.navigationText[0] || ""});
-            a.buttonNext = f("<div/>", {"class": "owl-next", html: a.options.navigationText[1] || ""});
+                f("<div/>", {"class": "owl-next", html: a.options.navigationText[0] || ""});
+            a.buttonNext = f("<div/>", {"class": "owl-prev", html: a.options.navigationText[1] || ""});
             b.append(a.buttonPrev).append(a.buttonNext);
             b.on("touchstart.owlControls mousedown.owlControls", 'div[class^="owl"]', function (a) {
                 a.preventDefault()
             });
             b.on("touchend.owlControls mouseup.owlControls", 'div[class^="owl"]', function (b) {
                 b.preventDefault();
-                f(this).hasClass("owl-next") ? a.next() : a.prev()
+                f(this).hasClass("owl-prev") ? a.next() : a.prev()
             })
         }, buildPagination: function () {
             var a = this;
