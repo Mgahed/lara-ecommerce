@@ -173,7 +173,7 @@
                                                        style="cursor: pointer;" value="cash" checked>
                                                 <span class="checkmark"></span>
                                             </label>
-                                            <br><br>
+                                            {{--<br><br>
                                             <label for="card" style="cursor: pointer;" class="radio_label">
                                                 <img src="{{ asset('front/assets/images/payments/card.png') }}"
                                                      class="img-responsive"
@@ -181,7 +181,7 @@
                                                 <input type="radio" id="card" name="select_payment_method"
                                                        style="cursor: pointer;" value="card">
                                                 <span class="checkmark"></span>
-                                            </label>
+                                            </label>--}}
 
                                             <label for="card-element">
 
