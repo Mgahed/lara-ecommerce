@@ -20,7 +20,4 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN chmod 777 -R ./storage/ ./bootstrap/ ./public/ ./deploy.sh
 RUN chmod +x deploy.sh
 
-RUN npm install
-RUN npm run dev
-
 CMD ["./deploy.sh"]

@@ -20,3 +20,13 @@ services:
         volumes:
             - '.:/var/www/html'
         command: "chmod +x ./deploy.sh && ./deploy.sh"
+
+    node:
+        image: node:20-alpine
+        container_name: node
+        working_dir: /var/www/html
+        volumes:
+            - ./:/var/www/html
+        command: "npm install && npm run dev"
+        depends_on:
+            - ecommerce
