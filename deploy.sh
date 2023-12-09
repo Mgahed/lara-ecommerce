@@ -8,6 +8,9 @@ php artisan config:cache
 echo "Running migrations..."
 php artisan migrate --force
 
+echo "Running npm install..."
+npm install
+
 echo "Running npm run dev..."
 npm run dev
 

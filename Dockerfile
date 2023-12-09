@@ -21,8 +21,5 @@ RUN chmod 777 -R ./storage/ ./bootstrap/ ./public/ ./deploy.sh
 RUN chmod +x deploy.sh
 
 FROM node:alpine as build
-WORKDIR /var/www/html/public
-COPY package.json package-lock.json ./
-RUN npm install
 
-CMD ["../deploy.sh"]
+CMD ["./deploy.sh"]
