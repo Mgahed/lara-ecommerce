@@ -17,9 +17,11 @@ ENV LOG_CHANNEL stderr
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
+FROM node:alpine as build
+
+COPY . .
+
 RUN chmod 777 -R ./storage/ ./bootstrap/ ./public/ ./deploy.sh
 RUN chmod +x deploy.sh
-
-FROM node:alpine as build
 
 CMD ["./deploy.sh"]
