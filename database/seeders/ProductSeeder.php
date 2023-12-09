@@ -14,7 +14,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
+        /*for ($i = 0; $i < 10; $i++) {
             $sell_price = random_int(2, 50);
             \App\Models\Product::create([
                 'name_en' => strtolower(Str::random(10)),
@@ -29,12 +29,13 @@ class ProductSeeder extends Seeder
                 'short_descp_ar' => strtolower(Str::random(20)),
                 'long_descp_en' => strtolower(Str::random(100)),
                 'long_descp_ar' => strtolower(Str::random(100)),
-                'thumbnail' => '',
+                'thumbnail' => 'https://placekitten.com/300/300',
                 'special_offer' => 0,
                 'brand' => strtolower(Str::random(10)),
                 'category_id' => 4,
                 'subcategory_id' => 8
             ]);
-        }
+        }*/
+        \App\Models\Product::factory(50)->create();
     }
 }
