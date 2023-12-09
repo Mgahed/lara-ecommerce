@@ -5,9 +5,6 @@ composer install --no-dev --working-dir=/var/www/html
 echo "Caching config..."
 php artisan config:cache
 
-echo "Generating key..."
-php artisan key:generate
-
 echo "Running migrations..."
 php artisan migrate --force
 
