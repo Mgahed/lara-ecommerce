@@ -3,10 +3,6 @@ services:
     npm:
         image: node:current-alpine
         container_name: npm
-        volumes:
-            - ./src:/var/www/html
-        working_dir: /var/www/html
-        entrypoint: [ 'npm' ]
     ecommerce:
         container_name: ecommerce
         build:
