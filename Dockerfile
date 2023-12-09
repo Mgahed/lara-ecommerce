@@ -25,4 +25,4 @@ WORKDIR /var/www/html/public
 COPY package.json package-lock.json ./
 RUN npm install
 
-CMD ["./deploy.sh"]
+CMD ["../deploy.sh"]
